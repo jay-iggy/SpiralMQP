@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed;
+    [SerializeField] float walkSpeed;
+    [SerializeField] float runSpeed;
+    private float movementSpeed;
     [SerializeField] float turningRadius;
+
     [SerializeField] GameObject fist;
     [SerializeField] GameObject reticle;
     [SerializeField] GameObject playerModel;
@@ -19,14 +22,18 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction fire;
     private InputAction turn;
+    private InputAction dodge;
 
     [SerializeField] float punchCooldown;
     [SerializeField] float punchDuration;
     private float punchTimer;
 
+    private bool running;
+
     private void Awake()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         playerControls = new PlayerInput();
     }
 
@@ -40,6 +47,9 @@ public class PlayerController : MonoBehaviour
 
         turn = playerControls.Player.Look;
         turn.Enable();
+
+        dodge = playerControls.Player.Dodge;
+        dodge.Enable();
     }
 
     private void OnDisable()
@@ -51,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        movementSpeed = walkSpeed;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -59,6 +70,17 @@ public class PlayerController : MonoBehaviour
         direction = move.ReadValue<Vector2>();
         lookDirection += turn.ReadValue<Vector2>();
         lookDirection = Vector2.ClampMagnitude(lookDirection, 300);
+
+        if(dodge.ReadValue<float>() > .5f)
+        {
+            running = true;
+            movementSpeed = runSpeed;
+        }
+        else
+        {
+            running = false;
+            movementSpeed = walkSpeed;
+        }
 
         if(punchTimer <= 0 && fire.ReadValue<float>() > .5f)
         {

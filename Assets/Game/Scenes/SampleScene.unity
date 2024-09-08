@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1078467651a88141a67e0c38abdcead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  walkSpeed: 5
+  runSpeed: 8
   turningRadius: 15
   fist: {fileID: 749156769}
   reticle: {fileID: 663399550}
