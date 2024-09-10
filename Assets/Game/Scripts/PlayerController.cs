@@ -1,113 +1,130 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float walkSpeed;
-    [SerializeField] float runSpeed;
-    private float movementSpeed;
+    
+    // TODO: velocity is overriden by the movement script, so the player can't be pushed by other sources
+    
+    
+    [Header("Movement Settings")]
+    public float walkSpeed;
+    public float runSpeed;
+    [HideInInspector]public float movementSpeed;
     [SerializeField] float turningRadius;
-
-    [SerializeField] GameObject fist;
-    [SerializeField] GameObject reticle;
     [SerializeField] GameObject playerModel;
-    private Vector2 direction = new Vector2();
-    private Vector2 lookDirection = new Vector2(0, 0);
-    private Rigidbody rb;
+    [HideInInspector]public bool isRunning;
 
-    public PlayerInput playerControls;
-    private InputAction move;
-    private InputAction fire;
-    private InputAction turn;
-    private InputAction dodge;
+    [Header("Combat Settings")]
+    [SerializeField] GameObject reticle;
+    private Vector2 _direction = new Vector2();
+    private Vector2 _lookDirection = new Vector2(0, 0);
+    [SerializeField] private float maxReticleDistance = 300;
+    
+    [Header("Abilities")]
+    public Ability _primaryAbility;
+    public Ability _secondaryAbility;
+    
+    // References
+    private Rigidbody _rb;
+    private PlayerInput _playerControls; // this isn't a PlayerInput component, its a compiled input action asset named PlayerInput
 
-    [SerializeField] float punchCooldown;
-    [SerializeField] float punchDuration;
-    private float punchTimer;
-
-    private bool running;
-
-    private void Awake()
-    {
+    private void Awake() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-        playerControls = new PlayerInput();
+        
+        _rb = GetComponent<Rigidbody>();
+        
+        CreatePlayerControls();
     }
-
-    private void OnEnable()
-    {
-        move = playerControls.Player.Move;
-        move.Enable();
-
-        fire = playerControls.Player.Fire;
-        fire.Enable();
-
-        turn = playerControls.Player.Look;
-        turn.Enable();
-
-        dodge = playerControls.Player.Dodge;
-        dodge.Enable();
-    }
-
-    private void OnDisable()
-    {
-        move.Disable();
-        fire.Disable();
-        turn.Disable();
-    }
-
-    void Start()
-    {
+    void Start(){
         movementSpeed = walkSpeed;
-        rb = GetComponent<Rigidbody>();
+        
+        SetPrimaryAbility(_primaryAbility);
+        SetSecondaryAbility(_secondaryAbility);
     }
 
-    void Update()
-    {
-        direction = move.ReadValue<Vector2>();
-        lookDirection += turn.ReadValue<Vector2>();
-        lookDirection = Vector2.ClampMagnitude(lookDirection, 300);
-
-        if(dodge.ReadValue<float>() > .5f)
-        {
-            running = true;
-            movementSpeed = runSpeed;
-        }
-        else
-        {
-            running = false;
-            movementSpeed = walkSpeed;
-        }
-
-        if(punchTimer <= 0 && fire.ReadValue<float>() > .5f)
-        {
-            punchTimer = punchCooldown;
-            fist.SetActive(true);
-        }
-        if(punchTimer > 0)
-        {
-            punchTimer -= Time.deltaTime;
-            if(punchTimer < punchCooldown - punchDuration)
-            {
-                fist.SetActive(false);
-            }
-        }
+    private void OnEnable() {
+        _playerControls.Enable();
+    }
+    private void OnDisable(){
+        _playerControls.Disable();
+    }
+    
+    private void CreatePlayerControls() {
+        _playerControls = new PlayerInput();
+        _playerControls.Player.Move.performed += OnMove;
+        _playerControls.Player.Move.canceled += OnMove;
+        _playerControls.Player.Fire.performed += OnPrimary;
+        _playerControls.Player.Fire.canceled += OnPrimaryRelease;
+        _playerControls.Player.Look.performed += OnLook;
+        _playerControls.Player.Dodge.performed += OnSecondary;
+        _playerControls.Player.Dodge.canceled += OnSecondaryReleased;
+    }
+    
+    private void FixedUpdate() {
+        UpdateMovement();
+        UpdateRotation();
     }
 
-    private void FixedUpdate()
-    {
-        Vector3 targetVelocity = new Vector3(direction.x * movementSpeed, 0, direction.y * movementSpeed);
-        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+    #region Movement
+        public void OnMove(InputAction.CallbackContext context) {
+            _direction = context.ReadValue<Vector2>();
+        }
+        private void UpdateMovement() {
+            Vector3 targetVelocity = new(_direction.x * movementSpeed, 0, _direction.y * movementSpeed);
+            _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+        }
+    #endregion
 
-        Vector3 reticlePos = new Vector3(lookDirection.x / 100, 1, lookDirection.y / 100);
-        reticle.transform.localPosition = reticlePos;
-        Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
-        playerModel.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y-90, 0);
+    #region Rotation and Aiming
+        public void OnLook(InputAction.CallbackContext context) {
+            _lookDirection += context.ReadValue<Vector2>();
+            _lookDirection = Vector2.ClampMagnitude(_lookDirection, maxReticleDistance);
+        }
+        private void UpdateRotation() {
+            Vector3 reticlePos = new(_lookDirection.x / 100, 1, _lookDirection.y / 100);
+            reticle.transform.localPosition = reticlePos;
+            Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
+            playerModel.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y-90, 0);
+        }
+    #endregion
+    
+    #region Priamry Ability
+        public void OnPrimary(InputAction.CallbackContext context) {
+            _primaryAbility.AbilityPressed();
+        }
+        public void OnPrimaryRelease(InputAction.CallbackContext context) {
+            _primaryAbility.AbilityReleased();
+        }
+        public void SetPrimaryAbility(Ability ability) {
+            // TODO: parent the ability to the player
+            // TODO: unparent the previous ability from the player
+        
+            _primaryAbility = ability;
+            _primaryAbility.BindToPlayer(this);
+        }
+    #endregion
 
-        //transform.eulerAngles = new Vector3(0, Vector3.Angle(new Vector3(1, reticle.transform.localPosition.y, 0), reticlePos), 0);
-    }
-
+    #region Secondary Ability
+        public void OnSecondary(InputAction.CallbackContext context) {
+            _secondaryAbility.AbilityPressed();
+        }
+        public void OnSecondaryReleased(InputAction.CallbackContext context) {
+            _secondaryAbility.AbilityReleased();
+        }
+        public void SetSecondaryAbility(Ability ability) {
+            // TODO: parent the ability to the player
+            // TODO: unparent the previous ability from the player
+        
+            _secondaryAbility = ability;
+            _secondaryAbility.BindToPlayer(this);
+        }
+    #endregion
 }
