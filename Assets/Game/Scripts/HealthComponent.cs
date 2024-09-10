@@ -1,0 +1,35 @@
+﻿using Game.Scripts.Interfaces;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace Game.Scripts {
+    public class HealthComponent : MonoBehaviour, ICanGetHit {
+        public UnityEvent<float> onHealthChanged;
+        public UnityEvent onDeath;
+        public UnityEvent onTakeDamage;
+
+        public float health { get; private set; }
+        public float maxHealth = 100;
+        
+        private void Start() {
+            health = maxHealth;
+        }
+
+        public void SetHealth(float newHealth) {
+            health = Mathf.Clamp(newHealth, 0, maxHealth);
+            onHealthChanged.Invoke(health);
+        }
+        public void TakeDamage(float damage) {
+            SetHealth(health - damage);
+            onTakeDamage.Invoke();
+            if(health <= 0) {
+                onDeath.Invoke();
+            }
+        }
+
+        public void Hit(float damage) {
+            TakeDamage(damage);
+            Debug.Log(damage + " damage taken!");
+        }
+    }
+}

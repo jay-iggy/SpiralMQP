@@ -1,5 +1,5 @@
 ﻿namespace Game.Scripts.Interfaces {
-    public interface IHurtbox {
+    public interface ICanGetHit {
         public void Hit(float damage);
     }
 }
