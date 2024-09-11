@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction fire;
     private InputAction turn;
-    private InputAction ctrlTurn;
     private InputAction dodge;
 
     [SerializeField] float punchCooldown;
@@ -48,8 +47,6 @@ public class PlayerController : MonoBehaviour
 
         turn = playerControls.Player.Look;
         turn.Enable();
-        ctrlTurn = playerControls.Player.ctrlLook;
-        ctrlTurn.Enable();
 
         dodge = playerControls.Player.Dodge;
         dodge.Enable();
@@ -71,7 +68,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         direction = move.ReadValue<Vector2>();
-        lookDirection += turn.ReadValue<Vector2>() + 100*ctrlTurn.ReadValue<Vector2>();
+        lookDirection += turn.ReadValue<Vector2>();
         lookDirection = Vector2.ClampMagnitude(lookDirection, 300);
 
         if(dodge.ReadValue<float>() > .5f)
