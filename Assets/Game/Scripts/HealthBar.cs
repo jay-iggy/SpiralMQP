@@ -1,18 +1,16 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts {
     public class HealthBar : MonoBehaviour {
         [SerializeField] private HealthComponent healthComponent;
-        [SerializeField] private RectTransform healthBar;
-        [SerializeField] private float maxWidth = 100;
-
-        private void Awake() {
-            healthComponent = GetComponent<HealthComponent>();
-        }
+        [SerializeField] private Slider healthBar;
 
         private void Start() {
-            BindHealthComponent(healthComponent);
+            if(healthComponent != null) {
+                BindHealthComponent(healthComponent);
+            }
         }
         
         private void BindHealthComponent(HealthComponent healthComponent) {
@@ -21,7 +19,7 @@ namespace Game.Scripts {
         }
 
         private void UpdateHealthBar(float health) {
-            healthBar.sizeDelta = new Vector2(maxWidth * health / healthComponent.maxHealth, healthBar.sizeDelta.y);
+            healthBar.value = health / healthComponent.maxHealth;
         }
     }
 }
