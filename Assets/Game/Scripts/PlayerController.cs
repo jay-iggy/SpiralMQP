@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 {
     
     // TODO: velocity is overriden by the movement script, so the player can't be pushed by other sources
-    
+    // player rigidbody is getting affected by other things and the rotation is getting fucky
     
     [Header("Movement Settings")]
     public float walkSpeed;
