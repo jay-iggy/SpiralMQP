@@ -24,6 +24,9 @@ namespace Game.Scripts {
             onTakeDamage.Invoke();
             if(health <= 0) {
                 onDeath.Invoke();
+                
+                ScreenShake.instance.StartShake(0.5f, 0.5f);
+                HitPause.instance.Pause(0.35f);
             }
         }
 

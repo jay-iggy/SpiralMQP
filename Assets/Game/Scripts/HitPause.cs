@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,16 @@ using UnityEngine;
 public class HitPause : MonoBehaviour
 {
     public bool waiting = false;
+    public static HitPause instance;
+    
+    
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+        } else {
+            Destroy(this);
+        }
+    }
 
     public void Pause(float duration)
     {

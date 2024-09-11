@@ -26,6 +26,14 @@ namespace Game.Scripts.Abilities {
         }
         private void OnHitTarget(ICanGetHit canGetHit) {
             canGetHit.Hit(dmg);
+            
+            // knockback the target
+            if(canGetHit is MonoBehaviour target) {
+                Vector3 direction = target.transform.position - transform.position;
+                direction.y = 0;
+                direction.Normalize();
+                target.GetComponent<Rigidbody>().AddForce(direction * 5, ForceMode.Impulse);
+            }
         }
 
         
