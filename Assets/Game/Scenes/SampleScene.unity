@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 0}
-  healthBar: {fileID: 1065934000}
+  healthBar: {fileID: 0}
 --- !u!1 &1114751695
 GameObject:
   m_ObjectHideFlags: 0
