@@ -25,6 +25,7 @@ namespace Game.Scripts {
             if(health <= 0) {
                 onDeath.Invoke();
                 
+                // TODO: move this out of here
                 ScreenShake.instance.StartShake(0.5f, 0.5f);
                 HitPause.instance.Pause(0.35f);
             }
