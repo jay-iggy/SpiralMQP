@@ -17,9 +17,11 @@ namespace Game.Scripts {
         
         private void OnTriggerEnter(Collider other) {
             if (other.TryGetComponent(out ICanGetHit hurtbox)) {
-                string hurtboxName = other.gameObject.tag;
-                if(tagsToHit.Contains(hurtboxName)) {
-                    onHitTarget.Invoke(hurtbox);
+                
+                foreach (string tag in tagsToHit) {
+                    if (other.gameObject.CompareTag(tag)) {
+                        onHitTarget.Invoke(hurtbox);
+                    }
                 }
             }
         }

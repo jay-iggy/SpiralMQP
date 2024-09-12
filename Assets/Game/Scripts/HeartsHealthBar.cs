@@ -30,17 +30,15 @@ namespace Game.Scripts {
 
         // TODO: for now we're just disabling the hearts, but this is just a placeholder and we should do something better
         private void UpdateHealthBar(float health) {
-            float missingHealth = healthComponent.maxHealth - health;
             // go backwards through the list of hearts
             for (int i = hearts.Count - 1; i >= 0; i--) {
-                if (missingHealth > health) {
+                if (i+1 > health) {
                     hearts[i].SetActive(false);
                 }
                 else {
                     hearts[i].SetActive(true);
                 }
             }
-            
         }
     }
 }
