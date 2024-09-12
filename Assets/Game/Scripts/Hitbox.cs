@@ -13,13 +13,13 @@ namespace Game.Scripts {
         
         [SerializeField] private List<string> tagsToHit = new List<string>();
         
-        public UnityEvent<ICanGetHit> onHit; // the parent of the hitbox should subscribe to this event to handle the hit (call the hit method on the hurtbox)
+        public UnityEvent<ICanGetHit> onHitTarget; // the parent of the hitbox should subscribe to this event to handle the hit (call the hit method on the hurtbox)
         
         private void OnTriggerEnter(Collider other) {
             if (other.TryGetComponent(out ICanGetHit hurtbox)) {
                 string hurtboxName = other.gameObject.tag;
                 if(tagsToHit.Contains(hurtboxName)) {
-                    onHit.Invoke(hurtbox);
+                    onHitTarget.Invoke(hurtbox);
                 }
             }
         }

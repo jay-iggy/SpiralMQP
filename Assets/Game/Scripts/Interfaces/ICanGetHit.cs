@@ -1,5 +1,5 @@
 ﻿namespace Game.Scripts.Interfaces {
     public interface ICanGetHit {
-        public void Hit(float damage);
+        public void GetHit(float damage);
     }
 }

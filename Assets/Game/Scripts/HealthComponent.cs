@@ -31,7 +31,7 @@ namespace Game.Scripts {
             }
         }
 
-        public void Hit(float damage) {
+        public void GetHit(float damage) {
             TakeDamage(damage);
             Debug.Log(damage + " damage taken!");
         }

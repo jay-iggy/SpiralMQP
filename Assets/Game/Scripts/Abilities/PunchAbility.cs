@@ -22,13 +22,13 @@ namespace Game.Scripts.Abilities {
             }
         }
         void BindHitbox(Hitbox hitbox) {
-            hitbox.onHit.AddListener(OnHitTarget);
+            hitbox.onHitTarget.AddListener(ProcessAttack);
         }
-        private void OnHitTarget(ICanGetHit canGetHit) {
-            canGetHit.Hit(dmg);
+        private void ProcessAttack(ICanGetHit hurtbox) {
+            hurtbox.GetHit(dmg);
             
             // knockback the target
-            if(canGetHit is MonoBehaviour target) {
+            if(hurtbox is MonoBehaviour target) {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
