@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8532961320257551851}
   - component: {fileID: 8242811946319102288}
   - component: {fileID: 6174055557476609962}
-  - component: {fileID: 3932135832726646775}
   m_Layer: 0
   m_Name: eye (1)
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3932135832726646775
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833215404751890446}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5164256106007971239
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +94,6 @@ GameObject:
   - component: {fileID: 3169257845305574314}
   - component: {fileID: 1785610513922146191}
   - component: {fileID: 3871620896399001087}
-  - component: {fileID: 7830909021666989086}
   m_Layer: 0
   m_Name: eye
   m_TagString: Untagged
@@ -189,27 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7830909021666989086
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164256106007971239}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9113318345755763866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 949dc051624478f4fbfeb5f132aa307a,
         type: 3}
       propertyPath: m_Name
-      value: Grub
+      value: Grub Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 1653701502724702852, guid: 949dc051624478f4fbfeb5f132aa307a,
         type: 3}
