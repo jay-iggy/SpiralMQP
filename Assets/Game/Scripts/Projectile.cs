@@ -15,5 +15,13 @@ namespace Game.Scripts {
             target.GetHit(dmg);
             Destroy(gameObject);
         }
+
+        public void targetPlayer(float speed)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Vector3 v = Vector3.MoveTowards(transform.position, player.transform.position, speed);
+            v -= transform.position;
+            GetComponent<Rigidbody>().velocity = v;
+        }
     }
 }
