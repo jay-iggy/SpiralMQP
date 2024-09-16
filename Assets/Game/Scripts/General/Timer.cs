@@ -7,8 +7,7 @@ using UnityEngine.Events;
  * 
  * have a reference to an instance of Timer (ex. t)
  * create a method that accepts only an int (ex. onTimerEnd(int data))
- * call set, with what attack is being preformed as the data
- * subscribe the method to the timer (ex. t.timeUp.AddListener(onTimerEnd))
+ * int Start(), subscribe the method to the timeUp event (ex. t.timeUp.AddListener(onTimerEnd))
  */
 
 namespace Game.Scripts
