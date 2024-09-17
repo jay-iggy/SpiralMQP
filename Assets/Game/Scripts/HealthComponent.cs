@@ -27,8 +27,11 @@ namespace Game.Scripts {
             SetHealth(health - damage);
             onTakeDamage.Invoke();
 
+            Debug.Log("TakenDamage()");
+
             //Display Damage taken
-            if(FlotingTextPrefab != null){
+            if (FlotingTextPrefab != null){
+                Debug.Log("if exict");
                 ShowFloatingText();
             }
            
@@ -49,6 +52,7 @@ namespace Game.Scripts {
 
         public void ShowFloatingText()
         {
+            Debug.Log("show floatingtext");
             //Creat text
             var go = Instantiate(FlotingTextPrefab, transform.position,Quaternion.identity,transform);
             go.GetComponent<TMP_Text>().text = "1"; //set value, Currently only show 1
