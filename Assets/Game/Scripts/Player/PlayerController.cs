@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         }
     #endregion
     
-    #region Priamry Ability
+    #region Primary Ability
         public void OnPrimary(InputAction.CallbackContext context) {
             _primaryAbility.AbilityPressed();
         }
