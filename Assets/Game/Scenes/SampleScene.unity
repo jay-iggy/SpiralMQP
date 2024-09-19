@@ -195,8 +195,9 @@ MonoBehaviour:
   isRunning: 0
   reticle: {fileID: 663399550}
   maxReticleDistance: 300
-  _primaryAbility: {fileID: 732244745}
-  _secondaryAbility: {fileID: 1898310397}
+  abilityParent: {fileID: 92262649}
+  primaryAbility: {fileID: 732244745}
+  secondaryAbility: {fileID: 1898310397}
 --- !u!4 &118477961
 Transform:
   m_ObjectHideFlags: 0
@@ -1187,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c6822501001044db82acb4e9ad0ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.1
+  attackDelay: 0.1
 --- !u!114 &880281302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e110c2ba835d4d0499c6708427d21b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUp:
+  onTimerEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1065933998

@@ -26,10 +26,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 _direction = new Vector2();
     private Vector2 _lookDirection = new Vector2(0, 0);
     [SerializeField] private float maxReticleDistance = 300;
-    
+
     [Header("Abilities")]
-    public Ability _primaryAbility;
-    public Ability _secondaryAbility;
+    public Transform abilityParent;
+    public Ability primaryAbility;
+    public Ability secondaryAbility;
     
     // References
     private Rigidbody _rb;
@@ -46,8 +47,8 @@ public class PlayerController : MonoBehaviour
     void Start(){
         movementSpeed = walkSpeed;
         
-        SetPrimaryAbility(_primaryAbility);
-        SetSecondaryAbility(_secondaryAbility);
+        SetPrimaryAbility(primaryAbility);
+        SetSecondaryAbility(secondaryAbility);
     }
 
     private void OnEnable() {
@@ -103,33 +104,33 @@ public class PlayerController : MonoBehaviour
     
     #region Primary Ability
         public void OnPrimary(InputAction.CallbackContext context) {
-            _primaryAbility.AbilityPressed();
+            primaryAbility.AbilityPressed();
         }
         public void OnPrimaryRelease(InputAction.CallbackContext context) {
-            _primaryAbility.AbilityReleased();
+            primaryAbility.AbilityReleased();
         }
         public void SetPrimaryAbility(Ability ability) {
-            // TODO: parent the ability to the player
-            // TODO: unparent the previous ability from the player
+            Destroy(primaryAbility); // clear previous ability
+            ability.transform.parent = abilityParent;
         
-            _primaryAbility = ability;
-            _primaryAbility.BindToPlayer(this);
+            primaryAbility = ability;
+            primaryAbility.BindToPlayer(this);
         }
     #endregion
 
     #region Secondary Ability
         public void OnSecondary(InputAction.CallbackContext context) {
-            _secondaryAbility.AbilityPressed();
+            secondaryAbility.AbilityPressed();
         }
         public void OnSecondaryReleased(InputAction.CallbackContext context) {
-            _secondaryAbility.AbilityReleased();
+            secondaryAbility.AbilityReleased();
         }
         public void SetSecondaryAbility(Ability ability) {
-            // TODO: parent the ability to the player
-            // TODO: unparent the previous ability from the player
+            Destroy(secondaryAbility); // clear previous ability
+            ability.transform.parent = abilityParent;
         
-            _secondaryAbility = ability;
-            _secondaryAbility.BindToPlayer(this);
+            secondaryAbility = ability;
+            secondaryAbility.BindToPlayer(this);
         }
     #endregion
 }
