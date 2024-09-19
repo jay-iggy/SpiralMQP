@@ -81,6 +81,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTakeDamageFloat:
+    m_PersistentCalls:
+      m_Calls: []
+  floatingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+    type: 3}
   maxHealth: 1
 --- !u!65 &6391814892263382719
 BoxCollider:

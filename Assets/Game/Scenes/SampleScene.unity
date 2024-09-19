@@ -275,7 +275,10 @@ MonoBehaviour:
   onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
-  FlotingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+  onTakeDamageFloat:
+    m_PersistentCalls:
+      m_Calls: []
+  floatingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 5
 --- !u!136 &118477964
@@ -2217,6 +2220,18 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: FlotingTextPrefab
+      value: 
+      objectReference: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+        type: 3}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: floatingTextPrefab
+      value: 
+      objectReference: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+        type: 3}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
