@@ -1,12 +1,16 @@
 ﻿using Game.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 namespace Game.Scripts {
     public class HealthComponent : MonoBehaviour, ICanGetHit {
         public UnityEvent<float> onHealthChanged;
         public UnityEvent onDeath;
         public UnityEvent onTakeDamage;
+
+        //Damage Display Stuff
+        public GameObject FlotingTextPrefab;
 
         public float health { get; private set; }
         public float maxHealth = 100;
@@ -22,7 +26,17 @@ namespace Game.Scripts {
         public void TakeDamage(float damage) {
             SetHealth(health - damage);
             onTakeDamage.Invoke();
-            if(health <= 0) {
+
+            Debug.Log("TakenDamage()");
+
+            //Display Damage taken
+            if (FlotingTextPrefab != null){
+                Debug.Log("if exict");
+                ShowFloatingText();
+            }
+           
+
+            if (health <= 0) {
                 onDeath.Invoke();
                 
                 // TODO: move this out of here
@@ -34,6 +48,14 @@ namespace Game.Scripts {
         public void GetHit(float damage) {
             TakeDamage(damage);
             Debug.Log(damage + " damage taken!");
+        }
+
+        public void ShowFloatingText()
+        {
+            Debug.Log("show floatingtext");
+            //Creat text
+            var go = Instantiate(FlotingTextPrefab, transform.position,Quaternion.identity,transform);
+            go.GetComponent<TMP_Text>().text = "1"; //set value, Currently only show 1
         }
     }
 }
