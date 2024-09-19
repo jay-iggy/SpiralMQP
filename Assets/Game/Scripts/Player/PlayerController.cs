@@ -56,7 +56,12 @@ public class PlayerController : MonoBehaviour
     private void OnDisable(){
         _playerControls.Disable();
     }
-    
+
+    private void OnDestroy() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     private void CreatePlayerControls() {
         _playerControls = new PlayerInput();
         _playerControls.Player.Move.performed += OnMove;
