@@ -18,7 +18,7 @@ namespace Game.Scripts
     {
         private float timer = -1;
         private int timerData = -1;
-        [FormerlySerializedAs("timeUp")] public UnityEvent<int> onTimerEnd;
+        public UnityEvent<int> onTimerEnd;
 
         void Update() {
             if (timer > 0) {
