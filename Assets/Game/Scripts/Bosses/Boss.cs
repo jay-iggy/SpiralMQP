@@ -7,7 +7,7 @@ namespace Game.Scripts
 {
     public class Boss : MonoBehaviour {
         protected ICanAttack attacks; // needs more descriptive name
-        [SerializeField] float timeBetweenAttacks;
+        [SerializeField] float attackDelay = 0.1f;
         private float attackTimer = 0;
         private int attackIndex = -1;
         private bool isAlive = true;
@@ -27,7 +27,7 @@ namespace Game.Scripts
         }
 
         protected void CheckForAttack() {
-            if (attackTimer >= timeBetweenAttacks) {               
+            if (attackTimer >= attackDelay) {               
                 attackTimer = -1 * ChooseAttack(); //timer will get to 0 as attack ends
             }
 
