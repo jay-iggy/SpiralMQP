@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 /* how to use from another script
  * 
@@ -17,22 +18,18 @@ namespace Game.Scripts
     {
         private float timer = -1;
         private int timerData = -1;
-        public UnityEvent<int> timeUp;
+        [FormerlySerializedAs("timeUp")] public UnityEvent<int> onTimerEnd;
 
-        void Update()
-        {
-            if (timer > 0)
-            {
+        void Update() {
+            if (timer > 0) {
                 timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    timeUp.Invoke(timerData);
+                if (timer <= 0) {
+                    onTimerEnd.Invoke(timerData);
                 }
             }
         }
 
-        public void set(float time, int data)
-        {
+        public void Set(float time, int data) {
             timer = time;
             timerData = data;
         }
