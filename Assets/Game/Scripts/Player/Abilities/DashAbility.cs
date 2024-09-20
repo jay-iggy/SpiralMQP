@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace Game.Scripts.Player.Abilities {
     public class DashAbility : Ability {
+        // TODO: disable player movement during dash and for a short time after dashing
+        
         [SerializeField] private float dashForce = 10f;
         private bool canDash = true;
         [SerializeField] private float dashCooldown = 1f;
