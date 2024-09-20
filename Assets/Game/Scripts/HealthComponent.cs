@@ -11,6 +11,9 @@ namespace Game.Scripts {
         public UnityEvent onDeath;
         public UnityEvent onTakeDamage;
         public UnityEvent<float> onTakeDamageFloat;
+        
+        public float invincibilityDuration = 0f;
+        private float invincibleUntil = 0f;
 
         //Damage Display Stuff
         public GameObject floatingTextPrefab;
@@ -30,6 +33,9 @@ namespace Game.Scripts {
         }
 
         public void SetHealth(float newHealth) {
+            if(invincibleUntil > Time.time) {
+                return;
+            }
             health = Mathf.Clamp(newHealth, 0, maxHealth);
             onHealthChanged.Invoke(health);
         }
@@ -37,6 +43,8 @@ namespace Game.Scripts {
             SetHealth(health - damage);
             onTakeDamage.Invoke();
             onTakeDamageFloat.Invoke(damage);
+            
+            invincibleUntil = Time.time + invincibilityDuration;
 
             if (health <= 0) {
                 onDeath.Invoke();
@@ -45,7 +53,6 @@ namespace Game.Scripts {
 
         public void GetHit(float damage) {
             TakeDamage(damage);
-            Debug.Log(damage + " damage taken!");
         }
 
         private void ShowFloatingText(float damage) {
