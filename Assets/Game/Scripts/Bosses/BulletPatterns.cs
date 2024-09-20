@@ -17,6 +17,9 @@ namespace Game.Scripts
 
         public static void MoveTowards(GameObject[] bullets, Vector3 target, float speed) {
             foreach (GameObject bullet in bullets) {
+                if(bullet == null) {
+                    continue;
+                }
                 Vector3 v = target - bullet.transform.position;
                 v.Normalize();
                 v *= speed;
