@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float turningRadius;
     [SerializeField] GameObject playerModel;
     [HideInInspector]public bool isRunning;
+    private Vector3 movementVelocity;
+    private Vector3 externalVelocity;
+    private Vector3 personalVelocity;
+    [SerializeField] private float personalVelocityDampingSpeed = 5;
+    [SerializeField] private float externalVelocityDampingSpeed = 5;
 
     [Header("Combat Settings")]
     [SerializeField] GameObject reticle;
@@ -68,7 +73,7 @@ public class PlayerController : MonoBehaviour
         _playerControls.Player.Move.performed += OnMove;
         _playerControls.Player.Move.canceled += OnMove;
         _playerControls.Player.Fire.performed += OnPrimary;
-        _playerControls.Player.Fire.canceled += OnPrimaryRelease;
+        _playerControls.Player.Fire.canceled += OnPrimaryReleased;
         _playerControls.Player.Look.performed += OnLook;
         _playerControls.Player.Dodge.performed += OnSecondary;
         _playerControls.Player.Dodge.canceled += OnSecondaryReleased;
@@ -77,6 +82,18 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         UpdateMovement();
         UpdateRotation();
+        
+        _rb.velocity = movementVelocity + externalVelocity + personalVelocity;
+        
+        externalVelocity = Vector3.Lerp(externalVelocity, Vector3.zero, Time.deltaTime * externalVelocityDampingSpeed);
+        personalVelocity = Vector3.Lerp(personalVelocity, Vector3.zero, Time.deltaTime * personalVelocityDampingSpeed);
+    }
+    
+    public void AddExternalForce(Vector3 velocity) {
+        externalVelocity += velocity;
+    }
+    public void AddPersonalForce(Vector3 force) {
+        personalVelocity += force;
     }
 
     #region Movement
@@ -85,7 +102,10 @@ public class PlayerController : MonoBehaviour
         }
         private void UpdateMovement() {
             Vector3 targetVelocity = new(_direction.x * movementSpeed, 0, _direction.y * movementSpeed);
-            _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+            movementVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+        }
+        public Vector2 GetMovementInput() {
+            return _playerControls.Player.Move.ReadValue<Vector2>();
         }
     #endregion
 
@@ -96,9 +116,9 @@ public class PlayerController : MonoBehaviour
         }
         private void UpdateRotation() {
             Vector3 reticlePos = new(_lookDirection.x / 100, 1, _lookDirection.y / 100);
-            reticle.transform.localPosition = reticlePos;
+            reticle.transform.position = reticlePos + transform.position;
             Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
-            playerModel.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y-90, 0);
+            transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
         }
     #endregion
     
@@ -106,7 +126,7 @@ public class PlayerController : MonoBehaviour
         public void OnPrimary(InputAction.CallbackContext context) {
             primaryAbility.AbilityPressed();
         }
-        public void OnPrimaryRelease(InputAction.CallbackContext context) {
+        public void OnPrimaryReleased(InputAction.CallbackContext context) {
             primaryAbility.AbilityReleased();
         }
         public void SetPrimaryAbility(Ability ability) {
