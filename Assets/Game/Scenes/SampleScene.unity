@@ -1280,8 +1280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8107d6c8d410a4faa50878b70903c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  externalVelocityDamping: 5
-  personalVelocityDamping: 5
+  externalVelocityDamping: 1
+  personalVelocityDamping: 1
 --- !u!1 &1065933998
 GameObject:
   m_ObjectHideFlags: 0
