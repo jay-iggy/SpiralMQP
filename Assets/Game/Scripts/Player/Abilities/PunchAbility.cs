@@ -16,6 +16,7 @@ namespace Game.Scripts.Abilities {
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
         public float dmg = 1;
+        [SerializeField] private Collider magnetismTrigger;
         
         private void Start() {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
@@ -44,6 +45,9 @@ namespace Game.Scripts.Abilities {
             }
             fist.SetActive(true);
             _punchTimer = punchCooldown + punchDuration;
+            magnetismTrigger.enabled = true;
+            
+            
             StartCoroutine(ResetPunchTimer());
         }
 
@@ -60,6 +64,7 @@ namespace Game.Scripts.Abilities {
                 yield return null;
             }
             fist.SetActive(false);
+            magnetismTrigger.enabled = false;
         }
         
         

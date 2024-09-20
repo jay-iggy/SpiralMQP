@@ -967,8 +967,7 @@ MonoBehaviour:
   punchCooldown: 0.25
   punchDuration: 0.5
   dmg: 1
-  distanceToKeep: 1
-  magnetismDuration: 0.1
+  magnetismTrigger: {fileID: 732244746}
 --- !u!135 &732244746
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -986,7 +985,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1269,6 +1268,20 @@ MonoBehaviour:
   onTimerEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &880281307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880281288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8107d6c8d410a4faa50878b70903c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  externalVelocityDamping: 5
+  personalVelocityDamping: 5
 --- !u!1 &1065933998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2443,6 +2456,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 880281302}
+    - targetCorrespondingSourceObject: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 880281307}
   m_SourcePrefab: {fileID: 100100000, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
