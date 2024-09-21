@@ -11,6 +11,7 @@ namespace Game.Scripts {
         public UnityEvent onDeath;
         public UnityEvent onTakeDamage;
         public UnityEvent<float> onTakeDamageFloat;
+        [SerializeField] bool affectsHitless = false;
 
         //Damage Display Stuff
         public GameObject floatingTextPrefab;
@@ -44,6 +45,11 @@ namespace Game.Scripts {
         }
 
         public void GetHit(float damage) {
+            if (affectsHitless)
+            {
+                StickerManager.instance.hitless = false;
+            }
+
             TakeDamage(damage);
             Debug.Log(damage + " damage taken!");
         }

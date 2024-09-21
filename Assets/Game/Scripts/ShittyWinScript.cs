@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Game.Scripts {
     public class ShittyWinScript : MonoBehaviour {
@@ -23,7 +24,8 @@ namespace Game.Scripts {
         }
         public IEnumerator QuitAfterDelay() {
             yield return new WaitForSeconds(delay);
-            Application.Quit();
+            //Application.Quit();
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

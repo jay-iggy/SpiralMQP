@@ -278,6 +278,7 @@ MonoBehaviour:
   onTakeDamageFloat:
     m_PersistentCalls:
       m_Calls: []
+  affectsHitless: 1
   floatingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 5
@@ -1334,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDelay: 0.1
+  bossIndex: 0
 --- !u!114 &880281302
 MonoBehaviour:
   m_ObjectHideFlags: 0

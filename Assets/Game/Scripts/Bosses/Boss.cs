@@ -11,9 +11,11 @@ namespace Game.Scripts
         private float attackTimer = 0;
         private int attackIndex = -1;
         private bool isAlive = true;
+        [SerializeField] int bossIndex; //used to match bosses to stickers
 
         void Start() {
             attackList = GetComponent<ICanAttack>();
+            StickerManager.instance.hitless = true; //reset hitless tracker for each boss
         }
 
         void Update() {
@@ -24,6 +26,10 @@ namespace Game.Scripts
 
         public void Die() {
             isAlive = false;
+            if(StickerManager.instance != null)
+            {
+                StickerManager.instance.showSticker(bossIndex);
+            }          
         }
 
         protected void CheckForAttack() {
