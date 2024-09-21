@@ -2376,6 +2376,16 @@ PrefabInstance:
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1370939597}
+    - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.08819
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.14077568
+      objectReference: {fileID: 0}
     - target: {fileID: 7256185496358109389, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: externalVelocityDamping
@@ -2435,6 +2445,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.8315248
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.6788635
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.09121287
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.08943176
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
