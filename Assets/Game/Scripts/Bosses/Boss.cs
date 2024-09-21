@@ -6,14 +6,14 @@ using UnityEngine;
 namespace Game.Scripts
 {
     public class Boss : MonoBehaviour {
-        protected ICanAttack attacks; // needs more descriptive name
+        protected ICanAttack attackList; 
         [SerializeField] float attackDelay = 0.1f;
         private float attackTimer = 0;
         private int attackIndex = -1;
         private bool isAlive = true;
 
         void Start() {
-            attacks = GetComponent<ICanAttack>();
+            attackList = GetComponent<ICanAttack>();
         }
 
         void Update() {
@@ -37,11 +37,11 @@ namespace Game.Scripts
         protected float ChooseAttack() {
             int attackToDo = attackIndex;
             while (attackToDo == attackIndex) { //don't do the same attack twice in a row
-                attackToDo = Random.Range(0, attacks.GetAttackCount());
+                attackToDo = Random.Range(0, attackList.GetAttackCount());
             }
             attackIndex = attackToDo;
 
-            return attacks.Attack(attackIndex);
+            return attackList.Attack(attackIndex);
         }
     }
 }

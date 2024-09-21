@@ -9,18 +9,24 @@ namespace Game.Scripts
             float increment = 360 / bullets.Length;
             int i = 0;
             for (float angle = startingDegrees; angle < 360 + startingDegrees; angle += increment) {
-                bullets[i].transform.position = center - radius * Vector3.left;
-                bullets[i].transform.RotateAround(center, Vector3.up, angle);
+                if (bullets[i] != null)
+                {
+                    bullets[i].transform.position = center - radius * Vector3.left;
+                    bullets[i].transform.RotateAround(center, Vector3.up, angle);
+                }
                 i++;
             }
         }
 
         public static void MoveTowards(GameObject[] bullets, Vector3 target, float speed) {
             foreach (GameObject bullet in bullets) {
-                Vector3 v = target - bullet.transform.position;
-                v.Normalize();
-                v *= speed;
-                bullet.GetComponent<Rigidbody>().velocity = v;
+                if (bullet != null)
+                {
+                    Vector3 v = target - bullet.transform.position;
+                    v.Normalize();
+                    v *= speed;
+                    bullet.GetComponent<Rigidbody>().velocity = v;
+                }
             }
         }
     }

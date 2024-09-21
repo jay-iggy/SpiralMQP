@@ -47,6 +47,7 @@ namespace Game.Scripts
         }
 
         private float ShootBigBullet() {
+            setGunPoint();
             bigBullet = Instantiate(bullet, gun, Quaternion.identity);
             bigBullet.transform.localScale = new Vector3(.5f, .5f, .5f);
             timer.Set(1, 0);
@@ -55,6 +56,7 @@ namespace Game.Scripts
 
         private float ShootSixBullets() {
             if (shotsInChamber > 0) {
+                setGunPoint();
                 bulletInChamber = Instantiate(bullet, gun, Quaternion.identity);
                 bulletInChamber.GetComponent<Projectile>().TargetPlayer(8);
             }
@@ -103,15 +105,20 @@ namespace Game.Scripts
                     break;
             }
         }
-        
-        private void FixedUpdate() {
-            if(player.transform.position.x > transform.position.x) {
+
+        private void setGunPoint()
+        {
+            if (player.transform.position.x > transform.position.x)
+            {
                 gun = transform.position + Vector3.right;
             }
-            else {
+            else
+            {
                 gun = transform.position + Vector3.left;
             }
-
+        }
+        
+        private void FixedUpdate() {
             switch (curAttack) {
                 case 0:
                     float s = .04f;
@@ -126,6 +133,9 @@ namespace Game.Scripts
                     transform.position = Vector3.MoveTowards(transform.position, center, speed);
                     break;
             }
+
+            //respond to punch
+
         }
     }
 
