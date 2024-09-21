@@ -34,7 +34,7 @@ namespace Game.Scripts.Abilities {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<Rigidbody>().AddForce(direction * 5, ForceMode.Impulse);
+                target.GetComponent<EnemyMovement>().AddExternalVelocity(direction * 5);
             }
         }
 
