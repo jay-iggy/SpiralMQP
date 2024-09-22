@@ -14,6 +14,7 @@ namespace Game.Scripts {
         
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
+        [SerializeField] bool affectsHitless = false;
 
         //Damage Display Stuff
         public GameObject floatingTextPrefab;
@@ -52,6 +53,11 @@ namespace Game.Scripts {
         }
 
         public void GetHit(float damage) {
+            if (affectsHitless)
+            {
+                StickerManager.instance.hitless = false;
+            }
+
             TakeDamage(damage);
         }
 
