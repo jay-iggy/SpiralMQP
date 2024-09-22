@@ -36,8 +36,6 @@ namespace Game.Scripts {
             }
         }
 
-
-
         private void SetHeartEnabled(int index, bool isEnabled) {
             // NOTE: this relies on a certain hierarchy of the heart prefab, which is not ideal
             // this assumes the first child is a full heart and the second child is an empty heart
