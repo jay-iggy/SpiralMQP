@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -16,10 +17,11 @@ namespace Game.Scripts {
         }
 
         private void Start() {
-            SpawnBoss(initialBoss);
+            StartCoroutine(SpawnBoss(initialBoss,0));
         }
 
         [SerializeField] private EnemyData initialBoss;
+        [SerializeField] private float bossSpawnDelay = 2f;
         public Boss currentBoss { get; private set; }
         public EnemyData currentEnemyData { get; private set; }
 
@@ -37,11 +39,12 @@ namespace Game.Scripts {
                 return;
             }
             EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
-            SpawnBoss(nextEnemyData);
+            StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
             
             // TODO: Add transition effects
         }
-        private void SpawnBoss(EnemyData enemyData) {
+        private IEnumerator SpawnBoss(EnemyData enemyData, float delay) {
+            yield return new WaitForSeconds(delay);
             BossTransitionManager.instance.SpawnBoss(enemyData, out Boss b);
             currentBoss = b;
             currentEnemyData = enemyData;
