@@ -1495,6 +1495,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
+  onFinalBossDefeated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1370939597}
+        m_TargetAssemblyTypeName: Game.Scripts.ShittyWinScript, Assembly-CSharp
+        m_MethodName: Win
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1065933998
 GameObject:
   m_ObjectHideFlags: 0
