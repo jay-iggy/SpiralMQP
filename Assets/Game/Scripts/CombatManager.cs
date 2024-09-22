@@ -39,6 +39,9 @@ namespace Game.Scripts {
                 return;
             }
             EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
+
+            StickerManager.instance.hitless = true; //reset hitless tracker for each boss
+
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
             
             // TODO: Add transition effects

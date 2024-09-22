@@ -74,7 +74,7 @@ namespace Game.Scripts
         private float GoToCenter() {
             speed = Vector3.Distance(center, transform.position) / 50;
             timer.Set(1, 2);
-            return 2.5f;
+            return 2.25f;
         }
 
         private void ShootCirclePattern() {
@@ -82,8 +82,8 @@ namespace Game.Scripts
             for(int i = 0; i < 12; i++) {
                 bullets[i] = Instantiate(bullet);
             }
-            BulletPatterns.CreateCircle(bullets, transform.position, 2, 8);
-            timer.Set(.5f, 3);
+            BulletPatterns.CreateCircle(bullets, transform.position, 1);
+            timer.Set(.25f, 3);
         }
 
         public void OnTimerEnd(int data) {
@@ -100,7 +100,7 @@ namespace Game.Scripts
                     ShootCirclePattern();
                     break;
                 case 3:
-                    BulletPatterns.MoveTowards(bullets, center, -8);
+                    BulletPatterns.MoveTowards(bullets, transform.position, -8);
                     bullets = new GameObject[12];
                     break;
             }

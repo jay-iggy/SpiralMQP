@@ -16,7 +16,7 @@ namespace Game.Scripts
 
         void Start() {
             attackList = GetComponent<ICanAttack>();
-            StickerManager.instance.hitless = true; //reset hitless tracker for each boss
+            
         }
 
         void Update() {
@@ -43,6 +43,8 @@ namespace Game.Scripts
         }
 
         protected float ChooseAttack() {
+            if (attackList == null) return 0;
+
             int attackToDo = attackIndex;
             while (attackToDo == attackIndex) { //don't do the same attack twice in a row
                 attackToDo = Random.Range(0, attackList.GetAttackCount());
