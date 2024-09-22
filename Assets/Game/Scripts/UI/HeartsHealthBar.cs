@@ -32,13 +32,16 @@ namespace Game.Scripts {
         private void UpdateHealthBar(float health) {
             // go backwards through the list of hearts
             for (int i = hearts.Count - 1; i >= 0; i--) {
-                if (i+1 > health) {
-                    hearts[i].SetActive(false);
-                }
-                else {
-                    hearts[i].SetActive(true);
-                }
+                SetHeartEnabled(i, i + 1 <= health);
             }
         }
+
+
+
+        private void SetHeartEnabled(int index, bool isEnabled) {
+            // NOTE: this relies on a certain hierarchy of the heart prefab, which is not ideal
+            // this assumes the first child is a full heart and the second child is an empty heart
+            hearts[index].transform.GetChild(0).gameObject.SetActive(isEnabled);
+        } 
     }
 }
