@@ -24,6 +24,7 @@ namespace Game.Scripts
             if (instance == null)
             {
                 instance = this;
+                transform.parent = null;
                 DontDestroyOnLoad(this);
             }
             else
@@ -32,7 +33,7 @@ namespace Game.Scripts
             }
         }
 
-        public void showSticker(int bossIndex)
+        public void ShowSticker(int bossIndex)
         {
             if (hitless) {
                 stickerStates.Insert(bossIndex, StickerState.Hitless);

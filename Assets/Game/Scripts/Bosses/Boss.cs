@@ -29,7 +29,7 @@ namespace Game.Scripts
             isAlive = false;
             if(StickerManager.instance != null)
             {
-                StickerManager.instance.showSticker(bossIndex);
+                StickerManager.instance.ShowSticker(bossIndex);
             }          
             CombatManager.instance.TransitionToNextBoss();
         }
