@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ENTER
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b33abc6a071564845bbb3fa9f0568b5c, type: 2}
   m_sharedMaterial: {fileID: -6456840900083871457, guid: b33abc6a071564845bbb3fa9f0568b5c,
@@ -1962,16 +1962,16 @@ RectTransform:
   m_GameObject: {fileID: 1112280910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.02, y: 6.02, z: 6.02}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 3.7225, y: 3.7225, z: 3.7225}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 614017686}
   m_Father: {fileID: 668431106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: -130.9}
-  m_SizeDelta: {x: 115.4, y: 32.6065}
+  m_AnchoredPosition: {x: -15, y: -102.00189}
+  m_SizeDelta: {x: 234.7519, y: 32.6065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112280912
 MonoBehaviour:
@@ -2581,7 +2581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: -401.94}
+  m_AnchoredPosition: {x: -24, y: -272}
   m_SizeDelta: {x: 89.367, y: 32.6065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486900471
@@ -2726,7 +2726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -414, y: -401.94}
+  m_AnchoredPosition: {x: -414, y: -272}
   m_SizeDelta: {x: 89.367, y: 32.6065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591909420
@@ -3082,7 +3082,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 362, y: -401.94}
+  m_AnchoredPosition: {x: 362, y: -265}
   m_SizeDelta: {x: 89.367, y: 32.6065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808663582
