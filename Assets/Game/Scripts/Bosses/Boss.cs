@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
+    [RequireComponent(typeof(HealthComponent))]
     public class Boss : MonoBehaviour {
         protected ICanAttack attackList; 
         [SerializeField] float attackDelay = 0.1f;
@@ -30,6 +31,7 @@ namespace Game.Scripts
             {
                 StickerManager.instance.showSticker(bossIndex);
             }          
+            CombatManager.instance.TransitionToNextBoss();
         }
 
         protected void CheckForAttack() {
