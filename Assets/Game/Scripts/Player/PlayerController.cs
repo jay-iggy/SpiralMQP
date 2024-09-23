@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Combat Settings")]
     [SerializeField] GameObject reticle;
     private Vector2 _direction = new Vector2();
-    private Vector2 _lookDirection = new Vector2(0, 0);
+    [HideInInspector] public Vector2 lookDirection = new Vector2(0, 0);
     [SerializeField] private float maxReticleDistance = 300;
 
     [Header("Abilities")]
@@ -111,11 +111,11 @@ public class PlayerController : MonoBehaviour
 
     #region Rotation and Aiming
         public void OnLook(InputAction.CallbackContext context) {
-            _lookDirection += context.ReadValue<Vector2>();
-            _lookDirection = Vector2.ClampMagnitude(_lookDirection, maxReticleDistance);
+            lookDirection += context.ReadValue<Vector2>();
+            lookDirection = Vector2.ClampMagnitude(lookDirection, maxReticleDistance);
         }
         private void UpdateRotation() {
-            Vector3 reticlePos = new(_lookDirection.x / 100, 1, _lookDirection.y / 100);
+            Vector3 reticlePos = new(lookDirection.x / 100, 1, lookDirection.y / 100);
             reticle.transform.position = reticlePos + transform.position;
             Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
             transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
