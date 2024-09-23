@@ -33,4 +33,10 @@ public class HitPause : MonoBehaviour
         Time.timeScale = 1.0f;
         waiting = false;
     }
+
+    private void OnDestroy() {
+        if(Time.timeScale != 1.0f) {
+            Time.timeScale = 1.0f;
+        }
+    }
 }
