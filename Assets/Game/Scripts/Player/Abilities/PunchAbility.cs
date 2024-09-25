@@ -22,6 +22,9 @@ namespace Game.Scripts.Abilities {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
                 BindHitbox(hitbox);
             }
+            
+            punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
+            punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
         }
         void BindHitbox(Hitbox hitbox) {
             hitbox.onHitTarget.AddListener(ProcessAttack);
