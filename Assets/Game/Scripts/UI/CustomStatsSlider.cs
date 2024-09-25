@@ -24,12 +24,14 @@ namespace Game.Scripts {
         }
 
         private void Start() {
+            CustomStatsManager.instance.tempStats = CustomStatsManager.instance.customStats;
+            
             slider.minValue = minValue;
             slider.maxValue = maxValue;
             slider.onValueChanged.AddListener(OnSliderValueChanged);
             
-            minText.text = minValue.ToString() + (displayAsPercent ? "%" : "");
-            maxText.text = maxValue.ToString() + (displayAsPercent ? "%" : "");
+            minText.text = displayAsPercent ? $"{minValue*100}%" : $"{minValue}";
+            maxText.text = displayAsPercent ? $"{maxValue*100}%" : $"{maxValue}";
 
             SetInitialSliderValue();
             SetDefaultMarkerPosition();
@@ -64,9 +66,6 @@ namespace Game.Scripts {
         }
         
         private void OnSliderValueChanged(float value) {
-            if (displayAsPercent) {
-                value /= 100;
-            }
             switch (statType) {
                 case CustomStatType.PlayerHealth:
                     SetPlayerHealth(value);
