@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 87739060}
   - component: {fileID: 87739059}
   - component: {fileID: 87739058}
+  - component: {fileID: 87739061}
   m_Layer: 5
   m_Name: Confirm button
   m_TagString: Untagged
@@ -205,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720263322}
-        m_TargetAssemblyTypeName: Game.Scripts.CustomStatsManager, Assembly-CSharp
-        m_MethodName: ConfirmTempStats
+      - m_Target: {fileID: 87739061}
+        m_TargetAssemblyTypeName: Game.Scripts.Player.CustomStatsButtonEvents, Assembly-CSharp
+        m_MethodName: ConfirmStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -267,6 +268,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87739056}
   m_CullTransparentMesh: 1
+--- !u!114 &87739061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87739056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702c41784b06451eac216e438c406168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &224695984 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2937773755586759531, guid: 50b778949ae241b4c8358b0534d1d777,
@@ -945,18 +958,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 660.38}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &720263322 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4017514661907690673, guid: 3f8c243055d3bd14a8959bac3d186ab2,
-    type: 3}
-  m_PrefabInstance: {fileID: 7356766367132860289}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7853b8fd07466aafe32ed87e42944b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &809703939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1256,7 @@ GameObject:
   - component: {fileID: 1275218627}
   - component: {fileID: 1275218626}
   - component: {fileID: 1275218625}
+  - component: {fileID: 1275218628}
   m_Layer: 5
   m_Name: Reset values button
   m_TagString: Untagged
@@ -1326,9 +1328,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720263322}
-        m_TargetAssemblyTypeName: Game.Scripts.CustomStatsManager, Assembly-CSharp
-        m_MethodName: ResetCustomStats
+      - m_Target: {fileID: 1275218628}
+        m_TargetAssemblyTypeName: Game.Scripts.Player.CustomStatsButtonEvents, Assembly-CSharp
+        m_MethodName: ResetStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1376,6 +1378,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275218623}
   m_CullTransparentMesh: 1
+--- !u!114 &1275218628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275218623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702c41784b06451eac216e438c406168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1313607155 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5456160587655640880, guid: 50b778949ae241b4c8358b0534d1d777,

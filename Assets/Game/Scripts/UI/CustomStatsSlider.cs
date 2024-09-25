@@ -48,19 +48,19 @@ namespace Game.Scripts {
         private void SetInitialSliderValue() {
             switch (statType) {
                 case CustomStatType.PlayerHealth:
-                    _slider.value = CustomStatsManager.instance.customStats.playerHealth;
+                    _slider.value = CustomStatsManager.instance.tempStats.playerHealth;
                     break;
                 case CustomStatType.PlayerSpeed:
-                    _slider.value = CustomStatsManager.instance.customStats.playerSpeed;
+                    _slider.value = CustomStatsManager.instance.tempStats.playerSpeed;
                     break;
                 case CustomStatType.PlayerAttackSpeed:
-                    _slider.value = CustomStatsManager.instance.customStats.playerAttackSpeed;
+                    _slider.value = CustomStatsManager.instance.tempStats.playerAttackSpeed;
                     break;
                 case CustomStatType.EnemyHealthMult:
-                    _slider.value = CustomStatsManager.instance.customStats.enemyHealthMult;
+                    _slider.value = CustomStatsManager.instance.tempStats.enemyHealthMult;
                     break;
                 case CustomStatType.EnemyAttackSpeedMult:
-                    _slider.value = CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
+                    _slider.value = CustomStatsManager.instance.tempStats.enemyAttackSpeedMult;
                     break;
             }
         }
@@ -77,7 +77,7 @@ namespace Game.Scripts {
                     CustomStatsManager.instance.tempStats.playerAttackSpeed = value;
                     break;
                 case CustomStatType.EnemyHealthMult:
-                    CustomStatsManager.instance.tempStats.enemyHealthMult = (int)value;
+                    CustomStatsManager.instance.tempStats.enemyHealthMult = value;
                     break;
                 case CustomStatType.EnemyAttackSpeedMult:
                     CustomStatsManager.instance.tempStats.enemyAttackSpeedMult = value;

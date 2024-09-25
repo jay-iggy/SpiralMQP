@@ -44,7 +44,7 @@ namespace Game.Scripts {
         public int playerHealth;
         public float playerSpeed;
         public float playerAttackSpeed;
-        public int enemyHealthMult;
+        public float enemyHealthMult;
         public float enemyAttackSpeedMult;
         
         public string[] ToArray() {
