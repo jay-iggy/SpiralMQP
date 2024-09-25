@@ -634,17 +634,20 @@ MonoBehaviour:
 
     Added magnetism to player attack
 
-    Added
-    dash ability
+    added
+    invincibility after being damaged
 
-    Added sticker system
+    Added dash ability
+
+    Added sticker
+    system
 
     Changed menu style
 
-    Added edit
-    value menu
+    Added edit value menu
 
-    Bug fix: frozen time during subsequent runs'
+    Bug fix: frozen
+    time during subsequent runs'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b33abc6a071564845bbb3fa9f0568b5c, type: 2}
   m_sharedMaterial: {fileID: -6456840900083871457, guid: b33abc6a071564845bbb3fa9f0568b5c,
