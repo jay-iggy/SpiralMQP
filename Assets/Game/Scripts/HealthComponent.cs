@@ -21,7 +21,7 @@ namespace Game.Scripts {
 
         public float health { get; private set; }
         public float maxHealth = 100;
-        public bool isAlive { get; private set; }
+        public bool isAlive { get; private set; } = true;
         
         private void Awake() {
             health = maxHealth;
