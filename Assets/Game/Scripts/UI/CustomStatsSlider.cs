@@ -17,18 +17,18 @@ namespace Game.Scripts {
         [SerializeField] RectTransform sliderFill;
         [SerializeField] Image defaultValueMarker;
         
-        private Slider slider;
+        private Slider _slider;
 
         private void Awake() {
-            slider = GetComponentInChildren<Slider>();
+            _slider = GetComponentInChildren<Slider>();
         }
 
         private void Start() {
             CustomStatsManager.instance.tempStats = CustomStatsManager.instance.customStats;
             
-            slider.minValue = minValue;
-            slider.maxValue = maxValue;
-            slider.onValueChanged.AddListener(OnSliderValueChanged);
+            _slider.minValue = minValue;
+            _slider.maxValue = maxValue;
+            _slider.onValueChanged.AddListener(OnSliderValueChanged);
             
             minText.text = displayAsPercent ? $"{minValue*100}%" : $"{minValue}";
             maxText.text = displayAsPercent ? $"{maxValue*100}%" : $"{maxValue}";
@@ -48,19 +48,19 @@ namespace Game.Scripts {
         private void SetInitialSliderValue() {
             switch (statType) {
                 case CustomStatType.PlayerHealth:
-                    slider.value = CustomStatsManager.instance.customStats.playerHealth;
+                    _slider.value = CustomStatsManager.instance.customStats.playerHealth;
                     break;
                 case CustomStatType.PlayerSpeed:
-                    slider.value = CustomStatsManager.instance.customStats.playerSpeed;
+                    _slider.value = CustomStatsManager.instance.customStats.playerSpeed;
                     break;
                 case CustomStatType.PlayerAttackSpeed:
-                    slider.value = CustomStatsManager.instance.customStats.playerAttackSpeed;
+                    _slider.value = CustomStatsManager.instance.customStats.playerAttackSpeed;
                     break;
                 case CustomStatType.EnemyHealthMult:
-                    slider.value = CustomStatsManager.instance.customStats.enemyHealthMult;
+                    _slider.value = CustomStatsManager.instance.customStats.enemyHealthMult;
                     break;
                 case CustomStatType.EnemyAttackSpeedMult:
-                    slider.value = CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
+                    _slider.value = CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
                     break;
             }
         }
@@ -68,19 +68,19 @@ namespace Game.Scripts {
         private void OnSliderValueChanged(float value) {
             switch (statType) {
                 case CustomStatType.PlayerHealth:
-                    SetPlayerHealth(value);
+                    CustomStatsManager.instance.tempStats.playerHealth = (int)value;
                     break;
                 case CustomStatType.PlayerSpeed:
-                    SetPlayerSpeed(value);
+                    CustomStatsManager.instance.tempStats.playerSpeed = value;
                     break;
                 case CustomStatType.PlayerAttackSpeed:
-                    SetPlayerAttackSpeed(value);
+                    CustomStatsManager.instance.tempStats.playerAttackSpeed = value;
                     break;
                 case CustomStatType.EnemyHealthMult:
-                    SetEnemyHealthMult(value);
+                    CustomStatsManager.instance.tempStats.enemyHealthMult = (int)value;
                     break;
                 case CustomStatType.EnemyAttackSpeedMult:
-                    SetEnemyAttackSpeedMult(value);
+                    CustomStatsManager.instance.tempStats.enemyAttackSpeedMult = value;
                     break;
             }
         }
@@ -89,19 +89,19 @@ namespace Game.Scripts {
             // set value to base stat
             switch (statType) {
                 case CustomStatType.PlayerHealth:
-                    slider.value = CustomStatsManager.instance.baseStats.playerHealth;
+                    _slider.value = CustomStatsManager.instance.baseStats.playerHealth;
                     break;
                 case CustomStatType.PlayerSpeed:
-                    slider.value = CustomStatsManager.instance.baseStats.playerSpeed;
+                    _slider.value = CustomStatsManager.instance.baseStats.playerSpeed;
                     break;
                 case CustomStatType.PlayerAttackSpeed:
-                    slider.value = CustomStatsManager.instance.baseStats.playerAttackSpeed;
+                    _slider.value = CustomStatsManager.instance.baseStats.playerAttackSpeed;
                     break;
                 case CustomStatType.EnemyHealthMult:
-                    slider.value = CustomStatsManager.instance.baseStats.enemyHealthMult;
+                    _slider.value = CustomStatsManager.instance.baseStats.enemyHealthMult;
                     break;
                 case CustomStatType.EnemyAttackSpeedMult:
-                    slider.value = CustomStatsManager.instance.baseStats.enemyAttackSpeedMult;
+                    _slider.value = CustomStatsManager.instance.baseStats.enemyAttackSpeedMult;
                     break;
             }
         }
@@ -132,22 +132,6 @@ namespace Game.Scripts {
             float fillPercent = (baseStatValue - minValue) / (maxValue - minValue);
             float fillX = fillWidth * fillPercent - (fillWidth / 2);
             defaultValueMarker.rectTransform.anchoredPosition = new Vector2(fillX, 0);
-        }
-
-        private void SetPlayerHealth (float value) {
-            CustomStatsManager.instance.tempStats.playerHealth = (int)value;
-        }
-        private void SetPlayerSpeed (float value) {
-            CustomStatsManager.instance.tempStats.playerSpeed = value;
-        }
-        private void SetPlayerAttackSpeed (float value) {
-            CustomStatsManager.instance.tempStats.playerAttackSpeed = value;
-        }
-        private void SetEnemyHealthMult (float value) {
-            CustomStatsManager.instance.tempStats.enemyHealthMult = (int)value;
-        }
-        private void SetEnemyAttackSpeedMult (float value) {
-            CustomStatsManager.instance.tempStats.enemyAttackSpeedMult = value;
         }
     }
     
