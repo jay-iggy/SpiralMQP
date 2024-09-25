@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Analytics;
+﻿//using Game.Scripts.Analytics;
 using UnityEngine;
 
 namespace Game.Scripts {
@@ -6,7 +6,7 @@ namespace Game.Scripts {
         
         
         public void ResetCustomStats() {
-            AnalyticsManager.instance.IncrementPlayerNum();
+            //AnalyticsManager.instance.IncrementPlayerNum();
         }
     }
     
