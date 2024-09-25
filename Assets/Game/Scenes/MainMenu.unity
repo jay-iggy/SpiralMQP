@@ -621,14 +621,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Added sticker system
+  m_text: 'Added boss transitions
+
+    added grub boss
+
+    added grub gfx
+
+    added
+    rat gfx
+
+    Added sticker system
 
     Changed menu style
 
-    Added edit value menu
+    Added edit value
+    menu
 
-    Bug
-    fix: frozen time during subsequent runs'
+    Bug fix: frozen time during subsequent runs'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b33abc6a071564845bbb3fa9f0568b5c, type: 2}
   m_sharedMaterial: {fileID: -6456840900083871457, guid: b33abc6a071564845bbb3fa9f0568b5c,
@@ -2104,7 +2113,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 67
     m_Right: 0
-    m_Top: 80
+    m_Top: 1
     m_Bottom: 28
   m_ChildAlignment: 0
   m_Spacing: 0
@@ -3294,8 +3303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749, y: 8709.513}
-  m_SizeDelta: {x: 1364, y: 306.2548}
+  m_AnchoredPosition: {x: 749, y: 15830.072}
+  m_SizeDelta: {x: 1364, y: 551.6053}
   m_Pivot: {x: 0.5, y: 29.7}
 --- !u!1 &1486900469
 GameObject:
@@ -3857,7 +3866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749, y: -650.96155}
+  m_AnchoredPosition: {x: 749, y: -817.3121}
   m_SizeDelta: {x: 1364, y: 529.4136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1799733239
@@ -4343,7 +4352,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 11.52
   m_Viewport: {fileID: 1217505205}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -4461,7 +4470,7 @@ MonoBehaviour:
     Samuel Wilensky - Programmer
 
     Elijah
-    DelCastillo -Audio
+    DelCastillo - Audio
 
 '
   m_isRightToLeft: 0
