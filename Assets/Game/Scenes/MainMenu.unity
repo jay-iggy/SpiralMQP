@@ -461,7 +461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202, y: 158}
+  m_AnchoredPosition: {x: -202, y: 212}
   m_SizeDelta: {x: 200, y: 23.4325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198070369
@@ -598,7 +598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 117.02234, y: -23.094727}
+  m_AnchoredPosition: {x: 117.02234, y: 30.904297}
   m_SizeDelta: {x: 269.8929, y: 60.0294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316619342
@@ -630,14 +630,19 @@ MonoBehaviour:
     added
     rat gfx
 
-    Added sticker system
+    added friction to enemies
+
+    Added dash ability
+
+    Added sticker
+    system
 
     Changed menu style
 
-    Added edit value
-    menu
+    Added edit value menu
 
-    Bug fix: frozen time during subsequent runs'
+    Bug fix: frozen
+    time during subsequent runs'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b33abc6a071564845bbb3fa9f0568b5c, type: 2}
   m_sharedMaterial: {fileID: -6456840900083871457, guid: b33abc6a071564845bbb3fa9f0568b5c,
@@ -3303,8 +3308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749, y: 15830.072}
-  m_SizeDelta: {x: 1364, y: 551.6053}
+  m_AnchoredPosition: {x: 749, y: 18080.842}
+  m_SizeDelta: {x: 1364, y: 630.0294}
   m_Pivot: {x: 0.5, y: 29.7}
 --- !u!1 &1486900469
 GameObject:
@@ -3866,7 +3871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749, y: -817.3121}
+  m_AnchoredPosition: {x: 749, y: -895.7362}
   m_SizeDelta: {x: 1364, y: 529.4136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1799733239
