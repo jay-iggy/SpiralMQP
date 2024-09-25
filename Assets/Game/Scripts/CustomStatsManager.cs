@@ -1,15 +1,45 @@
 ﻿//using Game.Scripts.Analytics;
+
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts {
     public class CustomStatsManager : MonoBehaviour {
+        public CustomStats customStats;
+        public CustomStats tempStats;
+        public CustomStats baseStats;
         
+        public UnityEvent onResetStats;
         
+        public static CustomStatsManager instance;
+
+        private void Awake() {
+            if(instance == null) {
+                instance = this;
+                transform.parent = null;
+                DontDestroyOnLoad(this);
+            } else {
+                Destroy(this);
+            }
+        }
+
         public void ResetCustomStats() {
-            //AnalyticsManager.instance.IncrementPlayerNum();
+            customStats = baseStats;
+            tempStats = customStats;
+            onResetStats.Invoke();
+        }
+        
+        public void ClearTempStats() {
+            tempStats = customStats;
+        }
+        
+        public void ConfirmTempStats() {
+            customStats = tempStats;
         }
     }
     
+    [Serializable]
     public struct CustomStats {
         public int playerHealth;
         public float playerSpeed;
