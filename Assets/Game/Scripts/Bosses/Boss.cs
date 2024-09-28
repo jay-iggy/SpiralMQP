@@ -17,6 +17,11 @@ namespace Game.Scripts
         void Start() {
             attackList = GetComponent<ICanAttack>();
             
+            HealthComponent healthComponent = GetComponent<HealthComponent>();
+            healthComponent.maxHealth *= CustomStatsManager.instance.customStats.enemyHealthMult;
+            healthComponent.SetHealth(healthComponent.maxHealth);
+            
+            attackDelay *= CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
         }
 
         void Update() {

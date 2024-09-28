@@ -21,6 +21,7 @@ namespace Game.Scripts {
 
         public float health { get; private set; }
         public float maxHealth = 100;
+        public bool isAlive { get; private set; } = true;
         
         private void Awake() {
             health = maxHealth;
@@ -47,7 +48,8 @@ namespace Game.Scripts {
             
             invincibleUntil = Time.time + invincibilityDuration;
 
-            if (health <= 0) {
+            if (health <= 0 && isAlive) {
+                isAlive = false;
                 onDeath.Invoke();
             }
         }

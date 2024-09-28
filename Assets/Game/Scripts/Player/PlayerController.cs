@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
         CreatePlayerControls();
     }
     void Start(){
+        walkSpeed = CustomStatsManager.instance.customStats.playerSpeed;
+        HealthComponent healthComponent = GetComponent<HealthComponent>();
+        healthComponent.maxHealth = CustomStatsManager.instance.customStats.playerHealth;
+        healthComponent.SetHealth(healthComponent.maxHealth);
+        
         movementSpeed = walkSpeed;
         
         SetPrimaryAbility(primaryAbility);
