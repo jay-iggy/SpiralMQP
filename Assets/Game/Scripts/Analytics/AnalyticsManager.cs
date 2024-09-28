@@ -14,23 +14,26 @@ namespace Game.Scripts.Analytics {
             } else {
                 Destroy(gameObject);
             }
-            version = Application.version;
         }
-
-        protected int playerNum = 0;
-        protected string version;
+        
+        public AnalyticsData analyticsData;
         
         private void Start() {
-            SaveDataToCSV(new AnalyticsData(version, playerNum.ToString()));
+            int playerNum = PlayerPrefs.GetInt("PlayerNum", 0);
+            
+            analyticsData = new AnalyticsData(Application.version, playerNum, new RunData(false));
         }
         
         public void SaveDataToCSV(AnalyticsData data) {
-            CSVManager.AppendToReport(data.ToArray());
+            CSVManager.AppendToReport(data.ToList());
         }
         
         public void IncrementPlayerNum() {
-            playerNum++;
+            analyticsData.playerNum++;
         }
 
+        private void OnDestroy() {
+            PlayerPrefs.SetInt("PlayerNum", analyticsData.playerNum);
+        }
     }
 }

@@ -55,7 +55,12 @@ namespace Game.Scripts.Analytics {
         
 #region Queries
         static string GetDirectoryPath() {
-            return $"{Application.dataPath}/{reportDirectoryName}";
+            #if UNITY_EDITOR
+                return $"{Application.dataPath}/{reportDirectoryName}";
+            #else
+                string parent = System.IO.Directory.GetParent(Application.dataPath).FullName;
+                return $"{parent}/{reportDirectoryName}";
+            #endif
         }
 
         static string GetFilePath() {

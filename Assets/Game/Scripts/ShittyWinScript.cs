@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Game.Scripts.Analytics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,11 @@ namespace Game.Scripts {
         
         public void Win() {
             StartCoroutine(Delay());
+
+            RunData runData = new RunData(true);
+            
+            AnalyticsManager.instance.analyticsData.runData = runData;
+            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
         }
 
         private IEnumerator Delay() {

@@ -1,43 +1,46 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Game.Scripts.Analytics {
     public struct AnalyticsData {
         public string version;
-        public string playerNum;
+        public int playerNum;
         
-        RunData runData;
+        public RunData runData;
         
-        public AnalyticsData(string version, string playerNum) {
+        public AnalyticsData(string version, int playerNum, RunData runData) {
             this.version = version;
             this.playerNum = playerNum;
-            runData = new RunData();
+            this.runData = runData;
         }
         
-        public List<string> ToArray() {
-            List<string> strings = new List<string> { version, playerNum };
-            strings.AddRange(runData.ToArray());
+        public List<string> ToList() {
+            List<string> strings = new List<string> { version, playerNum.ToString() };
+            strings.AddRange(runData.ToList());
             return strings;
         }
     }
 
     public struct RunData {
         public bool isWin;
-        SurveyData surveyData;
+        //SurveyData surveyData;
         
         public RunData(bool isWin) {
-            surveyData = new SurveyData();
+            //surveyData = new SurveyData();
             this.isWin = isWin;
         }
         
-        public List<string> ToArray() {
-            return new List<string> {isWin.ToString()};
+        public List<string> ToList() {
+            List<string> strings = new List<string> {isWin.ToString()};
+            //strings.AddRange(surveyData.ToList());
+            return strings;
         }
     }
     
     
     public struct SurveyData {
-        public string[] ToArray() {
+        public string[] ToList() {
             return new string[] {};
         }
     }
