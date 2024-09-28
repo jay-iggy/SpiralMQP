@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Analytics {
     public static class CSVManager  {
-        private const char SEPARATOR = ',';
+        private const string SEPARATOR = ",";
         private static string reportFileName = "spiral-analytics.csv";
         private static string reportDirectoryName = "Analytics";
 
@@ -20,17 +20,9 @@ namespace Game.Scripts.Analytics {
         public static void CreateReport() {
             VerifyDirectory();
             using (StreamWriter sw = File.CreateText(GetFilePath())) {
-                string finalString = "";
-                
-                foreach (string header in reportHeaders) {
-                    if (finalString != "") {
-                        finalString += SEPARATOR;
-                    }
-                    finalString += header;
-                }
-
-                finalString += SEPARATOR + timeStampHeader;
-                sw.WriteLine(finalString);
+                string headerLine = string.Join(SEPARATOR, reportHeaders);
+                headerLine += SEPARATOR + timeStampHeader;
+                sw.WriteLine(headerLine);
             }
         }
 
@@ -38,17 +30,9 @@ namespace Game.Scripts.Analytics {
             VerifyDirectory();
             VerifyFile();
             using (StreamWriter sw = File.AppendText(GetFilePath())) {
-                string finalString = "";
-                foreach (string str in strings) {
-                    if (finalString != "") {
-                        finalString += SEPARATOR;
-                    }
-
-                    finalString += str;
-                }
-
-                finalString += SEPARATOR + GetTimestamp();
-                sw.WriteLine(finalString);
+                string data = string.Join(SEPARATOR, strings);
+                data += SEPARATOR + GetTimestamp();
+                sw.WriteLine(data);
             }
         }
 #endregion

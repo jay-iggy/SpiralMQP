@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Scripts.Analytics {
@@ -13,13 +14,25 @@ namespace Game.Scripts.Analytics {
             } else {
                 Destroy(gameObject);
             }
+            version = Application.version;
+        }
+
+        protected int playerNum = 0;
+        protected string version;
+        
+        private void Start() {
+            CSVManager.CreateReport();
+            
+            SaveDataToCSV(new AnalyticsData(version, playerNum.ToString()));
         }
         
-        protected int playerNum = 0;
-        protected string version = Application.version;
+        public void SaveDataToCSV(AnalyticsData data) {
+            CSVManager.AppendToReport(data.ToArray());
+        }
         
         public void IncrementPlayerNum() {
             playerNum++;
         }
+
     }
 }
