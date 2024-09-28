@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Scripts.Analytics {
     public class AnalyticsManager : MonoBehaviour {
         public static AnalyticsManager instance;
-
+        
         private void Awake() {
             if (instance == null) {
                 transform.parent = null;
@@ -21,8 +21,6 @@ namespace Game.Scripts.Analytics {
         protected string version;
         
         private void Start() {
-            CSVManager.CreateReport();
-            
             SaveDataToCSV(new AnalyticsData(version, playerNum.ToString()));
         }
         
