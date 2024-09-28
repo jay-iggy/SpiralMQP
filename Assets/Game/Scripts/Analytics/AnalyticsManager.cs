@@ -19,7 +19,10 @@ namespace Game.Scripts.Analytics {
         public AnalyticsData analyticsData;
         
         private void Start() {
-            int playerNum = PlayerPrefs.GetInt("PlayerNum", 0);
+            int playerNum = 0;
+            if(PlayerPrefs.HasKey("PlayerNum")) {
+                playerNum = PlayerPrefs.GetInt("PlayerNum") + 1;
+            } 
             
             analyticsData = new AnalyticsData(Application.version, playerNum, new RunData(false));
         }
