@@ -6,12 +6,5 @@ namespace Game.Scripts.Analytics {
             AnalyticsManager.instance.IncrementPlayerNum();
             CustomStatsManager.instance.ResetCustomStats();
         }
-
-        public void TempLose() {
-            RunData runData = new RunData(false);
-            
-            AnalyticsManager.instance.analyticsData.runData = runData;
-            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
-        }
     }
 }

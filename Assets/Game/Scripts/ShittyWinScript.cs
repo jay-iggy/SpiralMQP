@@ -12,11 +12,6 @@ namespace Game.Scripts {
         
         public void Win() {
             StartCoroutine(Delay());
-
-            RunData runData = new RunData(true);
-            
-            AnalyticsManager.instance.analyticsData.runData = runData;
-            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
         }
 
         private IEnumerator Delay() {

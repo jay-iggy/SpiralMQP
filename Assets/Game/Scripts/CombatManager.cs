@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Game.Scripts.Analytics;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -35,6 +36,7 @@ namespace Game.Scripts {
                 Debug.LogError("No current enemy data to transition from");
             }
             if (currentEnemyData.nextEnemies.Count == 0) {
+                OnPlayerWin();
                 onFinalBossDefeated.Invoke();
                 return;
             }
@@ -51,6 +53,19 @@ namespace Game.Scripts {
             BossTransitionManager.instance.SpawnBoss(enemyData, out Boss b);
             currentBoss = b;
             currentEnemyData = enemyData;
+        }
+
+        public void OnPlayerWin() {
+            RunData runData = new RunData(true);
+            
+            AnalyticsManager.instance.analyticsData.runData = runData;
+            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
+        }
+        public void OnPlayerLose() {
+            RunData runData = new RunData(false);
+            
+            AnalyticsManager.instance.analyticsData.runData = runData;
+            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
         }
     }
 }
