@@ -134,8 +134,6 @@ namespace Game.Scripts
                     break;
             }
 
-            //respond to punch
-
         }
     }
 

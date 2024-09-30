@@ -12,6 +12,7 @@ namespace Game.Scripts
         private float attackTimer = 0;
         private int attackIndex = -1;
         private bool isAlive = true;
+        private bool waitForAttack = false;
         [SerializeField] int bossIndex; //used to match bosses to stickers
 
         void Start() {
@@ -40,6 +41,8 @@ namespace Game.Scripts
         }
 
         protected void CheckForAttack() {
+            if (waitForAttack) return;
+
             if (attackTimer >= attackDelay) {               
                 attackTimer = -1 * ChooseAttack(); //timer will get to 0 as attack ends
             }
@@ -50,13 +53,31 @@ namespace Game.Scripts
         protected float ChooseAttack() {
             if (attackList == null) return 0;
 
+            if(attackList.GetAttackCount() <= 1)
+            {
+                return attackList.Attack(0);
+            }
+
             int attackToDo = attackIndex;
             while (attackToDo == attackIndex) { //don't do the same attack twice in a row
                 attackToDo = Random.Range(0, attackList.GetAttackCount());
             }
             attackIndex = attackToDo;
+            float attackLength = attackList.Attack(attackIndex);
+            if(attackLength == -1)
+            {
+                waitForAttack = true;
+                return 0;
+            }
+            else
+            {
+                return attackLength;
+            }          
+        }
 
-            return attackList.Attack(attackIndex);
+        public void DoneWithAttack()
+        {
+            waitForAttack = false;
         }
     }
 }

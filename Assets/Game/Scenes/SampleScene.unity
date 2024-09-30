@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 289445466}
   m_Layer: 0
   m_Name: walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 360277189}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81c0337dc304e908aa2744be713dce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
+  initialBoss: {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
   bossSpawnDelay: 2
   onFinalBossDefeated:
     m_PersistentCalls:
@@ -1994,7 +1994,7 @@ GameObject:
   - component: {fileID: 1298991565}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2396,7 +2396,7 @@ GameObject:
   - component: {fileID: 1485483743}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2851,7 +2851,7 @@ GameObject:
   - component: {fileID: 1865231764}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
