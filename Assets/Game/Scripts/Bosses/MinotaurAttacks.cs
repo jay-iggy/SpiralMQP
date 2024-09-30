@@ -9,6 +9,7 @@ namespace Game.Scripts
     {
         [SerializeField] GameObject bullet;
         [SerializeField] Timer timer;
+        [SerializeField] MinotaurFlail flail;
         private GameObject player;
         private Boss boss;
 
@@ -30,12 +31,18 @@ namespace Game.Scripts
             player = GameObject.FindGameObjectWithTag(TagManager.Player);
             boss = GetComponent<Boss>();
             timer.onTimerEnd.AddListener(OnTimerEnd);
+            flail.minotaur = this;
         }
 
-        public int GetAttackCount() { return 2; }
+        public int GetAttackCount() { return 3; }
 
         public float Attack(int index)
         {
+            if(curAttack == 2)
+            {
+                flail.StopSpinning();
+            }
+
             curAttack = index;
             switch (index)
             {
@@ -53,6 +60,7 @@ namespace Game.Scripts
 
         private float Charge()
         {
+            turnDelta = 4;
             lockRotation = false;
             if (chargesToDo == -1)
             {
@@ -63,6 +71,7 @@ namespace Game.Scripts
                 chargesToDo = -1;
                 curAttack = -1;
                 boss.DoneWithAttack();
+                turnDelta = 2;
                 return 0;
             }
             chargesToDo--;
@@ -72,13 +81,22 @@ namespace Game.Scripts
 
         private float FlailSmash()
         {
-            transform.position = new Vector3(0, transform.position.y, 0);
-            return 1;
+            flail.StartSpinning();
+            timer.Set(2, 1);
+            return -1;
+        }
+
+        public void FinishSmash()
+        {
+            boss.DoneWithAttack();
         }
 
         private float SeekingCharge()
         {
-            return 0;
+            turnDelta = .5f;
+            flail.StartSpinning();
+            timer.Set(4.5f, 2);
+            return 5;
         }
 
         private float Horns()
@@ -93,6 +111,16 @@ namespace Game.Scripts
                 case 0:
                     charging = true;
                     break;
+                case 1:
+                    flail.Launch();
+                    break;
+                case 2:
+                    flail.StopSpinning();
+                    turnDelta = 2;
+                    break;
+                case -2:
+                    turnDelta = .5f;
+                    break;
             }
         }
 
@@ -101,13 +129,17 @@ namespace Game.Scripts
             if (!lockRotation)
             {
                 rotateTowardsPlayer();
-                if (curAttack == 0 && facingPlayer)
+                if (curAttack == 0 && facingPlayer) //charge
                 {
                     chargeVelocity = player.transform.position - transform.position;
                     chargeVelocity.Normalize();
                     chargeVelocity *= chargeSpeed;
                     lockRotation = true;
                     timer.Set(.25f, 0);
+                }
+                else if(curAttack == 2) //seeking charge
+                {
+                    moveForward();
                 }
             }               
             if (charging)
@@ -121,7 +153,7 @@ namespace Game.Scripts
         {
             if(other.gameObject.tag == "Wall")
             {
-                if(curAttack == 0)
+                if(curAttack == 0) //charge
                 {
                     charging = false;
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
@@ -131,6 +163,16 @@ namespace Game.Scripts
                     GetComponent<EnemyMovement>().AddExternalVelocity(bounceVelocity*10);
                     ScreenShake.instance.StartShake(.2f, .5f);
                     Charge();
+                }
+                if(curAttack == 2) //seeking charge
+                {
+                    Vector3 collisionPoint = other.ClosestPoint(transform.position);
+                    Vector3 bounceVelocity = transform.position - collisionPoint;
+                    bounceVelocity.Normalize();
+                    GetComponent<EnemyMovement>().AddExternalVelocity(bounceVelocity * 10);
+                    ScreenShake.instance.StartShake(.2f, .3f);
+                    turnDelta = 4;
+                    timer.Set(.2f, -2);
                 }
             }
             else if(other.gameObject.tag == "Player")
@@ -204,6 +246,16 @@ namespace Game.Scripts
             {
                 facingPlayer = false;
             }
+        }
+
+        private void moveForward()
+        {
+            float angle = triangle.transform.localEulerAngles.z * Mathf.Deg2Rad;
+            float sine = Mathf.Sin(angle);
+            float cosine = Mathf.Cos(angle);
+            Vector3 forwardVelocity = new Vector3(-sine, 0, cosine);
+            forwardVelocity *= chargeSpeed * .35f;
+            transform.position += forwardVelocity;
         }
     }
 

@@ -18,6 +18,13 @@ namespace Game.Scripts
             }
         }
 
+        public static void MoveTowards(GameObject bullet, Vector3 target, float speed)
+        {
+            GameObject[] bullets = { bullet };
+            MoveTowards(bullets, target, speed);
+
+        }
+
         public static void MoveTowards(GameObject[] bullets, Vector3 target, float speed) {
             foreach (GameObject bullet in bullets) {
                 if(bullet == null) {

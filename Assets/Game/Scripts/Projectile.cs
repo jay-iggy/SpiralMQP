@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 namespace Game.Scripts {
     public class Projectile : Hitbox {
         public float dmg = 1;
+        [SerializeField] bool persistent = false;
         
         private void Start() {
             onHitTarget.AddListener(OnHitTarget);
@@ -13,7 +14,7 @@ namespace Game.Scripts {
 
         private void OnHitTarget(ICanGetHit target) {
             target.GetHit(dmg);
-            Destroy(gameObject);
+            if(!persistent) Destroy(gameObject);
         }
 
         public void TargetPlayer(float speed) {
