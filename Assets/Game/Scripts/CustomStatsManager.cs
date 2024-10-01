@@ -23,6 +23,7 @@ namespace Game.Scripts {
             else {
                 Destroy(this);
             }
+            customStats = baseStats;
         }
 
         public void ResetCustomStats() {

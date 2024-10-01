@@ -40,6 +40,7 @@ namespace Game.Scripts {
 
         public void TransitionToNextBoss() {
             Destroy(currentBoss.gameObject);
+            onBossDefeated.Invoke();
             
             
             if (currentEnemyData == null) {
@@ -52,7 +53,7 @@ namespace Game.Scripts {
             }
             EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
 
-            onBossDefeated.Invoke();
+            
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
             
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));

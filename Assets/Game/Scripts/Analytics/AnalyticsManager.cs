@@ -38,7 +38,6 @@ namespace Game.Scripts.Analytics {
             if(PlayerPrefs.HasKey("PlayerNum")) {
                 playerNum = PlayerPrefs.GetInt("PlayerNum") + 1;
             } 
-            analyticsData.customStats = new CustomStats();
             analyticsData = new AnalyticsData(Application.version, playerNum, new RunData(false), new CustomStats());
         }
 
@@ -138,7 +137,10 @@ namespace Game.Scripts.Analytics {
             
             
             string bossData = $"{playerDamageTaken}, {timeTaken}";
+            Debug.Log("Boss defeated, player damage taken: " + playerDamageTaken + ", time taken: " + timeTaken);
             analyticsData.runData.bossData.Add(bossData);
+            
+            // maybe stored boss health, to see how far they got when they lose to a boss
             
             
             bossAnalyticsTimer = 0;
