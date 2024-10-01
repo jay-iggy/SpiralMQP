@@ -24,15 +24,18 @@ namespace Game.Scripts.Analytics {
 
     public struct RunData {
         public bool isWin;
+        public List<string> bossData;
         //SurveyData surveyData;
         
         public RunData(bool isWin) {
             //surveyData = new SurveyData();
             this.isWin = isWin;
+            bossData = new List<string>();
         }
         
         public List<string> ToList() {
             List<string> strings = new List<string> {isWin.ToString()};
+            strings.AddRange(bossData);
             //strings.AddRange(surveyData.ToList());
             return strings;
         }

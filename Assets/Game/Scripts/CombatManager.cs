@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Scripts.Analytics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts {
@@ -15,10 +16,13 @@ namespace Game.Scripts {
             } else {
                 Destroy(gameObject);
             }
+
+            onGameStart = new();
         }
 
         private void Start() {
             StartCoroutine(SpawnBoss(initialBoss,0));
+            onGameStart.Invoke();
         }
 
         [SerializeField] private EnemyData initialBoss;
@@ -26,7 +30,13 @@ namespace Game.Scripts {
         public Boss currentBoss { get; private set; }
         public EnemyData currentEnemyData { get; private set; }
 
+        public static UnityEvent onGameStart = new();
+        public UnityEvent onBossDefeated = new();
         public UnityEvent onFinalBossDefeated = new();
+        
+        public HealthComponent playerHealth;
+        
+        
 
         public void TransitionToNextBoss() {
             Destroy(currentBoss.gameObject);
@@ -42,8 +52,9 @@ namespace Game.Scripts {
             }
             EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
 
+            onBossDefeated.Invoke();
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
-
+            
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
             
             // TODO: Add transition effects
@@ -56,16 +67,12 @@ namespace Game.Scripts {
         }
 
         public void OnPlayerWin() {
-            RunData runData = new RunData(true);
-            
-            AnalyticsManager.instance.analyticsData.runData = runData;
-            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
+            AnalyticsManager.instance.analyticsData.runData.isWin = true;
+            AnalyticsManager.instance.SaveDataToCSV();
         }
         public void OnPlayerLose() {
-            RunData runData = new RunData(false);
-            
-            AnalyticsManager.instance.analyticsData.runData = runData;
-            AnalyticsManager.instance.SaveDataToCSV(AnalyticsManager.instance.analyticsData);
+            AnalyticsManager.instance.analyticsData.runData.isWin = false;
+            AnalyticsManager.instance.SaveDataToCSV();
         }
     }
 }
