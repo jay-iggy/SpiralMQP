@@ -9,17 +9,18 @@ namespace Game.Scripts {
         public CustomStats customStats;
         public CustomStats tempStats;
         public CustomStats baseStats;
-        
+
         public UnityEvent onResetStats;
-        
+
         public static CustomStatsManager instance;
 
         private void Awake() {
-            if(instance == null) {
+            if (instance == null) {
                 instance = this;
                 transform.parent = null;
                 DontDestroyOnLoad(this);
-            } else {
+            }
+            else {
                 Destroy(this);
             }
         }
@@ -29,15 +30,23 @@ namespace Game.Scripts {
             tempStats = customStats;
             onResetStats.Invoke();
         }
-        
+
         public void ClearTempStats() {
             tempStats = customStats;
         }
-        
+
         public void ConfirmTempStats() {
             customStats = tempStats;
         }
-    }
+
+        public static string[] customStatsHeaders = {
+            "Player Max Health",
+            "Player Speed",
+            "PlayerAttackSpeed",
+            "Enemy Health Mult",
+            "Enemy Attack Speed Mult"
+        };
+}
     
     [Serializable]
     public struct CustomStats {

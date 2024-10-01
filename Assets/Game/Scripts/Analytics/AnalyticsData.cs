@@ -8,15 +8,20 @@ namespace Game.Scripts.Analytics {
         public int playerNum;
         
         public RunData runData;
+        public CustomStats customStats;
         
-        public AnalyticsData(string version, int playerNum, RunData runData) {
+        
+        public AnalyticsData(string version, int playerNum, RunData runData, CustomStats customStats){
             this.version = version;
             this.playerNum = playerNum;
             this.runData = runData;
+            this.customStats = customStats;
         }
         
         public List<string> ToList() {
             List<string> strings = new List<string> { version, playerNum.ToString() };
+            strings.Add(runData.isWin.ToString());
+            strings.AddRange(customStats.ToArray());
             strings.AddRange(runData.ToList());
             return strings;
         }
@@ -34,7 +39,7 @@ namespace Game.Scripts.Analytics {
         }
         
         public List<string> ToList() {
-            List<string> strings = new List<string> {isWin.ToString()};
+            List<string> strings = new List<string>();
             strings.AddRange(bossData);
             //strings.AddRange(surveyData.ToList());
             return strings;

@@ -32,13 +32,14 @@ namespace Game.Scripts.Analytics {
         
         public AnalyticsData analyticsData;
         
+        
         private void Start() {
             int playerNum = 0;
             if(PlayerPrefs.HasKey("PlayerNum")) {
                 playerNum = PlayerPrefs.GetInt("PlayerNum") + 1;
             } 
-            
-            analyticsData = new AnalyticsData(Application.version, playerNum, new RunData(false));
+            analyticsData.customStats = new CustomStats();
+            analyticsData = new AnalyticsData(Application.version, playerNum, new RunData(false), new CustomStats());
         }
 
         private void OnEnable() {
@@ -52,6 +53,7 @@ namespace Game.Scripts.Analytics {
         private void OnGameStart() {
             CombatManager.instance.onBossDefeated.AddListener(OnBossDefeated);
             prevPlayerHealth = CombatManager.instance.playerHealth.maxHealth;
+            analyticsData.customStats = CustomStatsManager.instance.customStats;
         }
 
         private void VerifyFile() {
@@ -72,6 +74,8 @@ namespace Game.Scripts.Analytics {
             using (StreamWriter sw = File.CreateText(GetFilePath())) {
                 string headerLine = string.Join(SEPARATOR, reportHeaders);
                 
+                string customStatsHeader = string.Join(SEPARATOR, CustomStatsManager.customStatsHeaders);
+                
                 string bossHeader = "";
                 EnemyData enemyData = CombatManager.instance.currentEnemyData;
                 while (enemyData != null) {
@@ -90,7 +94,7 @@ namespace Game.Scripts.Analytics {
                     }
                 }
                 
-                sw.WriteLine($"Time,{headerLine},{bossHeader}");
+                sw.WriteLine($"Time,{headerLine},{customStatsHeader},{bossHeader}");
             }
         }
         
@@ -98,7 +102,7 @@ namespace Game.Scripts.Analytics {
             VerifyFile();
             string dataString = $"{GetTimestamp()}{SEPARATOR}";
             dataString += string.Join(SEPARATOR, analyticsData.ToList());
-            System.IO.File.AppendAllText(GetFilePath(), dataString + "\n");
+            File.AppendAllText(GetFilePath(), dataString + "\n");
         }
         
         public void IncrementPlayerNum() {
@@ -115,7 +119,7 @@ namespace Game.Scripts.Analytics {
                 return $"{Application.dataPath}/{DIR_NAME}";
             #else
                 string parent = System.IO.Directory.GetParent(Application.dataPath).FullName;
-                return $"{parent}/{reportDirectoryName}";
+                return $"{parent}/{DIR_NAME}";
             #endif
         }
 
