@@ -46,6 +46,12 @@ namespace Game.Scripts {
 
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
             
+            //destroy all enemy bullets
+            // this is temporary until we have a better way to handle this
+            foreach (Projectile p in FindObjectsOfType<Projectile>()) {
+                Destroy(p.gameObject);
+            }
+            
             // TODO: Add transition effects
         }
         private IEnumerator SpawnBoss(EnemyData enemyData, float delay) {
