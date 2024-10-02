@@ -15,4 +15,5 @@ MonoBehaviour:
   enemyName: Basilisk
   bossPrefab: {fileID: 466556231990597027, guid: 0039a549dec4d4d89852eecdb6f54503,
     type: 3}
-  nextEnemies: []
+  nextEnemies:
+  - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
