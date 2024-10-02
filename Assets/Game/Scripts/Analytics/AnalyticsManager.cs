@@ -53,6 +53,9 @@ namespace Game.Scripts.Analytics {
             CombatManager.instance.onBossDefeated.AddListener(OnBossDefeated);
             prevPlayerHealth = CombatManager.instance.playerHealth.maxHealth;
             analyticsData.customStats = CustomStatsManager.instance.customStats;
+            
+            isTimerRunning = true;
+            bossAnalyticsTimer = 0;
         }
 
         private void VerifyFile() {
@@ -78,7 +81,7 @@ namespace Game.Scripts.Analytics {
                 string bossHeader = "";
                 EnemyData enemyData = CombatManager.instance.currentEnemyData;
                 while (enemyData != null) {
-                    string enemyName = CombatManager.instance.currentEnemyData.enemyName;
+                    string enemyName = enemyData.enemyName;
                     for (int i = 0; i < bossHeaders.Length; i++) {
                         bossHeader += $"{enemyName}: {bossHeaders[i]}";
                         if (i < bossHeaders.Length - 1) {
@@ -130,6 +133,7 @@ namespace Game.Scripts.Analytics {
         }
         
         private float bossAnalyticsTimer = 0;
+        private bool isTimerRunning = false;
         private float prevPlayerHealth = 0;
         private void OnBossDefeated() {
             float playerDamageTaken = Mathf.Clamp(prevPlayerHealth - CombatManager.instance.playerHealth.health, 0, CombatManager.instance.playerHealth.maxHealth);
@@ -148,7 +152,9 @@ namespace Game.Scripts.Analytics {
         }
 
         private void Update() {
-            bossAnalyticsTimer += Time.deltaTime;
+            if(isTimerRunning) {
+                bossAnalyticsTimer += Time.deltaTime;
+            }
         }
     }
 }
