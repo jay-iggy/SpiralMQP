@@ -15,4 +15,5 @@ MonoBehaviour:
   enemyName: Rat Louie
   bossPrefab: {fileID: 466556231990597027, guid: 42395085196895d418727c1fc2bbaf2d,
     type: 3}
-  nextEnemies: []
+  nextEnemies:
+  - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}

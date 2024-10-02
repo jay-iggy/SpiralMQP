@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 289445466}
   m_Layer: 0
   m_Name: walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 360277189}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,7 +808,7 @@ Transform:
   m_GameObject: {fileID: 360277187}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -11.1, y: 1.77, z: -9.98}
+  m_LocalPosition: {x: -9.46, y: 1.77, z: -9.98}
   m_LocalScale: {x: 10.841631, y: 3.4732, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1994,7 +1994,7 @@ GameObject:
   - component: {fileID: 1298991565}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2008,7 +2008,7 @@ Transform:
   m_GameObject: {fileID: 1298991563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.77, z: -4.12}
+  m_LocalPosition: {x: 0, y: 1.77, z: -4.48}
   m_LocalScale: {x: 20.71359, y: 3.4732, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2396,7 +2396,7 @@ GameObject:
   - component: {fileID: 1485483743}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2410,7 +2410,7 @@ Transform:
   m_GameObject: {fileID: 1485483741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.77, z: -15.55}
+  m_LocalPosition: {x: 0, y: 1.77, z: -15.63}
   m_LocalScale: {x: 20.71359, y: 3.4732, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2851,7 +2851,7 @@ GameObject:
   - component: {fileID: 1865231764}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2865,7 +2865,7 @@ Transform:
   m_GameObject: {fileID: 1865231762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 11.26, y: 1.77, z: -9.98}
+  m_LocalPosition: {x: 9.6, y: 1.77, z: -9.98}
   m_LocalScale: {x: 10.841631, y: 3.4732, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
