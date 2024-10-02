@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: Grub
   m_EditorClassIdentifier: 
-  enemyName: Grub Friend
+  enemyName: Grub
   bossPrefab: {fileID: 5506900955306273589, guid: c91ac298dca43a2439190a285a9a1406,
     type: 3}
   nextEnemies:
