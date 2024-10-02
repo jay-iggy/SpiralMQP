@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -39,14 +40,17 @@ namespace Game.Scripts.Analytics {
                 playerNum = PlayerPrefs.GetInt("PlayerNum") + 1;
             } 
             analyticsData = new AnalyticsData(Application.version, playerNum, new RunData(false), new CustomStats());
+            CombatManager.instance.onGameStart.AddListener(OnGameStart);
         }
-
         private void OnEnable() {
-            CombatManager.onGameStart.AddListener(OnGameStart);
+            if(CombatManager.instance == null) {
+                return;
+            }
+            CombatManager.instance.onGameStart.AddListener(OnGameStart);
         }
 
         private void OnDisable() {
-            CombatManager.onGameStart.RemoveListener(OnGameStart);
+            CombatManager.instance.onGameStart.RemoveListener(OnGameStart);
         }
 
         private void OnGameStart() {

@@ -1789,6 +1789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
   bossSpawnDelay: 2
+  onBossDefeated:
+    m_PersistentCalls:
+      m_Calls: []
   onFinalBossDefeated:
     m_PersistentCalls:
       m_Calls:
@@ -1804,6 +1807,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerHealth: {fileID: 118477963}
 --- !u!1 &1065933998
 GameObject:
   m_ObjectHideFlags: 0

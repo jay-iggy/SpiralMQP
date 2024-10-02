@@ -22,15 +22,21 @@ namespace Game.Scripts {
 
         private void Start() {
             StartCoroutine(SpawnBoss(initialBoss,0));
+            StartCoroutine(LateStart());
+        }
+
+        private IEnumerator LateStart() {
+            yield return null;
             onGameStart.Invoke();
         }
+
 
         [SerializeField] private EnemyData initialBoss;
         [SerializeField] private float bossSpawnDelay = 2f;
         public Boss currentBoss { get; private set; }
         public EnemyData currentEnemyData { get; private set; }
 
-        public static UnityEvent onGameStart = new();
+        public UnityEvent onGameStart = new();
         public UnityEvent onBossDefeated = new();
         public UnityEvent onFinalBossDefeated = new();
         
