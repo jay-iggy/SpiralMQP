@@ -90,7 +90,7 @@ namespace Game.Scripts.Analytics {
                     string enemyName = enemyData.enemyName;
                     for (int i = 0; i < bossHeaders.Length; i++) {
                         bossHeader += $"{enemyName}: {bossHeaders[i]}";
-                        if (i < bossHeaders.Length - 1) {
+                        if (i < bossHeaders.Length) {
                             bossHeader += SEPARATOR;
                         }
                     }
