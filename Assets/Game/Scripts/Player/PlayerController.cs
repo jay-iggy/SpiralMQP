@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private PlayerInput _playerControls; // this isn't a PlayerInput component, its a compiled input action asset named PlayerInput
 
+    //Audio
+    public AudioSource Slash;
+    public AudioSource WalkAudio;
+
     private void Awake() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -104,6 +108,7 @@ public class PlayerController : MonoBehaviour
     #region Movement
         public void OnMove(InputAction.CallbackContext context) {
             _direction = context.ReadValue<Vector2>();
+            Iswalking();
         }
         private void UpdateMovement() {
             Vector3 targetVelocity = new(_direction.x * movementSpeed, 0, _direction.y * movementSpeed);
@@ -112,10 +117,25 @@ public class PlayerController : MonoBehaviour
         public Vector2 GetMovementInput() {
             return _playerControls.Player.Move.ReadValue<Vector2>();
         }
+
+        private void Iswalking()
+        {
+            if (!WalkAudio.isPlaying)
+            {
+                WalkAudio.Play();
+            }
+        }
+        private void Stopwalking()
+        {
+            if (WalkAudio.isPlaying)
+            {
+                WalkAudio.Stop();
+            }
+        }
     #endregion
 
     #region Rotation and Aiming
-        public void OnLook(InputAction.CallbackContext context) {
+    public void OnLook(InputAction.CallbackContext context) {
             lookDirection += context.ReadValue<Vector2>();
             lookDirection = Vector2.ClampMagnitude(lookDirection, maxReticleDistance);
         }
@@ -130,6 +150,7 @@ public class PlayerController : MonoBehaviour
     #region Primary Ability
         public void OnPrimary(InputAction.CallbackContext context) {
             primaryAbility.AbilityPressed();
+        Slash.Play();
         }
         public void OnPrimaryReleased(InputAction.CallbackContext context) {
             primaryAbility.AbilityReleased();

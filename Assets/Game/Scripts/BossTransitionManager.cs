@@ -7,8 +7,12 @@ using UnityEngine;
 
 public class BossTransitionManager : MonoBehaviour {
     public static BossTransitionManager instance;
-    
+
+    public AudioSource Transition;
+
     private void Awake() {
+        Transition.Play();
+
         if(instance == null) {
             instance = this;
         } else {
