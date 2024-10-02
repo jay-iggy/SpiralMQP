@@ -34,7 +34,6 @@ namespace Game.Scripts.Analytics {
         
         
         private void Start() {
-            VerifyFile();
             int playerNum = 0;
             if(PlayerPrefs.HasKey("PlayerNum")) {
                 playerNum = PlayerPrefs.GetInt("PlayerNum") + 1;
@@ -51,6 +50,8 @@ namespace Game.Scripts.Analytics {
         }
 
         private void OnGameStart() {
+            VerifyFile();
+            
             CombatManager.instance.onBossDefeated.AddListener(OnBossDefeated);
             prevPlayerHealth = CombatManager.instance.playerHealth.maxHealth;
             analyticsData.customStats = CustomStatsManager.instance.customStats;
