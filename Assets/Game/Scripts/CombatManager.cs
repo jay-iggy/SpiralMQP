@@ -85,6 +85,7 @@ namespace Game.Scripts {
         }
         public void OnPlayerLose() {
             AnalyticsManager.instance.analyticsData.runData.isWin = false;
+            AnalyticsManager.instance.TrackBossAnalytics();
             AnalyticsManager.instance.SaveDataToCSV();
         }
     }

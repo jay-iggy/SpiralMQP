@@ -56,7 +56,7 @@ namespace Game.Scripts.Analytics {
         private void OnGameStart() {
             VerifyFile();
             
-            CombatManager.instance.onBossDefeated.AddListener(OnBossDefeated);
+            CombatManager.instance.onBossDefeated.AddListener(TrackBossAnalytics);
             prevPlayerHealth = CombatManager.instance.playerHealth.maxHealth;
             analyticsData.customStats = CustomStatsManager.instance.customStats;
             
@@ -140,9 +140,9 @@ namespace Game.Scripts.Analytics {
         private float bossAnalyticsTimer = 0;
         private bool isTimerRunning = false;
         private float prevPlayerHealth = 0;
-        private void OnBossDefeated() {
+        public void TrackBossAnalytics() {
             float playerDamageTaken = Mathf.Clamp(prevPlayerHealth - CombatManager.instance.playerHealth.health, 0, CombatManager.instance.playerHealth.maxHealth);
-            string timeTaken = Mathf.Floor(bossAnalyticsTimer / 60).ToString("00");
+            string timeTaken = $"{(bossAnalyticsTimer / 60).ToString("00")}:{(bossAnalyticsTimer % 60).ToString("00")}";
             
             
             string bossData = $"{playerDamageTaken}, {timeTaken}";
