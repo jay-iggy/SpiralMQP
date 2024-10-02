@@ -62,6 +62,8 @@ namespace Game.Scripts.Analytics {
             
             isTimerRunning = true;
             bossAnalyticsTimer = 0;
+            
+            analyticsData.runData.bossData = new List<string>();
         }
 
         private void VerifyFile() {
