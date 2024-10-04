@@ -14,7 +14,8 @@ namespace Game.Scripts {
         }
         
         // TODO: with this game concept, we'll need to swap this health component pretty often
-        private void BindHealthComponent(HealthComponent healthComponent) {
+        public void BindHealthComponent(HealthComponent healthComponent) {
+            this.healthComponent = healthComponent;
             healthComponent.onHealthChanged.AddListener(UpdateHealthBar);
             UpdateHealthBar(healthComponent.health);
         }

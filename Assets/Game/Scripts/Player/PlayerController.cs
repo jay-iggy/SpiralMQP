@@ -20,16 +20,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float turningRadius;
     [SerializeField] GameObject playerModel;
     [HideInInspector]public bool isRunning;
+    private Vector3 movementVelocity;
+    private Vector3 externalVelocity;
+    private Vector3 personalVelocity;
+    [SerializeField] private float personalVelocityDampingSpeed = 5;
+    [SerializeField] private float externalVelocityDampingSpeed = 5;
 
     [Header("Combat Settings")]
     [SerializeField] GameObject reticle;
     private Vector2 _direction = new Vector2();
-    private Vector2 _lookDirection = new Vector2(0, 0);
+    [HideInInspector] public Vector2 lookDirection = new Vector2(0, 0);
     [SerializeField] private float maxReticleDistance = 300;
-    
+
     [Header("Abilities")]
-    public Ability _primaryAbility;
-    public Ability _secondaryAbility;
+    public Transform abilityParent;
+    public Ability primaryAbility;
+    public Ability secondaryAbility;
     
     // References
     private Rigidbody _rb;
@@ -44,10 +50,15 @@ public class PlayerController : MonoBehaviour
         CreatePlayerControls();
     }
     void Start(){
+        walkSpeed = CustomStatsManager.instance.customStats.playerSpeed;
+        HealthComponent healthComponent = GetComponent<HealthComponent>();
+        healthComponent.maxHealth = CustomStatsManager.instance.customStats.playerHealth;
+        healthComponent.SetHealth(healthComponent.maxHealth);
+        
         movementSpeed = walkSpeed;
         
-        SetPrimaryAbility(_primaryAbility);
-        SetSecondaryAbility(_secondaryAbility);
+        SetPrimaryAbility(primaryAbility);
+        SetSecondaryAbility(secondaryAbility);
     }
 
     private void OnEnable() {
@@ -56,13 +67,18 @@ public class PlayerController : MonoBehaviour
     private void OnDisable(){
         _playerControls.Disable();
     }
-    
+
+    private void OnDestroy() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     private void CreatePlayerControls() {
         _playerControls = new PlayerInput();
         _playerControls.Player.Move.performed += OnMove;
         _playerControls.Player.Move.canceled += OnMove;
         _playerControls.Player.Fire.performed += OnPrimary;
-        _playerControls.Player.Fire.canceled += OnPrimaryRelease;
+        _playerControls.Player.Fire.canceled += OnPrimaryReleased;
         _playerControls.Player.Look.performed += OnLook;
         _playerControls.Player.Dodge.performed += OnSecondary;
         _playerControls.Player.Dodge.canceled += OnSecondaryReleased;
@@ -71,6 +87,18 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         UpdateMovement();
         UpdateRotation();
+        
+        _rb.velocity = movementVelocity + externalVelocity + personalVelocity;
+        
+        externalVelocity = Vector3.Lerp(externalVelocity, Vector3.zero, Time.deltaTime * externalVelocityDampingSpeed);
+        personalVelocity = Vector3.Lerp(personalVelocity, Vector3.zero, Time.deltaTime * personalVelocityDampingSpeed);
+    }
+    
+    public void AddExternalForce(Vector3 velocity) {
+        externalVelocity += velocity;
+    }
+    public void AddPersonalForce(Vector3 force) {
+        personalVelocity += force;
     }
 
     #region Movement
@@ -79,52 +107,59 @@ public class PlayerController : MonoBehaviour
         }
         private void UpdateMovement() {
             Vector3 targetVelocity = new(_direction.x * movementSpeed, 0, _direction.y * movementSpeed);
-            _rb.velocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+            movementVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+        }
+        public Vector2 GetMovementInput() {
+            return _playerControls.Player.Move.ReadValue<Vector2>();
         }
     #endregion
 
     #region Rotation and Aiming
         public void OnLook(InputAction.CallbackContext context) {
-            _lookDirection += context.ReadValue<Vector2>();
-            _lookDirection = Vector2.ClampMagnitude(_lookDirection, maxReticleDistance);
+            lookDirection += context.ReadValue<Vector2>();
+            lookDirection = Vector2.ClampMagnitude(lookDirection, maxReticleDistance);
         }
         private void UpdateRotation() {
-            Vector3 reticlePos = new(_lookDirection.x / 100, 1, _lookDirection.y / 100);
-            reticle.transform.localPosition = reticlePos;
+            Vector3 reticlePos = new(lookDirection.x / 100, 1, lookDirection.y / 100);
+            reticle.transform.position = reticlePos + transform.position;
             Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
-            playerModel.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y-90, 0);
+            transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
         }
     #endregion
     
-    #region Priamry Ability
+    #region Primary Ability
         public void OnPrimary(InputAction.CallbackContext context) {
-            _primaryAbility.AbilityPressed();
+            primaryAbility.AbilityPressed();
         }
-        public void OnPrimaryRelease(InputAction.CallbackContext context) {
-            _primaryAbility.AbilityReleased();
+        public void OnPrimaryReleased(InputAction.CallbackContext context) {
+            primaryAbility.AbilityReleased();
         }
         public void SetPrimaryAbility(Ability ability) {
-            // TODO: parent the ability to the player
-            // TODO: unparent the previous ability from the player
+            if (ability != primaryAbility) {
+                Destroy(primaryAbility); // clear previous ability
+            }
+            ability.transform.parent = abilityParent;
         
-            _primaryAbility = ability;
-            _primaryAbility.BindToPlayer(this);
+            primaryAbility = ability;
+            primaryAbility.BindToPlayer(this);
         }
     #endregion
 
     #region Secondary Ability
         public void OnSecondary(InputAction.CallbackContext context) {
-            _secondaryAbility.AbilityPressed();
+            secondaryAbility.AbilityPressed();
         }
         public void OnSecondaryReleased(InputAction.CallbackContext context) {
-            _secondaryAbility.AbilityReleased();
+            secondaryAbility.AbilityReleased();
         }
         public void SetSecondaryAbility(Ability ability) {
-            // TODO: parent the ability to the player
-            // TODO: unparent the previous ability from the player
+            if (ability != secondaryAbility) {
+                Destroy(secondaryAbility); // clear previous ability
+            }
+            ability.transform.parent = abilityParent;
         
-            _secondaryAbility = ability;
-            _secondaryAbility.BindToPlayer(this);
+            secondaryAbility = ability;
+            secondaryAbility.BindToPlayer(this);
         }
     #endregion
 }

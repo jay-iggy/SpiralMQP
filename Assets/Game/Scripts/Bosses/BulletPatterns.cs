@@ -4,30 +4,37 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public static class BulletPatterns : object
-    {
-        public static void circle(GameObject[] bullets, Vector3 center, float radius, int startingDegrees=0)
-        {
-            float angle = 360 / bullets.Length;
+    public static class BulletPatterns {
+        public static void CreateCircle(GameObject[] bullets, Vector3 center, float radius, int startingDegrees=0) {
+            float increment = 360 / bullets.Length;
             int i = 0;
-            for(float a = startingDegrees; a<360+startingDegrees; a += angle)
-            {
-                bullets[i].transform.position = center - radius * Vector3.left;
-                bullets[i].transform.RotateAround(center, Vector3.up, a);
+            for (float angle = startingDegrees; angle < 360 + startingDegrees; angle += increment) {
+                if (i<bullets.Length && bullets[i] != null)
+                {
+                    bullets[i].transform.position = center - radius * Vector3.left;
+                    bullets[i].transform.RotateAround(center, Vector3.up, angle);
+                }
                 i++;
             }
         }
 
-        public static void moveTowards(GameObject[] bullets, Vector3 target, float speed)
+        public static void MoveTowards(GameObject bullet, Vector3 target, float speed)
         {
-            for(int i = 0; i<bullets.Length; i++)
-            {
-                Vector3 v = target - bullets[i].transform.position;
+            GameObject[] bullets = { bullet };
+            MoveTowards(bullets, target, speed);
+
+        }
+
+        public static void MoveTowards(GameObject[] bullets, Vector3 target, float speed) {
+            foreach (GameObject bullet in bullets) {
+                if(bullet == null) {
+                    continue;
+                }
+                Vector3 v = target - bullet.transform.position;
                 v.Normalize();
                 v *= speed;
-                bullets[i].GetComponent<Rigidbody>().velocity = v;
-            }     
+                bullet.GetComponent<Rigidbody>().velocity = v;
+            }
         }
     }
-
 }

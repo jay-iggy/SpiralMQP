@@ -5,54 +5,79 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public class Boss : MonoBehaviour
-    {
-        protected ICanAttack attacks;
-        [SerializeField] float timeBetweenAttacks;
+    [RequireComponent(typeof(HealthComponent))]
+    public class Boss : MonoBehaviour {
+        protected ICanAttack attackList; 
+        [SerializeField] float attackDelay = 0.1f;
         private float attackTimer = 0;
         private int attackIndex = -1;
-        private bool alive = true;
+        private bool isAlive = true;
+        private bool waitForAttack = false;
+        [SerializeField] int bossIndex; //used to match bosses to stickers
 
-        void Start()
-        {
-            attacks = GetComponent<ICanAttack>();
+        void Start() {
+            attackList = GetComponent<ICanAttack>();
+            
+            HealthComponent healthComponent = GetComponent<HealthComponent>();
+            healthComponent.maxHealth *= CustomStatsManager.instance.customStats.enemyHealthMult;
+            healthComponent.SetHealth(healthComponent.maxHealth);
+            
+            attackDelay *= CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
         }
 
-        void Update()
-        {
-            if (alive)
-            {
-                checkForAttack();
+        void Update() {
+            if (isAlive) {
+                CheckForAttack();
             }          
         }
 
-        public void die()
-        {
-            alive = false;
+        public void Die() {
+            isAlive = false;
+            if(StickerManager.instance != null)
+            {
+                StickerManager.instance.ShowSticker(bossIndex);
+            }          
+            CombatManager.instance.TransitionToNextBoss();
         }
 
-        protected void checkForAttack()
-        {
-            if (attackTimer >= timeBetweenAttacks)
-            {               
-                attackTimer = -1 * chooseAttack(); //timer will get to 0 as attack ends
+        protected void CheckForAttack() {
+            if (waitForAttack) return;
+
+            if (attackTimer >= attackDelay) {               
+                attackTimer = -1 * ChooseAttack(); //timer will get to 0 as attack ends
             }
 
             attackTimer += Time.deltaTime;
         }
 
-        protected float chooseAttack()
-        {
+        protected float ChooseAttack() {
+            if (attackList == null) return 0;
+
+            if(attackList.GetAttackCount() <= 1)
+            {
+                return attackList.Attack(0);
+            }
+
             int attackToDo = attackIndex;
             while (attackToDo == attackIndex) { //don't do the same attack twice in a row
-                attackToDo = Random.Range(0, attacks.numAttacks());
+                attackToDo = Random.Range(0, attackList.GetAttackCount());
             }
             attackIndex = attackToDo;
+            float attackLength = attackList.Attack(attackIndex);
+            if(attackLength == -1)
+            {
+                waitForAttack = true;
+                return 0;
+            }
+            else
+            {
+                return attackLength;
+            }          
+        }
 
-            return attacks.Attack(attackIndex);
+        public void DoneWithAttack()
+        {
+            waitForAttack = false;
         }
     }
-
-    
-
 }

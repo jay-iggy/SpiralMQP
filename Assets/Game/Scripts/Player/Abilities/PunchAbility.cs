@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Game.Scripts.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
@@ -15,11 +16,15 @@ namespace Game.Scripts.Abilities {
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
         public float dmg = 1;
-
+        [SerializeField] private Collider magnetismTrigger;
+        
         private void Start() {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
                 BindHitbox(hitbox);
             }
+            
+            punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
+            punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
         }
         void BindHitbox(Hitbox hitbox) {
             hitbox.onHitTarget.AddListener(ProcessAttack);
@@ -32,7 +37,7 @@ namespace Game.Scripts.Abilities {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<Rigidbody>().AddForce(direction * 5, ForceMode.Impulse);
+                target.GetComponent<EnemyMovement>().AddExternalVelocity(direction * 5);
             }
         }
 
@@ -43,6 +48,9 @@ namespace Game.Scripts.Abilities {
             }
             fist.SetActive(true);
             _punchTimer = punchCooldown + punchDuration;
+            magnetismTrigger.enabled = true;
+            
+            
             StartCoroutine(ResetPunchTimer());
         }
 
@@ -59,6 +67,16 @@ namespace Game.Scripts.Abilities {
                 yield return null;
             }
             fist.SetActive(false);
+            magnetismTrigger.enabled = false;
+        }
+        
+        
+        void OnTriggerEnter(Collider other) {
+            if(other.gameObject.CompareTag(TagManager.Enemy)) { // TODO: make this based off hitbox tagsToHit
+                Vector3 direction = other.transform.position - transform.position;
+                direction.y = 0;
+                _player.AddPersonalForce(direction * 1);
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ public class ScreenShake : MonoBehaviour
     // since we don't have camera controller, this can go here
     void Update()
     {
-        transform.position = new Vector3(0, 0, -10);
+        transform.position = new Vector3(0, 0, 0);
     }
 
     public void StartShake(float length, float power)
