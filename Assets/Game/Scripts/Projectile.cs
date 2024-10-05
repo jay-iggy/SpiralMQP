@@ -8,6 +8,8 @@ namespace Game.Scripts {
         public float dmg = 1;
         [SerializeField] bool persistent = false;
         
+        //TODO: destroy on hit wall
+        
         private void Start() {
             onHitTarget.AddListener(OnHitTarget);
         }

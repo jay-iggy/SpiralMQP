@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Combat Settings")]
     [SerializeField] GameObject reticle;
     private Vector2 _direction = new Vector2();
-    [HideInInspector] public Vector2 lookDirection = new Vector2(0, 0);
+    private Vector2 lookDirection = new Vector2(0, 0);
     [SerializeField] private float maxReticleDistance = 300;
 
     [Header("Abilities")]
