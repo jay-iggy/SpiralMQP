@@ -13,6 +13,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grub Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.20424098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0032606795
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.973659
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10130755
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -11.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 156.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481221841690461123, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.79
+      objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: maxHealth
