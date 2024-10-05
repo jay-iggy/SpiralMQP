@@ -291,6 +291,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 732244744}
+  - {fileID: 1027698267}
   - {fileID: 1898310396}
   - {fileID: 2093251354}
   m_Father: {fileID: 118477961}
@@ -336,7 +337,6 @@ MonoBehaviour:
   personalVelocityDampingSpeed: 5
   externalVelocityDampingSpeed: 5
   reticle: {fileID: 663399550}
-  lookDirection: {x: 0, y: 0}
   maxReticleDistance: 300
   abilityParent: {fileID: 92262649}
   primaryAbility: {fileID: 732244745}
@@ -1789,6 +1789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
   bossSpawnDelay: 2
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls: []
   onBossDefeated:
     m_PersistentCalls:
       m_Calls: []
@@ -1808,6 +1811,56 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   playerHealth: {fileID: 118477963}
+--- !u!1 &1027698266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027698267}
+  - component: {fileID: 1027698268}
+  m_Layer: 0
+  m_Name: ShootAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027698267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027698266}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.03, y: -1.11, z: 1.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 92262649}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027698268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027698266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7c3bff11004b6f899e723e595549eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 5
+  projectileDamage: 1
+  cooldown: 0.33
+  projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
+    type: 3}
+  isAutomatic: 0
 --- !u!1 &1065933998
 GameObject:
   m_ObjectHideFlags: 0
