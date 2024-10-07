@@ -383,7 +383,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &118477963
 MonoBehaviour:
@@ -1789,6 +1789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
   bossSpawnDelay: 2
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls: []
   onBossDefeated:
     m_PersistentCalls:
       m_Calls: []
