@@ -9,17 +9,18 @@ using UnityEngine.Serialization;
 
 [RequireComponent(typeof(MovementComponent))]
 public class PlayerController : MonoBehaviour {
+    [SerializeField] GameObject playerModel;
+    
     [Header("Movement Settings")]
     public float walkSpeed;
     [HideInInspector] public float movementSpeed;
     [SerializeField] float movementLerpSpeed = 15;
-    [SerializeField] GameObject playerModel;
     [HideInInspector] public MovementComponent movementComponent;
+    private Vector2 _movementInput = new Vector2();
 
-    [Header("Combat Settings")]
+    [Header("Look Settings")]
     [SerializeField] GameObject reticle;
     [SerializeField] private float maxReticleDistance = 300;
-    private Vector2 _inputDirection = new Vector2();
     private Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
     
 
@@ -84,10 +85,10 @@ public class PlayerController : MonoBehaviour {
 
     #region Movement
         public void OnMove(InputAction.CallbackContext context) {
-            _inputDirection = context.ReadValue<Vector2>();
+            _movementInput = context.ReadValue<Vector2>();
         }
         private void UpdateMovement() {
-            Vector3 targetVelocity = new(_inputDirection.x * movementSpeed, 0, _inputDirection.y * movementSpeed);
+            Vector3 targetVelocity = new(_movementInput.x * movementSpeed, 0, _movementInput.y * movementSpeed);
             movementComponent.moveVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * movementLerpSpeed);
         }
         public Vector2 GetMovementInput() {
