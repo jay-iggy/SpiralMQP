@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject reticle;
     [SerializeField] private float maxReticleDistance = 300;
     private Vector2 _inputDirection = new Vector2();
-    private Vector2 _lookInputSum = new Vector2(0, 0); // look inputs are in delta, this is the sum of all inputs
+    private Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
     
 
     [Header("Abilities")]
@@ -102,11 +102,11 @@ public class PlayerController : MonoBehaviour
 
     #region Rotation and Aiming
         public void OnLook(InputAction.CallbackContext context) {
-            _lookInputSum += context.ReadValue<Vector2>();
-            _lookInputSum = Vector2.ClampMagnitude(_lookInputSum, maxReticleDistance);
+            _cumulativeLookInput += context.ReadValue<Vector2>();
+            _cumulativeLookInput = Vector2.ClampMagnitude(_cumulativeLookInput, maxReticleDistance);
         }
         private void UpdateRotation() {
-            Vector3 reticlePos = new(_lookInputSum.x / 100, 1, _lookInputSum.y / 100);
+            Vector3 reticlePos = new(_cumulativeLookInput.x / 100, 1, _cumulativeLookInput.y / 100);
             reticle.transform.position = reticlePos + transform.position;
             // rotate player object to face reticle
             Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
