@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     public float walkSpeed;
     [HideInInspector] public float movementSpeed;
-    [SerializeField] float turningRadius;
+    [SerializeField] float movementLerpSpeed = 15;
     [SerializeField] GameObject playerModel;
     [HideInInspector] public MovementComponent movementComponent;
 
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
         private void UpdateMovement() {
             Vector3 targetVelocity = new(_inputDirection.x * movementSpeed, 0, _inputDirection.y * movementSpeed);
-            movementComponent.moveVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+            movementComponent.moveVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * movementLerpSpeed);
         }
         public Vector2 GetMovementInput() {
             return _playerControls.Player.Move.ReadValue<Vector2>();

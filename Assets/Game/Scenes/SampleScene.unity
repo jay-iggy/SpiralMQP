@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   movementSpeed: 0
-  turningRadius: 15
+  movementLerpSpeed: 15
   playerModel: {fileID: 1841929983}
   movementComponent: {fileID: 0}
   reticle: {fileID: 663399550}
