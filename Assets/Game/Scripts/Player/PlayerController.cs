@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
+[RequireComponent(typeof(MovementComponent))]
 public class PlayerController : MonoBehaviour
 {
     
@@ -15,22 +16,17 @@ public class PlayerController : MonoBehaviour
     
     [Header("Movement Settings")]
     public float walkSpeed;
-    public float runSpeed;
-    [HideInInspector]public float movementSpeed;
+    [HideInInspector] public float movementSpeed;
     [SerializeField] float turningRadius;
     [SerializeField] GameObject playerModel;
-    [HideInInspector]public bool isRunning;
-    private Vector3 movementVelocity;
-    private Vector3 externalVelocity;
-    private Vector3 personalVelocity;
-    [SerializeField] private float personalVelocityDampingSpeed = 5;
-    [SerializeField] private float externalVelocityDampingSpeed = 5;
+    [HideInInspector] public MovementComponent movementComponent;
 
     [Header("Combat Settings")]
     [SerializeField] GameObject reticle;
-    private Vector2 _direction = new Vector2();
-    private Vector2 lookDirection = new Vector2(0, 0);
     [SerializeField] private float maxReticleDistance = 300;
+    private Vector2 _inputDirection = new Vector2();
+    private Vector2 _lookInputSum = new Vector2(0, 0); // look inputs are in delta, this is the sum of all inputs
+    
 
     [Header("Abilities")]
     public Transform abilityParent;
@@ -46,10 +42,12 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         
         _rb = GetComponent<Rigidbody>();
+        movementComponent = GetComponent<MovementComponent>();
         
         CreatePlayerControls();
     }
     void Start(){
+        // set player stats to custom values
         walkSpeed = CustomStatsManager.instance.customStats.playerSpeed;
         HealthComponent healthComponent = GetComponent<HealthComponent>();
         healthComponent.maxHealth = CustomStatsManager.instance.customStats.playerHealth;
@@ -87,27 +85,15 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         UpdateMovement();
         UpdateRotation();
-        
-        _rb.velocity = movementVelocity + externalVelocity + personalVelocity;
-        
-        externalVelocity = Vector3.Lerp(externalVelocity, Vector3.zero, Time.deltaTime * externalVelocityDampingSpeed);
-        personalVelocity = Vector3.Lerp(personalVelocity, Vector3.zero, Time.deltaTime * personalVelocityDampingSpeed);
-    }
-    
-    public void AddExternalForce(Vector3 velocity) {
-        externalVelocity += velocity;
-    }
-    public void AddPersonalForce(Vector3 force) {
-        personalVelocity += force;
     }
 
     #region Movement
         public void OnMove(InputAction.CallbackContext context) {
-            _direction = context.ReadValue<Vector2>();
+            _inputDirection = context.ReadValue<Vector2>();
         }
         private void UpdateMovement() {
-            Vector3 targetVelocity = new(_direction.x * movementSpeed, 0, _direction.y * movementSpeed);
-            movementVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
+            Vector3 targetVelocity = new(_inputDirection.x * movementSpeed, 0, _inputDirection.y * movementSpeed);
+            movementComponent.moveVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * turningRadius);
         }
         public Vector2 GetMovementInput() {
             return _playerControls.Player.Move.ReadValue<Vector2>();
@@ -116,12 +102,13 @@ public class PlayerController : MonoBehaviour
 
     #region Rotation and Aiming
         public void OnLook(InputAction.CallbackContext context) {
-            lookDirection += context.ReadValue<Vector2>();
-            lookDirection = Vector2.ClampMagnitude(lookDirection, maxReticleDistance);
+            _lookInputSum += context.ReadValue<Vector2>();
+            _lookInputSum = Vector2.ClampMagnitude(_lookInputSum, maxReticleDistance);
         }
         private void UpdateRotation() {
-            Vector3 reticlePos = new(lookDirection.x / 100, 1, lookDirection.y / 100);
+            Vector3 reticlePos = new(_lookInputSum.x / 100, 1, _lookInputSum.y / 100);
             reticle.transform.position = reticlePos + transform.position;
+            // rotate player object to face reticle
             Quaternion toRotation = Quaternion.LookRotation(reticlePos, Vector3.up);
             transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
         }

@@ -14,7 +14,7 @@ namespace Game.Scripts.Player.Abilities {
             Vector2 movementInput = _player.GetMovementInput();
             Vector3 dashDirection = movementInput.x * Vector3.right + movementInput.y * Vector3.forward;
             
-            _player.AddPersonalForce(dashForce * dashDirection);
+            _player.movementComponent.AddPersonalVelocity(dashForce * dashDirection);
             StartCoroutine(WaitForDashCooldown());
         }
         IEnumerator WaitForDashCooldown() {

@@ -160,7 +160,7 @@ namespace Game.Scripts
                     WallHitBullets(collisionPoint);
                     Vector3 bounceVelocity = transform.position - collisionPoint;
                     bounceVelocity.Normalize();
-                    GetComponent<EnemyMovement>().AddExternalVelocity(bounceVelocity*10);
+                    GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity*10);
                     ScreenShake.instance.StartShake(.2f, .5f);
                     Charge();
                 }
@@ -169,7 +169,7 @@ namespace Game.Scripts
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
                     Vector3 bounceVelocity = transform.position - collisionPoint;
                     bounceVelocity.Normalize();
-                    GetComponent<EnemyMovement>().AddExternalVelocity(bounceVelocity * 10);
+                    GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity * 10);
                     ScreenShake.instance.StartShake(.2f, .3f);
                     turnDelta = 4;
                     timer.Set(.2f, -2);
