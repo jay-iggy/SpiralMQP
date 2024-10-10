@@ -39,7 +39,7 @@ namespace Game.Scripts {
             onHealthChanged.Invoke(health);
         }
         public void TakeDamage(float damage) {
-            if(isInvincible()) {
+            if(IsInvincible()) {
                 return;
             }
             
@@ -63,6 +63,10 @@ namespace Game.Scripts {
             TakeDamage(damage);
         }
 
+        public bool CanBeHit() {
+            return isAlive && !IsInvincible();
+        }
+
         private void ShowFloatingText(float damage) {
             FloatingText textObj = Instantiate(floatingTextPrefab);
             textObj.transform.position = transform.position;
@@ -74,7 +78,7 @@ namespace Game.Scripts {
             HitPause.instance.Pause(0.35f);
         }
         
-        public bool isInvincible() {
+        public bool IsInvincible() {
             return invincibleUntil > Time.time;
         }
     }
