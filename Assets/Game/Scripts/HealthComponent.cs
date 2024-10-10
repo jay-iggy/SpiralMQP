@@ -39,7 +39,7 @@ namespace Game.Scripts {
             onHealthChanged.Invoke(health);
         }
         public void TakeDamage(float damage) {
-            if(invincibleUntil > Time.time) {
+            if(isInvincible()) {
                 return;
             }
             
@@ -72,6 +72,10 @@ namespace Game.Scripts {
         private void PlayDeathJuice() {
             ScreenShake.instance.StartShake(0.5f, 0.5f);
             HitPause.instance.Pause(0.35f);
+        }
+        
+        public bool isInvincible() {
+            return invincibleUntil > Time.time;
         }
     }
 }
