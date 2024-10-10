@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Game.Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(MovementComponent))]
 public class PlayerController : MonoBehaviour {
