@@ -70,9 +70,9 @@ public class PlayerController : MonoBehaviour {
         _playerControls = new PlayerInput();
         _playerControls.Player.Move.performed += OnMove;
         _playerControls.Player.Move.canceled += OnMove;
+        _playerControls.Player.Look.performed += OnLook;
         _playerControls.Player.Fire.performed += OnPrimary;
         _playerControls.Player.Fire.canceled += OnPrimaryReleased;
-        _playerControls.Player.Look.performed += OnLook;
         _playerControls.Player.Dodge.performed += OnSecondary;
         _playerControls.Player.Dodge.canceled += OnSecondaryReleased;
     }
