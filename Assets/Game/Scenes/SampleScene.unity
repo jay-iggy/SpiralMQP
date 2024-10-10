@@ -431,7 +431,7 @@ MonoBehaviour:
       m_Calls: []
   invincibilityDuration: 1
   affectsHitless: 1
-  floatingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+  floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 5
 --- !u!136 &118477964
