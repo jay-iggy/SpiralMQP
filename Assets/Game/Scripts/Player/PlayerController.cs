@@ -8,12 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(MovementComponent))]
-public class PlayerController : MonoBehaviour
-{
-    
-    // TODO: velocity is overriden by the movement script, so the player can't be pushed by other sources
-    // player rigidbody is getting affected by other things and the rotation is getting fucky
-    
+public class PlayerController : MonoBehaviour {
     [Header("Movement Settings")]
     public float walkSpeed;
     [HideInInspector] public float movementSpeed;
