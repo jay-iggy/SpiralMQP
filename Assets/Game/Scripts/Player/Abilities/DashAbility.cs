@@ -10,10 +10,9 @@ namespace Game.Scripts.Player.Abilities {
         [SerializeField] private float dashCooldown = 1f;
         public override void AbilityPressed() {
             if(!canDash) return;
-            // get player facing direction
+            
             Vector2 movementInput = _player.GetMovementInput();
             Vector3 dashDirection = movementInput.x * Vector3.right + movementInput.y * Vector3.forward;
-            
             _player.movementComponent.AddPersonalVelocity(dashForce * dashDirection);
             StartCoroutine(WaitForDashCooldown());
         }
