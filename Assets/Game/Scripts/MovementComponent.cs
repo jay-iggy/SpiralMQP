@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class EnemyMovement : MonoBehaviour {
-    private Vector3 moveVelocity;
+public class MovementComponent : MonoBehaviour {
+    public Vector3 moveVelocity;
     private Vector3 externalVelocity;
     private Vector3 personalVelocity;
-    [SerializeField] private float externalVelocityDamping = 1;
-    [SerializeField] private float personalVelocityDamping = 1;
+    [SerializeField] private float externalVelocityDamping = 5;
+    [SerializeField] private float personalVelocityDamping = 5;
     
     private Rigidbody _rb;
     
@@ -25,5 +25,8 @@ public class EnemyMovement : MonoBehaviour {
     
     public void AddExternalVelocity(Vector3 velocity) {
         externalVelocity += velocity;
+    }
+    public void AddPersonalVelocity(Vector3 velocity) {
+        personalVelocity += velocity;
     }
 }

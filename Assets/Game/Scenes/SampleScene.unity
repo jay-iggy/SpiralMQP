@@ -304,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118477961}
   - component: {fileID: 118477960}
+  - component: {fileID: 118477965}
   - component: {fileID: 118477963}
   - component: {fileID: 118477962}
   - component: {fileID: 118477964}
@@ -327,13 +328,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
-  runSpeed: 8
   movementSpeed: 0
-  turningRadius: 15
+  movementLerpSpeed: 15
   playerModel: {fileID: 1841929983}
-  isRunning: 0
-  personalVelocityDampingSpeed: 5
-  externalVelocityDampingSpeed: 5
+  movementComponent: {fileID: 0}
   reticle: {fileID: 663399550}
   maxReticleDistance: 300
   abilityParent: {fileID: 92262649}
@@ -433,7 +431,7 @@ MonoBehaviour:
       m_Calls: []
   invincibilityDuration: 1
   affectsHitless: 1
-  floatingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+  floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 5
 --- !u!136 &118477964
@@ -459,6 +457,21 @@ CapsuleCollider:
   m_Height: 1.94
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &118477965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118477959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8107d6c8d410a4faa50878b70903c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVelocity: {x: 0, y: 0, z: 0}
+  externalVelocityDamping: 5
+  personalVelocityDamping: 5
 --- !u!1001 &149467469
 PrefabInstance:
   m_ObjectHideFlags: 0

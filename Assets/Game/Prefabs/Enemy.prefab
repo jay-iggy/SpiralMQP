@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8107d6c8d410a4faa50878b70903c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveVelocity: {x: 0, y: 0, z: 0}
   externalVelocityDamping: 5
   personalVelocityDamping: 1
 --- !u!114 &5226210422890411109
@@ -116,7 +117,7 @@ MonoBehaviour:
       m_Calls: []
   invincibilityDuration: 0.2
   affectsHitless: 0
-  floatingTextPrefab: {fileID: 6108515447666426594, guid: 9bcf0550e0d46ab478862aa16af41e2b,
+  floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 10
 --- !u!65 &6391814892263382719

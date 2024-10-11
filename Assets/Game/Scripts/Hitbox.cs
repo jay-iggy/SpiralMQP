@@ -20,7 +20,9 @@ namespace Game.Scripts {
                 
                 foreach (string tag in tagsToHit) {
                     if (other.gameObject.CompareTag(tag)) {
-                        onHitTarget.Invoke(hurtbox);
+                        if(hurtbox.CanBeHit()) {
+                            onHitTarget.Invoke(hurtbox);
+                        }
                     }
                 }
             }
