@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
     // References
     private Rigidbody _rb;
     private PlayerInput _playerControls; // this isn't a PlayerInput component, its a compiled input action asset named PlayerInput
+    private HealthComponent healthComponent;
 
     private void Awake() {
         Cursor.visible = false;
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         // set player stats to custom values
         walkSpeed = CustomStatsManager.instance.customStats.playerSpeed;
-        HealthComponent healthComponent = GetComponent<HealthComponent>();
+        healthComponent = GetComponent<HealthComponent>();
         healthComponent.maxHealth = CustomStatsManager.instance.customStats.playerHealth;
         healthComponent.SetHealth(healthComponent.maxHealth);
         
@@ -49,6 +50,11 @@ public class PlayerController : MonoBehaviour {
         
         SetPrimaryAbility(primaryAbility);
         SetSecondaryAbility(secondaryAbility);
+    }
+
+    public HealthComponent GetHealthComponent()
+    {
+        return healthComponent;
     }
 
     private void OnEnable() {
