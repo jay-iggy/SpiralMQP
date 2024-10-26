@@ -53,6 +53,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dmg: 1
+  persistent: 0
 --- !u!135 &7011378181958481318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77f5a7741b3d6f74981f7369f135c8fd, type: 2}
+  - {fileID: 2100000, guid: 8bbd21b63556a4cd49ceb63a0bcdd15f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
