@@ -50,3 +50,4 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
   isAutomatic: 0
+  spawnOffset: {x: 0, y: 1, z: 0}

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Look Settings")]
     [SerializeField] GameObject reticle;
     [SerializeField] private float maxReticleDistance = 300;
-    private Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
+    public Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
     
 
     [Header("Abilities")]
