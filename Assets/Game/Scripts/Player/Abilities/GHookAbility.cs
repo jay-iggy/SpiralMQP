@@ -5,13 +5,11 @@ namespace Game.Scripts.Player.Abilities
 {
     public class GHookAbility : Ability
     {
-        public float hookForce;
         private bool canHook = true;
         private float hookCooldown = 3;
 
         private bool shooting = false;
         private bool attatched = false;
-        private bool pulling = false;
 
         private Vector3 grapplePoint;
         private Vector3 grappleEnd;
@@ -42,13 +40,12 @@ namespace Game.Scripts.Player.Abilities
             {
                 shooting = true;
                 grapplePoint = hit.point;
-                DrawRope();
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            DrawRope();
+            HandleGrapplingHook();
         }
 
         IEnumerator WaitForHookCooldown()
@@ -62,7 +59,6 @@ namespace Game.Scripts.Player.Abilities
         {
             shooting = false;
             attatched = false;
-            pulling = false;
             grapplePoint = Vector3.zero;
             grappleEnd = Vector3.zero;
             percentToTarget = 0;
@@ -70,45 +66,38 @@ namespace Game.Scripts.Player.Abilities
             // StartCoroutine(WaitForHookCooldown());
         }
 
-        private void DrawRope()
+        private void HandleGrapplingHook()
         {
-            if (!attatched && Vector3.Distance(lr.GetPosition(1), grapplePoint) == 0)
-            {
-                attatched = true;
-                pulling = true;
-                percentToTarget = 0;
-            }
-            if (percentToTarget >= 1)
-            {
-                attatched = true;
-                pulling = true;
-                percentToTarget = 0;
-            }
-
-            if (pulling || attatched) // retract
-            {
-                if (percentToTarget >= 1) // end when fully retracted
-                {
-                    lr.positionCount = 0;
-                    percentToTarget = 0;
-                    pulling = false;
-                    attatched = false;
-                    return;
-                }
-
-                percentToTarget += percentIncrement;
-                player.transform.position = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
-                lr.positionCount = 2;
-                lr.SetPosition(0, this.transform.position);
-                lr.SetPosition(1, grapplePoint);
-            }
-            else // extend
+            if (shooting) // extend
             {
                 grappleEnd = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
                 percentToTarget += percentIncrement;
                 lr.positionCount = 2;
                 lr.SetPosition(0, this.transform.position);
                 lr.SetPosition(1, grappleEnd);
+
+                if (percentToTarget >= 1)
+                {
+                    shooting = false;
+                    attatched = true;
+                    percentToTarget = 0;
+                }
+            }
+
+            if (attatched) // retract
+            {
+                percentToTarget += percentIncrement;
+                player.transform.position = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
+                lr.positionCount = 2;
+                lr.SetPosition(0, this.transform.position);
+                lr.SetPosition(1, grapplePoint);
+
+                if (percentToTarget >= 1) // end when fully retracted
+                {
+                    lr.positionCount = 0;
+                    percentToTarget = 0;
+                    attatched = false;
+                }
             }
         }
     }
