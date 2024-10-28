@@ -1,121 +1,114 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Game.Scripts.Player.Abilities {
-    public class GHookAbility : Ability {
+namespace Game.Scripts.Player.Abilities
+{
+    public class GHookAbility : Ability
+    {
         public float hookForce;
         private bool canHook = true;
         private float hookCooldown = 3;
+
+        private bool shooting = false;
         private bool attatched = false;
+        private bool pulling = false;
 
         private Vector3 grapplePoint;
+        private Vector3 grappleEnd;
         public LayerMask whatIsGrappleable;
         public Transform player;
         private float maxDistance = 100f;
 
-        private GHookSpring spring;
+        private float percentToTarget = 0; // [0,1]
+        private float percentIncrement = 0.05f;
+
         private LineRenderer lr;
-        private Vector3 currentGrapplePosition;
-        public int quality;
-        public float damper;
-        public float strength;
-        public float velocity;
-        public float waveCount;
-        public float waveHeight;
-        public AnimationCurve affectCurve;
 
         private void Start()
         {
             player = _player.transform;
             lr = GetComponent<LineRenderer>();
-            spring = new GHookSpring();
-            spring.SetTarget(0);
         }
 
-        public override void AbilityPressed() {
-            if(!canHook) return;
+        public override void AbilityPressed()
+        {
+            if (!canHook) return;
 
             Vector2 aim = _player._cumulativeLookInput;
-            Vector3 hookDirection = (aim.x * Vector3.right + aim.y * Vector3.forward);
+            Vector3 hookDirection = aim.x * Vector3.right + aim.y * Vector3.forward;
 
             RaycastHit hit;
             if (Physics.Raycast(player.position, hookDirection, out hit, maxDistance, whatIsGrappleable))
             {
-                Debug.DrawRay(player.position, hookDirection);
-                attatched = true;
+                shooting = true;
                 grapplePoint = hit.point;
-                Debug.Log("GRAPPLE PT: " + grapplePoint);
                 DrawRope();
             }
-
-            // _player.movementComponent.AddPersonalVelocity(hookForce * hookDirection);
         }
 
         private void Update()
         {
-            if(attatched)
-                DrawRope();
+            DrawRope();
         }
 
-        IEnumerator WaitForHookCooldown() {
+        IEnumerator WaitForHookCooldown()
+        {
             canHook = false;
             yield return new WaitForSeconds(hookCooldown);
             canHook = true;
         }
 
-        public override void AbilityReleased() {
+        public override void AbilityReleased()
+        {
+            shooting = false;
             attatched = false;
+            pulling = false;
+            grapplePoint = Vector3.zero;
+            grappleEnd = Vector3.zero;
+            percentToTarget = 0;
             lr.positionCount = 0;
             // StartCoroutine(WaitForHookCooldown());
         }
 
-        public bool IsGrappling()
+        private void DrawRope()
         {
-            return attatched;
-        }
-
-        public Vector3 GetGrapplePoint()
-        {
-            return grapplePoint;
-        }
-
-        void DrawRope()
-        {
-            //If not grappling, don't draw rope
-            if (!IsGrappling())
+            if (!attatched && Vector3.Distance(lr.GetPosition(1), grapplePoint) == 0)
             {
-                currentGrapplePosition = this.transform.position;
-                spring.Reset();
-                if (lr.positionCount > 0)
+                attatched = true;
+                pulling = true;
+                percentToTarget = 0;
+            }
+            if (percentToTarget >= 1)
+            {
+                attatched = true;
+                pulling = true;
+                percentToTarget = 0;
+            }
+
+            if (pulling || attatched) // retract
+            {
+                if (percentToTarget >= 1) // end when fully retracted
+                {
                     lr.positionCount = 0;
-                return;
+                    percentToTarget = 0;
+                    pulling = false;
+                    attatched = false;
+                    return;
+                }
+
+                percentToTarget += percentIncrement;
+                player.transform.position = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
+                lr.positionCount = 2;
+                lr.SetPosition(0, this.transform.position);
+                lr.SetPosition(1, grapplePoint);
             }
-
-            if (lr.positionCount == 0)
+            else // extend
             {
-                spring.SetVelocity(velocity);
-                lr.positionCount = quality + 1;
-                currentGrapplePosition = this.transform.position;
-            }
-
-            spring.SetDamper(damper);
-            spring.SetStrength(strength);
-            spring.UpdateSpring(Time.deltaTime);
-
-            var grapplePoint = GetGrapplePoint();
-            var startPos = this.transform.position;
-            var up = Quaternion.LookRotation((grapplePoint - startPos).normalized) * Vector3.forward;
-
-            currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 12f);
-            Debug.Log(currentGrapplePosition);
-
-            for (var i = 0; i < quality + 1; i++)
-            {
-                var delta = i / (float)quality;
-                var offset = up * waveHeight * Mathf.Sin(delta * waveCount * Mathf.PI) * spring.Value *
-                             affectCurve.Evaluate(delta);
-
-                lr.SetPosition(i, Vector3.Lerp(startPos, currentGrapplePosition, delta) + offset);
+                grappleEnd = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
+                percentToTarget += percentIncrement;
+                lr.positionCount = 2;
+                lr.SetPosition(0, this.transform.position);
+                lr.SetPosition(1, grappleEnd);
             }
         }
     }
