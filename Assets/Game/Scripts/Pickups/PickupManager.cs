@@ -37,6 +37,7 @@ namespace Game.Scripts
 
         public void ItemCollected(int index)
         {
+            CombatManager.instance.TransitionToNextBoss();
             if (index != -1)
             {
                 pickups.RemoveAt(index);

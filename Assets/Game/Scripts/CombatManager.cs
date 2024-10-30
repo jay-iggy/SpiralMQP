@@ -45,7 +45,6 @@ namespace Game.Scripts {
         
 
         public void TransitionToNextBoss() {
-            Destroy(currentBoss.gameObject);
             onBossDefeated.Invoke();
             
             

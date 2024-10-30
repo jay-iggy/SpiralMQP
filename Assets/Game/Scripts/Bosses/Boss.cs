@@ -38,11 +38,18 @@ namespace Game.Scripts
             {
                 StickerManager.instance.ShowSticker(bossIndex);
             }
+
             if(PickupManager.instance != null)
             {
                 PickupManager.instance.DropItems(minItemRarity);
             }
-            CombatManager.instance.TransitionToNextBoss();
+            else //if pickup manager exists, it will handle boss transition
+            {
+                CombatManager.instance.TransitionToNextBoss();
+            }
+
+            Destroy(gameObject);
+            
         }
 
         protected void CheckForAttack() {
