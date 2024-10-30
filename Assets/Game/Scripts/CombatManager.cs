@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Scripts.Analytics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -39,6 +40,9 @@ namespace Game.Scripts {
         public UnityEvent onGameStart = new();
         public UnityEvent onBossDefeated = new();
         public UnityEvent onFinalBossDefeated = new();
+        
+        public UnityEvent onPlayerWin = new();
+        public UnityEvent onPlayerLose = new();
         
         public HealthComponent playerHealth;
         
@@ -79,13 +83,21 @@ namespace Game.Scripts {
         }
 
         public void OnPlayerWin() {
-            AnalyticsManager.instance.analyticsData.runData.isWin = true;
-            AnalyticsManager.instance.SaveDataToCSV();
+            if(AnalyticsManager.instance != null) {
+                AnalyticsManager.instance.analyticsData.runData.isWin = true;
+                AnalyticsManager.instance.SaveDataToCSV();
+            }
+            
+            onPlayerWin.Invoke();
         }
         public void OnPlayerLose() {
-            AnalyticsManager.instance.analyticsData.runData.isWin = false;
-            AnalyticsManager.instance.TrackBossAnalytics();
-            AnalyticsManager.instance.SaveDataToCSV();
+            if (AnalyticsManager.instance != null) {
+                AnalyticsManager.instance.analyticsData.runData.isWin = false;
+                AnalyticsManager.instance.TrackBossAnalytics();
+                AnalyticsManager.instance.SaveDataToCSV();
+            }
+            
+            onPlayerLose.Invoke();
         }
     }
 }

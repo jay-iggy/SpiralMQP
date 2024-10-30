@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour {
     [SerializeField] GameObject playerModel;
     
+    private bool _canMove = true;
+    private bool _canLook = true;
+    private bool _canAttack = true;
+    
     [Header("Movement Settings")]
     public float walkSpeed;
     [HideInInspector] public float movementSpeed;
@@ -59,9 +63,11 @@ public class PlayerController : MonoBehaviour {
 
     private void OnEnable() {
         _playerControls.Enable();
+        CombatManager.instance.onPlayerLose.AddListener(Die);
     }
     private void OnDisable(){
         _playerControls.Disable();
+        CombatManager.instance.onPlayerLose.RemoveListener(Die);
     }
 
     private void OnDestroy() {
@@ -69,6 +75,12 @@ public class PlayerController : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void Die() {
+        _canMove = false;
+        _canLook = false;
+        _canAttack = false;
+    }
+    
     private void CreatePlayerControls() {
         _playerControls = new PlayerInput();
         _playerControls.Player.Move.performed += OnMove;
@@ -91,6 +103,7 @@ public class PlayerController : MonoBehaviour {
         }
         private void UpdateMovement() {
             Vector3 targetVelocity = new(_movementInput.x * movementSpeed, 0, _movementInput.y * movementSpeed);
+            if(!_canMove) targetVelocity = Vector3.zero;
             movementComponent.moveVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * movementLerpSpeed);
         }
         public Vector2 GetMovementInput() {
@@ -100,6 +113,9 @@ public class PlayerController : MonoBehaviour {
 
     #region Rotation and Aiming
         public void OnLook(InputAction.CallbackContext context) {
+            if(!_canLook) {
+                return;
+            }
             _cumulativeLookInput += context.ReadValue<Vector2>();
             _cumulativeLookInput = Vector2.ClampMagnitude(_cumulativeLookInput, maxReticleDistance);
         }
@@ -114,6 +130,9 @@ public class PlayerController : MonoBehaviour {
     
     #region Primary Ability
         public void OnPrimary(InputAction.CallbackContext context) {
+            if (!_canAttack) {
+                return;
+            }
             primaryAbility.AbilityPressed();
         }
         public void OnPrimaryReleased(InputAction.CallbackContext context) {
@@ -132,6 +151,9 @@ public class PlayerController : MonoBehaviour {
 
     #region Secondary Ability
         public void OnSecondary(InputAction.CallbackContext context) {
+            if (!_canAttack) {
+                return;
+            }
             secondaryAbility.AbilityPressed();
         }
         public void OnSecondaryReleased(InputAction.CallbackContext context) {
