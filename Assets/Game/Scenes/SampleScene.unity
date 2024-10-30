@@ -2610,9 +2610,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPickup: {fileID: 4997622612546811508, guid: 36dce8dd419e0b142aec8763cd5dfcb0,
     type: 3}
-  abilityPickups:
+  pickups:
   - {fileID: 915226059927050450, guid: d21b9509e5e9c7d4384da8f1db71341d, type: 3}
   - {fileID: 915226059927050450, guid: 6215c8af3e1844c4d8b6b7cdf4a1313c, type: 3}
+  onItemCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1207691413
 GameObject:
   m_ObjectHideFlags: 0

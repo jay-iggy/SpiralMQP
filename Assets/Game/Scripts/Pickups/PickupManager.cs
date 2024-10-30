@@ -2,16 +2,18 @@ using Game.Scripts.Pickups;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts
 {
     public class PickupManager : MonoBehaviour
     {
         [SerializeField] HealthPickup healthPickup;
-        [SerializeField] List<AbilityPickup> abilityPickups;
+        [SerializeField] List<ItemPickup> pickups;
         Vector3[] itemDropLocations = new Vector3[3];
 
         public static PickupManager instance;
+        public UnityEvent onItemCollected;
 
         private void Awake()
         {
@@ -33,37 +35,46 @@ namespace Game.Scripts
             }
         }
 
+        public void ItemCollected(int index)
+        {
+            if (index != -1)
+            {
+                pickups.RemoveAt(index);
+            }
+            onItemCollected.Invoke();
+        }
+
         public void DropItems(ItemRarity rarity)
         {
             Instantiate(healthPickup, itemDropLocations[0], Quaternion.identity);
-            AbilityPickup item1 = NextValidItem(ItemType.NONE, rarity);
+            ItemPickup item1 = MakeValidItem(ItemType.NONE, rarity, itemDropLocations[1]);
             if (item1 == null) return;
-            AbilityPickup item2 = NextValidItem(item1.itemType, rarity);
-            Instantiate(item1, itemDropLocations[1], Quaternion.identity);
-            if (item2 == null) return;
-            Instantiate(item2, itemDropLocations[2], Quaternion.identity);
+            ItemPickup item2 = MakeValidItem(item1.itemType, rarity, itemDropLocations[2]);
         }
 
-        private AbilityPickup NextValidItem(ItemType excludeType, ItemRarity minRarity)
+        private ItemPickup MakeValidItem(ItemType excludeType, ItemRarity minRarity, Vector3 location)
         {
-            if (abilityPickups.Count == 0) return null;
+            if (pickups.Count == 0) return null;
 
-            int i = 0;
-            AbilityPickup a = null;
-            while(a == null)
+            int startingIndex = Random.Range(0, pickups.Count);
+            int i = startingIndex;
+            ItemPickup p = null;
+            while(p == null)
             {
-                if (abilityPickups[i].itemType != excludeType)
+                if (pickups[i].itemType != excludeType)
                 {
-                    a = abilityPickups[i];
+                    p = pickups[i];
                 }
                 else
                 {
                     i++;
-                    if (i >= abilityPickups.Count) return null;
+                    if (i >= pickups.Count) i = 0;
+                    if (i == startingIndex) return null;
                 }
             }
-            abilityPickups.RemoveAt(i);
-            return a;
+            ItemPickup item = Instantiate(p, location, Quaternion.identity);
+            item.SetIndex(i);
+            return p;
         }
     }
 
