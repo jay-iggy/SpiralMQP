@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 4
+  itemRarity: 0
   ability: {fileID: -996894561774761802, guid: 2b4d136f41a01438ab984ceefa526610, type: 3}
   slot: 1
 --- !u!135 &8128887591403588042

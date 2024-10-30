@@ -6,8 +6,7 @@ namespace Game.Scripts.Pickups {
         
         public Ability ability;
         public AbilitySlot slot;
-        
-        
+
         protected override void ApplyEffect(PlayerController player) {
             Ability a = Instantiate(ability, player.transform);
             

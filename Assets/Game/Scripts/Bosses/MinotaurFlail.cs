@@ -153,7 +153,7 @@ namespace Game.Scripts
                 if(shootTimer >= fireSpeed)
                 {
                     GameObject curBullet = Instantiate(bullet);
-                    curBullet.transform.position = new Vector3(flailTip.transform.position.x, curBullet.transform.position.y, flailTip.transform.position.z);
+                    curBullet.transform.position = new Vector3(flailTip.transform.position.x, transform.position.y, flailTip.transform.position.z);
                     BulletPatterns.MoveTowards(curBullet, transform.position, -8);
                     shootTimer = 0;
                 }

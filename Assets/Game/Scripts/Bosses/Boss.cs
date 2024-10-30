@@ -14,6 +14,7 @@ namespace Game.Scripts
         private bool isAlive = true;
         private bool waitForAttack = false;
         [SerializeField] int bossIndex; //used to match bosses to stickers
+        [SerializeField] ItemRarity minItemRarity = ItemRarity.COMMON;
 
         void Start() {
             attackList = GetComponent<ICanAttack>();
@@ -36,7 +37,11 @@ namespace Game.Scripts
             if(StickerManager.instance != null)
             {
                 StickerManager.instance.ShowSticker(bossIndex);
-            }          
+            }
+            if(PickupManager.instance != null)
+            {
+                PickupManager.instance.DropItems(minItemRarity);
+            }
             CombatManager.instance.TransitionToNextBoss();
         }
 

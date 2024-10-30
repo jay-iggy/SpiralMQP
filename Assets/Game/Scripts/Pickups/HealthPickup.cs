@@ -6,6 +6,10 @@ namespace Game.Scripts.Pickups
 {
     public class HealthPickup : ItemPickup
     {
+        public HealthPickup()
+        {
+            itemType = ItemType.HEALTH;
+        }
         protected override void ApplyEffect(PlayerController player)
         {
             HealthComponent healthComponent = player.GetHealthComponent();
