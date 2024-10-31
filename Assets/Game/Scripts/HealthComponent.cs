@@ -17,7 +17,7 @@ namespace Game.Scripts {
         [SerializeField] bool affectsHitless = false;
 
         //Damage Display Stuff
-        public GameObject floatingTextPrefab;
+        public FloatingText floatingTextPrefab;
 
         public float health { get; private set; }
         public float maxHealth = 100;
@@ -35,13 +35,14 @@ namespace Game.Scripts {
         }
 
         public void SetHealth(float newHealth) {
-            if(invincibleUntil > Time.time) {
-                return;
-            }
             health = Mathf.Clamp(newHealth, 0, maxHealth);
             onHealthChanged.Invoke(health);
         }
         public void TakeDamage(float damage) {
+            if(IsInvincible()) {
+                return;
+            }
+            
             SetHealth(health - damage);
             onTakeDamage.Invoke();
             onTakeDamageFloat.Invoke(damage);
@@ -55,24 +56,30 @@ namespace Game.Scripts {
         }
 
         public void GetHit(float damage) {
-            if (affectsHitless)
-            {
+            if (affectsHitless) {
                 StickerManager.instance.hitless = false;
             }
 
             TakeDamage(damage);
         }
 
+        public bool CanBeHit() {
+            return isAlive && !IsInvincible();
+        }
+
         private void ShowFloatingText(float damage) {
-            GameObject textObj = Instantiate(floatingTextPrefab);
+            FloatingText textObj = Instantiate(floatingTextPrefab);
             textObj.transform.position = transform.position;
-            
-            textObj.GetComponent<TMP_Text>().SetText($"{damage}"); //set value, Currently only show 1
+            textObj.SetText($"{damage}");
         }
 
         private void PlayDeathJuice() {
             ScreenShake.instance.StartShake(0.5f, 0.5f);
             HitPause.instance.Pause(0.35f);
+        }
+        
+        public bool IsInvincible() {
+            return invincibleUntil > Time.time;
         }
     }
 }

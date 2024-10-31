@@ -8,6 +8,8 @@ namespace Game.Scripts {
         public float dmg = 1;
         [SerializeField] bool persistent = false;
         
+        //TODO: destroy on hit wall
+        
         private void Start() {
             onHitTarget.AddListener(OnHitTarget);
         }
@@ -19,6 +21,10 @@ namespace Game.Scripts {
 
         public void TargetPlayer(float speed) {
             GameObject player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
+            if(player == null) {
+                Debug.Log("Projectile.TargetPlayer(): No player found");
+                return;
+            }
             Vector3 v = Vector3.MoveTowards(transform.position, player.transform.position, speed);
             v -= transform.position;
             GetComponent<Rigidbody>().velocity = v; // expensive, we can cache the rigidbody

@@ -1,12 +1,17 @@
-﻿namespace Game.Scripts.Abilities {
+﻿using UnityEngine;
+
+namespace Game.Scripts.Abilities {
     public class RunAbility : Ability {
+        // TODO: make runSpeed a percentage rather than a flat value
+        public float runSpeed = 8;
+        [HideInInspector] public bool isRunning;
         public override void AbilityPressed() {
-            _player.isRunning = true;
-            _player.movementSpeed = _player.runSpeed;
+            isRunning = true;
+            _player.movementSpeed = runSpeed;
         }
 
         public override void AbilityReleased() {
-            _player.isRunning = false;
+            isRunning = false;
             _player.movementSpeed = _player.walkSpeed;
         }
     }

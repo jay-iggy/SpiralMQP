@@ -37,7 +37,7 @@ namespace Game.Scripts.Abilities {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<EnemyMovement>().AddExternalVelocity(direction * 5);
+                target.GetComponent<MovementComponent>().AddExternalVelocity(direction * 5);
             }
         }
 
@@ -75,7 +75,7 @@ namespace Game.Scripts.Abilities {
             if(other.gameObject.CompareTag(TagManager.Enemy)) { // TODO: make this based off hitbox tagsToHit
                 Vector3 direction = other.transform.position - transform.position;
                 direction.y = 0;
-                _player.AddPersonalForce(direction * 1);
+                _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
         }
     }

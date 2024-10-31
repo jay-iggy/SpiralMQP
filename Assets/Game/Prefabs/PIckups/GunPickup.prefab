@@ -134,8 +134,6 @@ MonoBehaviour:
   itemRarity: 0
   ability: {fileID: 677732930458458227, guid: 73bbd33a861a1154b8d30d2e2c1cd138, type: 3}
   slot: 0
-  pickupUIprefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
-    type: 3}
 --- !u!135 &8128887591403588042
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -3164,7 +3164,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224,
+        type: 3}
     - target: {fileID: 7418731707725810225, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
       propertyPath: m_Color.b
@@ -3183,7 +3184,7 @@ PrefabInstance:
     - target: {fileID: 7418731707725810225, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3630,12 +3631,12 @@ PrefabInstance:
     - target: {fileID: 3669778304605930386, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 604
+      value: -671
       objectReference: {fileID: 0}
     - target: {fileID: 3669778304605930386, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -460
+      value: -339
       objectReference: {fileID: 0}
     - target: {fileID: 3669778304605930386, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
@@ -3666,7 +3667,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a47d3608533878f49add38fc888b65e8,
+      objectReference: {fileID: 21300000, guid: 66888f3ac14db4b6e8a283bd05b82b02,
         type: 3}
     - target: {fileID: 7418731707725810225, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
@@ -4837,67 +4838,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893219516}
   m_CullTransparentMesh: 1
---- !u!1 &1933760476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1933760478}
-  - component: {fileID: 1933760477}
-  - component: {fileID: 1933760479}
-  m_Layer: 0
-  m_Name: '[Singleton] AnalyticsManager'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1933760477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933760476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd07ccdaa1e4df287f08bb3509c03a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1933760478
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933760476}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1933760479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933760476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940a2e3faf81e744d9957fe6045bc4a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comment: 'This is a DontDestroyOnLoad singleton.
-
-    Do not reference with Inspector
-    Unity Events.'
 --- !u!1 &2010491047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5566,4 +5506,3 @@ SceneRoots:
   - {fileID: 373573638}
   - {fileID: 1703873985}
   - {fileID: 2063252267}
-  - {fileID: 1933760478}

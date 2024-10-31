@@ -16,4 +16,4 @@ MonoBehaviour:
   bossPrefab: {fileID: 466556231990597027, guid: 0039a549dec4d4d89852eecdb6f54503,
     type: 3}
   nextEnemies:
-  - {fileID: 11400000, guid: 81f3196afbc234acdb2401cd4c0f8ebd, type: 2}
+  - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
