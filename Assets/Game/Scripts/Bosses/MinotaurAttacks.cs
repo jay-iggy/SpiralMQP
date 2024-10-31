@@ -13,7 +13,7 @@ namespace Game.Scripts
         private GameObject player;
         private Boss boss;
 
-        [SerializeField] GameObject triangle;
+        public GameObject triangle;
 
         private int curAttack = -1;
         private bool facingPlayer = false;
@@ -40,7 +40,7 @@ namespace Game.Scripts
         {
             if(curAttack == 2)
             {
-                flail.StopSpinning();
+                flail.StopTrailing();
             }
 
             curAttack = index;
@@ -52,8 +52,6 @@ namespace Game.Scripts
                     return FlailSmash();
                 case 2:
                     return SeekingCharge();
-                case 3:
-                    return Horns();
             }
             return 0;
         }
@@ -93,16 +91,12 @@ namespace Game.Scripts
 
         private float SeekingCharge()
         {
-            turnDelta = .5f;
-            flail.StartSpinning();
+            turnDelta = 1;
+            flail.StartTrailing();
             timer.Set(4.5f, 2);
             return 5;
         }
 
-        private float Horns()
-        {
-            return 0;
-        }
 
         public void OnTimerEnd(int data)
         {
@@ -115,11 +109,11 @@ namespace Game.Scripts
                     flail.Launch();
                     break;
                 case 2:
-                    flail.StopSpinning();
+                    flail.StopTrailing();
                     turnDelta = 2;
                     break;
                 case -2:
-                    turnDelta = .5f;
+                    turnDelta = 3;
                     break;
             }
         }
@@ -169,9 +163,9 @@ namespace Game.Scripts
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
                     Vector3 bounceVelocity = transform.position - collisionPoint;
                     bounceVelocity.Normalize();
-                    GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity * 10);
+                    GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity * 30);
                     ScreenShake.instance.StartShake(.2f, .3f);
-                    turnDelta = 4;
+                    turnDelta = 10;
                     timer.Set(.2f, -2);
                 }
             }
@@ -254,7 +248,7 @@ namespace Game.Scripts
             float sine = Mathf.Sin(angle);
             float cosine = Mathf.Cos(angle);
             Vector3 forwardVelocity = new Vector3(-sine, 0, cosine);
-            forwardVelocity *= chargeSpeed * .35f;
+            forwardVelocity *= chargeSpeed*.8f;
             transform.position += forwardVelocity;
         }
     }

@@ -7,6 +7,8 @@ namespace Game.Scripts
     public class MinotaurFlail : MonoBehaviour
     {
         private bool spinning = false;
+        private bool shooting = false;
+        private bool trailing = false;
         private float angularVelocity = 0;
         private GameObject player;
         [SerializeField] GameObject flailTip;
@@ -32,12 +34,28 @@ namespace Game.Scripts
 
         public void StartSpinning()
         {
+            fireSpeed = .08f;
             spinning = true;
+            shooting = true;
         }
 
         public void StopSpinning()
         {
             spinning = false;
+            shooting = false;
+        }
+
+        public void StartTrailing()
+        {
+            fireSpeed = .7f;
+            trailing = true;
+            shooting = true;
+        }
+
+        public void StopTrailing()
+        {
+            trailing = false;
+            shooting = false;
         }
 
         public void Launch()
@@ -95,6 +113,7 @@ namespace Game.Scripts
             {
                 launchStage = 2;
                 spinning = false;
+                shooting = false;
                 shootTimer = 0;
             }
 
@@ -133,6 +152,29 @@ namespace Game.Scripts
             {
                 angularVelocity = 0;
             }
+
+            if (trailing)
+            {
+                float targetRotation = minotaur.triangle.transform.localEulerAngles.z + 180;
+                if (targetRotation >= 360) targetRotation -= 360;
+
+                float angleDifference = transform.localEulerAngles.z - targetRotation;
+                if (Mathf.Abs(angleDifference) > 5f)
+                {
+                    if (angleDifference < 0)
+                    {
+                        angularVelocity = 4;
+                    }
+                    else
+                    {
+                        angularVelocity = -4;
+                    }
+                }
+                else
+                {
+                    angularVelocity = 0;
+                }
+            }
             
 
             Quaternion deltaQ = new Quaternion();
@@ -147,7 +189,7 @@ namespace Game.Scripts
                 transform.localEulerAngles += new Vector3(0, 0, 360);
             }
 
-            if (spinning)
+            if (shooting)
             {
                 shootTimer += Time.deltaTime;
                 if(shootTimer >= fireSpeed)
