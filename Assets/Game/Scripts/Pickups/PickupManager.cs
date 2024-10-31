@@ -9,7 +9,7 @@ namespace Game.Scripts
     public class PickupManager : MonoBehaviour
     {
         [SerializeField] HealthPickup healthPickup;
-        [SerializeField] List<ItemPickup> pickups;
+        [SerializeField] List<ItemPickup> pickups; 
         Vector3[] itemDropLocations = new Vector3[3];
 
         public static PickupManager instance;
@@ -60,17 +60,44 @@ namespace Game.Scripts
             int startingIndex = Random.Range(0, pickups.Count);
             int i = startingIndex;
             ItemPickup p = null;
+            ItemPickup skippedRarerItem = null;
             while(p == null)
             {
-                if (pickups[i].itemType != excludeType)
+                if (pickups[i].itemType != excludeType && pickups[i].itemRarity >= minRarity)
                 {
-                    p = pickups[i];
+                    if(pickups[i].itemRarity == minRarity)
+                    {
+                        p = pickups[i];
+                    }
+                    else
+                    {
+                        int pickupChance = 0;
+                        switch (pickups[i].itemRarity)
+                        {
+                            case ItemRarity.UNCOMMON:
+                                pickupChance = 2; //one in two chance
+                                break;
+                            case ItemRarity.RARE:
+                                pickupChance = 4;
+                                break;
+                        }
+
+                        int doSpawn = Random.Range(0, pickupChance);
+                        if (doSpawn == 0)
+                        {
+                            p = pickups[i];
+                        }
+                        else
+                        {
+                            skippedRarerItem = pickups[i];
+                        }
+                    }
                 }
-                else
+                if(p == null)
                 {
                     i++;
                     if (i >= pickups.Count) i = 0;
-                    if (i == startingIndex) return null;
+                    if (i == startingIndex) return skippedRarerItem;
                 }
             }
             ItemPickup item = Instantiate(p, location, Quaternion.identity);

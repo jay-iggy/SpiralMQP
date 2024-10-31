@@ -7248,19 +7248,7 @@ MonoBehaviour:
       m_Calls: []
   onPlayerLose:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1987421442}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   playerHealth: {fileID: 0}
 --- !u!1 &1065933998
 GameObject:
@@ -9014,12 +9002,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 708d6c5bd670ae3498d394b8bf2816f5, type: 3}
---- !u!1 &1987421442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3404744368164456625, guid: 708d6c5bd670ae3498d394b8bf2816f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1987421441}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1987421443 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2357422498898019687, guid: 708d6c5bd670ae3498d394b8bf2816f5,

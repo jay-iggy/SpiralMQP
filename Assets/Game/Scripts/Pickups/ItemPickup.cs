@@ -11,15 +11,15 @@ public enum ItemType
     HEALTH,
     RANGED,
     MELEE,
-    MOVEMENT
+    MOVEMENT,
+    PASSIVE
 }
 
 public enum ItemRarity
 {
     COMMON,
-    RARE,
-    EPIC,
-    LEGENDARY
+    UNCOMMON,
+    RARE
 }
 
 [RequireComponent(typeof(Collider))]
@@ -27,10 +27,18 @@ public abstract class ItemPickup : MonoBehaviour {
     public ItemType itemType;
     public ItemRarity itemRarity;
     private int itemIndex = -1; //-1 for health pickup, ability pickups >= 0
+    private float gracePeriod = .1f;
 
     private void Start()
     {
         PickupManager.instance.onItemCollected.AddListener(NotSelected);
+    }
+
+    private void Update()
+    {
+        if(gracePeriod > 0f) { 
+            gracePeriod -= Time.deltaTime; 
+        }
     }
 
     public void SetIndex(int i)
@@ -48,6 +56,8 @@ public abstract class ItemPickup : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (gracePeriod > 0) return;
+
         if (other.CompareTag(TagManager.Player)) {
             ApplyEffect(other.gameObject.GetComponent<PlayerController>());
             PickupManager.instance.ItemCollected(itemIndex);

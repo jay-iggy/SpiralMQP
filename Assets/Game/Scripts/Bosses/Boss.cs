@@ -48,6 +48,7 @@ namespace Game.Scripts
                 CombatManager.instance.TransitionToNextBoss();
             }
 
+            CombatManager.instance.DestroyBullets();
             Destroy(gameObject);
             
         }
