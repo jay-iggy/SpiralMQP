@@ -7,5 +7,7 @@ public class SpawnBlood : MonoBehaviour{
     public void Spawn() {
         ParticleSystem p = Instantiate(bloodPrefab, transform.position, Quaternion.identity);
         p.Play();
+        
+        // should delete particle system after it's done playing
     }
 }
