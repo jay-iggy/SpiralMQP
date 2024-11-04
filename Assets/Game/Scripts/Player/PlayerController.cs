@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour {
     private PlayerInput _playerControls; // this isn't a PlayerInput component, its a compiled input action asset named PlayerInput
     private HealthComponent healthComponent;
 
+    //audioTest
+    public AudioSource Slash;
+
     private void Awake() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -54,6 +57,9 @@ public class PlayerController : MonoBehaviour {
         
         SetPrimaryAbility(primaryAbility);
         SetSecondaryAbility(secondaryAbility);
+
+        //audio
+        Slash= GetComponent<AudioSource>();
     }
 
     public HealthComponent GetHealthComponent()
@@ -134,6 +140,7 @@ public class PlayerController : MonoBehaviour {
                 return;
             }
             primaryAbility.AbilityPressed();
+        Slash.Play();
         }
         public void OnPrimaryReleased(InputAction.CallbackContext context) {
             primaryAbility.AbilityReleased();
