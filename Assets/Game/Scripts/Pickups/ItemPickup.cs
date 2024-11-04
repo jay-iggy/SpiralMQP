@@ -24,12 +24,13 @@ public enum ItemRarity
 
 [RequireComponent(typeof(Collider))]
 public abstract class ItemPickup : MonoBehaviour {
+    public string itemName;
     public ItemType itemType;
     public ItemRarity itemRarity;
     private int itemIndex = -1; //-1 for health pickup, ability pickups >= 0
     private float gracePeriod = .1f;
 
-    private void Start()
+    protected void Start()
     {
         PickupManager.instance.onItemCollected.AddListener(NotSelected);
     }

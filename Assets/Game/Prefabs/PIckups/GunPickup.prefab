@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: GUN
   itemType: 2
   itemRarity: 0
   ability: {fileID: 677732930458458227, guid: 73bbd33a861a1154b8d30d2e2c1cd138, type: 3}

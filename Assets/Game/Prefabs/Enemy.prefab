@@ -194,7 +194,7 @@ MonoBehaviour:
   affectsHitless: 0
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
-  maxHealth: 10
+  maxHealth: 30
 --- !u!65 &6391814892263382719
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ namespace Game.Scripts
 
         public float Attack(int index)
         {
+
             if(curAttack == 2)
             {
                 flail.StopTrailing();
@@ -100,6 +101,7 @@ namespace Game.Scripts
 
         public void OnTimerEnd(int data)
         {
+
             switch (data)
             {
                 case 0:
@@ -239,6 +241,7 @@ namespace Game.Scripts
             if (angle < 0) angle += 360;
 
             float curAngle = triangle.transform.localEulerAngles.z;
+            if (curAngle < 0) curAngle += 360;
             if (curAngle > angle - turnDelta && curAngle < angle + turnDelta)
             {
                 facingPlayer = true;

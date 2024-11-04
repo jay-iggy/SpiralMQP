@@ -13,10 +13,9 @@ public class PickupUI : MonoBehaviour
     private TextMeshPro typeText;
     private TextMeshPro rarityText;
 
-    private Color commonColor;
-    private Color rareColor;
-    private Color epicColor;
-    private Color legendaryColor;
+    [SerializeField] Color commonColor;
+    [SerializeField] Color uncommonColor;
+    [SerializeField] Color rareColor;
 
     public void Awake()
     {
@@ -36,14 +35,11 @@ public class PickupUI : MonoBehaviour
             case ItemRarity.COMMON:
                 rarityColor = commonColor;
                 break;
+            case ItemRarity.UNCOMMON:
+                rarityColor = uncommonColor;
+                break;
             case ItemRarity.RARE:
                 rarityColor = rareColor;
-                break;
-            case ItemRarity.EPIC:
-                rarityColor = epicColor;
-                break;
-            case ItemRarity.LEGENDARY:
-                rarityColor = legendaryColor;
                 break;
         }
 

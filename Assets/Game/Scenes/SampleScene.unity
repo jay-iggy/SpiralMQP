@@ -320,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 110213053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.84, y: 0.35, z: -3.53}
+  m_LocalPosition: {x: -6.76, y: 0.35, z: -3.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -923,7 +923,7 @@ Transform:
   m_GameObject: {fileID: 336163228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.79, y: 0.35, z: -3.53}
+  m_LocalPosition: {x: 5.95, y: 0.35, z: -3.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   fist: {fileID: 749156769}
   punchCooldown: 0.25
   punchDuration: 0.5
-  dmg: 1
+  dmg: 2
   magnetismTrigger: {fileID: 732244746}
 --- !u!135 &732244746
 SphereCollider:

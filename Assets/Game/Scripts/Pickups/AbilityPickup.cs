@@ -11,8 +11,9 @@ namespace Game.Scripts.Pickups {
 
         public void Start()
         {
+            base.Start();
             GameObject pickupUI = Instantiate(pickupUIprefab, this.transform);
-            pickupUI.GetComponent<PickupUI>().updateValues(name, itemType, itemRarity);
+            pickupUI.GetComponent<PickupUI>().updateValues(itemName, itemType, itemRarity);           
         }
 
         protected override void ApplyEffect(PlayerController player) {
