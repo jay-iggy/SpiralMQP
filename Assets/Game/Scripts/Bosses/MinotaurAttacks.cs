@@ -91,7 +91,7 @@ namespace Game.Scripts
 
         private float SeekingCharge()
         {
-            turnDelta = 1;
+            turnDelta = .7f;
             flail.StartTrailing();
             timer.Set(4.5f, 2);
             return 5;
@@ -111,9 +111,6 @@ namespace Game.Scripts
                 case 2:
                     flail.StopTrailing();
                     turnDelta = 2;
-                    break;
-                case -2:
-                    turnDelta = 3;
                     break;
             }
         }
@@ -163,16 +160,48 @@ namespace Game.Scripts
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
                     Vector3 bounceVelocity = transform.position - collisionPoint;
                     bounceVelocity.Normalize();
-                    GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity * 30);
+                    GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity * 10);
                     ScreenShake.instance.StartShake(.2f, .3f);
-                    turnDelta = 10;
-                    timer.Set(.2f, -2);
+                    if(other.gameObject.name == "H")
+                    {
+                        Bounce(false);
+                    }
+                    else if(other.gameObject.name == "V")
+                    {
+                        Bounce(true);
+                    }                  
                 }
             }
             else if(other.gameObject.tag == "Player")
             {
                 other.gameObject.GetComponent<HealthComponent>().GetHit(1);
+                if(curAttack == 2)
+                {
+                    float xDif = Mathf.Abs(other.transform.position.x - transform.position.x);
+                    float yDif = Mathf.Abs(other.transform.position.y - transform.position.y);
+                    if (yDif > xDif)
+                    {
+                        Bounce(false);
+                    }
+                    else
+                    {
+                        Bounce(true);
+                    }
+                }
             }
+        }
+
+        private void Bounce(bool vertical)
+        {
+            float angle = triangle.transform.localEulerAngles.z;
+            if (!vertical)
+            {
+                angle += 180;
+                if (angle >= 360) angle -= 360;
+            }
+
+            angle = -angle + 360;
+            triangle.transform.localEulerAngles = new Vector3(0, 0, angle);
         }
 
         private void WallHitBullets(Vector3 center)

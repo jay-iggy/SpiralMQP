@@ -47,7 +47,7 @@ namespace Game.Scripts
 
         public void StartTrailing()
         {
-            fireSpeed = .7f;
+            fireSpeed = .5f;
             trailing = true;
             shooting = true;
         }
