@@ -7,6 +7,14 @@ namespace Game.Scripts.Pickups {
         public Ability ability;
         public AbilitySlot slot;
 
+        public GameObject pickupUIprefab;
+
+        public void Start()
+        {
+            GameObject pickupUI = Instantiate(pickupUIprefab, this.transform);
+            pickupUI.GetComponent<PickupUI>().updateValues(name, itemType, itemRarity);
+        }
+
         protected override void ApplyEffect(PlayerController player) {
             Ability a = Instantiate(ability, player.transform);
             
