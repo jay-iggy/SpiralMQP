@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2030792683537549546}
   - component: {fileID: 677732930458458227}
   m_Layer: 0
-  m_Name: ShootAbility
+  m_Name: RifleAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c3bff11004b6f899e723e595549eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 5
-  projectileDamage: 1
-  cooldown: 0.33
+  projectileSpeed: 8
+  projectileDamage: 5
+  cooldown: 2
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
   isAutomatic: 0
