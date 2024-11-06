@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
-    public class PunchAbility : Ability {
+    public class PunchAbility : AttackAbility {
         
         // note: a better solution would be to play an animation that has the collider enabled for the duration of the punch
         
@@ -15,7 +15,7 @@ namespace Game.Scripts.Abilities {
         [SerializeField] float punchCooldown = .25f;
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
-        public float dmg = 1;
+        public float dmg = 3;
         [SerializeField] private Collider magnetismTrigger;
         
         private void Start() {
@@ -26,6 +26,12 @@ namespace Game.Scripts.Abilities {
             punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
         }
+
+        public override void ModifyDamage(float delta)
+        {
+            dmg += delta;
+        }
+
         void BindHitbox(Hitbox hitbox) {
             hitbox.onHitTarget.AddListener(ProcessAttack);
         }

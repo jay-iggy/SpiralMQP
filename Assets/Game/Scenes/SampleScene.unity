@@ -1651,7 +1651,7 @@ MonoBehaviour:
   fist: {fileID: 749156769}
   punchCooldown: 0.25
   punchDuration: 0.5
-  dmg: 2
+  dmg: 3
   magnetismTrigger: {fileID: 732244746}
 --- !u!135 &732244746
 SphereCollider:
@@ -7615,6 +7615,7 @@ MonoBehaviour:
   - {fileID: 915226059927050450, guid: d21b9509e5e9c7d4384da8f1db71341d, type: 3}
   - {fileID: 915226059927050450, guid: 6215c8af3e1844c4d8b6b7cdf4a1313c, type: 3}
   - {fileID: 915226059927050450, guid: 7031cf9c40daa974f80d09954cc70c97, type: 3}
+  - {fileID: 915226059927050450, guid: e5f6d455d1718e84f903868b7afd67c7, type: 3}
   onItemCollected:
     m_PersistentCalls:
       m_Calls: []

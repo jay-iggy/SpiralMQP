@@ -2,7 +2,7 @@
 using UnityEngine.Serialization;
 
 namespace Game.Scripts.Player.Abilities {
-    public class ShootAbility : Ability {
+    public class ShootAbility : AttackAbility {
         public float projectileSpeed = 5f;
         public float projectileDamage = 1f;
         public float cooldown = 0.33f;
@@ -22,7 +22,12 @@ namespace Game.Scripts.Player.Abilities {
         public override void AbilityReleased() {
             isHolding = false;
         }
-        
+
+        public override void ModifyDamage(float delta)
+        {
+            projectileDamage += delta;
+        }
+
         private void Update() {
             if(_cooldownTimer > 0) {
                 _cooldownTimer -= Time.deltaTime;

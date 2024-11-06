@@ -17,7 +17,7 @@ namespace Game.Scripts.Pickups {
         }
 
         protected override void ApplyEffect(PlayerController player) {
-            Ability a = Instantiate(ability, player.transform);
+            Ability a = Instantiate(ability, player.transform.GetChild(1));
             
             switch (slot) {
                 case AbilitySlot.Primary:
@@ -32,6 +32,7 @@ namespace Game.Scripts.Pickups {
     
     public enum AbilitySlot {
         Primary,
-        Secondary
+        Secondary,
+        Passive
     }
 }
