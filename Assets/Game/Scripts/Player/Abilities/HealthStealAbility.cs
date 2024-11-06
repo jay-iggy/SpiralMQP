@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Game.Scripts.Abilities
+{
+    public class HealthStealAbility : MonoBehaviour
+    {
+        private float damageDone = 0;
+        private HealthComponent bossHP;
+        private HealthComponent playerHP;
+
+        private void Start()
+        {
+            CombatManager.instance.onBossSpawned.AddListener(setBossHP);          
+            playerHP = transform.parent.parent.GetComponent<HealthComponent>();
+            playerHP.onTakeDamage.AddListener(resetDamageDone);
+        }
+
+        public void setBossHP()
+        {
+            bossHP = CombatManager.instance.currentBoss.GetComponent<HealthComponent>();
+            bossHP.onTakeDamageFloat.AddListener(trackDamageDone);
+        }
+
+        public void trackDamageDone(float d)
+        {
+            damageDone += d;
+            if(damageDone >= 15)
+            {
+                playerHP.SetHealth(playerHP.health + 1);
+                damageDone = 0;
+            }
+        }
+
+        public void resetDamageDone()
+        {
+            damageDone = 0;
+        }
+
+    }
+}

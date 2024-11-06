@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2030792683537549546}
-  - component: {fileID: 7772875062703490439}
+  - component: {fileID: 6345803097803230701}
   m_Layer: 0
-  m_Name: Lifesteal
+  m_Name: HealthStealAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7772875062703490439
+--- !u!114 &6345803097803230701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2653171394673493507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c34f62af8a64924787bf8c67fa65e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b5f6a1b6af6cdd49ba781322b4ae990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berserkMaterial: {fileID: 2100000, guid: f294b142429a2c940b001dbc33ec756a, type: 2}

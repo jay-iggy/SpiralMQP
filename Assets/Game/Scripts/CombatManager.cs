@@ -40,6 +40,7 @@ namespace Game.Scripts {
         public UnityEvent onGameStart = new();
         public UnityEvent onBossDefeated = new();
         public UnityEvent onFinalBossDefeated = new();
+        public UnityEvent onBossSpawned = new ();
         
         public UnityEvent onPlayerWin = new();
         public UnityEvent onPlayerLose = new();
@@ -84,6 +85,7 @@ namespace Game.Scripts {
             BossTransitionManager.instance.SpawnBoss(enemyData, out Boss b);
             currentBoss = b;
             currentEnemyData = enemyData;
+            onBossSpawned.Invoke();
         }
 
         public void OnPlayerWin() {

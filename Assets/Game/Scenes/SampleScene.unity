@@ -7243,6 +7243,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onBossSpawned:
+    m_PersistentCalls:
+      m_Calls: []
   onPlayerWin:
     m_PersistentCalls:
       m_Calls: []
@@ -7616,6 +7619,7 @@ MonoBehaviour:
   - {fileID: 915226059927050450, guid: 6215c8af3e1844c4d8b6b7cdf4a1313c, type: 3}
   - {fileID: 915226059927050450, guid: 7031cf9c40daa974f80d09954cc70c97, type: 3}
   - {fileID: 623284393223504049, guid: e5f6d455d1718e84f903868b7afd67c7, type: 3}
+  - {fileID: 623284393223504049, guid: e70463a113512e642b9b6a29fafdf5b6, type: 3}
   onItemCollected:
     m_PersistentCalls:
       m_Calls: []
