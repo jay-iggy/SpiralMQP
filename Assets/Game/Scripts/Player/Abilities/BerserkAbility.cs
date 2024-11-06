@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
-    public class BerserkAbility : PassiveAbility
+    public class BerserkAbility : MonoBehaviour
     {
         private bool active = false;
         private GameObject player;
@@ -25,7 +25,9 @@ namespace Game.Scripts.Abilities {
             if(pc.primaryAbility is AttackAbility)
             {
                 attackAbility = (AttackAbility)pc.primaryAbility;
-            }           
+            }
+
+            SetActive(hp.health);
         }
 
         public void SetActive(float health)

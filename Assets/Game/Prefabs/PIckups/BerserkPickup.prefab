@@ -94,8 +94,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6176483282381307388}
-  - component: {fileID: 915226059927050450}
   - component: {fileID: 8128887591403588042}
+  - component: {fileID: 623284393223504049}
   m_Layer: 0
   m_Name: BerserkPickup
   m_TagString: Untagged
@@ -119,25 +119,6 @@ Transform:
   - {fileID: 4576834240911149714}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &915226059927050450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8316742521674787269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: BERSERK
-  itemType: 5
-  itemRarity: 0
-  ability: {fileID: 7772875062703490439, guid: 8158a27c7f24850448eb719fa2e2f5ce, type: 3}
-  slot: 2
-  pickupUIprefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
-    type: 3}
 --- !u!135 &8128887591403588042
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -159,3 +140,21 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.755108
   m_Center: {x: 0, y: 0.255108, z: 0}
+--- !u!114 &623284393223504049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316742521674787269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5879c71f787b7ac4b92d3812d3fa0c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: BERSERK
+  itemType: 5
+  itemRarity: 0
+  pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
+    type: 3}
+  ability: {fileID: 2653171394673493507, guid: 8158a27c7f24850448eb719fa2e2f5ce, type: 3}
