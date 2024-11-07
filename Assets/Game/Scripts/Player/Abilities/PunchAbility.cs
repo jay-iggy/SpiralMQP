@@ -17,6 +17,9 @@ namespace Game.Scripts.Abilities {
         private float _punchTimer = 0;
         public float dmg = 1;
         [SerializeField] private Collider magnetismTrigger;
+
+        //audio
+        public AudioManager AudioCON;
         
         private void Start() {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
@@ -77,6 +80,7 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
+            AudioCON.PlayAttack();
         }
     }
 }
