@@ -7,7 +7,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-namespace Game.Scripts {
+namespace Game.Scripts
+{
+   
+    
+
+
     public class CombatManager : MonoBehaviour {
         public static CombatManager instance;
 
@@ -46,7 +51,9 @@ namespace Game.Scripts {
         public UnityEvent onPlayerLose = new();
         
         public HealthComponent playerHealth;
-        
+
+        public AudioManager AudioCON;
+
         public void DestroyBullets()
         {
             //destroy all enemy bullets
@@ -73,12 +80,16 @@ namespace Game.Scripts {
 
             
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
-            
+
+            AudioCON.PlaySFX("boss_transition");
+
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
-            
-            
-            
+
+
+
             // TODO: Add transition effects
+
+            
         }
         private IEnumerator SpawnBoss(EnemyData enemyData, float delay) {
             yield return new WaitForSeconds(delay);
