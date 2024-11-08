@@ -24,7 +24,6 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMusic("dungeon_composition");
-        PlayAttack();
     }
 
     public void PlayMusic(string name) {

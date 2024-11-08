@@ -12,6 +12,7 @@ namespace Game.Scripts.Player.Abilities {
         private bool isHolding = false;
         private float _cooldownTimer = 0;
 
+     
 
         public override void AbilityPressed() {
             Shoot();
@@ -37,7 +38,9 @@ namespace Game.Scripts.Player.Abilities {
             if (!CanShoot()) {
                 return;
             }
+
             
+
             Projectile projectile = Instantiate(projectilePrefab, transform.position + spawnOffset, Quaternion.identity);
             projectile.dmg = projectileDamage;
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
