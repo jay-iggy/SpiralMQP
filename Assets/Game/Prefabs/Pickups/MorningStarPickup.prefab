@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: MORNING STAR
+  itemName: MACE
   itemType: 3
   itemRarity: 2
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
