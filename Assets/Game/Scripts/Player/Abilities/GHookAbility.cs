@@ -57,6 +57,10 @@ namespace Game.Scripts.Player.Abilities
 
         public override void AbilityReleased()
         {
+            // add knockback to the player in direction of ghook
+            Vector3 direction = (grapplePoint - grappleEnd).normalized;
+            this.transform.parent.parent.GetComponent<MovementComponent>().AddExternalVelocity(direction * 5);
+
             shooting = false;
             attatched = false;
             grapplePoint = Vector3.zero;
