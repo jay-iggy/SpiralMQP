@@ -338,6 +338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
   timer: {fileID: -24218015262884559}
+  AudioCON: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+    type: 3}
 --- !u!114 &-24218015262884559
 MonoBehaviour:
   m_ObjectHideFlags: 0

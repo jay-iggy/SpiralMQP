@@ -86,7 +86,7 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
-            AudioCON.PlayAttack();
+            AudioCON.PlaySlash();
         }
     }
 }

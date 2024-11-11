@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] musicSound, sfxSound, slashSound;
     public AudioSource musiceSource, sfxSource, slashSource;
 
+    public string Startsong;
+
     /*
     private void Awake()
     {
@@ -23,7 +25,13 @@ public class AudioManager : MonoBehaviour
     */
     private void Start()
     {
-        PlayMusic("dungeon_composition");
+        if(Startsong != null)
+        {
+            PlayMusic(Startsong);
+        }
+
+        
+
     }
 
     public void PlayMusic(string name) {
@@ -79,7 +87,7 @@ public class AudioManager : MonoBehaviour
             musiceSource.Play();
         }
     }
-    public void PlayAttack()
+    public void PlaySlash()
     {
         
         int randomAttack = Random.Range(0, slashSound.Length);

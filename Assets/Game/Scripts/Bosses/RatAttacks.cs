@@ -23,6 +23,9 @@ namespace Game.Scripts
 
         private Vector3 gun;
 
+        //audio
+        public AudioManager AudioCON;
+
         private void Start() {
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
@@ -35,11 +38,14 @@ namespace Game.Scripts
             curAttack = index;
             switch (index) {
                 case 0:
+                    AudioCON.PlaySFX("shoot_demo");
                     return ShootBigBullet();
                 case 1:
+                    AudioCON.PlaySFX("shoot_demo");
                     shotsInChamber = 6;
                     return ShootSixBullets();
                 case 2:
+                    AudioCON.PlaySFX("shoot_demo");
                     return GoToCenter();
             }
 
