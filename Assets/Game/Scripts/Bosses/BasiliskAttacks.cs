@@ -45,7 +45,7 @@ namespace Game.Scripts
                 case 1:
                     return Tongue();
                 case 2:
-                    return Petrify();
+                    return RunTowardsPlayer();
             }
 
             return 0;
@@ -74,9 +74,9 @@ namespace Game.Scripts
             tongue.positionCount = 0;
         }
 
-        private float Petrify()
+        private float RunTowardsPlayer()
         {
-            playerPetrifyPos = player.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
             return 1;
         }
 
@@ -95,7 +95,7 @@ namespace Game.Scripts
                     Tongue();
                     break;
                 case 2:
-                    Petrify();
+                    RunTowardsPlayer();
                     break;
             }
         }
@@ -103,7 +103,7 @@ namespace Game.Scripts
         private void FixedUpdate() {
             switch (curAttack) {
                 case 0:
-                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .025f);
+                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .05f);
 
                     break;
                 case 1:
@@ -144,8 +144,7 @@ namespace Game.Scripts
 
                     break;
                 case 2:
-                    transform.position = Vector3.MoveTowards(transform.position, center, speed);
-                    player.transform.position = playerPetrifyPos;
+                    // transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .5f);
                     break;
             }
 
