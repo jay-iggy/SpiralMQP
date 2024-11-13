@@ -81,6 +81,7 @@ namespace Game.Scripts
             
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
 
+            if(AudioCON != null)
             AudioCON.PlaySFX("boss_transition");
 
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));

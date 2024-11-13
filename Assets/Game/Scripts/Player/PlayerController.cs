@@ -161,9 +161,12 @@ public class PlayerController : MonoBehaviour {
             if (!_canAttack) {
                 return;
             }
+
+            if(secondaryAbility != null)
             secondaryAbility.AbilityPressed();
         }
         public void OnSecondaryReleased(InputAction.CallbackContext context) {
+            if(secondaryAbility != null)
             secondaryAbility.AbilityReleased();
         }
         public void SetSecondaryAbility(Ability ability) {
