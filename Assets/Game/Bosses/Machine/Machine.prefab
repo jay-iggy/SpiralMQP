@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2457074238924901445}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.427, y: -0.561, z: -0.206}
+  m_LocalPosition: {x: 0, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 4486965896676256830}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.38480002, y: 0.26999998, z: -0.23499997}
+  m_LocalPosition: {x: 0, y: 0.41, z: 0}
   m_LocalScale: {x: 3.7640998, y: 2.6256895, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: bossIndex
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -462,6 +462,8 @@ MonoBehaviour:
   dronePrefab: {fileID: 7193713829538453673, guid: 5457d0db37a099147bc2071215cab89a,
     type: 3}
   laser: {fileID: 2457074238924901445}
+  smokePrefab: {fileID: 7193713829538453673, guid: cce3093365a89de499dffa8551dda8f0,
+    type: 3}
 --- !u!4 &1275996695822871800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,

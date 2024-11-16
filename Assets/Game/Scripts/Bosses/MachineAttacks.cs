@@ -7,15 +7,14 @@ namespace Game.Scripts
 {
     public class MachineAttacks : MonoBehaviour, ICanAttack
     {
-        private int curAttack = -1;
         [SerializeField] Timer timer;
         [SerializeField] GameObject bullet;
         [SerializeField] GameObject dronePrefab;
         [SerializeField] GameObject laser;
+        [SerializeField] GameObject smokePrefab;
         private GameObject player;
         private List<GameObject> drones = new List<GameObject>();
         int bulletAngle = 0;
-        int smokeAngle = -1; //0 is up, -1 is no smoke
         float laserTurnDelta = 0;
 
         void Start()
@@ -32,11 +31,10 @@ namespace Game.Scripts
             laser.transform.rotation *= laserQuat;
         }
 
-        public int GetAttackCount() { return 3; }
+        public int GetAttackCount() { return 4; }
 
         public float Attack(int index)
         {
-            curAttack = index;
 
             laser.SetActive(false);
             laserTurnDelta = 0;
@@ -78,7 +76,7 @@ namespace Game.Scripts
             GameObject[] bullets = MakeBulletCircle();
             BulletPatterns.MoveTowards(bullets, transform.position, -2);
             timer.Set(1, 0);
-            return 2f;
+            return 1.5f;
         }
 
         private GameObject[] MakeBulletCircle()
@@ -99,7 +97,7 @@ namespace Game.Scripts
             newDrone.transform.localScale = new Vector3(1, 1, 1);
             drones.Add(newDrone);
             timer.Set(.25f, 1);
-            return 2f;
+            return 1;
         }
 
         private float ShootLaser()
@@ -144,6 +142,33 @@ namespace Game.Scripts
 
         private float MakeSmoke()
         {
+            GameObject smoke = Instantiate(smokePrefab);
+            MachineSmoke ms = smoke.GetComponent<MachineSmoke>();
+
+            switch (Random.Range(0, 5))
+            {
+                case 0:
+                    smoke.transform.position = transform.position;
+                    ms.GoTo(transform.position, new Vector3(12.4f, 1, 6.2f));
+                    break;
+                case 1:
+                    smoke.transform.position = new Vector3(-1.88f, .4f, 0);
+                    ms.GoTo(new Vector3(-6, 0, 0), new Vector3(8, 1, 11.1f));
+                    break;
+                case 2:
+                    smoke.transform.position = new Vector3(1.88f, .4f, 0);
+                    ms.GoTo(new Vector3(6, 0, 0), new Vector3(8, 1, 11.1f));
+                    break;
+                case 3:
+                    smoke.transform.position = new Vector3(0, .4f, -1.3f);
+                    ms.GoTo(new Vector3(0, 0, -3.4f), new Vector3(20.7f, 1, 3.7f));
+                    break;
+                case 4:
+                    smoke.transform.position = new Vector3(0, .4f, 1.3f);
+                    ms.GoTo(new Vector3(0, 0, 3.4f), new Vector3(20.7f, 1, 3.7f));
+                    break;
+            }
+
             return 2;
         }
     }
