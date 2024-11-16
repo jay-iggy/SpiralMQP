@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
-  m_Name: Minotaur
+  m_Name: Machine
   m_EditorClassIdentifier: 
-  enemyName: Minotaur
-  bossPrefab: {fileID: 48230255666616952, guid: 8c72af0341628794cad1307261725637,
+  enemyName: The Machine
+  bossPrefab: {fileID: 466556231990597027, guid: 0aa1e6fe8c68f0e429f42c11b0a7d0ae,
     type: 3}
-  nextEnemies:
-  - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
+  nextEnemies: []
