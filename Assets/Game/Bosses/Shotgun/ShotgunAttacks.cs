@@ -22,6 +22,7 @@ namespace Game.Scripts
         
         [SerializeField] private GameObject shellPrefab;
         [SerializeField] private List<Transform> shellEjectPositions;
+        [SerializeField] private float shellEjectForce = 20;
         
         [SerializeField] private AudioClip shootSFX;
 
@@ -64,9 +65,18 @@ namespace Game.Scripts
 
         }
         
-        public void EjectShells() {
-            // we can have a shell prefab and instantiate it here
+        public void EjectShells() { // this is invoked by animation event
+            //create shell projectile in each eject position
+            // apply force in direction of forward direction of the eject position
+            foreach (Transform ejectPos in shellEjectPositions) {
+                GameObject shell = Instantiate(shellPrefab, ejectPos.position, shellPrefab.transform.rotation);
+                shell.GetComponent<Rigidbody>().AddForce(ejectPos.forward * shellEjectForce, ForceMode.Impulse);
+            }
             
+            
+        }
+
+        public void ShootArc() {
             
         }
     }
