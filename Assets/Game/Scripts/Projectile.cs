@@ -16,7 +16,12 @@ namespace Game.Scripts {
 
         private void OnHitTarget(ICanGetHit target) {
             target.GetHit(dmg);
-            if(!persistent) Destroy(gameObject);
+            if(!persistent) DestroySelf();
+        }
+
+        public void DestroySelf()
+        {
+            Destroy(gameObject);
         }
 
         public void TargetPlayer(float speed) {
