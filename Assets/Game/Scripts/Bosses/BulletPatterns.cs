@@ -18,22 +18,16 @@ namespace Game.Scripts
             }
         }
 
-        public static void MoveTowards(GameObject bullet, Vector3 target, float speed)
-        {
-            GameObject[] bullets = { bullet };
-            MoveTowards(bullets, target, speed);
-
+        public static void MoveTowards(GameObject bullet, Vector3 target, float speed) {
+            Vector3 v = target - bullet.transform.position;
+            v.Normalize();
+            v *= speed;
+            bullet.GetComponent<Rigidbody>().velocity = v;
         }
 
         public static void MoveTowards(GameObject[] bullets, Vector3 target, float speed) {
-            foreach (GameObject bullet in bullets) {
-                if(bullet == null) {
-                    continue;
-                }
-                Vector3 v = target - bullet.transform.position;
-                v.Normalize();
-                v *= speed;
-                bullet.GetComponent<Rigidbody>().velocity = v;
+            foreach(GameObject bullet in bullets) {
+                MoveTowards(bullet, target, speed);
             }
         }
     }
