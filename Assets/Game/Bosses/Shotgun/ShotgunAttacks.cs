@@ -32,16 +32,22 @@ namespace Game.Scripts
         
         private Animator _animator;
         private MovementComponent _movementComponent;
+        private HealthComponent _healthComponent;
         
         [SerializeField] private float moveDistanceThreshold = 3;
 
         private void Awake() {
             _animator = GetComponent<Animator>();
             _movementComponent = GetComponent<MovementComponent>();
+            _healthComponent = GetComponent<HealthComponent>();
         }
         private void Start() {
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             StartCoroutine(ShotgunEnemyBehavior());
+        }
+
+        private void OnEnable() {
+            _healthComponent.onHealthChanged.AddListener(OnHealthChanged);
         }
 
         private void Update() {
@@ -57,7 +63,7 @@ namespace Game.Scripts
         private IEnumerator ShotgunEnemyBehavior() {
             print("ShotgunEnemyBehavior started");
             while (true) {
-                yield return MoveToPoint(BossRoom.GetRandomPositionInRoom(3));
+                yield return MoveToPoint(BossRoom.GetRandomPositionInRoom(5));
                 yield return new WaitForSeconds(1);
                 yield return Attack_Shoot();
                 yield return new WaitForSeconds(1);
@@ -77,6 +83,7 @@ namespace Game.Scripts
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
                 yield return null;
             }
+            _movementComponent.moveVelocity = Vector3.zero;
         }
         
         
@@ -121,6 +128,13 @@ namespace Game.Scripts
         public void ShootVolley() { // this is invoked by animation event
             GameObject proj = Instantiate(projPrefab, projSpawnPos.position, projSpawnPos.rotation);
             _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
+        }
+        
+        private void OnHealthChanged(float newHealth) {
+            if (newHealth/_healthComponent.maxHealth < .5f) {
+                volleysPerAttack = 6;
+                _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged);
+            }
         }
     }
 
