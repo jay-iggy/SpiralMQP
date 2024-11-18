@@ -1429,7 +1429,7 @@ Transform:
   m_GameObject: {fileID: 7793569699480432005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.037, y: 0.281, z: -4.299}
+  m_LocalPosition: {x: -0.033, y: 0.311, z: 4.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1792,6 +1792,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Name
@@ -1805,17 +1820,22 @@ PrefabInstance:
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Size.z
-      value: 4.8625517
+      value: 5.0673556
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000004972082
       objectReference: {fileID: 0}
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.069075584
+      value: 0.06907556
       objectReference: {fileID: 0}
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Center.z
-      value: -1.895452
+      value: 1.8799492
       objectReference: {fileID: 0}
     - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -1885,22 +1905,27 @@ PrefabInstance:
     - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.6425866
+      value: 1.6425865
       objectReference: {fileID: 0}
     - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Size.z
-      value: 5.427696
+      value: 5.630238
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.09121365
       objectReference: {fileID: 0}
     - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.3212933
+      value: 0.32129335
       objectReference: {fileID: 0}
     - target: {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Center.z
-      value: -1.957067
+      value: 1.863143
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1942,8 +1967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828e81a650e7324292c595bba70e42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projPrefab: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+  projPrefab: {fileID: 5201522005593478507, guid: e0a6d62eec0af304189075d348cddb83,
     type: 3}
+  speed: 10
   projSpawnPos: {fileID: 4833394176114025882}
   shellPrefab: {fileID: 626621948847218296, guid: 949020153b8b4c049b387b4dab21ecdf,
     type: 3}
@@ -1951,7 +1977,12 @@ MonoBehaviour:
   - {fileID: 841822160155465431}
   - {fileID: 8844223905016227750}
   shellEjectForce: 20
-  shootSFX: {fileID: 0}
+  shootSFX: {fileID: 8300000, guid: d9e42a8a196cef24ca03a6808b9349f0, type: 3}
+  ejectShellsAnim: {fileID: 7400000, guid: 40a7f15d9066fde4ea4e83e3b90526f0, type: 2}
+  shootAnim: {fileID: 7400000, guid: 77de8230e5f229d40a29ae5abe18e115, type: 2}
+  volleysPerAttack: 2
+  delayBetweenVolleys: 0.5
+  knockbackForce: 50
 --- !u!95 &2792873772990784303
 Animator:
   serializedVersion: 5
