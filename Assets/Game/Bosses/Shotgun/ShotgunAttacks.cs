@@ -99,11 +99,12 @@ namespace Game.Scripts
         
         [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
         [SerializeField] private float delayBetweenVolleys = .5f;
+        [SerializeField] private float aimRotateSpeed = 2;
         
         private IEnumerator RotateToFacePlayer() {
             while (Vector3.Angle(transform.forward, player.transform.position - transform.position) > 10f){
                 Vector3 targetDir = player.transform.position - transform.position;
-                float step = 2 * Time.deltaTime;
+                float step = aimRotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDir);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
