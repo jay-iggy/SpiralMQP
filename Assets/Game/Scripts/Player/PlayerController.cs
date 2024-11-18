@@ -55,8 +55,12 @@ public class PlayerController : MonoBehaviour {
         
         movementSpeed = walkSpeed;
         
-        SetPrimaryAbility(primaryAbility);
-        SetSecondaryAbility(secondaryAbility);
+        if(primaryAbility!=null) {
+            SetPrimaryAbility(primaryAbility);
+        }
+        if(secondaryAbility!=null) {
+            SetSecondaryAbility(secondaryAbility);
+        }
 
         //audio
         Slash= GetComponent<AudioSource>();
