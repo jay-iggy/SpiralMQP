@@ -66,6 +66,7 @@ namespace Game.Scripts
                 yield return MoveToPoint(BossRoom.GetRandomPositionInRoom(5));
                 yield return Attack_Shoot();
                 yield return Attack_EjectShells();
+                yield return new WaitForSeconds(1);
             }
         }
         
