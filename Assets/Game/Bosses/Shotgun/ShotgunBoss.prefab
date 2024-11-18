@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913892874487209663}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7338787, y: 0.7338787, z: 0.7338787}
   m_ConstrainProportionsScale: 0
@@ -1927,15 +1927,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828e81a650e7324292c595bba70e42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projPrefab: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
+  projPrefab: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
     type: 3}
   projSpawnPos: {fileID: 4833394176114025882}
-  shellPrefab: {fileID: 7376245339953285975, guid: a2195e65f36bbce4da50d7cb18243c43,
+  shellPrefab: {fileID: 626621948847218296, guid: 949020153b8b4c049b387b4dab21ecdf,
     type: 3}
   shellEjectPositions:
   - {fileID: 841822160155465431}
   - {fileID: 8844223905016227750}
-  audioCon: {fileID: 0}
+  shootSFX: {fileID: 0}
 --- !u!95 &2792873772990784303
 Animator:
   serializedVersion: 5
