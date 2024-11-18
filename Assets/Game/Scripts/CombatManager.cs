@@ -7,12 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-namespace Game.Scripts
-{
-   
-    
-
-
+namespace Game.Scripts {
     public class CombatManager : MonoBehaviour {
         public static CombatManager instance;
 
