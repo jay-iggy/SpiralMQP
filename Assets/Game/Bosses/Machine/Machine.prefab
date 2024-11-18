@@ -243,6 +243,7 @@ MonoBehaviour:
       m_Calls: []
   dmg: 1
   persistent: 1
+  speed: 0
 --- !u!65 &5533872415981819462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: bossIndex
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}

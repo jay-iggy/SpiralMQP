@@ -64,11 +64,8 @@ namespace Game.Scripts
             print("ShotgunEnemyBehavior started");
             while (true) {
                 yield return MoveToPoint(BossRoom.GetRandomPositionInRoom(5));
-                yield return new WaitForSeconds(1);
                 yield return Attack_Shoot();
-                yield return new WaitForSeconds(1);
                 yield return Attack_EjectShells();
-                yield return new WaitForSeconds(1);
             }
         }
         

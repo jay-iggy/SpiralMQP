@@ -1792,6 +1792,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: bossIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -1980,6 +1985,7 @@ MonoBehaviour:
   shootSFX: {fileID: 8300000, guid: d9e42a8a196cef24ca03a6808b9349f0, type: 3}
   ejectShellsAnim: {fileID: 7400000, guid: 40a7f15d9066fde4ea4e83e3b90526f0, type: 2}
   shootAnim: {fileID: 7400000, guid: 77de8230e5f229d40a29ae5abe18e115, type: 2}
+  moveDistanceThreshold: 3
   volleysPerAttack: 2
   delayBetweenVolleys: 0.5
   knockbackForce: 50
