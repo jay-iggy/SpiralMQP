@@ -1819,6 +1819,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2333
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2333
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2333
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1935,6 +1950,7 @@ MonoBehaviour:
   shellEjectPositions:
   - {fileID: 841822160155465431}
   - {fileID: 8844223905016227750}
+  shellEjectForce: 20
   shootSFX: {fileID: 0}
 --- !u!95 &2792873772990784303
 Animator:
