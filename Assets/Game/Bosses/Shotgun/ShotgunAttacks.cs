@@ -10,12 +10,10 @@ namespace Game.Scripts
     public class ShotgunAttacks : MonoBehaviour, ICanAttack {
         [SerializeField] GameObject projPrefab;
         private GameObject player;
-        private int _ammoCount = 2;
-        private Projectile bulletInChamber;
 
         private Vector3 center = new Vector3(0, 0, 0);
-        [SerializeField]private float speed = 10;
-        List<Projectile> bullets = new();
+        [SerializeField] private float speed = 10;
+        List<GameObject> _itemsToCleanup = new();
 
         private int curAttack = -1;
 
@@ -94,6 +92,8 @@ namespace Game.Scripts
                 foreach (Transform ejectPos in shellEjectPositions) {
                     GameObject shell = Instantiate(shellPrefab, ejectPos.position, shellPrefab.transform.rotation);
                     shell.GetComponent<Rigidbody>().AddForce(ejectPos.forward * shellEjectForce, ForceMode.Impulse);
+                    _itemsToCleanup.Add(shell);
+                    // shell should explode or bounce or do damage, something more interesting
                 }
             }
         }
@@ -114,7 +114,6 @@ namespace Game.Scripts
         }
 
         private IEnumerator Attack_Shoot() {
-            // make sure it rotates to face the player
             for(int i = 0; i < volleysPerAttack; i++) {
                 yield return RotateToFacePlayer();
                 _animator.SetTrigger("Shoot");
@@ -126,6 +125,7 @@ namespace Game.Scripts
         
         public void ShootVolley() { // this is invoked by animation event
             GameObject proj = Instantiate(projPrefab, projSpawnPos.position, projSpawnPos.rotation);
+            _itemsToCleanup.Add(proj);
             _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
         }
         
@@ -133,6 +133,14 @@ namespace Game.Scripts
             if (newHealth/_healthComponent.maxHealth < .5f) {
                 volleysPerAttack = 6;
                 _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged);
+            }
+        }
+
+        private void OnDestroy() {
+            foreach (GameObject item in _itemsToCleanup) {
+                if(item != null) {
+                    Destroy(item);
+                }
             }
         }
     }
