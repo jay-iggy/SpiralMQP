@@ -479,7 +479,7 @@ MonoBehaviour:
   affectsHitless: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
-  maxHealth: 1000
+  maxHealth: 5
 --- !u!136 &118477964
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7619,6 +7619,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1140456445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+    type: 3}
+  m_PrefabInstance: {fileID: 1236101613362029391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140456435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22310389b642f874583a2affc71061d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158096597
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,6 +8160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b1882a4b4dae74a902cd589411c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioCon: {fileID: 1140456445}
   healthBar: {fileID: 1254242918}
   bossNameTextObject: {fileID: 1507168931}
 --- !u!1 &1484130723
@@ -14049,6 +14062,16 @@ PrefabInstance:
       propertyPath: slashSound.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+        type: 3}
+      propertyPath: musicSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8934aeb64dca8594ab8c31a723323772, type: 3}
+    - target: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+        type: 3}
+      propertyPath: musicSound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 22eead7549590db419dd365311fc6a02, type: 3}
     - target: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
       propertyPath: slashSound.Array.data[0]

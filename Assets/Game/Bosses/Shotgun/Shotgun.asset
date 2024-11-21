@@ -15,5 +15,6 @@ MonoBehaviour:
   enemyName: Gunther
   bossPrefab: {fileID: 3306522354236208162, guid: 24bc6335f6592b642804150497eb8f27,
     type: 3}
+  bossMusic: rat_OST
   nextEnemies:
   - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}

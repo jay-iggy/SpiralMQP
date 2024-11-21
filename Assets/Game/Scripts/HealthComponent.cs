@@ -51,10 +51,12 @@ namespace Game.Scripts {
             
             invincibleUntil = Time.time + invincibilityDuration;
 
+            
             if (health <= 0 && isAlive) {
                 isAlive = false;
                 onDeath.Invoke();
             }
+            
         }
 
         public void GetHit(float damage) {
