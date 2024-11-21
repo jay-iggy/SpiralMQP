@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
-    public class MalletAbility : Ability {
+    public class MalletAbility : AttackAbility {
         [Header("Melee")]
         [SerializeField] GameObject prefabMallet;
         private GameObject mallet;
@@ -54,7 +54,12 @@ namespace Game.Scripts.Abilities {
                 target.GetComponent<MovementComponent>().AddExternalVelocity(direction * knockback);
             }
         }
-        
+
+        public override void ModifyDamage(float delta)
+        {
+            dmg += delta;   
+        }
+
         public override void AbilityPressed() {
             if (_malletTimer > 0) {
                 return;

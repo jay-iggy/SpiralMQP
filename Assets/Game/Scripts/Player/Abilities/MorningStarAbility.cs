@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
-    public class MorningStarAbility : Ability {
+    public class MorningStarAbility : AttackAbility {
         [Header("Melee")]
         [SerializeField] GameObject prefabMStar;
         private GameObject mStar;
@@ -55,7 +55,12 @@ namespace Game.Scripts.Abilities {
                 target.GetComponent<MovementComponent>().AddExternalVelocity(direction * knockback);
             }
         }
-        
+
+        public override void ModifyDamage(float delta)
+        {
+            dmg += delta;
+        }
+
         public override void AbilityPressed() {
             if (_mStarTimer > 0) {
                 return;
