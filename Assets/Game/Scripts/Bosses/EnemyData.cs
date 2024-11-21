@@ -10,6 +10,6 @@ using UnityEngine;
 public class EnemyData : ScriptableObject {
     public string enemyName;
     public Boss bossPrefab;
-    
+    public string bossMusic = "rat_OST";
     public List<EnemyData> nextEnemies = new List<EnemyData>();
 }

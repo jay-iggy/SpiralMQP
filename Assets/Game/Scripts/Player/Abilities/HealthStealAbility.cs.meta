@@ -3,7 +3,10 @@ guid: 2b5f6a1b6af6cdd49ba781322b4ae990
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+      type: 3}
+  - SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
