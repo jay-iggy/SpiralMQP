@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  enemyName: Billy Blunderbuss
+  enemyName: Gunther
   bossPrefab: {fileID: 3306522354236208162, guid: 24bc6335f6592b642804150497eb8f27,
     type: 3}
   nextEnemies:
