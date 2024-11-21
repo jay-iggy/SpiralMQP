@@ -12,6 +12,7 @@ namespace Game.Scripts.Abilities {
         [SerializeField] Vector3 malletOffset;
         [SerializeField] float malletCooldown;
         [SerializeField] float malletDuration;
+        [SerializeField] float secondsAtPeak = 0;
         [SerializeField] float secondsOnGround = 0;
         private float _malletTimer = 0;
         public float dmg = 10;
@@ -19,6 +20,7 @@ namespace Game.Scripts.Abilities {
         private float speed;
         private float increment; // for pos and rot
         private float accumaltedRot = 0;
+        private bool holding = false;
 
         //audio stuff
         [SerializeField] AudioManager SerAudioManager;
@@ -75,12 +77,25 @@ namespace Game.Scripts.Abilities {
             }
             mallet.transform.position = this.transform.position;
             mallet.SetActive(true);
-            _malletTimer = malletDuration;
-            
-            StartCoroutine(ResetPunchTimer());
+            holding = true;
         }
+
+        public void Update()
+        {
+            if (holding)
+            {
+                Transform reticle = this.transform.parent.parent.parent.GetChild(2);
+                Quaternion toRotation = Quaternion.LookRotation(reticle.position - mallet.transform.position, Vector3.up);
+                mallet.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
+            }
+        }
+
         public override void AbilityReleased() {
-            // nothing to do here
+            holding = false;
+
+            _malletTimer = malletDuration;
+
+            StartCoroutine(ResetPunchTimer());
         }
         
         private IEnumerator ResetPunchTimer() {
