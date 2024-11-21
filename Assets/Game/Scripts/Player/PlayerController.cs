@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour {
     //audioTest
     public AudioSource Slash;
 
+    public AudioManager AudioCON;
+
+
     private void Awake() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -148,6 +151,7 @@ public class PlayerController : MonoBehaviour {
         }
         public void OnPrimaryReleased(InputAction.CallbackContext context) {
             primaryAbility.AbilityReleased();
+            
         }
         public void SetPrimaryAbility(Ability ability) {
             if (ability != primaryAbility) {

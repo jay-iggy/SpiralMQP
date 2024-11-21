@@ -370,6 +370,7 @@ MonoBehaviour:
   primaryAbility: {fileID: 732244745}
   secondaryAbility: {fileID: 0}
   Slash: {fileID: 0}
+  AudioCON: {fileID: 0}
 --- !u!4 &118477961
 Transform:
   m_ObjectHideFlags: 0
@@ -478,7 +479,7 @@ MonoBehaviour:
   affectsHitless: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
-  maxHealth: 5
+  maxHealth: 1000
 --- !u!136 &118477964
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1512,7 +1513,9 @@ MonoBehaviour:
   punchDuration: 0.5
   dmg: 3
   magnetismTrigger: {fileID: 732244746}
-  AudioCON: {fileID: 1140456439}
+  SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+    type: 3}
+  SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
 --- !u!135 &732244746
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7424,18 +7427,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1140456439 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236101613362029391}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140456435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22310389b642f874583a2affc71061d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1140456441
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14032,6 +14023,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+        type: 3}
+      propertyPath: Startsong
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}

@@ -22,6 +22,12 @@ namespace Game.Scripts.Player.Abilities
 
         private LineRenderer lr;
 
+        //audio stuff
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
         private void Start()
         {
             player = _player.transform;
@@ -103,6 +109,14 @@ namespace Game.Scripts.Player.Abilities
                     attatched = false;
                 }
             }
+        }
+
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }

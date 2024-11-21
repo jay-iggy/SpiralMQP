@@ -13,6 +13,13 @@ namespace Game.Scripts.Abilities {
         [SerializeField] Material berserkMaterial;
         private Material normalMaterial;
         private AttackAbility attackAbility;
+
+        //audio
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
         void Start()
         {
             player = transform.parent.parent.gameObject;
@@ -40,6 +47,7 @@ namespace Game.Scripts.Abilities {
                     attackAbility.ModifyDamage(1);
                 }
                 active = true;
+                PlaySound();
             }
             else //inactive
             {
@@ -50,6 +58,14 @@ namespace Game.Scripts.Abilities {
                 }
                 active = false;
             }
+        }
+
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }

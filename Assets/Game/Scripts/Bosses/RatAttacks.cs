@@ -38,14 +38,14 @@ namespace Game.Scripts
             curAttack = index;
             switch (index) {
                 case 0:
-                    AudioCON.PlaySFX("shoot_demo");
+                    AudioCON.PlayShoot();
                     return ShootBigBullet();
                 case 1:
-                    AudioCON.PlaySFX("shoot_demo");
+                    AudioCON.PlayShoot();
                     shotsInChamber = 6;
                     return ShootSixBullets();
                 case 2:
-                    AudioCON.PlaySFX("shoot_demo");
+                    AudioCON.PlayShoot();
                     return GoToCenter();
             }
 

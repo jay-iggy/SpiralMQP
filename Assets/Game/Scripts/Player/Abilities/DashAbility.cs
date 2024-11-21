@@ -4,7 +4,14 @@ using UnityEngine;
 namespace Game.Scripts.Player.Abilities {
     public class DashAbility : Ability {
         // TODO: disable player movement during dash and for a short time after dashing
-        
+
+        //audio stuff
+        //audio stuff
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
         [SerializeField] private float dashForce = 10f;
         private bool canDash = true;
         [SerializeField] private float dashCooldown = 1f;
@@ -15,6 +22,8 @@ namespace Game.Scripts.Player.Abilities {
             Vector3 dashDirection = movementInput.x * Vector3.right + movementInput.y * Vector3.forward;
             _player.movementComponent.AddPersonalVelocity(dashForce * dashDirection);
             StartCoroutine(WaitForDashCooldown());
+
+            PlaySound();
         }
         IEnumerator WaitForDashCooldown() {
             canDash = false;
@@ -24,6 +33,13 @@ namespace Game.Scripts.Player.Abilities {
 
         public override void AbilityReleased() {
             // nothing to do here
+        }
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }
