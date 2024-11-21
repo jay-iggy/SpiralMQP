@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projPrefab: {fileID: 5201522005593478507, guid: e0a6d62eec0af304189075d348cddb83,
     type: 3}
-  speed: 6
+  speed: 10
   projSpawnPos: {fileID: 4833394176114025882}
   shellPrefab: {fileID: 626621948847218296, guid: 949020153b8b4c049b387b4dab21ecdf,
     type: 3}
