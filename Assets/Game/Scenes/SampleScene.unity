@@ -477,6 +477,7 @@ MonoBehaviour:
       m_Calls: []
   invincibilityDuration: 0.5
   affectsHitless: 1
+  hitTextColor: {r: 1, g: 0, b: 0, a: 1}
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 5
