@@ -15,6 +15,8 @@ namespace Game.Scripts {
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
         [SerializeField] bool affectsHitless = false;
+        
+        [SerializeField] Color hitTextColor = Color.white;
 
         //Damage Display Stuff
         public FloatingText floatingTextPrefab;
@@ -71,6 +73,7 @@ namespace Game.Scripts {
             FloatingText textObj = Instantiate(floatingTextPrefab);
             textObj.transform.position = transform.position;
             textObj.SetText($"{damage}");
+            textObj.SetColor(hitTextColor);
         }
 
         private void PlayDeathJuice() {

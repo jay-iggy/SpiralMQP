@@ -5,14 +5,18 @@ public class FloatingText : MonoBehaviour
 {
     public float destroyDelay = 3f;
 
-    private TMP_Text _textObj;
+    private TextMeshPro _textObj;
 
     private void Awake() {
-        _textObj = GetComponent<TMP_Text>();
+        _textObj = GetComponent<TextMeshPro>();
     }
 
     public void SetText(string text) {
         _textObj.text = text;
+    }
+
+    public void SetColor(Color color) {
+        _textObj.color = color;
     }
     
     
