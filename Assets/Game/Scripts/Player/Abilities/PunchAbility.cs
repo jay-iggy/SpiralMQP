@@ -12,9 +12,12 @@ namespace Game.Scripts.Abilities {
         
         [Header("Melee")]
         [SerializeField] GameObject fist;
+        [SerializeField] Transform target;
+        [SerializeField] Transform outStretch;
         [SerializeField] float punchCooldown = .25f;
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
+        private float initialPunchTimer;
         public float dmg = 3;
         [SerializeField] private Collider magnetismTrigger;
 
@@ -33,6 +36,8 @@ namespace Game.Scripts.Abilities {
             
             punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
+
+            initialPunchTimer = punchCooldown + punchDuration;
         }
 
         public override void ModifyDamage(float delta)
@@ -77,6 +82,9 @@ namespace Game.Scripts.Abilities {
             // though the other code is set up to support this way
             
             while (_punchTimer > 0) {
+                float normalizedTime = 1 - (_punchTimer / initialPunchTimer);
+                target.position = Vector3.Lerp(target.position, outStretch.position, normalizedTime);
+
                 _punchTimer -= Time.deltaTime;
                 yield return null;
             }
