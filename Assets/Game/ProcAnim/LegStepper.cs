@@ -8,7 +8,7 @@ public class LegStepper : MonoBehaviour
     public Transform defaulttt;
     public Transform target;
     public float distToStep;
-    public static float timeMoving = 0.2f;
+    public static float timeMoving = 0.05f;
     public bool moving = false;
     private float timer;
 
