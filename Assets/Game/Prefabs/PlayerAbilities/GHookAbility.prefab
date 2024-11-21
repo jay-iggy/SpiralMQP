@@ -49,6 +49,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   player: {fileID: 3417639988323438932}
+  SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+    type: 3}
+  SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
+  AudioCon: {fileID: 0}
+  soundSFX: {fileID: 0}
 --- !u!120 &5120635613590227056
 LineRenderer:
   serializedVersion: 2

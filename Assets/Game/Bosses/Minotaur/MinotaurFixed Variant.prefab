@@ -363,6 +363,7 @@ MonoBehaviour:
       m_Calls: []
   dmg: 1
   persistent: 1
+  speed: 0
 --- !u!1001 &1146159739658352006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: bossIndex
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}

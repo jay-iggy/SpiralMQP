@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
-    public class MalletAbility : Ability {
+    public class MalletAbility : AttackAbility {
         [Header("Melee")]
         [SerializeField] GameObject prefabMallet;
         private GameObject mallet;
@@ -14,14 +14,22 @@ namespace Game.Scripts.Abilities {
         [SerializeField] float malletDuration;
         [SerializeField] float secondsOnGround = 0;
         private float _malletTimer = 0;
-        public float dmg = 2;
+        public float dmg = 10;
         public float knockback = 10;
         private float speed;
         private float increment; // for pos and rot
         private float accumaltedRot = 0;
-        
-        private void Start() {
 
+        //audio stuff
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
+        private void Start() {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0,0,0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
             Quaternion startingRotation = prefabMallet.transform.rotation;
 
             mallet = Instantiate(prefabMallet, this.transform.position + malletOffset, prefabMallet.transform.rotation, this.transform);
@@ -52,9 +60,15 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 direction.Normalize();
                 target.GetComponent<MovementComponent>().AddExternalVelocity(direction * knockback);
+                PlaySound();
             }
         }
-        
+
+        public override void ModifyDamage(float delta)
+        {
+            dmg += delta;   
+        }
+
         public override void AbilityPressed() {
             if (_malletTimer > 0) {
                 return;
@@ -101,6 +115,13 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
+        }
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }

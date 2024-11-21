@@ -12,7 +12,14 @@ namespace Game.Scripts.Player.Abilities {
         private bool isHolding = false;
         private float _cooldownTimer = 0;
 
-     
+        //audio
+        //audio stuff
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+        
 
         public override void AbilityPressed() {
             Shoot();
@@ -44,7 +51,7 @@ namespace Game.Scripts.Player.Abilities {
                 return;
             }
 
-            
+            PlaySound();
 
             Projectile projectile = Instantiate(projectilePrefab, transform.position + spawnOffset, Quaternion.identity);
             projectile.dmg = projectileDamage;
@@ -56,6 +63,13 @@ namespace Game.Scripts.Player.Abilities {
         
         private bool CanShoot() {
             return _cooldownTimer <= 0;
+        }
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }

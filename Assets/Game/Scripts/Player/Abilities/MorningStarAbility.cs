@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
-    public class MorningStarAbility : Ability {
+    public class MorningStarAbility : AttackAbility {
         [Header("Melee")]
         [SerializeField] GameObject prefabMStar;
         private GameObject mStar;
@@ -16,7 +16,14 @@ namespace Game.Scripts.Abilities {
         public float dmg = 2;
         public float knockback = 10;
         private float speed;
+
         
+        //audio stuff
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
         private void Start() {
 
             Quaternion startingRotation = prefabMStar.transform.rotation;
@@ -53,9 +60,15 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 direction.Normalize();
                 target.GetComponent<MovementComponent>().AddExternalVelocity(direction * knockback);
+                PlaySound();
             }
         }
-        
+
+        public override void ModifyDamage(float delta)
+        {
+            dmg += delta;
+        }
+
         public override void AbilityPressed() {
             if (_mStarTimer > 0) {
                 return;
@@ -84,6 +97,13 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
+        }
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }

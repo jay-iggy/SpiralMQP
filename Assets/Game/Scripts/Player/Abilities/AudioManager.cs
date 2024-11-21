@@ -60,6 +60,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayOneSFX(AudioClip TheClip)
+    {
+        musiceSource.clip = TheClip;
+        musiceSource.Play();
+    }
+
     public void PlaySFX(string name)
     {
 
@@ -87,6 +93,14 @@ public class AudioManager : MonoBehaviour
             musiceSource.Play();
         }
     }
+
+    public void PlaySFX(AudioClip s)
+    {
+        musiceSource.clip = s;
+        musiceSource.Play();
+    }
+
+
     public void PlaySlash()
     {
         
@@ -94,6 +108,12 @@ public class AudioManager : MonoBehaviour
 
             slashSource.clip = slashSound[randomAttack];
             slashSource.Play();
+    }
+    public void PlayShoot()
+    {
+        PlaySFX("melee_slash-001");
+
+
     }
 }
  

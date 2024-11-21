@@ -19,8 +19,13 @@ namespace Game.Scripts.Abilities {
         [SerializeField] private Collider magnetismTrigger;
 
         //audio
-        public AudioManager AudioCON;
-        
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
+
         private void Start() {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
                 BindHitbox(hitbox);
@@ -86,7 +91,14 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
-            AudioCON.PlaySlash();
+            PlaySound();
+        }
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
+
+            AudioCon.PlaySFX(soundSFX);
         }
     }
 }

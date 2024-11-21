@@ -7,16 +7,23 @@ namespace Game.Scripts {
     public class Projectile : Hitbox {
         public float dmg = 1;
         [SerializeField] bool persistent = false;
+        public float speed = 0;
         
         //TODO: destroy on hit wall
         
-        private void Start() {
+        private void Awake() {
             onHitTarget.AddListener(OnHitTarget);
+            GetComponent<Rigidbody>().velocity = transform.forward * speed;
         }
 
         private void OnHitTarget(ICanGetHit target) {
             target.GetHit(dmg);
-            if(!persistent) Destroy(gameObject);
+            if(!persistent) DestroySelf();
+        }
+
+        public void DestroySelf()
+        {
+            Destroy(gameObject);
         }
 
         public void TargetPlayer(float speed) {

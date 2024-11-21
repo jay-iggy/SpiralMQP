@@ -10,6 +10,12 @@ namespace Game.Scripts.Abilities
         private HealthComponent bossHP;
         private HealthComponent playerHP;
 
+        [SerializeField] AudioManager SerAudioManager;
+        [SerializeField] AudioClip SerAudioClip;
+
+        private AudioManager AudioCon;
+        private AudioClip soundSFX;
+
         private void Start()
         {
             CombatManager.instance.onBossSpawned.AddListener(setBossHP);          
@@ -30,6 +36,7 @@ namespace Game.Scripts.Abilities
             {
                 playerHP.SetHealth(playerHP.health + 1);
                 damageDone = 0;
+                PlaySound();
             }
         }
 
@@ -37,6 +44,12 @@ namespace Game.Scripts.Abilities
         {
             damageDone = 0;
         }
+        private void PlaySound()
+        {
+            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
+            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
 
+            AudioCon.PlaySFX(soundSFX);
+        }
     }
 }

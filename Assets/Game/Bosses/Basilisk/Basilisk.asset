@@ -15,5 +15,6 @@ MonoBehaviour:
   enemyName: Basilisk
   bossPrefab: {fileID: 466556231990597027, guid: 0039a549dec4d4d89852eecdb6f54503,
     type: 3}
+  bossMusic: rat_OST
   nextEnemies:
-  - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
+  - {fileID: 11400000, guid: 373c337434327a34780a2a0dc522e7ba, type: 2}

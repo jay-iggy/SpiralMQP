@@ -27,5 +27,10 @@ namespace Game.Scripts {
                 }
             }
         }
+
+        public void AddTag(string tag)
+        {
+            tagsToHit.Add(tag);
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace Game.Scripts
         [SerializeField] int bossIndex; //used to match bosses to stickers
         [SerializeField] ItemRarity minItemRarity = ItemRarity.COMMON;
 
+        
+
         void Start() {
             attackList = GetComponent<ICanAttack>();
             
@@ -68,6 +70,7 @@ namespace Game.Scripts
 
             if(attackList.GetAttackCount() <= 1)
             {
+                
                 return attackList.Attack(0);
             }
 
