@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour {
         }
         public void SetPrimaryAbility(Ability ability) {
             if (ability != primaryAbility) {
-                Destroy(primaryAbility); // clear previous ability
+                Destroy(primaryAbility.gameObject); // clear previous ability
             }
             ability.transform.parent = abilityParent;
         
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour {
         }
         public void SetSecondaryAbility(Ability ability) {
             if (ability != secondaryAbility) {
-                Destroy(secondaryAbility); // clear previous ability
+                Destroy(secondaryAbility.gameObject); // clear previous ability
             }
             ability.transform.parent = abilityParent;
         
