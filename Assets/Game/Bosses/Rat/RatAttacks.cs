@@ -128,9 +128,16 @@ namespace Game.Scripts
             switch (curAttack) {
                 case 0:
                     float s = .04f;
-                    bigBullet.transform.localScale += new Vector3(s, s, s);
-                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -.02f);
-                    bigBullet.transform.position = gun;
+                    if (bigBullet != null) {
+                        bigBullet.transform.localScale += new Vector3(s, s, s);
+                        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -.02f);
+                        bigBullet.transform.position = gun;
+                    }
+                    else {
+                        // this happens when the player walks into the bullet before it is fired
+                        curAttack = -1;
+                    }
+                    
                     break;
                 case 1:
                     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .025f);
