@@ -29,7 +29,8 @@ namespace Game.Scripts.Abilities {
             Quaternion startingRotation = prefabMallet.transform.rotation;
 
             mallet = Instantiate(prefabMallet, this.transform.position + malletOffset, prefabMallet.transform.rotation, this.transform);
-
+            mallet.SetActive(false);
+            
             Transform reticle = this.transform.parent.parent.parent.GetChild(2);
             Quaternion toRotation = Quaternion.LookRotation(reticle.position - mallet.transform.position, Vector3.up);
             mallet.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
