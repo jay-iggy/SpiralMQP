@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 63a6e10b0a714df47a65bfcfd5cb91be, type: 3}
   - {fileID: 8300000, guid: 663d1ba26a311064c851ae4056b85442, type: 3}
   baseVolume: 1
+  mixerGroup: {fileID: 0}

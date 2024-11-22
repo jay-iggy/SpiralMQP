@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 293df1d292a70484d81b7eef50c2a884, type: 3}
-  m_Name: Shoot
+  m_Name: Thwomp
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 7f526294710d4264fb86a3008faeae43, type: 3}
+  - {fileID: 8300000, guid: 10ef4b4785d4d9d42985cf47557ce1c0, type: 3}
   baseVolume: 1
   mixerGroup: {fileID: 24300002, guid: fa1b42bc6dfebdd4e8a124d77fadd16b, type: 2}
