@@ -51,6 +51,6 @@ MonoBehaviour:
   malletDuration: 0.2
   secondsAtPeak: 0
   secondsOnGround: 0.1
-  dmg: 5
+  dmg: 4
   knockback: 20
   sfx: {fileID: 11400000, guid: 7b10c5e18f2dca940aa2c253fbc2f519, type: 2}
