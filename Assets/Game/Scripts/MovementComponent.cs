@@ -13,13 +13,11 @@ public class MovementComponent : MonoBehaviour {
     public float terminalVelocity = -20;
     [SerializeField] private float externalVelocityDamping = 5;
     [SerializeField] private float personalVelocityDamping = 5;
-    private float forceYpos = 0;
     
     private Rigidbody _rb;
     
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
-        forceYpos = this.transform.position.y;
     }
 
     void Update() {
@@ -36,8 +34,6 @@ public class MovementComponent : MonoBehaviour {
         if (_rb.velocity.y > -0.01 && verticalVelocity < 0) {
             verticalVelocity = 0;
         }
-        
-        //this.transform.position = new Vector3(transform.position.x, forceYpos, transform.position.z);
     }
     
     public void AddExternalVelocity(Vector3 velocity) {
