@@ -44,7 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c34f62af8a64924787bf8c67fa65e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berserkMaterial: {fileID: 2100000, guid: f294b142429a2c940b001dbc33ec756a, type: 2}
-  SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
-    type: 3}
-  SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
+  berserkMaterial: {fileID: 2100000, guid: afe7de76615be4c8a97a32240c4a0adf, type: 2}
+  sfx: {fileID: 0}

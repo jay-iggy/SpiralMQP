@@ -9,9 +9,8 @@ namespace Game.Scripts.Abilities {
         private GameObject player;
         private HealthComponent hp;
         private PlayerController pc;
-        private MeshRenderer gfx;
+        private PranimDriver gfx;
         [SerializeField] Material berserkMaterial;
-        private Material normalMaterial;
         private AttackAbility attackAbility;
 
         public Sound sfx;
@@ -19,8 +18,7 @@ namespace Game.Scripts.Abilities {
         void Start()
         {
             player = transform.parent.parent.gameObject;
-            // gfx = player.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
-            // normalMaterial = gfx.material;
+            gfx = player.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<PranimDriver>();
             hp = player.GetComponent<HealthComponent>();
             pc = player.GetComponent<PlayerController>();
             hp.onHealthChanged.AddListener(SetActive);
@@ -37,6 +35,7 @@ namespace Game.Scripts.Abilities {
         {
             if (health < hp.maxHealth / 2) //active
             {
+                gfx.SetAllMaterialsToOneMat(berserkMaterial);
                 // gfx.material = berserkMaterial;
                 if(!active && attackAbility != null)
                 {
@@ -47,7 +46,7 @@ namespace Game.Scripts.Abilities {
             }
             else //inactive
             {
-                // gfx.material = normalMaterial;
+                gfx.UpdateMaterialsToDefaults();
                 if(active && attackAbility != null)
                 {
                     // attackAbility.ModifyDamage(-1);
