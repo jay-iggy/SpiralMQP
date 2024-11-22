@@ -8,6 +8,9 @@ public class MovementComponent : MonoBehaviour {
     public Vector3 moveVelocity;
     private Vector3 externalVelocity;
     private Vector3 personalVelocity;
+    private float verticalVelocity;
+    public float gravity = -9.8f;
+    public float terminalVelocity = -20;
     [SerializeField] private float externalVelocityDamping = 5;
     [SerializeField] private float personalVelocityDamping = 5;
     private float forceYpos = 0;
@@ -20,10 +23,21 @@ public class MovementComponent : MonoBehaviour {
     }
 
     void Update() {
-        _rb.velocity = moveVelocity + externalVelocity + personalVelocity;
+        Vector3 velocity = moveVelocity + externalVelocity + personalVelocity;
+        velocity.y = verticalVelocity;
+        _rb.velocity = velocity;
         externalVelocity = Vector3.Lerp(externalVelocity, Vector3.zero, externalVelocityDamping * Time.deltaTime);
         personalVelocity = Vector3.Lerp(personalVelocity, Vector3.zero, personalVelocityDamping * Time.deltaTime);
-        this.transform.position = new Vector3(transform.position.x, forceYpos, transform.position.z);
+        if(verticalVelocity > terminalVelocity) {
+            float deltaGravity = gravity * Time.deltaTime;
+            Mathf.Clamp(verticalVelocity + deltaGravity, terminalVelocity, Mathf.Infinity);
+        }
+        // kill vertical velocity if we hit the ground
+        if (_rb.velocity.y > -0.01 && verticalVelocity < 0) {
+            verticalVelocity = 0;
+        }
+        
+        //this.transform.position = new Vector3(transform.position.x, forceYpos, transform.position.z);
     }
     
     public void AddExternalVelocity(Vector3 velocity) {
@@ -31,5 +45,8 @@ public class MovementComponent : MonoBehaviour {
     }
     public void AddPersonalVelocity(Vector3 velocity) {
         personalVelocity += velocity;
+    }
+    public void AddVerticalVelocity(float velocity) {
+        verticalVelocity += velocity;
     }
 }
