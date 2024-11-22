@@ -13,7 +13,9 @@ namespace Game.Scripts {
         
         private void Awake() {
             onHitTarget.AddListener(OnHitTarget);
-            GetComponent<Rigidbody>().velocity = transform.forward * speed;
+            if(speed != 0) {
+                GetComponent<Rigidbody>().velocity = transform.forward * speed;
+            }
         }
 
         private void OnHitTarget(ICanGetHit target) {
