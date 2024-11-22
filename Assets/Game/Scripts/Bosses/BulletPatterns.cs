@@ -19,6 +19,10 @@ namespace Game.Scripts
         }
 
         public static void MoveTowards(GameObject bullet, Vector3 target, float speed) {
+            if(bullet == null) {
+                Debug.LogWarning($"BulletPatterns::MoveTowards(): Bullet is null!");
+                return;
+            }
             Vector3 v = target - bullet.transform.position;
             v.Normalize();
             v *= speed;
