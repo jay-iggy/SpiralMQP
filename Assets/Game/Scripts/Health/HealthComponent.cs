@@ -11,6 +11,7 @@ namespace Game.Scripts {
         public UnityEvent onDeath;
         public UnityEvent onTakeDamage;
         public UnityEvent<float> onTakeDamageFloat;
+        public UnityEvent<float> onMaxHealthChanged;
         
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
@@ -22,7 +23,7 @@ namespace Game.Scripts {
         public FloatingText floatingTextPrefab;
 
         public float health { get; private set; }
-        public float maxHealth = 100;
+        public float maxHealth = 100; // dont use this directly, use SetMaxHealth
         public bool isAlive { get; private set; } = true;
         
         private void Awake() {
@@ -36,6 +37,11 @@ namespace Game.Scripts {
             onDeath.AddListener(PlayDeathJuice);
         }
 
+        public void SetMaxHealth(float newMaxHealth) {
+            maxHealth = newMaxHealth;
+            SetHealth(maxHealth);
+            onMaxHealthChanged.Invoke(newMaxHealth);
+        }
         public void SetHealth(float newHealth) {
             health = Mathf.Clamp(newHealth, 0, maxHealth);
             onHealthChanged.Invoke(health);
