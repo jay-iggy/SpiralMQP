@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5879c71f787b7ac4b92d3812d3fa0c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: aaaaaaa
+  itemName: LIFESTEAL
   itemType: 5
   itemRarity: 0
   itemDescription: GET HP WHEN ATTACKING SOMETIMES
