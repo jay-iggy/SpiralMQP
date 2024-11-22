@@ -32,6 +32,7 @@ namespace Game.Scripts.Abilities {
             if (mStar.TryGetComponent(out Hitbox hitbox)) {
                 BindHitbox(hitbox);
             }
+            mStar.SetActive(false);
 
             // mStarCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             // mStarCooldown *= CustomStatsManager.instance.customStats.playerAttackSpeed;
