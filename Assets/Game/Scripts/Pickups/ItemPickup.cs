@@ -27,6 +27,7 @@ public abstract class ItemPickup : MonoBehaviour {
     public string itemName;
     public ItemType itemType;
     public ItemRarity itemRarity;
+    public string itemDescription;
     private int itemIndex = -1; //-1 for health pickup, ability pickups >= 0
     private float gracePeriod = .1f;
     public GameObject pickupUIPrefab;
@@ -35,7 +36,7 @@ public abstract class ItemPickup : MonoBehaviour {
     {
         PickupManager.instance.onItemCollected.AddListener(NotSelected);
         GameObject pickupUI = Instantiate(pickupUIPrefab, this.transform);
-        pickupUI.GetComponent<PickupUI>().updateValues(itemName, itemType, itemRarity);
+        pickupUI.GetComponent<PickupUI>().updateValues(itemName, itemType, itemRarity, itemDescription);
     }
 
     private void Update()

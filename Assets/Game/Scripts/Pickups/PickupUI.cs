@@ -8,10 +8,11 @@ public class PickupUI : MonoBehaviour
     public string name;
     public ItemType type;
     public ItemRarity rarity;
+    public string description;
 
     private TextMeshPro nameText;
     private TextMeshPro typeText;
-    private TextMeshPro rarityText;
+    private TextMeshPro descriptionText;
 
     [SerializeField] Color commonColor;
     [SerializeField] Color uncommonColor;
@@ -21,14 +22,11 @@ public class PickupUI : MonoBehaviour
     {
         nameText = this.transform.GetChild(0).GetComponent<TextMeshPro>();
         typeText = this.transform.GetChild(1).GetComponent<TextMeshPro>();
-        rarityText = this.transform.GetChild(2).GetComponent<TextMeshPro>();
+        descriptionText = this.transform.GetChild(2).GetComponent<TextMeshPro>();
     }
 
     public void Start()
     {
-        nameText.text = "NAME: " + name;
-        typeText.text = "TYPE: " + type;
-
         Color rarityColor = commonColor;
         switch (rarity)
         {
@@ -43,13 +41,16 @@ public class PickupUI : MonoBehaviour
                 break;
         }
 
-        rarityText.text = "RARITY: " + "<color=#" + ColorUtility.ToHtmlStringRGB(rarityColor) + ">" + rarity + "</color>";
+        nameText.text = "NAME: " + "<color=#" + ColorUtility.ToHtmlStringRGB(rarityColor) + ">" + name + "</color>";
+        typeText.text = "TYPE: " + type;
+        descriptionText.text = description;
     }
 
-    public void updateValues(string newName, ItemType newType, ItemRarity newRarity)
+    public void updateValues(string newName, ItemType newType, ItemRarity newRarity, string newDescription)
     {
         name = newName;
         type = newType;
         rarity = newRarity;
+        description = newDescription;
     }
 }

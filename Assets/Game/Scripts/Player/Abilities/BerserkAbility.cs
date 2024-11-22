@@ -19,8 +19,8 @@ namespace Game.Scripts.Abilities {
         void Start()
         {
             player = transform.parent.parent.gameObject;
-            gfx = player.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
-            normalMaterial = gfx.material;
+            // gfx = player.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            // normalMaterial = gfx.material;
             hp = player.GetComponent<HealthComponent>();
             pc = player.GetComponent<PlayerController>();
             hp.onHealthChanged.AddListener(SetActive);
@@ -37,20 +37,20 @@ namespace Game.Scripts.Abilities {
         {
             if (health < hp.maxHealth / 2) //active
             {
-                gfx.material = berserkMaterial;
+                // gfx.material = berserkMaterial;
                 if(!active && attackAbility != null)
                 {
-                    attackAbility.ModifyDamage(1);
+                    attackAbility.ModifyDamage(2);
                 }
                 active = true;
                 PlaySound();
             }
             else //inactive
             {
-                gfx.material = normalMaterial;
+                // gfx.material = normalMaterial;
                 if(active && attackAbility != null)
                 {
-                    attackAbility.ModifyDamage(-1);
+                    // attackAbility.ModifyDamage(-1);
                 }
                 active = false;
             }

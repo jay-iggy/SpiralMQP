@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7469269583899874904}
   - component: {fileID: 1151371449358012669}
   m_Layer: 0
-  m_Name: Rarity
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,8 +204,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.06, y: -8.01}
-  m_SizeDelta: {x: 2, y: 5}
+  m_AnchoredPosition: {x: -0.0063, y: -7.11}
+  m_SizeDelta: {x: 4.1075, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7469269583899874904
 MeshRenderer:
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'RARITY: '
+  m_text: DESCRIPTION GOES HERE WHERE IT IS DESCRIBED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afd1a2edba5ffb04ea70e187acf4ddca, type: 2}
   m_sharedMaterial: {fileID: -8566444772963138805, guid: afd1a2edba5ffb04ea70e187acf4ddca,
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -566,6 +566,7 @@ MonoBehaviour:
   name: 
   type: 0
   rarity: 0
+  description: 
   commonColor: {r: 0.38993704, g: 0.38993704, b: 0.38993704, a: 0}
   uncommonColor: {r: 0.50083613, g: 1, b: 0.48113197, a: 0}
   rareColor: {r: 0.48742133, g: 0.49443278, b: 1, a: 0}
@@ -603,7 +604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.1, y: -6.6}
+  m_AnchoredPosition: {x: -1.1, y: -6.04}
   m_SizeDelta: {x: 2, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &335644412981901274
