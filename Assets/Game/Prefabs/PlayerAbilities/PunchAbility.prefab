@@ -256,7 +256,7 @@ MonoBehaviour:
   outStretch: {fileID: 2663932954719128643}
   punchCooldown: 0.25
   punchDuration: 0.5
-  dmg: 3
+  dmg: 2
   magnetismTrigger: {fileID: 6486393109571053439}
   sfx: {fileID: 11400000, guid: 0ec8a7aa852bcd24e9fdd9ea7775f6dc, type: 2}
 --- !u!135 &6486393109571053439

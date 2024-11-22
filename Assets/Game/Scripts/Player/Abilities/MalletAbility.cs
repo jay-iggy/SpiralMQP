@@ -29,7 +29,8 @@ namespace Game.Scripts.Abilities {
             Quaternion startingRotation = prefabMallet.transform.rotation;
 
             mallet = Instantiate(prefabMallet, this.transform.position + malletOffset, prefabMallet.transform.rotation, this.transform);
-
+            mallet.SetActive(false);
+            
             Transform reticle = this.transform.parent.parent.parent.GetChild(2);
             Quaternion toRotation = Quaternion.LookRotation(reticle.position - mallet.transform.position, Vector3.up);
             mallet.transform.eulerAngles = new Vector3(0, toRotation.eulerAngles.y, 0);
@@ -49,14 +50,17 @@ namespace Game.Scripts.Abilities {
         }
         private void ProcessAttack(ICanGetHit hurtbox) {
             hurtbox.GetHit(dmg);
+            PlaySound();
             
             // knockback the target
             if(hurtbox is MonoBehaviour target) {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<MovementComponent>().AddExternalVelocity(direction * knockback);
-                PlaySound();
+                MovementComponent movementComponent = target.GetComponent<MovementComponent>();
+                if(movementComponent != null) {
+                    movementComponent.AddExternalVelocity(direction * knockback);
+                }
             }
         }
 

@@ -157,8 +157,10 @@ MonoBehaviour:
   itemName: REFILL
   itemType: 1
   itemRarity: 0
+  itemDescription: REFILLS ALL YOUR HEALTH
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
+  sfx: {fileID: 11400000, guid: b6847b8d3176419429f6c54ae559d1d5, type: 2}
 --- !u!1 &3355047645817338717
 GameObject:
   m_ObjectHideFlags: 0

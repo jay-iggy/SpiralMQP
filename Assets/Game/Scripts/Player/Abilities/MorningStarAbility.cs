@@ -32,6 +32,7 @@ namespace Game.Scripts.Abilities {
             if (mStar.TryGetComponent(out Hitbox hitbox)) {
                 BindHitbox(hitbox);
             }
+            mStar.SetActive(false);
 
             // mStarCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             // mStarCooldown *= CustomStatsManager.instance.customStats.playerAttackSpeed;
@@ -48,14 +49,17 @@ namespace Game.Scripts.Abilities {
         }
         private void ProcessAttack(ICanGetHit hurtbox) {
             hurtbox.GetHit(dmg);
+            PlaySound();
             
             // knockback the target
             if(hurtbox is MonoBehaviour target) {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<MovementComponent>().AddExternalVelocity(direction * knockback);
-                PlaySound();
+                MovementComponent movementComponent = target.GetComponent<MovementComponent>();
+                if(movementComponent != null) {
+                    movementComponent.AddExternalVelocity(direction * knockback);
+                }
             }
         }
 

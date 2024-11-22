@@ -13,10 +13,18 @@ namespace Game.Scripts {
             CreateHearts();
             if(healthComponent != null) {
                 BindHealthComponent(healthComponent);
+                healthComponent.onMaxHealthChanged.AddListener(RefreshHearts);
             }
         }
         
+        private void RefreshHearts(float newMaxHealth) {
+            CreateHearts();
+        }
+        
         private void CreateHearts() {
+            foreach (Transform child in heartsLayoutGroup.transform) {
+                Destroy(child.gameObject);
+            }
             for (int i = 0; i < healthComponent.maxHealth; i++) {
                 GameObject heart = Instantiate(heartPrefab, heartsLayoutGroup.transform);
                 hearts.Add(heart);

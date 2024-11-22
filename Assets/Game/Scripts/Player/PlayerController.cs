@@ -48,8 +48,7 @@ public class PlayerController : MonoBehaviour {
         // set player stats to custom values
         walkSpeed = CustomStatsManager.instance.customStats.playerSpeed;
         healthComponent = GetComponent<HealthComponent>();
-        healthComponent.maxHealth = CustomStatsManager.instance.customStats.playerHealth;
-        healthComponent.SetHealth(healthComponent.maxHealth);
+        healthComponent.SetMaxHealth(CustomStatsManager.instance.customStats.playerHealth);
         
         movementSpeed = walkSpeed;
         
@@ -146,7 +145,7 @@ public class PlayerController : MonoBehaviour {
         }
         public void SetPrimaryAbility(Ability ability) {
             if (ability != primaryAbility) {
-                Destroy(primaryAbility); // clear previous ability
+                Destroy(primaryAbility.gameObject); // clear previous ability
             }
             ability.transform.parent = abilityParent;
         
@@ -170,7 +169,7 @@ public class PlayerController : MonoBehaviour {
         }
         public void SetSecondaryAbility(Ability ability) {
             if (ability != secondaryAbility) {
-                Destroy(secondaryAbility); // clear previous ability
+                Destroy(secondaryAbility.gameObject); // clear previous ability
             }
             ability.transform.parent = abilityParent;
         

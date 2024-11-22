@@ -49,6 +49,7 @@ MonoBehaviour:
   itemName: MACE
   itemType: 3
   itemRarity: 2
+  itemDescription: SPIN AROUND N SMASH STUFF
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
   ability: {fileID: 5591848475684918550, guid: 6494833ce89d44933b4acea35f4ebd17, type: 3}

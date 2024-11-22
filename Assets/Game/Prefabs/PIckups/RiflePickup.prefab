@@ -133,6 +133,7 @@ MonoBehaviour:
   itemName: RIFLE
   itemType: 2
   itemRarity: 0
+  itemDescription: HIGH DMG LONG COOLDOWN
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
   ability: {fileID: 677732930458458227, guid: 0b65d732d501cfd47b119680bcc48126, type: 3}

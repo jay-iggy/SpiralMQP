@@ -78,6 +78,100 @@ public class PranimDriver : MonoBehaviour
     }
     #endregion
 
+    #region materials
+    [SerializeField] private Material skin;
+    [SerializeField] private Material shirt;
+    [SerializeField] private Material pants;
+    [SerializeField] private Material hair;
+
+    public void UpdateMaterialsToDefaults()
+    {
+        // Legs
+        // right thigh
+        rightLeg.transform.GetChild(1).GetComponent<MeshRenderer>().material = pants;
+        // right calf
+        rightLeg.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = pants;
+        // right foot
+        rightLeg.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = pants;
+        // left thigh
+        leftLeg.transform.GetChild(1).GetComponent<MeshRenderer>().material = pants;
+        // left calf
+        leftLeg.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = pants;
+        // left foot
+        leftLeg.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = pants;
+
+        // Arms
+        // right sleeve
+        rightArm.transform.GetChild(1).GetComponent<MeshRenderer>().material = shirt;
+        // right forearm
+        rightArm.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = skin;
+        // right hand
+        rightArm.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = skin;
+        // left sleeve
+        leftArm.transform.GetChild(1).GetComponent<MeshRenderer>().material = shirt;
+        // left forearm
+        leftArm.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = skin;
+        // left hand
+        leftArm.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = skin;
+
+        // Body
+        // hip box
+        this.transform.GetChild(1).GetComponent<MeshRenderer>().material = pants;
+        // torso
+        this.transform.GetChild(2).GetComponent<MeshRenderer>().material = shirt;
+        // chest
+        this.transform.GetChild(3).GetComponent<MeshRenderer>().material = shirt;
+        // head
+        this.transform.GetChild(6).GetComponent<MeshRenderer>().material = skin;
+        // hair
+        this.transform.GetChild(7).GetComponent<MeshRenderer>().material = hair;
+
+    }
+
+    public void SetAllMaterialsToOneMat(Material m)
+    {
+        // Legs
+        // right thigh
+        rightLeg.transform.GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // right calf
+        rightLeg.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // right foot
+        rightLeg.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = m;
+        // left thigh
+        leftLeg.transform.GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // left calf
+        leftLeg.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // left foot
+        leftLeg.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = m;
+
+        // Arms
+        // right sleeve
+        rightArm.transform.GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // right forearm
+        rightArm.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // right hand
+        rightArm.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = m;
+        // left sleeve
+        leftArm.transform.GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // left forearm
+        leftArm.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // left hand
+        leftArm.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = m;
+
+        // Body
+        // hip box
+        this.transform.GetChild(1).GetComponent<MeshRenderer>().material = m;
+        // torso
+        this.transform.GetChild(2).GetComponent<MeshRenderer>().material = m;
+        // chest
+        this.transform.GetChild(3).GetComponent<MeshRenderer>().material = m;
+        // head
+        this.transform.GetChild(6).GetComponent<MeshRenderer>().material = m;
+        // hair
+        this.transform.GetChild(7).GetComponent<MeshRenderer>().material = m;
+    }
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {

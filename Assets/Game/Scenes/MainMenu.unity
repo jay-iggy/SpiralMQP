@@ -6086,7 +6086,8 @@ MonoBehaviour:
 
     Added red damage numbers for player
 
-'
+    Fixed mallet model rendering
+    issue'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b33abc6a071564845bbb3fa9f0568b5c, type: 2}
   m_sharedMaterial: {fileID: -6456840900083871457, guid: b33abc6a071564845bbb3fa9f0568b5c,
@@ -7093,12 +7094,10 @@ MonoBehaviour:
     Micah
     Vargas - Programmer
 
-    Nha Hoang - Programmer
-
     Samuel Wilensky - Programmer
 
-    Elijah
-    DelCastillo - Audio
+    Elijah DelCastillo
+    - Audio
 
 '
   m_isRightToLeft: 0

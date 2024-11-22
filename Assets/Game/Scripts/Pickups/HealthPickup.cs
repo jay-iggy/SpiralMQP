@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Game.Scripts.Pickups
 {
-    public class HealthPickup : ItemPickup
-    {
+    public class HealthPickup : ItemPickup {
+        [SerializeReference] private Sound sfx;
         public HealthPickup()
         {
             itemType = ItemType.HEALTH;
@@ -13,7 +13,8 @@ namespace Game.Scripts.Pickups
         protected override void ApplyEffect(PlayerController player)
         {
             HealthComponent healthComponent = player.GetHealthComponent();
-            healthComponent.SetHealth(100);
+            healthComponent.SetHealth(healthComponent.maxHealth);
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Shoot
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: d9e42a8a196cef24ca03a6808b9349f0, type: 3}
+  - {fileID: 8300000, guid: 7f526294710d4264fb86a3008faeae43, type: 3}
   baseVolume: 1
+  mixerGroup: {fileID: 24300002, guid: fa1b42bc6dfebdd4e8a124d77fadd16b, type: 2}
