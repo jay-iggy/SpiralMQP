@@ -15,6 +15,13 @@ namespace Game.Scripts.Player.Abilities {
         //audio
         public Sound sfx;
 
+        // visual
+        public void Start()
+        {
+            // turn on the gun model
+            this.transform.parent.GetChild(0).gameObject.SetActive(true);
+        }
+
         public override void AbilityPressed() {
             Shoot();
             
