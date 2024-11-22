@@ -2052,7 +2052,7 @@ MonoBehaviour:
   - {fileID: 915226059927050450, guid: 72838bafeedaa46f882908ce9b4bec8d, type: 3}
   - {fileID: 4923088266207143212, guid: da35fb187e031458d9080c9914720203, type: 3}
   - {fileID: 915226059927050450, guid: 67a725cfb6efc1347a26fc8fcf7f9dcc, type: 3}
-  - {fileID: 915226059927050450, guid: 67a725cfb6efc1347a26fc8fcf7f9dcc, type: 3}
+  - {fileID: 915226059927050450, guid: 9754f52de96d5264a954d79596108afd, type: 3}
   onItemCollected:
     m_PersistentCalls:
       m_Calls: []
