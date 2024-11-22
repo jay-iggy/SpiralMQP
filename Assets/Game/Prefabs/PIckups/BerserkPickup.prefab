@@ -155,6 +155,7 @@ MonoBehaviour:
   itemName: BERSERK
   itemType: 5
   itemRarity: 0
+  itemDescription: +2 DMG WHEN LOWER THAN HALF HEALTH
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
   ability: {fileID: 2653171394673493507, guid: 8158a27c7f24850448eb719fa2e2f5ce, type: 3}
