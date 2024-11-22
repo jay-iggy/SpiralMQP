@@ -49,9 +49,8 @@ MonoBehaviour:
   malletOffset: {x: 0.2, y: 1, z: 0.2}
   malletCooldown: 1
   malletDuration: 0.2
+  secondsAtPeak: 0
   secondsOnGround: 0.1
   dmg: 2
   knockback: 20
-  SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
-    type: 3}
-  SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
+  sfx: {fileID: 11400000, guid: 0ec8a7aa852bcd24e9fdd9ea7775f6dc, type: 2}

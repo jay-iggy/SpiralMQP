@@ -23,15 +23,9 @@ namespace Game.Scripts.Abilities {
         private bool holding = false;
 
         //audio stuff
-        [SerializeField] AudioManager SerAudioManager;
-        [SerializeField] AudioClip SerAudioClip;
-
-        private AudioManager AudioCon;
-        private AudioClip soundSFX;
+        public Sound sfx;
 
         private void Start() {
-            AudioCon = Instantiate(SerAudioManager, new Vector3(0,0,0), Quaternion.identity);
-            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
             Quaternion startingRotation = prefabMallet.transform.rotation;
 
             mallet = Instantiate(prefabMallet, this.transform.position + malletOffset, prefabMallet.transform.rotation, this.transform);
@@ -131,12 +125,8 @@ namespace Game.Scripts.Abilities {
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
         }
-        private void PlaySound()
-        {
-            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
-            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
-
-            AudioCon.PlaySFX(soundSFX);
+        private void PlaySound() {
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }

@@ -5,12 +5,8 @@ namespace Game.Scripts.Player.Abilities {
     public class DashAbility : Ability {
         // TODO: disable player movement during dash and for a short time after dashing
 
-        //audio stuff
-        //audio stuff
-        [SerializeField] AudioManager SerAudioManager;
-        [SerializeField] AudioClip SerAudioClip;
-        private AudioManager AudioCon;
-        private AudioClip soundSFX;
+        //audio
+        public Sound sfx;
 
         [SerializeField] private float dashForce = 10f;
         private bool canDash = true;
@@ -34,12 +30,8 @@ namespace Game.Scripts.Player.Abilities {
         public override void AbilityReleased() {
             // nothing to do here
         }
-        private void PlaySound()
-        {
-            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
-            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
-
-            AudioCon.PlaySFX(soundSFX);
+        private void PlaySound() {
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }

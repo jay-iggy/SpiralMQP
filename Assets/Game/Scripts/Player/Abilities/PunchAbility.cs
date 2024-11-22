@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Scripts.Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Abilities {
     public class PunchAbility : AttackAbility {
@@ -22,12 +23,7 @@ namespace Game.Scripts.Abilities {
         [SerializeField] private Collider magnetismTrigger;
 
         //audio
-        [SerializeField] AudioManager SerAudioManager;
-        [SerializeField] AudioClip SerAudioClip;
-
-        private AudioManager AudioCon;
-        private AudioClip soundSFX;
-
+        [SerializeField] Sound sfx;
 
         private void Start() {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
@@ -101,12 +97,8 @@ namespace Game.Scripts.Abilities {
             }
             PlaySound();
         }
-        private void PlaySound()
-        {
-            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
-            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
-
-            AudioCon.PlaySFX(soundSFX);
+        private void PlaySound() {
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }

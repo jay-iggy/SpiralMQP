@@ -51,6 +51,4 @@ MonoBehaviour:
     type: 3}
   isAutomatic: 0
   spawnOffset: {x: 0, y: 1, z: 0}
-  SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
-    type: 3}
-  SerAudioClip: {fileID: 8300000, guid: d9e42a8a196cef24ca03a6808b9349f0, type: 3}
+  sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}

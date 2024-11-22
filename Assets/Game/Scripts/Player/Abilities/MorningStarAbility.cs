@@ -17,12 +17,7 @@ namespace Game.Scripts.Abilities {
         public float knockback = 10;
         private float speed;
 
-        
-        //audio stuff
-        [SerializeField] AudioManager SerAudioManager;
-        [SerializeField] AudioClip SerAudioClip;
-        private AudioManager AudioCon;
-        private AudioClip soundSFX;
+        public Sound sfx;
 
         private void Start() {
 
@@ -98,12 +93,8 @@ namespace Game.Scripts.Abilities {
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
         }
-        private void PlaySound()
-        {
-            AudioCon = Instantiate(SerAudioManager, new Vector3(0, 0, 0), Quaternion.identity);
-            soundSFX = Instantiate(SerAudioClip, new Vector3(0, 0, 0), Quaternion.identity);
-
-            AudioCon.PlaySFX(soundSFX);
+        private void PlaySound() {
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }
