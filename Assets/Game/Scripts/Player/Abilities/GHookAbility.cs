@@ -16,6 +16,7 @@ namespace Game.Scripts.Player.Abilities
         public LayerMask whatIsGrappleable;
         public Transform player;
         private float maxDistance = 100f;
+        private Vector3 lrOffset = Vector3.up * 0.8f;
 
         private float percentToTarget = 0; // [0,1]
         private float percentIncrement = 0.05f;
@@ -79,7 +80,7 @@ namespace Game.Scripts.Player.Abilities
                 grappleEnd = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
                 percentToTarget += percentIncrement;
                 lr.positionCount = 2;
-                lr.SetPosition(0, this.transform.position);
+                lr.SetPosition(0, this.transform.position + lrOffset);
                 lr.SetPosition(1, grappleEnd);
 
                 if (percentToTarget >= 1)
@@ -95,7 +96,7 @@ namespace Game.Scripts.Player.Abilities
                 percentToTarget += percentIncrement;
                 player.transform.position = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
                 lr.positionCount = 2;
-                lr.SetPosition(0, this.transform.position);
+                lr.SetPosition(0, this.transform.position + lrOffset);
                 lr.SetPosition(1, grapplePoint);
 
                 if (percentToTarget >= 1) // end when fully retracted
