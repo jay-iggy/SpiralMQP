@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f82f3d7d6f44decaf510e1e017daf31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthComponent: {fileID: 0}
+  healthComponent: {fileID: 2899719456088961195}
   heartsLayoutGroup: {fileID: 273557782}
   heartPrefab: {fileID: 4914246975800605321, guid: f4797dae26ed25c46afc10310c4fb3e4,
     type: 3}
