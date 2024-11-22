@@ -49,7 +49,7 @@ namespace Game.Scripts.Abilities {
                 gfx.UpdateMaterialsToDefaults();
                 if(active && attackAbility != null)
                 {
-                    // attackAbility.ModifyDamage(-1);
+                    attackAbility.ModifyDamage(-2);
                 }
                 active = false;
             }
