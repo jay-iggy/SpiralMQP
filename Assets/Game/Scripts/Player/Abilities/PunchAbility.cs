@@ -20,6 +20,7 @@ namespace Game.Scripts.Abilities {
         private float _punchTimer = 0;
         private float initialPunchTimer;
         public float dmg = 3;
+        public float knockback = 5;
         [SerializeField] private Collider magnetismTrigger;
 
         //audio
@@ -52,7 +53,10 @@ namespace Game.Scripts.Abilities {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<MovementComponent>().AddExternalVelocity(direction * 5);
+                MovementComponent movementComponent = target.GetComponent<MovementComponent>();
+                if(movementComponent != null) {
+                    movementComponent.AddExternalVelocity(direction * knockback);
+                }
             }
         }
 
