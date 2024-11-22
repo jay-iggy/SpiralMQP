@@ -128,6 +128,11 @@ namespace Game.Scripts
             _itemsToCleanup.Add(proj);
             _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
         }
+
+        public float jumpForce = 50f;
+        public void Jump() { // this is invoked by animation event
+            _movementComponent.AddVerticalVelocity(jumpForce);
+        }
         
         private void OnHealthChanged(float newHealth) {
             if (newHealth/_healthComponent.maxHealth < .5f) {

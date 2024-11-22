@@ -1914,6 +1914,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 1.8799492
       objectReference: {fileID: 0}
+    - target: {fileID: 7256185496358109389, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: terminalVelocity
+      value: -30.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2066,6 +2071,7 @@ MonoBehaviour:
   delayBetweenVolleys: 0.5
   aimRotateSpeed: 2
   knockbackForce: 50
+  jumpForce: 15
 --- !u!95 &2792873772990784303
 Animator:
   serializedVersion: 5
