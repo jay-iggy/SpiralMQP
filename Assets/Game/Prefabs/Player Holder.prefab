@@ -5227,6 +5227,7 @@ GameObject:
   - component: {fileID: 7989609452968921612}
   - component: {fileID: 4142730876757865120}
   - component: {fileID: 7881908488373177608}
+  - component: {fileID: 9074490876563446242}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -5408,6 +5409,18 @@ MonoBehaviour:
   moveVelocity: {x: 0, y: 0, z: 0}
   externalVelocityDamping: 5
   personalVelocityDamping: 5
+--- !u!75 &9074490876563446242
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498774847257164725}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &1641437452213450800
 GameObject:
   m_ObjectHideFlags: 0
