@@ -28,7 +28,7 @@ public class MovementComponent : MonoBehaviour {
         personalVelocity = Vector3.Lerp(personalVelocity, Vector3.zero, personalVelocityDamping * Time.deltaTime);
         if(verticalVelocity > terminalVelocity) {
             float deltaGravity = gravity * Time.deltaTime;
-            Mathf.Clamp(verticalVelocity + deltaGravity, terminalVelocity, Mathf.Infinity);
+            verticalVelocity = Mathf.Clamp(verticalVelocity + deltaGravity, terminalVelocity, Mathf.Infinity);
         }
         // kill vertical velocity if we hit the ground
         if (_rb.velocity.y > -0.01 && verticalVelocity < 0) {
