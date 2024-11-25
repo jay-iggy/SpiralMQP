@@ -3641,6 +3641,17 @@ PrefabInstance:
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1214195746}
+    - target: {fileID: 2232678097749065887, guid: acb0cb568d2314955b7f969dc574d0b8,
+        type: 3}
+      propertyPath: primaryAbility
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232678097749065887, guid: acb0cb568d2314955b7f969dc574d0b8,
+        type: 3}
+      propertyPath: punchAbilityPrefab
+      value: 
+      objectReference: {fileID: 3226833857253917701, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
     - target: {fileID: 2680805115282474946, guid: acb0cb568d2314955b7f969dc574d0b8,
         type: 3}
       propertyPath: target
@@ -3717,7 +3728,8 @@ PrefabInstance:
       value: Player Holder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 931038255266767024, guid: acb0cb568d2314955b7f969dc574d0b8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb0cb568d2314955b7f969dc574d0b8, type: 3}
