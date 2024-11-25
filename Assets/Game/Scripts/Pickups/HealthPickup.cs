@@ -24,11 +24,9 @@ namespace Game.Scripts.Pickups
         {
             HealthComponent healthComponent = player.GetHealthComponent();
 
-            switch (type)
-            {
+            switch (type) {
                 case HealthType.add:
-                    if(healthComponent.health + amount < healthComponent.maxHealth)
-                        healthComponent.SetHealth(healthComponent.health + amount);
+                    healthComponent.SetHealth(healthComponent.health + amount);
                     if (sfx != null) sfx.PlaySound();
                     break;
                 case HealthType.addToMax:
