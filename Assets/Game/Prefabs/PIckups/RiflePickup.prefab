@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: RIFLE
   itemType: 2
-  itemRarity: 0
+  itemRarity: 1
   itemDescription: HIGH DMG LONG COOLDOWN
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
