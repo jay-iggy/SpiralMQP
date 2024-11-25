@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
     
     // References
     private Rigidbody _rb;
-    private PlayerInput _playerControls; // this isn't a PlayerInput component, its a compiled input action asset named PlayerInput
+    private SpiralPlayerControls _playerControls;
     private HealthComponent healthComponent;
 
 
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour {
     }
     
     private void CreatePlayerControls() {
-        _playerControls = new PlayerInput();
+        _playerControls = new();
         _playerControls.Player.Move.performed += OnMove;
         _playerControls.Player.Move.canceled += OnMove;
         _playerControls.Player.Look.performed += OnLook;
