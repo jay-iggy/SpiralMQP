@@ -51,10 +51,7 @@ namespace Game.Scripts.Player.Abilities {
 
             for (int i = 0; i < 6; i++)
             {
-
-
-
-                Projectile projectile = Instantiate(projectilePrefab, transform.position + spawnOffset, Quaternion.identity);
+                Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
                 projectile.dmg = projectileDamage;
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
