@@ -32,6 +32,12 @@ public class InverseKinematics : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (target == null)
+            target = thirdBone;
+    }
+
     void LateUpdate()
     {
         Vector3 towardPole = pole.position - firstBone.position;

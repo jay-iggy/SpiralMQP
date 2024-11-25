@@ -43,34 +43,31 @@ public class PranimDriver : MonoBehaviour
         while (true)
         {
             // Check for changes in armTargets count
-            if (TargetManager.instance.armTargets.Count != lastArmTargetsCount)
+            if (TargetManager.instance.armTargets.Count > 0)
             {
-                if (TargetManager.instance.armTargets.Count > 0)
+                // Assign targets to arms
+                foreach (var t in TargetManager.instance.armTargets)
                 {
-                    // Assign targets to arms
-                    foreach (var t in TargetManager.instance.armTargets)
-                    {
-                        if (t.rightOrLeft == "right")
-                            rightArm.target = t.transform;
-                        else if (t.rightOrLeft == "left")
-                            leftArm.target = t.transform;
-                    }
+                    if (t.rightOrLeft == "right")
+                        rightArm.target = t.transform;
+                    else if (t.rightOrLeft == "left")
+                        leftArm.target = t.transform;
                 }
-                else
-                {
-                    // Assign default/home targets
-                    foreach (var t in TargetManager.instance.armHomes)
-                    {
-                        if (t.rightOrLeft == "right")
-                            rightArm.target = t.transform;
-                        else if (t.rightOrLeft == "left")
-                            leftArm.target = t.transform;
-                    }
-                }
-
-                // Update the last known count
-                lastArmTargetsCount = TargetManager.instance.armTargets.Count;
             }
+            else
+            {
+                // Assign default/home targets
+                foreach (var t in TargetManager.instance.armHomes)
+                {
+                    if (t.rightOrLeft == "right")
+                        rightArm.target = t.transform;
+                    else if (t.rightOrLeft == "left")
+                        leftArm.target = t.transform;
+                }
+            }
+
+            // Update the last known count
+            lastArmTargetsCount = TargetManager.instance.armTargets.Count;
 
             // Delay the coroutine to prevent excessive execution
             yield return new WaitForSeconds(0.1f);
