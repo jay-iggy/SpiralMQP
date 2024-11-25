@@ -11,6 +11,12 @@ namespace Game.Scripts.Player.Abilities {
         private bool isHolding = false;
         private float _cooldownTimer = 0;
 
+<<<<<<< Updated upstream
+=======
+        //audio
+        public Sound sfx;
+        
+>>>>>>> Stashed changes
 
         public override void AbilityPressed() {
             Shoot();
@@ -23,7 +29,11 @@ namespace Game.Scripts.Player.Abilities {
         }
         
         private void Update() {
+<<<<<<< Updated upstream
             if(_cooldownTimer > 0) {
+=======
+            if (_cooldownTimer > 0) {
+>>>>>>> Stashed changes
                 _cooldownTimer -= Time.deltaTime;
             }
             
@@ -36,8 +46,16 @@ namespace Game.Scripts.Player.Abilities {
             if (!CanShoot()) {
                 return;
             }
+<<<<<<< Updated upstream
             
             Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+=======
+
+            PlaySound();
+
+            Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.transform.position += transform.TransformDirection(spawnOffset);
+>>>>>>> Stashed changes
             projectile.dmg = projectileDamage;
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = _player.transform.forward * projectileSpeed;

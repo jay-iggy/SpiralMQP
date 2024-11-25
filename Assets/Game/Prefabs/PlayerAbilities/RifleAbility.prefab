@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2030792683537549546}
   - component: {fileID: 677732930458458227}
   m_Layer: 0
-  m_Name: ShootAbility
+  m_Name: RifleAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2653171394673493507}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6370138991535802632}
+  - {fileID: 1628678786292378660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &677732930458458227
@@ -45,17 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c3bff11004b6f899e723e595549eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 5
-  projectileDamage: 1
-  cooldown: 0.33
+  projectileSpeed: 15
+  projectileDamage: 5
+  cooldown: 2
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
   isAutomatic: 0
-<<<<<<< Updated upstream
-=======
   spawnOffset: {x: 0, y: 0, z: 1}
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}
---- !u!1001 &6819213127982670238
+--- !u!1001 &1179884992594363570
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -155,10 +153,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 106ac6c0fafac42fb8973673d344b769, type: 3}
---- !u!4 &6370138991535802632 stripped
+--- !u!4 &1628678786292378660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 488061788522096790, guid: 106ac6c0fafac42fb8973673d344b769,
     type: 3}
-  m_PrefabInstance: {fileID: 6819213127982670238}
+  m_PrefabInstance: {fileID: 1179884992594363570}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
