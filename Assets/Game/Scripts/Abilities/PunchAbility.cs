@@ -90,6 +90,7 @@ namespace Game.Scripts.Abilities
         {
             fist.SetActive(false);
             magnetismTrigger.enabled = false;
+            _punchTimer = 0;
         }
 
 

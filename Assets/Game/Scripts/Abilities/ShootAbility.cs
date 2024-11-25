@@ -25,6 +25,9 @@ namespace Game.Scripts.Player.Abilities {
         public override void AbilityReleased() {
             isHolding = false;
         }
+        public override void OnAbilityUnequipped() {
+            isHolding = false;
+        }
 
         public override void ModifyDamage(float delta)
         {
