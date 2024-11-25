@@ -48,8 +48,8 @@ namespace Game.Scripts {
         public void Heal(float amount) {
             SetHealth(health + amount);
         }
-        public void TakeDamage(float damage) {
-            if(IsInvincible()) {
+        public void TakeDamage(float damage, bool overrideInvincibility = false) {
+            if(IsInvincible() && !overrideInvincibility) {
                 return;
             }
             
@@ -67,16 +67,16 @@ namespace Game.Scripts {
             
         }
 
-        public void GetHit(float damage) {
+        public void GetHit(float damage, bool overrideInvincibility = false) {
             if (affectsHitless) {
                 StickerManager.instance.hitless = false;
             }
 
-            TakeDamage(damage);
+            TakeDamage(damage, overrideInvincibility);
         }
 
-        public bool CanBeHit() {
-            return isAlive && !IsInvincible();
+        public bool CanBeHit(bool overrideInvincibility = false) {
+            return isAlive && (overrideInvincibility || !IsInvincible());
         }
 
         private void ShowFloatingText(float damage) {

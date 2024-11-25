@@ -18,8 +18,13 @@ namespace Game.Scripts {
             }
         }
 
+        public void IgnoreInvincibility()
+        {
+            ignoresInvincibility = true;
+        }
+
         private void OnHitTarget(ICanGetHit target) {
-            target.GetHit(dmg);
+            target.GetHit(dmg, ignoresInvincibility);
             if(!persistent) DestroySelf();
         }
 
