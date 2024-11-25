@@ -81,6 +81,11 @@ namespace Game.Scripts.Abilities {
         public override void AbilityReleased() {
             // nothing to do here
         }
+
+        public override void OnAbilityUnequipped() {
+            _mStarTimer = 0;
+            mStar.SetActive(false);
+        }
         
         private IEnumerator ResetPunchTimer() {
             while (_mStarTimer > 0) {
