@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour {
     [Header("Abilities")]
     public Transform abilityParent;
     public Ability primaryAbility;
+    public Ability offhandAbility;
     public Ability secondaryAbility;
+    public Ability punchAbilityPrefab;
     
     // References
     private Rigidbody _rb;
@@ -47,8 +49,20 @@ public class PlayerController : MonoBehaviour {
         
         movementSpeed = walkSpeed;
         
+<<<<<<< Updated upstream
         SetPrimaryAbility(primaryAbility);
         SetSecondaryAbility(secondaryAbility);
+=======
+        VerifyAbilities();
+        if(secondaryAbility!=null) {
+            SetSecondaryAbility(secondaryAbility);
+        }
+    }
+
+    public HealthComponent GetHealthComponent()
+    {
+        return healthComponent;
+>>>>>>> Stashed changes
     }
 
     private void OnEnable() {
@@ -72,8 +86,10 @@ public class PlayerController : MonoBehaviour {
         _playerControls.Player.Fire.canceled += OnPrimaryReleased;
         _playerControls.Player.Dodge.performed += OnSecondary;
         _playerControls.Player.Dodge.canceled += OnSecondaryReleased;
+        _playerControls.Player.SwapAbility.performed += SwapAbility;
+        _playerControls.Player.SwapAbility.canceled -= SwapAbility;
     }
-    
+
     private void FixedUpdate() {
         UpdateMovement();
         UpdateRotation();
@@ -114,15 +130,39 @@ public class PlayerController : MonoBehaviour {
             primaryAbility.AbilityReleased();
         }
         public void SetPrimaryAbility(Ability ability) {
+            if (primaryAbility != null) {
+                if(primaryAbility.GetType() != punchAbilityPrefab.GetType()) {
+                    if (offhandAbility == null || offhandAbility.GetType() == punchAbilityPrefab.GetType()){
+                        primaryAbility.OnAbilityUnequipped();
+                        ChangeOffhandAbility(primaryAbility);
+                        ChangePrimaryAbility(ability);
+                        return;
+                    } 
+                }
+                else {
+                    Destroy(primaryAbility.gameObject);
+                }
+            }
             if (ability != primaryAbility) {
                 Destroy(primaryAbility); // clear previous ability
             }
+            ChangePrimaryAbility(ability);
+        }
+        private void ChangePrimaryAbility(Ability ability) {
             ability.transform.parent = abilityParent;
-        
             primaryAbility = ability;
             primaryAbility.BindToPlayer(this);
+            primaryAbility.gameObject.SetActive(true);
         }
-    #endregion
+
+        private void ChangeOffhandAbility(Ability ability) {
+            ability.transform.parent = abilityParent;
+            offhandAbility = ability;
+            offhandAbility.BindToPlayer(this);
+            offhandAbility.gameObject.SetActive(false);
+        }
+
+        #endregion
 
     #region Secondary Ability
         public void OnSecondary(InputAction.CallbackContext context) {
@@ -141,4 +181,26 @@ public class PlayerController : MonoBehaviour {
             secondaryAbility.BindToPlayer(this);
         }
     #endregion
+    
+    private void SwapAbility(InputAction.CallbackContext context) {
+        if(primaryAbility != null && offhandAbility != null) {
+            primaryAbility.OnAbilityUnequipped();
+            Ability temp = primaryAbility;
+            ChangePrimaryAbility(offhandAbility);
+            ChangeOffhandAbility(temp);
+        }
+    }
+
+    private void VerifyAbilities() {
+        if(primaryAbility == null) {
+            Ability ability = Instantiate(punchAbilityPrefab, abilityParent);
+            ability.transform.rotation = transform.rotation;
+            ChangePrimaryAbility(ability);
+        }
+        if(offhandAbility == null) {
+            Ability ability = Instantiate(punchAbilityPrefab, abilityParent);
+            ability.transform.rotation = transform.rotation;
+            ChangeOffhandAbility(ability);
+        }
+    }
 }

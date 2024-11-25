@@ -5,11 +5,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Abilities {
+<<<<<<< Updated upstream
     public class PunchAbility : Ability {
         
         // note: a better solution would be to play an animation that has the collider enabled for the duration of the punch
         
         
+=======
+    public class PunchAbility : AttackAbility {
+>>>>>>> Stashed changes
         [Header("Melee")]
         [SerializeField] GameObject fist;
         [SerializeField] float punchCooldown = .25f;
@@ -57,6 +61,12 @@ namespace Game.Scripts.Abilities {
         public override void AbilityReleased() {
             // nothing to do here
         }
+
+        public override void OnAbilityUnequipped() {
+            fist.SetActive(false);
+            magnetismTrigger.enabled = false;
+        }
+        
         
         private IEnumerator ResetPunchTimer() {
             // could just do a yield return new WaitForSeconds
