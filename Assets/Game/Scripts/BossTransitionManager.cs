@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class BossTransitionManager : MonoBehaviour {
     public static BossTransitionManager instance;
-    
+
+    public AudioManager AudioCon;
+
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -23,9 +25,14 @@ public class BossTransitionManager : MonoBehaviour {
     public void SpawnBoss(EnemyData enemyData, out Boss boss) {
         boss = Instantiate(enemyData.bossPrefab);
         SetBossUI(boss.GetComponent<HealthComponent>(), enemyData.enemyName);
+
+        AudioCon.PlaySFX("transition");
+        AudioCon.PlayMusic(enemyData.bossMusic);
+
     }
     public void SetBossUI(HealthComponent bossHealthComponent, string bossName) {
         healthBar.BindHealthComponent(bossHealthComponent);
         bossNameTextObject.text = bossName;
     }
+
 }

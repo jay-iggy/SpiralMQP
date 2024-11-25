@@ -5161,6 +5161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4275427816110225530}
   - {fileID: 6171544702030581115}
   m_Father: {fileID: 3964521920094771254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5353,11 +5354,8 @@ MonoBehaviour:
   maxReticleDistance: 300
   _cumulativeLookInput: {x: 0, y: 0}
   abilityParent: {fileID: 5312845922773365139}
-  primaryAbility: {fileID: 0}
-  offhandAbility: {fileID: 0}
+  primaryAbility: {fileID: 5432425977288705523}
   secondaryAbility: {fileID: 2783241381669734513}
-  punchAbilityPrefab: {fileID: 3226833857253917701, guid: 99adaebe89f6106448007ff3729586ed,
-    type: 3}
 --- !u!114 &272490637702824621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13027,3 +13025,94 @@ PositionConstraint:
   m_Sources:
   - sourceTransform: {fileID: 3964521920094771254}
     weight: 1
+--- !u!1001 &7470309525375353334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5312845922773365139}
+    m_Modifications:
+    - target: {fileID: 1423375897190307023, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728292079302779206, guid: 99adaebe89f6106448007ff3729586ed,
+        type: 3}
+      propertyPath: m_Name
+      value: PunchAbility
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 99adaebe89f6106448007ff3729586ed, type: 3}
+--- !u!4 &4275427816110225530 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6700934158759623052, guid: 99adaebe89f6106448007ff3729586ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 7470309525375353334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5432425977288705523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3226833857253917701, guid: 99adaebe89f6106448007ff3729586ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 7470309525375353334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955a7ae906c4489c83866e09c410cb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

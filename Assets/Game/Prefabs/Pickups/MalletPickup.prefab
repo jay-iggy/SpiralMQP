@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6201811834692500364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8293303522221822955}
+  - component: {fileID: 4923088266207143212}
+  - component: {fileID: 553420244141893522}
+  m_Layer: 0
+  m_Name: MalletPickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8293303522221822955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201811834692500364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.86, y: 1.0344124, z: 0.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2807564032683189519}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4923088266207143212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201811834692500364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: MALLET
+  itemType: 3
+  itemRarity: 1
+  itemDescription: BONK
+  pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
+    type: 3}
+  ability: {fileID: -3583724972998600079, guid: 966a5bad0835f44429311861db4da259,
+    type: 3}
+  slot: 0
+--- !u!135 &553420244141893522
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201811834692500364}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.755108
+  m_Center: {x: 0, y: 0.255108, z: 0}
+--- !u!1001 &2413016675336307428
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8293303522221822955}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6237914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6237914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6237914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.572
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69419754
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.69419754
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.13449828
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.13449828
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 21.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d5137474d8fed4f24a48d672e25d247d,
+        type: 3}
+      propertyPath: m_Name
+      value: Mallet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5137474d8fed4f24a48d672e25d247d, type: 3}
+--- !u!4 &2807564032683189519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d5137474d8fed4f24a48d672e25d247d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2413016675336307428}
+  m_PrefabAsset: {fileID: 0}

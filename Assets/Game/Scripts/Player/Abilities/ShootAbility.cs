@@ -2,21 +2,19 @@
 using UnityEngine.Serialization;
 
 namespace Game.Scripts.Player.Abilities {
-    public class ShootAbility : Ability {
+    public class ShootAbility : AttackAbility {
         public float projectileSpeed = 5f;
         public float projectileDamage = 1f;
         public float cooldown = 0.33f;
         public Projectile projectilePrefab;
         public bool isAutomatic = false;
+        public Vector3 spawnOffset = new Vector3(0, 1, 0);
         private bool isHolding = false;
         private float _cooldownTimer = 0;
 
-<<<<<<< Updated upstream
-=======
         //audio
         public Sound sfx;
-        
->>>>>>> Stashed changes
+
 
         public override void AbilityPressed() {
             Shoot();
@@ -27,13 +25,14 @@ namespace Game.Scripts.Player.Abilities {
         public override void AbilityReleased() {
             isHolding = false;
         }
-        
+
+        public override void ModifyDamage(float delta)
+        {
+            projectileDamage += delta;
+        }
+
         private void Update() {
-<<<<<<< Updated upstream
-            if(_cooldownTimer > 0) {
-=======
             if (_cooldownTimer > 0) {
->>>>>>> Stashed changes
                 _cooldownTimer -= Time.deltaTime;
             }
             
@@ -46,16 +45,10 @@ namespace Game.Scripts.Player.Abilities {
             if (!CanShoot()) {
                 return;
             }
-<<<<<<< Updated upstream
-            
-            Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-=======
 
             PlaySound();
 
-            Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            projectile.transform.position += transform.TransformDirection(spawnOffset);
->>>>>>> Stashed changes
+            Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
             projectile.dmg = projectileDamage;
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = _player.transform.forward * projectileSpeed;
@@ -65,6 +58,9 @@ namespace Game.Scripts.Player.Abilities {
         
         private bool CanShoot() {
             return _cooldownTimer <= 0;
+        }
+        private void PlaySound() {
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }

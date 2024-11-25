@@ -2,14 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneLoader : MonoBehaviour
+namespace Game.Scripts
 {
-    public void LoadScene(string sceneName) {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-    }
-    public void QuitGame()
+    public class SceneLoader : MonoBehaviour
     {
-        Application.Quit();
-    }
 
+        public void LoadScene(string sceneName)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        }
+
+        public void Play()
+        {
+            if (CutsceneManager.instance.playCutscene)
+            {
+                CutsceneManager.instance.StartCutscene();
+                LoadScene("IntroCutscene");
+            }
+            else
+            {
+                LoadScene("SampleScene");
+            }
+        }
+
+        public void NewPlayer()
+        {
+            CutsceneManager.instance.playCutscene = true;
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+    }
 }
