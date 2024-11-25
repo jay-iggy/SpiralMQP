@@ -6,10 +6,17 @@ namespace Game.Scripts.Pickups {
         
         public Ability ability;
         public AbilitySlot slot;
-        
-        
+
+
+       /* public void Start()
+        {
+            base.Start();
+            GameObject pickupUI = Instantiate(pickupUIprefab, this.transform);
+            pickupUI.GetComponent<PickupUI>().updateValues(itemName, itemType, itemRarity);           
+        }*/
+
         protected override void ApplyEffect(PlayerController player) {
-            Ability a = Instantiate(ability, player.transform);
+            Ability a = Instantiate(ability, player.transform.GetChild(1));
             
             switch (slot) {
                 case AbilitySlot.Primary:

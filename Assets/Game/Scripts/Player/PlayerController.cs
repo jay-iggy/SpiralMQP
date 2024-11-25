@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour {
     [SerializeField] GameObject playerModel;
     
+    private bool _canMove = true;
+    private bool _canLook = true;
+    private bool _canAttack = true;
+    
     [Header("Movement Settings")]
     public float walkSpeed;
     [HideInInspector] public float movementSpeed;
@@ -17,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Look Settings")]
     [SerializeField] GameObject reticle;
     [SerializeField] private float maxReticleDistance = 300;
-    private Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
+    public Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
     
 
     [Header("Abilities")]
@@ -27,7 +31,9 @@ public class PlayerController : MonoBehaviour {
     
     // References
     private Rigidbody _rb;
-    private PlayerInput _playerControls; // this isn't a PlayerInput component, its a compiled input action asset named PlayerInput
+    private SpiralPlayerControls _playerControls;
+    private HealthComponent healthComponent;
+
 
     private void Awake() {
         Cursor.visible = false;
@@ -41,21 +47,31 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         // set player stats to custom values
         walkSpeed = CustomStatsManager.instance.customStats.playerSpeed;
-        HealthComponent healthComponent = GetComponent<HealthComponent>();
-        healthComponent.maxHealth = CustomStatsManager.instance.customStats.playerHealth;
-        healthComponent.SetHealth(healthComponent.maxHealth);
+        healthComponent = GetComponent<HealthComponent>();
+        healthComponent.SetMaxHealth(CustomStatsManager.instance.customStats.playerHealth);
         
         movementSpeed = walkSpeed;
         
-        SetPrimaryAbility(primaryAbility);
-        SetSecondaryAbility(secondaryAbility);
+        if(primaryAbility!=null) {
+            SetPrimaryAbility(primaryAbility);
+        }
+        if(secondaryAbility!=null) {
+            SetSecondaryAbility(secondaryAbility);
+        }
+    }
+
+    public HealthComponent GetHealthComponent()
+    {
+        return healthComponent;
     }
 
     private void OnEnable() {
         _playerControls.Enable();
+        CombatManager.instance.onPlayerLose.AddListener(Die);
     }
     private void OnDisable(){
         _playerControls.Disable();
+        CombatManager.instance.onPlayerLose.RemoveListener(Die);
     }
 
     private void OnDestroy() {
@@ -63,8 +79,14 @@ public class PlayerController : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void Die() {
+        _canMove = false;
+        _canLook = false;
+        _canAttack = false;
+    }
+    
     private void CreatePlayerControls() {
-        _playerControls = new PlayerInput();
+        _playerControls = new();
         _playerControls.Player.Move.performed += OnMove;
         _playerControls.Player.Move.canceled += OnMove;
         _playerControls.Player.Look.performed += OnLook;
@@ -85,6 +107,7 @@ public class PlayerController : MonoBehaviour {
         }
         private void UpdateMovement() {
             Vector3 targetVelocity = new(_movementInput.x * movementSpeed, 0, _movementInput.y * movementSpeed);
+            if(!_canMove) targetVelocity = Vector3.zero;
             movementComponent.moveVelocity = Vector3.Lerp(_rb.velocity, targetVelocity, Time.deltaTime * movementLerpSpeed);
         }
         public Vector2 GetMovementInput() {
@@ -94,6 +117,9 @@ public class PlayerController : MonoBehaviour {
 
     #region Rotation and Aiming
         public void OnLook(InputAction.CallbackContext context) {
+            if(!_canLook) {
+                return;
+            }
             _cumulativeLookInput += context.ReadValue<Vector2>();
             _cumulativeLookInput = Vector2.ClampMagnitude(_cumulativeLookInput, maxReticleDistance);
         }
@@ -108,14 +134,18 @@ public class PlayerController : MonoBehaviour {
     
     #region Primary Ability
         public void OnPrimary(InputAction.CallbackContext context) {
+            if (!_canAttack) {
+                return;
+            }
             primaryAbility.AbilityPressed();
         }
         public void OnPrimaryReleased(InputAction.CallbackContext context) {
             primaryAbility.AbilityReleased();
+            
         }
         public void SetPrimaryAbility(Ability ability) {
             if (ability != primaryAbility) {
-                Destroy(primaryAbility); // clear previous ability
+                Destroy(primaryAbility.gameObject); // clear previous ability
             }
             ability.transform.parent = abilityParent;
         
@@ -126,14 +156,20 @@ public class PlayerController : MonoBehaviour {
 
     #region Secondary Ability
         public void OnSecondary(InputAction.CallbackContext context) {
+            if (!_canAttack) {
+                return;
+            }
+
+            if(secondaryAbility != null)
             secondaryAbility.AbilityPressed();
         }
         public void OnSecondaryReleased(InputAction.CallbackContext context) {
+            if(secondaryAbility != null)
             secondaryAbility.AbilityReleased();
         }
         public void SetSecondaryAbility(Ability ability) {
             if (ability != secondaryAbility) {
-                Destroy(secondaryAbility); // clear previous ability
+                Destroy(secondaryAbility.gameObject); // clear previous ability
             }
             ability.transform.parent = abilityParent;
         

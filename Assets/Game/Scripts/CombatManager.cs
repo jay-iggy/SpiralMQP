@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Scripts.Analytics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -39,13 +40,26 @@ namespace Game.Scripts {
         public UnityEvent onGameStart = new();
         public UnityEvent onBossDefeated = new();
         public UnityEvent onFinalBossDefeated = new();
+        public UnityEvent onBossSpawned = new ();
+        
+        public UnityEvent onPlayerWin = new();
+        public UnityEvent onPlayerLose = new();
         
         public HealthComponent playerHealth;
-        
-        
+
+        public AudioManager AudioCON;
+
+        public void DestroyBullets()
+        {
+            //destroy all enemy bullets
+            // this is temporary until we have a better way to handle this
+            foreach (Projectile p in FindObjectsOfType<Projectile>())
+            {
+                Destroy(p.gameObject);
+            }
+        }
 
         public void TransitionToNextBoss() {
-            Destroy(currentBoss.gameObject);
             onBossDefeated.Invoke();
             
             
@@ -61,32 +75,42 @@ namespace Game.Scripts {
 
             
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
-            
+
+            if(AudioCON != null)
+            AudioCON.PlaySFX("boss_transition");
+
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
-            
-            //destroy all enemy bullets
-            // this is temporary until we have a better way to handle this
-            foreach (Projectile p in FindObjectsOfType<Projectile>()) {
-                Destroy(p.gameObject);
-            }
-            
+
+
+
             // TODO: Add transition effects
+
+            
         }
         private IEnumerator SpawnBoss(EnemyData enemyData, float delay) {
             yield return new WaitForSeconds(delay);
             BossTransitionManager.instance.SpawnBoss(enemyData, out Boss b);
             currentBoss = b;
             currentEnemyData = enemyData;
+            onBossSpawned.Invoke();
         }
 
         public void OnPlayerWin() {
-            AnalyticsManager.instance.analyticsData.runData.isWin = true;
-            AnalyticsManager.instance.SaveDataToCSV();
+            if(AnalyticsManager.instance != null) {
+                AnalyticsManager.instance.analyticsData.runData.isWin = true;
+                AnalyticsManager.instance.SaveDataToCSV();
+            }
+            
+            onPlayerWin.Invoke();
         }
         public void OnPlayerLose() {
-            AnalyticsManager.instance.analyticsData.runData.isWin = false;
-            AnalyticsManager.instance.TrackBossAnalytics();
-            AnalyticsManager.instance.SaveDataToCSV();
+            if (AnalyticsManager.instance != null) {
+                AnalyticsManager.instance.analyticsData.runData.isWin = false;
+                AnalyticsManager.instance.TrackBossAnalytics();
+                AnalyticsManager.instance.SaveDataToCSV();
+            }
+            
+            onPlayerLose.Invoke();
         }
     }
 }

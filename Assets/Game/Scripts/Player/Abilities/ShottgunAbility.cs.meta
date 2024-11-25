@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cce064128978fc14299f2642e0fb02c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - projectilePrefab: {instanceID: 0}
+  - SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
+      type: 3}
+  - SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

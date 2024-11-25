@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  enemyName: Gunther
+  bossPrefab: {fileID: 3306522354236208162, guid: 24bc6335f6592b642804150497eb8f27,
+    type: 3}
+  bossMusic: rat_OST
+  nextEnemies:
+  - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}

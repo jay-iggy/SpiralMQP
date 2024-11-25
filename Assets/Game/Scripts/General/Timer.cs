@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
  * 
  * have a reference to an instance of Timer (ex. t)
  * create a method that accepts only an int (ex. onTimerEnd(int data))
- * int Start(), subscribe the method to the timeUp event (ex. t.timeUp.AddListener(onTimerEnd))
+ * in Start(), subscribe the method to the timeUp event (ex. t.timeUp.AddListener(onTimerEnd))
  */
 
 namespace Game.Scripts

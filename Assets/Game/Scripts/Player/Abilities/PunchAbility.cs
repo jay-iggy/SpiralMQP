@@ -3,21 +3,29 @@ using System.Collections;
 using Game.Scripts.Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Abilities {
-    public class PunchAbility : Ability {
+    public class PunchAbility : AttackAbility {
         
         // note: a better solution would be to play an animation that has the collider enabled for the duration of the punch
         
         
         [Header("Melee")]
         [SerializeField] GameObject fist;
+        [SerializeField] Transform target;
+        [SerializeField] Transform outStretch;
         [SerializeField] float punchCooldown = .25f;
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
-        public float dmg = 1;
+        private float initialPunchTimer;
+        public float dmg = 3;
+        public float knockback = 5;
         [SerializeField] private Collider magnetismTrigger;
-        
+
+        //audio
+        [SerializeField] Sound sfx;
+
         private void Start() {
             if(fist.TryGetComponent(out Hitbox hitbox)) {
                 BindHitbox(hitbox);
@@ -25,7 +33,15 @@ namespace Game.Scripts.Abilities {
             
             punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
+
+            initialPunchTimer = punchCooldown + punchDuration;
         }
+
+        public override void ModifyDamage(float delta)
+        {
+            dmg += delta;
+        }
+
         void BindHitbox(Hitbox hitbox) {
             hitbox.onHitTarget.AddListener(ProcessAttack);
         }
@@ -37,7 +53,10 @@ namespace Game.Scripts.Abilities {
                 Vector3 direction = target.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                target.GetComponent<MovementComponent>().AddExternalVelocity(direction * 5);
+                MovementComponent movementComponent = target.GetComponent<MovementComponent>();
+                if(movementComponent != null) {
+                    movementComponent.AddExternalVelocity(direction * knockback);
+                }
             }
         }
 
@@ -63,6 +82,9 @@ namespace Game.Scripts.Abilities {
             // though the other code is set up to support this way
             
             while (_punchTimer > 0) {
+                float normalizedTime = 1 - (_punchTimer / initialPunchTimer);
+                target.position = Vector3.Lerp(target.position, outStretch.position, normalizedTime);
+
                 _punchTimer -= Time.deltaTime;
                 yield return null;
             }
@@ -77,6 +99,10 @@ namespace Game.Scripts.Abilities {
                 direction.y = 0;
                 _player.movementComponent.AddPersonalVelocity(direction * 1);
             }
+            PlaySound();
+        }
+        private void PlaySound() {
+            if(sfx != null) sfx.PlaySound();
         }
     }
 }
