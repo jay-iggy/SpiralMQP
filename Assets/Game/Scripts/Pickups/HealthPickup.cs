@@ -26,11 +26,12 @@ namespace Game.Scripts.Pickups
 
             switch (type) {
                 case HealthType.add:
-                    healthComponent.SetHealth(healthComponent.health + amount);
+                    healthComponent.Heal(amount);
                     if (sfx != null) sfx.PlaySound();
                     break;
                 case HealthType.addToMax:
                     healthComponent.SetMaxHealth(healthComponent.maxHealth + amount);
+                    healthComponent.Heal(amount);
                     if (sfx != null) sfx.PlaySound();
                     break;
                 case HealthType.refill:

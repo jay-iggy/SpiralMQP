@@ -39,12 +39,14 @@ namespace Game.Scripts {
 
         public void SetMaxHealth(float newMaxHealth) {
             maxHealth = newMaxHealth;
-            SetHealth(maxHealth);
             onMaxHealthChanged.Invoke(newMaxHealth);
         }
         public void SetHealth(float newHealth) {
             health = Mathf.Clamp(newHealth, 0, maxHealth);
             onHealthChanged.Invoke(health);
+        }
+        public void Heal(float amount) {
+            SetHealth(health + amount);
         }
         public void TakeDamage(float damage) {
             if(IsInvincible()) {
