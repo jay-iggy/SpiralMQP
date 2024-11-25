@@ -1551,6 +1551,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81c0337dc304e908aa2744be713dce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossTiers:
+  - bosses:
+    - {fileID: 11400000, guid: 96603fcbdb93f10458a0a3888a9662ef, type: 2}
+    - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}
+  - bosses:
+    - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
+  - bosses:
+    - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
+    - {fileID: 11400000, guid: 373c337434327a34780a2a0dc522e7ba, type: 2}
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
   bossSpawnDelay: 2
   onGameStart:

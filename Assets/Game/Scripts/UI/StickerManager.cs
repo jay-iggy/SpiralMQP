@@ -35,6 +35,11 @@ namespace Game.Scripts
 
         public void ShowSticker(int bossIndex)
         {
+            for(int i = stickerStates.Count; i<bossIndex; i++) //add to list until count = bossIndex
+            {
+                stickerStates.Add(StickerState.Disabled);
+            }
+
             if (hitless) {
                 stickerStates.Insert(bossIndex, StickerState.Hitless);
             }
