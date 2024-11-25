@@ -53,6 +53,7 @@ namespace Game.Scripts.Player.Abilities {
             {
                 Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
                 projectile.dmg = projectileDamage;
+                projectile.IgnoreInvincibility();
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
                 float randomAngle = Random.Range(-30f, 30f);
