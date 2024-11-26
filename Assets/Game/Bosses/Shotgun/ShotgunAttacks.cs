@@ -125,6 +125,7 @@ namespace Game.Scripts
                 if (timer > maxAimTime) {
                     _animator.SetTrigger("JumpShot");
                     timer = -1;
+                    _fired = true;
                 }
             }
             _lockXRotation = true;
@@ -134,12 +135,17 @@ namespace Game.Scripts
         public void UnlockXRotation() {
             _lockXRotation = false;
         }
+        
+        private bool _fired = false;
 
         private IEnumerator Attack_Shoot() {
             for(int i = 0; i < volleysPerAttack; i++) {
+                _fired = false;
                 yield return RotateToFacePlayer();
-                _animator.SetTrigger("Shoot");
-                yield return new WaitForSeconds(shootAnim.length + delayBetweenVolleys);
+                if(!_fired) {
+                    _animator.SetTrigger("Shoot");
+                    yield return new WaitForSeconds(shootAnim.length + delayBetweenVolleys);
+                }
             }
         }
         
