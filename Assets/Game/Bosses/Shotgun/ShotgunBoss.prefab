@@ -1822,6 +1822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: maxHealth
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Size.y
@@ -2003,8 +2008,8 @@ MonoBehaviour:
   moveDistanceThreshold: 3
   volleysPerAttack: 2
   delayBetweenVolleys: 0.5
-  aimRotateSpeed: 2
-  maxAimTime: 1
+  aimRotateSpeed: 3
+  maxAimTime: 1.5
   knockbackForce: 50
   jumpForce: 10
 --- !u!95 &2792873772990784303
