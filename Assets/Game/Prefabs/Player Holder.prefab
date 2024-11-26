@@ -5356,7 +5356,9 @@ MonoBehaviour:
   _cumulativeLookInput: {x: 0, y: 0}
   abilityParent: {fileID: 5312845922773365139}
   primaryAbility: {fileID: 5432425977288705523}
+  offhandAbility: {fileID: 0}
   secondaryAbility: {fileID: 2783241381669734513}
+  punchAbilityPrefab: {fileID: 0}
 --- !u!114 &272490637702824621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5499,7 +5501,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498774847257164725}
   m_Enabled: 1
-  m_Force: {x: 0, y: 0, z: 0}
+  m_Force: {x: 0, y: -9.8, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
