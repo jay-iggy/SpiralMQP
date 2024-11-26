@@ -95,6 +95,11 @@ namespace Game.Scripts.Abilities {
 
             StartCoroutine(ResetPunchTimer());
         }
+        public override void OnAbilityUnequipped() {
+            mallet.SetActive(false);
+            mallet.transform.rotation = Quaternion.Euler(0, 0, 0);
+            accumaltedRot = 0;
+        }
         
         private IEnumerator ResetPunchTimer() {
             while (_malletTimer > 0) {

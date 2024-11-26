@@ -95,8 +95,10 @@ namespace Game.Scripts
         public void OnTimerEnd(int data) {
             switch (data) {
                 case 0:
-                    bigBullet.GetComponent<Projectile>().TargetPlayer(5);
-                    bigBullet = null;
+                    if(bigBullet != null) {
+                        bigBullet.GetComponent<Projectile>().TargetPlayer(5);
+                        bigBullet = null;
+                    }
                     curAttack = -1;
                     break;
                 case 1:

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Game.Scripts.Analytics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,10 @@ using Random = UnityEngine.Random;
 namespace Game.Scripts {
     public class CombatManager : MonoBehaviour {
         public static CombatManager instance;
+
+        public List<BossTier> bossTiers;
+        [SerializeField] List<int> bossDifficultyOrder = new List<int>{ 0, 0, 1, 2, 2 };
+        private int bossNumber = 0;
 
         private void Awake() {
             if(instance == null) {
@@ -66,14 +71,20 @@ namespace Game.Scripts {
             if (currentEnemyData == null) {
                 Debug.LogError("No current enemy data to transition from");
             }
-            if (currentEnemyData.nextEnemies.Count == 0) {
+            if (bossNumber >= bossDifficultyOrder.Count) {
                 OnPlayerWin();
                 onFinalBossDefeated.Invoke();
                 return;
             }
-            EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
+            int tierNum = bossDifficultyOrder[bossNumber];
+            BossTier tier = bossTiers[tierNum];
+            EnemyData nextEnemyData = GetRandomBoss(tier.bosses);
 
-            
+            bossNumber++;
+
+            //EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
+
+
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
 
             if(AudioCON != null)
@@ -86,6 +97,14 @@ namespace Game.Scripts {
             // TODO: Add transition effects
 
             
+        }
+
+        private EnemyData GetRandomBoss(List<EnemyData> enemyData)
+        {
+            int r = Random.Range(0, enemyData.Count);
+            EnemyData output = enemyData[r];
+            enemyData.RemoveAt(r);
+            return output;
         }
         private IEnumerator SpawnBoss(EnemyData enemyData, float delay) {
             yield return new WaitForSeconds(delay);
@@ -113,4 +132,10 @@ namespace Game.Scripts {
             onPlayerLose.Invoke();
         }
     }
+}
+
+[Serializable]
+public class BossTier
+{
+    public List<EnemyData> bosses;
 }

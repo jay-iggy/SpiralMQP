@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2030792683537549546}
   - component: {fileID: 677732930458458227}
   m_Layer: 0
-  m_Name: ShootAbility
+  m_Name: MachineGunAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2125348495812999144}
+  - {fileID: 1390556846953070753}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &677732930458458227
@@ -45,15 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c3bff11004b6f899e723e595549eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 5
+  projectileSpeed: 10
   projectileDamage: 1
-  cooldown: 0.33
+  cooldown: 0.25
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
-  isAutomatic: 0
+  isAutomatic: 1
   spawnOffset: {x: 0, y: 0, z: 1}
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}
---- !u!1001 &1998244383980593022
+--- !u!1001 &1551966752532670519
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -115,7 +115,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4b76ce172e482544796f321bcf596426, type: 2}
+      objectReference: {fileID: 2100000, guid: 4be263e0b8bdc794d8b657e9c09f696f, type: 2}
     - target: {fileID: 4682494411526247218, guid: 106ac6c0fafac42fb8973673d344b769,
         type: 3}
       propertyPath: m_Name
@@ -130,7 +130,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b6bec463e7b334644bfa0bac0686ba1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 4be263e0b8bdc794d8b657e9c09f696f, type: 2}
     - target: {fileID: 6434624594293042184, guid: 106ac6c0fafac42fb8973673d344b769,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,9 +163,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 106ac6c0fafac42fb8973673d344b769, type: 3}
---- !u!4 &2125348495812999144 stripped
+--- !u!4 &1390556846953070753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 488061788522096790, guid: 106ac6c0fafac42fb8973673d344b769,
     type: 3}
-  m_PrefabInstance: {fileID: 1998244383980593022}
+  m_PrefabInstance: {fileID: 1551966752532670519}
   m_PrefabAsset: {fileID: 0}

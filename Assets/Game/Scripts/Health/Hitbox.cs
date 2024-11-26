@@ -12,6 +12,7 @@ namespace Game.Scripts {
         // comment: a hub could subscribe its function to all events of hitboxes
         
         [SerializeField] private List<string> tagsToHit = new List<string>();
+        [SerializeField] protected bool ignoresInvincibility = false;
         
         public UnityEvent<ICanGetHit> onHitTarget; // the parent of the hitbox should subscribe to this event to handle the hit (call the hit method on the hurtbox)
         
@@ -20,7 +21,7 @@ namespace Game.Scripts {
                 
                 foreach (string tag in tagsToHit) {
                     if (other.gameObject.CompareTag(tag)) {
-                        if(hurtbox.CanBeHit()) {
+                        if(hurtbox.CanBeHit(ignoresInvincibility)) {
                             onHitTarget.Invoke(hurtbox);
                         }
                     }

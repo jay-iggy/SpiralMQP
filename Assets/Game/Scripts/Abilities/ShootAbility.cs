@@ -15,17 +15,6 @@ namespace Game.Scripts.Player.Abilities {
         //audio
         public Sound sfx;
 
-        // visual
-        public void OnEnable()
-        {
-            // turn on the gun model
-            this.transform.parent.GetChild(0).gameObject.SetActive(true);
-
-        }
-        public void OnDestroy()
-        {
-            this.transform.parent.GetChild(0).gameObject.SetActive(false);
-        }
 
         public override void AbilityPressed() {
             Shoot();
@@ -36,6 +25,9 @@ namespace Game.Scripts.Player.Abilities {
         public override void AbilityReleased() {
             isHolding = false;
         }
+        public override void OnAbilityUnequipped() {
+            isHolding = false;
+        }
 
         public override void ModifyDamage(float delta)
         {
@@ -43,9 +35,6 @@ namespace Game.Scripts.Player.Abilities {
         }
 
         private void Update() {
-            if (!this.transform.parent.GetChild(0).gameObject.activeSelf)
-                this.transform.parent.GetChild(0).gameObject.SetActive(true);
-
             if (_cooldownTimer > 0) {
                 _cooldownTimer -= Time.deltaTime;
             }
@@ -62,7 +51,7 @@ namespace Game.Scripts.Player.Abilities {
 
             PlaySound();
 
-            Projectile projectile = Instantiate(projectilePrefab, transform.position + spawnOffset, Quaternion.identity);
+            Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
             projectile.dmg = projectileDamage;
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = _player.transform.forward * projectileSpeed;

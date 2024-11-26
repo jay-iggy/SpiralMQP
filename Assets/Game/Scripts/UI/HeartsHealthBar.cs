@@ -25,6 +25,7 @@ namespace Game.Scripts {
             foreach (Transform child in heartsLayoutGroup.transform) {
                 Destroy(child.gameObject);
             }
+            hearts.Clear();
             for (int i = 0; i < healthComponent.maxHealth; i++) {
                 GameObject heart = Instantiate(heartPrefab, heartsLayoutGroup.transform);
                 hearts.Add(heart);
