@@ -101,16 +101,38 @@ namespace Game.Scripts
         [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
         [SerializeField] private float delayBetweenVolleys = .5f;
         [SerializeField] private float aimRotateSpeed = 2;
+        [SerializeField] private float maxAimTime = 1;
         
         private IEnumerator RotateToFacePlayer() {
+            float timer=0;
             while (Vector3.Angle(transform.forward, player.transform.position - transform.position) > 10f){
                 Vector3 targetDir = player.transform.position - transform.position;
                 float step = aimRotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDir);
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+                Vector3 origRot = transform.eulerAngles;
+                float x;
+                if (_lockXRotation) {
+                    x = 0;
+                } else {
+                    x = origRot.x;
+                }
+                transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, origRot.z);
                 yield return null;
+                if (timer > -1) {
+                    timer += Time.deltaTime;
+                }
+                if (timer > maxAimTime) {
+                    _animator.SetTrigger("JumpShot");
+                    timer = -1;
+                }
             }
+            _lockXRotation = true;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
+        private bool _lockXRotation = true;
+        public void UnlockXRotation() {
+            _lockXRotation = false;
         }
 
         private IEnumerator Attack_Shoot() {
