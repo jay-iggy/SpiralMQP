@@ -26,4 +26,14 @@ public class Target : MonoBehaviour
     {
         TargetManager.instance.removeTarget(this);
     }
+
+    private void OnDrawGizmos()
+    {
+        if(type == TargetType.home)
+            Gizmos.color = Color.green;
+        else if(type == TargetType.target)
+            Gizmos.color = Color.cyan;
+
+        Gizmos.DrawWireSphere(this.transform.position, 0.2f);
+    }
 }
