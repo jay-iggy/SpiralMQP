@@ -3985,10 +3985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071dd898db48747f7bd9352db3f70627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  legHomes: []
-  legTargets: []
-  armHomes: []
-  armTargets: []
 --- !u!33 &4843273786929247230
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4287,6 +4283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4cf4206520d4f89bbed45b89fb8e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relevantCharacter: 
   type: 1
   relevantObj: 1
   rightOrLeft: right
@@ -4317,6 +4314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4cf4206520d4f89bbed45b89fb8e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relevantCharacter: 
   type: 1
   relevantObj: 1
   rightOrLeft: left

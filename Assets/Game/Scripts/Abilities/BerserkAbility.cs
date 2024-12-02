@@ -11,6 +11,7 @@ namespace Game.Scripts.Abilities {
         private PlayerController pc;
         private PranimDriver gfx;
         [SerializeField] Material berserkMaterial;
+        [SerializeField] int damage;
         private AttackAbility attackAbility;
 
         public Sound sfx;
@@ -39,7 +40,7 @@ namespace Game.Scripts.Abilities {
                 // gfx.material = berserkMaterial;
                 if(!active && attackAbility != null)
                 {
-                    attackAbility.ModifyDamage(2);
+                    attackAbility.ModifyDamage(damage);
                 }
                 active = true;
                 PlaySound();
@@ -49,7 +50,7 @@ namespace Game.Scripts.Abilities {
                 gfx.UpdateMaterialsToDefaults();
                 if(active && attackAbility != null)
                 {
-                    attackAbility.ModifyDamage(-2);
+                    attackAbility.ModifyDamage(-damage);
                 }
                 active = false;
             }

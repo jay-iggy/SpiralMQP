@@ -133,7 +133,7 @@ MonoBehaviour:
   itemName: MACHINE GUN
   itemType: 2
   itemRarity: 1
-  itemDescription: PEW INFINITELY
+  itemDescription: LOW DAMAGE, HIGH FIRE RATE
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
   ability: {fileID: 677732930458458227, guid: f50a4c6ac26e7435eb93214579475145, type: 3}

@@ -133,11 +133,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToHit:
   - Player
+  ignoresInvincibility: 0
   onHitTarget:
     m_PersistentCalls:
       m_Calls: []
   dmg: 1
   persistent: 0
+  speed: 0
 --- !u!135 &7011378181958481318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -222,11 +224,15 @@ MonoBehaviour:
   onTakeDamageFloat:
     m_PersistentCalls:
       m_Calls: []
+  onMaxHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   invincibilityDuration: 0.2
   affectsHitless: 0
+  hitTextColor: {r: 1, g: 1, b: 1, a: 1}
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
-  maxHealth: 4
+  maxHealth: 12
 --- !u!1001 &1419110421815789620
 PrefabInstance:
   m_ObjectHideFlags: 0

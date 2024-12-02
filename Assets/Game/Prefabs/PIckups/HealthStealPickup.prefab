@@ -241,7 +241,7 @@ MonoBehaviour:
   itemName: LIFESTEAL
   itemType: 5
   itemRarity: 0
-  itemDescription: GET HP WHEN ATTACKING SOMETIMES
+  itemDescription: HEAL AFTER DEALING 30 DAMAGE
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
   ability: {fileID: 2653171394673493507, guid: 4268ca557572e814597a16d24b92e8ae, type: 3}
