@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetManager : MonoBehaviour
+public class RelevantTargets
 {
-    public static TargetManager instance;
+    public string characterName;
+
     public List<Target> legHomes;
     public List<Target> legTargets;
 
     public List<Target> armHomes;
     public List<Target> armTargets;
 
-    void Awake()
+    public RelevantTargets(string name)
     {
-        instance = this;
+        this.characterName = name;
 
         legHomes = new List<Target>();
         legTargets = new List<Target>();
@@ -44,5 +45,45 @@ public class TargetManager : MonoBehaviour
             armHomes.Remove(t);
         if (t.relevantObj == Target.ObjType.Arm && t.type == Target.TargetType.target)
             armTargets.Remove(t);
+    }
+}
+
+public class TargetManager : MonoBehaviour
+{
+    public static TargetManager instance;
+
+    public Dictionary<string, RelevantTargets> characterTargets;
+
+    void Awake()
+    {
+        instance = this;
+        characterTargets = new Dictionary<string, RelevantTargets>();
+    }
+
+    public void addTarget(Target t)
+    {
+        if (!characterTargets.ContainsKey(t.relevantCharacter))
+        {
+            // there is no RelevantTargets for character
+            RelevantTargets rts = new RelevantTargets(t.relevantCharacter);
+            rts.addTarget(t);
+            characterTargets.Add(t.relevantCharacter, rts);
+        }
+        else
+        {
+            characterTargets[t.relevantCharacter].addTarget(t);
+        }
+    }
+    public void removeTarget(Target t)
+    {
+        if (!characterTargets.ContainsKey(t.relevantCharacter))
+        {
+            // there is no RelevantTargets for character
+            Debug.Log("Target to be removed has no associated RelevantTargets object");
+        }
+        else
+        {
+            characterTargets[t.relevantCharacter].removeTarget(t);
+        }
     }
 }

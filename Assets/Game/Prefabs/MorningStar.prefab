@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToHit:
   - Enemy
+  ignoresInvincibility: 0
   onHitTarget:
     m_PersistentCalls:
       m_Calls: []
@@ -278,6 +279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rightOrLeft
       value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208137280149421341, guid: 09cadb6755cf0462d89a4eb94dbc7366,
+        type: 3}
+      propertyPath: relevantCharacter
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8829026804997614140, guid: 09cadb6755cf0462d89a4eb94dbc7366,
         type: 3}
@@ -357,6 +363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rightOrLeft
       value: left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208137280149421341, guid: 09cadb6755cf0462d89a4eb94dbc7366,
+        type: 3}
+      propertyPath: relevantCharacter
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8829026804997614140, guid: 09cadb6755cf0462d89a4eb94dbc7366,
         type: 3}

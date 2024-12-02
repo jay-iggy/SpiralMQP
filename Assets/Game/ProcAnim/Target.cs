@@ -14,6 +14,7 @@ public class Target : MonoBehaviour
         Leg
     }
 
+    public string relevantCharacter;
     public TargetType type;
     public ObjType relevantObj;
     public string rightOrLeft;
