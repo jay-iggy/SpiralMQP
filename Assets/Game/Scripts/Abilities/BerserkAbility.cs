@@ -5,14 +5,16 @@ using UnityEngine;
 namespace Game.Scripts.Abilities {
     public class BerserkAbility : MonoBehaviour
     {
-        private bool active = false;
+        private bool primaryActive = false;
+        private bool offhandActive = false;
         private GameObject player;
         private HealthComponent hp;
         private PlayerController pc;
         private PranimDriver gfx;
         [SerializeField] Material berserkMaterial;
         [SerializeField] int damage;
-        private AttackAbility attackAbility;
+        private AttackAbility primaryAbility;
+        private AttackAbility offhandAbility;
 
         public Sound sfx;
 
@@ -23,10 +25,20 @@ namespace Game.Scripts.Abilities {
             hp = player.GetComponent<HealthComponent>();
             pc = player.GetComponent<PlayerController>();
             hp.onHealthChanged.AddListener(SetActive);
+            pc.weaponChanged.AddListener(SetAttackAbilities);
+           
+            SetAttackAbilities();
+        }
 
-            if(pc.primaryAbility is AttackAbility)
+        public void SetAttackAbilities()
+        {
+            if (pc.primaryAbility is AttackAbility)
             {
-                attackAbility = (AttackAbility)pc.primaryAbility;
+                primaryAbility = (AttackAbility)pc.primaryAbility;
+            }
+            if (pc.offhandAbility is AttackAbility)
+            {
+                offhandAbility = (AttackAbility)pc.offhandAbility;
             }
 
             SetActive(hp.health);
@@ -37,22 +49,34 @@ namespace Game.Scripts.Abilities {
             if (health < hp.maxHealth / 2) //active
             {
                 gfx.SetAllMaterialsToOneMat(berserkMaterial);
-                // gfx.material = berserkMaterial;
-                if(!active && attackAbility != null)
+                if(!primaryActive && primaryAbility != null)
                 {
-                    attackAbility.ModifyDamage(damage);
+                    primaryAbility.ModifyDamage(damage);
+                    primaryActive = true;
                 }
-                active = true;
+                if (!offhandActive && offhandAbility != null)
+                {
+                    offhandAbility.ModifyDamage(damage);
+                    offhandActive = true;
+                }
+                
                 PlaySound();
             }
             else //inactive
             {
                 gfx.UpdateMaterialsToDefaults();
-                if(active && attackAbility != null)
+                if(primaryActive && primaryAbility != null)
                 {
-                    attackAbility.ModifyDamage(-damage);
+                    primaryAbility.ModifyDamage(-damage);
+                    primaryActive = false;
+                    
                 }
-                active = false;
+                if (offhandActive && offhandAbility != null)
+                {
+                    offhandAbility.ModifyDamage(damage);
+                    offhandActive = false;
+                }
+
             }
         }
 

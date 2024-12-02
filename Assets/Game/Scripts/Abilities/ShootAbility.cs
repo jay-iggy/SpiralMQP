@@ -11,6 +11,7 @@ namespace Game.Scripts.Player.Abilities {
         public Vector3 spawnOffset = new Vector3(0, 1, 0);
         private bool isHolding = false;
         private float _cooldownTimer = 0;
+        [SerializeField] bool ignoreInvincibility = false;
 
         //audio
         public Sound sfx;
@@ -53,6 +54,10 @@ namespace Game.Scripts.Player.Abilities {
 
             Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
             projectile.dmg = projectileDamage;
+            if (ignoreInvincibility)
+            {
+                projectile.IgnoreInvincibility();
+            }
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = _player.transform.forward * projectileSpeed;
             

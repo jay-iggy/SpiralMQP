@@ -2,6 +2,7 @@ using System;
 using Game.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(MovementComponent))]
 public class PlayerController : MonoBehaviour
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Ability offhandAbility;
     public Ability secondaryAbility;
     public Ability punchAbilityPrefab;
+    public UnityEvent weaponChanged;
 
     // References
     private Rigidbody _rb;
@@ -172,6 +174,7 @@ public class PlayerController : MonoBehaviour
         primaryAbility = ability;
         primaryAbility.BindToPlayer(this);
         primaryAbility.gameObject.SetActive(true);
+        weaponChanged.Invoke();
     }
 
     private void ChangeOffhandAbility(Ability ability) {
@@ -179,6 +182,7 @@ public class PlayerController : MonoBehaviour
         offhandAbility = ability;
         offhandAbility.BindToPlayer(this);
         offhandAbility.gameObject.SetActive(false);
+        weaponChanged.Invoke();
     }
 
     #endregion

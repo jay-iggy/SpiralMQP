@@ -52,6 +52,7 @@ MonoBehaviour:
     type: 3}
   isAutomatic: 1
   spawnOffset: {x: 0, y: 0, z: 1}
+  ignoreInvincibility: 1
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}
 --- !u!1001 &1551966752532670519
 PrefabInstance:
