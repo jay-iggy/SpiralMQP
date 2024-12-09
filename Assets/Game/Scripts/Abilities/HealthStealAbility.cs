@@ -9,6 +9,7 @@ namespace Game.Scripts.Abilities
         private float damageDone = 0;
         private HealthComponent bossHP;
         private HealthComponent playerHP;
+        [SerializeField] int damageThreshold;
 
         public Sound sfx;
 
@@ -28,7 +29,7 @@ namespace Game.Scripts.Abilities
         public void trackDamageDone(float d)
         {
             damageDone += d;
-            if(damageDone >= 15)
+            if(damageDone >= damageThreshold)
             {
                 playerHP.SetHealth(playerHP.health + 1);
                 damageDone = 0;

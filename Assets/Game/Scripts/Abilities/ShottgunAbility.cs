@@ -2,7 +2,7 @@
 using UnityEngine.Serialization;
 
 namespace Game.Scripts.Player.Abilities {
-    public class ShootAbility : AttackAbility {
+    public class ShottgunAbility : AttackAbility {
         public float projectileSpeed = 5f;
         public float projectileDamage = 1f;
         public float cooldown = 0.33f;
@@ -14,18 +14,6 @@ namespace Game.Scripts.Player.Abilities {
 
         //audio
         public Sound sfx;
-
-        // visual
-        public void OnEnable()
-        {
-            // turn on the gun model
-            this.transform.parent.GetChild(0).gameObject.SetActive(true);
-
-        }
-        public void OnDestroy()
-        {
-            this.transform.parent.GetChild(0).gameObject.SetActive(false);
-        }
 
         public override void AbilityPressed() {
             Shoot();
@@ -43,15 +31,14 @@ namespace Game.Scripts.Player.Abilities {
         }
 
         private void Update() {
-            if (!this.transform.parent.GetChild(0).gameObject.activeSelf)
-                this.transform.parent.GetChild(0).gameObject.SetActive(true);
-
-            if (_cooldownTimer > 0) {
+            if(_cooldownTimer > 0) {
                 _cooldownTimer -= Time.deltaTime;
             }
             
             if (isHolding && isAutomatic) {
+
                 Shoot();
+
             }
         }
         
@@ -62,14 +49,29 @@ namespace Game.Scripts.Player.Abilities {
 
             PlaySound();
 
-            Projectile projectile = Instantiate(projectilePrefab, transform.position + spawnOffset, Quaternion.identity);
-            projectile.dmg = projectileDamage;
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.velocity = _player.transform.forward * projectileSpeed;
-            
-            _cooldownTimer = cooldown;
+            for (int i = 0; i < 6; i++)
+            {
+                Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
+                projectile.dmg = projectileDamage;
+                projectile.IgnoreInvincibility();
+                Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
+                float randomAngle = Random.Range(-30f, 30f);
+
+                // Create a rotation around the Y-axis (assuming you're working in 3D space)
+                Quaternion randomRotation = Quaternion.Euler(0, randomAngle, 0);
+
+                // Apply the random rotation to the player's forward direction
+                Vector3 randomDirection = randomRotation * _player.transform.forward;
+
+                // Set the velocity of the rigidbody
+                rb.velocity = randomDirection * projectileSpeed;
+
+            }
+                _cooldownTimer = cooldown;
+
         }
-        
+             
         private bool CanShoot() {
             return _cooldownTimer <= 0;
         }

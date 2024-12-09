@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PranimDriver : MonoBehaviour
 {
+    public string characterName;
+
     #region legs
     [SerializeField] private LegStepper rightLeg;
     [SerializeField] private LegStepper leftLeg;
@@ -12,7 +14,7 @@ public class PranimDriver : MonoBehaviour
     IEnumerator OneLegAtATime()
     {
         // always running
-        while (true)
+        while (true && TargetManager.instance.characterTargets.ContainsKey(characterName))
         {
             if (lastStepped.Equals("right") && !rightLeg.moving && !leftLeg.moving)
             {
@@ -40,37 +42,34 @@ public class PranimDriver : MonoBehaviour
 
     IEnumerator ArmsTrackItems()
     {
-        while (true)
+        while (true && TargetManager.instance.characterTargets.ContainsKey(characterName))
         {
             // Check for changes in armTargets count
-            if (TargetManager.instance.armTargets.Count != lastArmTargetsCount)
+            if (TargetManager.instance.characterTargets[characterName].armTargets.Count > 0)
             {
-                if (TargetManager.instance.armTargets.Count > 0)
+                // Assign targets to arms
+                foreach (var t in TargetManager.instance.characterTargets[characterName].armTargets)
                 {
-                    // Assign targets to arms
-                    foreach (var t in TargetManager.instance.armTargets)
-                    {
-                        if (t.rightOrLeft == "right")
-                            rightArm.target = t.transform;
-                        else if (t.rightOrLeft == "left")
-                            leftArm.target = t.transform;
-                    }
+                    if (t.rightOrLeft == "right")
+                        rightArm.target = t.transform;
+                    else if (t.rightOrLeft == "left")
+                        leftArm.target = t.transform;
                 }
-                else
-                {
-                    // Assign default/home targets
-                    foreach (var t in TargetManager.instance.armHomes)
-                    {
-                        if (t.rightOrLeft == "right")
-                            rightArm.target = t.transform;
-                        else if (t.rightOrLeft == "left")
-                            leftArm.target = t.transform;
-                    }
-                }
-
-                // Update the last known count
-                lastArmTargetsCount = TargetManager.instance.armTargets.Count;
             }
+            else
+            {
+                // Assign default/home targets
+                foreach (var t in TargetManager.instance.characterTargets[characterName].armHomes)
+                {
+                    if (t.rightOrLeft == "right")
+                        rightArm.target = t.transform;
+                    else if (t.rightOrLeft == "left")
+                        leftArm.target = t.transform;
+                }
+            }
+
+            // Update the last known count
+            lastArmTargetsCount = TargetManager.instance.characterTargets[characterName].armTargets.Count;
 
             // Delay the coroutine to prevent excessive execution
             yield return new WaitForSeconds(0.1f);
@@ -176,7 +175,7 @@ public class PranimDriver : MonoBehaviour
     void Start()
     {
         lastStepped = "right";
-        lastArmTargetsCount = TargetManager.instance.armTargets.Count;
+        lastArmTargetsCount = 0;
         StartCoroutine(OneLegAtATime());
         StartCoroutine(ArmsTrackItems());
     }

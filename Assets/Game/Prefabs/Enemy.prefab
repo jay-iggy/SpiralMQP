@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 6391814892263382719}
   - component: {fileID: 8833956374773416703}
   - component: {fileID: 5019928898184752208}
+  - component: {fileID: 269637485060861129}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -190,8 +191,12 @@ MonoBehaviour:
   onTakeDamageFloat:
     m_PersistentCalls:
       m_Calls: []
+  onMaxHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   invincibilityDuration: 0.2
   affectsHitless: 0
+  hitTextColor: {r: 1, g: 1, b: 1, a: 1}
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 30
@@ -264,6 +269,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!75 &269637485060861129
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776588961429897932}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -9.81, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &3934810571045837938
 GameObject:
   m_ObjectHideFlags: 0

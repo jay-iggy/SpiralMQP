@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1dd05d6f8b7313b419a032c5ac0ed6a4, type: 3}
-  m_Color: {r: 0.13521993, g: 1, b: 0.1587075, a: 1}
+  m_Color: {r: 0.6132076, g: 0.37891603, b: 0.37891603, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 915226059927050450}
   - component: {fileID: 8128887591403588042}
   m_Layer: 0
-  m_Name: ShottgunPickup
+  m_Name: MachineGunPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,13 +130,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: SHOTTGUN
+  itemName: MACHINE GUN
   itemType: 2
-  itemRarity: 2
-  itemDescription: HIGHER DAMAGE AT CLOSE RANGE
+  itemRarity: 1
+  itemDescription: LOW DAMAGE, HIGH FIRE RATE
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
-  ability: {fileID: 9041781852675504876, guid: 45b4b3667f92f7d4b913d3e8cbee12be, type: 3}
+  ability: {fileID: 677732930458458227, guid: f50a4c6ac26e7435eb93214579475145, type: 3}
   slot: 0
 --- !u!135 &8128887591403588042
 SphereCollider:

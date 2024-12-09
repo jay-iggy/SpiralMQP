@@ -49,7 +49,7 @@ MonoBehaviour:
   itemName: MALLET
   itemType: 3
   itemRarity: 1
-  itemDescription: BONK
+  itemDescription: HIGH DAMAGE & KNOCKBACK. HOLD & RELEASE TO USE
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
   ability: {fileID: -3583724972998600079, guid: 966a5bad0835f44429311861db4da259,

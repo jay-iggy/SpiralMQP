@@ -33,5 +33,10 @@ namespace Game.Scripts
             timer = time;
             timerData = data;
         }
+
+        public void StopTimer()
+        {
+            timer = -1;
+        }
     }
 }

@@ -14,6 +14,7 @@ public class Target : MonoBehaviour
         Leg
     }
 
+    public string relevantCharacter;
     public TargetType type;
     public ObjType relevantObj;
     public string rightOrLeft;
@@ -25,5 +26,15 @@ public class Target : MonoBehaviour
     private void OnDisable()
     {
         TargetManager.instance.removeTarget(this);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(type == TargetType.home)
+            Gizmos.color = Color.green;
+        else if(type == TargetType.target)
+            Gizmos.color = Color.cyan;
+
+        Gizmos.DrawWireSphere(this.transform.position, 0.2f);
     }
 }

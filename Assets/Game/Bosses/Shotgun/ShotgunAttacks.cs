@@ -101,23 +101,51 @@ namespace Game.Scripts
         [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
         [SerializeField] private float delayBetweenVolleys = .5f;
         [SerializeField] private float aimRotateSpeed = 2;
+        [SerializeField] private float maxAimTime = 1;
         
         private IEnumerator RotateToFacePlayer() {
+            float timer=0;
             while (Vector3.Angle(transform.forward, player.transform.position - transform.position) > 10f){
                 Vector3 targetDir = player.transform.position - transform.position;
                 float step = aimRotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDir);
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+                Vector3 origRot = transform.eulerAngles;
+                float x;
+                if (_lockXRotation) {
+                    x = 0;
+                } else {
+                    x = origRot.x;
+                }
+                transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, origRot.z);
                 yield return null;
+                if (timer > -1) {
+                    timer += Time.deltaTime;
+                }
+                if (timer > maxAimTime) {
+                    _animator.SetTrigger("JumpShot");
+                    timer = -1;
+                    _fired = true;
+                }
             }
+            _lockXRotation = true;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
+        private bool _lockXRotation = true;
+        public void UnlockXRotation() {
+            _lockXRotation = false;
+        }
+        
+        private bool _fired = false;
 
         private IEnumerator Attack_Shoot() {
             for(int i = 0; i < volleysPerAttack; i++) {
+                _fired = false;
                 yield return RotateToFacePlayer();
-                _animator.SetTrigger("Shoot");
-                yield return new WaitForSeconds(shootAnim.length + delayBetweenVolleys);
+                if(!_fired) {
+                    _animator.SetTrigger("Shoot");
+                    yield return new WaitForSeconds(shootAnim.length + delayBetweenVolleys);
+                }
             }
         }
         
@@ -128,11 +156,17 @@ namespace Game.Scripts
             _itemsToCleanup.Add(proj);
             _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
         }
+
+        public float jumpForce = 50f;
+        public void Jump() { // this is invoked by animation event
+            _movementComponent.AddVerticalVelocity(jumpForce);
+        }
         
         private void OnHealthChanged(float newHealth) {
+            // enter phase 2 if less than half health
             if (newHealth/_healthComponent.maxHealth < .5f) {
                 volleysPerAttack = 6;
-                _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged);
+                _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged); // prevent phase changing again
             }
         }
 

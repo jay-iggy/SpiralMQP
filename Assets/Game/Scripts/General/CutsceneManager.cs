@@ -8,6 +8,7 @@ namespace Game.Scripts
     {
         public static CutsceneManager instance;
         public bool playCutscene = true;
+        private bool cutsceneStarted = false;
         [SerializeField] Timer timer;
         private void Awake()
         {
@@ -27,14 +28,33 @@ namespace Game.Scripts
             timer.onTimerEnd.AddListener(TimeUp);
         }
 
+        private void Update()
+        {
+            if (cutsceneStarted && Input.anyKeyDown)
+            {
+                EndCutscene();
+            }
+        }
+
         public void StartCutscene()
         {
             playCutscene = false;
+            cutsceneStarted = true;
             timer.Set(18, 0);
         }
 
         public void TimeUp(int data)
         {
+            if (cutsceneStarted)
+            {
+                EndCutscene();
+            }
+        }
+
+        private void EndCutscene()
+        {
+            cutsceneStarted = false;
+            timer.StopTimer();
             UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         }
         
