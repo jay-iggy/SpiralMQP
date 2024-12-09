@@ -163,9 +163,10 @@ namespace Game.Scripts
         }
         
         private void OnHealthChanged(float newHealth) {
+            // enter phase 2 if less than half health
             if (newHealth/_healthComponent.maxHealth < .5f) {
                 volleysPerAttack = 6;
-                _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged);
+                _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged); // prevent phase changing again
             }
         }
 
