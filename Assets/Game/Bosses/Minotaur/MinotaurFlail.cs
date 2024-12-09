@@ -111,6 +111,7 @@ namespace Game.Scripts
         {
             if(launchStage == 1 && transform.localEulerAngles.z >= releaseAtRotation && transform.localEulerAngles.z < releaseAtRotation + angularVelocity)
             {
+                //shoot out flail
                 launchStage = 2;
                 spinning = false;
                 shooting = false;
@@ -124,6 +125,7 @@ namespace Game.Scripts
                 {
                     launchStage = 3;
                     ScreenShake.instance.StartShake(.5f, 1);
+                    //hits ground
                     flailSmashBullets(0);
                     timer.Set(.3f, 0);
                 }
@@ -191,10 +193,13 @@ namespace Game.Scripts
 
             if (shooting)
             {
+                
                 shootTimer += Time.deltaTime;
-                if(shootTimer >= fireSpeed)
+                if(shootTimer >= fireSpeed) //shoot bullet
                 {
-                    GameObject curBullet = Instantiate(bullet);
+                   /* if (trailing) //trail sound
+                else // spin sound */
+                                GameObject curBullet = Instantiate(bullet);
                     curBullet.transform.position = new Vector3(flailTip.transform.position.x, transform.position.y, flailTip.transform.position.z);
                     BulletPatterns.MoveTowards(curBullet, transform.position, -8);
                     shootTimer = 0;

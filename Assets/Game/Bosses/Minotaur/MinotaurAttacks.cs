@@ -108,6 +108,7 @@ namespace Game.Scripts
                     charging = true;
                     break;
                 case 1:
+                    //launch
                     flail.Launch();
                     break;
                 case 2:
@@ -124,6 +125,7 @@ namespace Game.Scripts
                 rotateTowardsPlayer();
                 if (curAttack == 0 && facingPlayer) //charge
                 {
+                    //charge audio
                     chargeVelocity = player.transform.position - transform.position;
                     chargeVelocity.Normalize();
                     chargeVelocity *= chargeSpeed;
@@ -179,6 +181,7 @@ namespace Game.Scripts
                 other.gameObject.GetComponent<HealthComponent>().GetHit(1);
                 if(curAttack == 2)
                 {
+                    //bump into play
                     float xDif = Mathf.Abs(other.transform.position.x - transform.position.x);
                     float yDif = Mathf.Abs(other.transform.position.y - transform.position.y);
                     if (yDif > xDif)
