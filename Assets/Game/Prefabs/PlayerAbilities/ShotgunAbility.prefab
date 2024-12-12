@@ -47,11 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 5
   projectileDamage: 1
-<<<<<<< HEAD
-  cooldown: 1
-=======
   cooldown: 0.6
->>>>>>> 6aab9b543d45f95a7d1232e16116d1c3b1b580a8
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
   isAutomatic: 0
