@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 16901593}
   m_Layer: 0
-  m_Name: FX Managers
+  m_Name: ----- FX Managers -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 435549806}
   m_Layer: 0
-  m_Name: Game Managers
+  m_Name: ----- Game Managers -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 646508563}
   - component: {fileID: 646508562}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ----- Canvas -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3187,7 +3187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207691414}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: ----- Managers ------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3426,7 +3426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1987421442}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1337902934
@@ -4599,7 +4599,7 @@ GameObject:
   - component: {fileID: 1899981533}
   - component: {fileID: 1899981532}
   m_Layer: 6
-  m_Name: Camera Parent
+  m_Name: ----- Camera Parent ------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5275,7 +5275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2133898520}
   m_Layer: 0
-  m_Name: Misc Managers
+  m_Name: ----- Misc Managers -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5436,7 +5436,7 @@ PrefabInstance:
     - target: {fileID: 9075069856556145358, guid: acb0cb568d2314955b7f969dc574d0b8,
         type: 3}
       propertyPath: m_Name
-      value: Player Holder
+      value: ----- Player Holder ------
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
