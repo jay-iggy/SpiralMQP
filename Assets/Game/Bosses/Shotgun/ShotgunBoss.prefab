@@ -1,77 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &752243683525108429
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8866840407029290342}
-  - component: {fileID: 8250932141722609389}
-  - component: {fileID: 3831058044629878582}
-  m_Layer: 0
-  m_Name: Hitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8866840407029290342
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752243683525108429}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8108328, y: 0.8108328, z: 0.8108328}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5202499933260465626}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8250932141722609389
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752243683525108429}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.4846854, y: 1.4036969, z: 4.637894}
-  m_Center: {x: -0.028079115, y: 0.20184852, z: 3.526379}
---- !u!114 &3831058044629878582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752243683525108429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ece4030f0f4bbb9f4b526d59815a24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToHit:
-  - Player
-  onHitTarget:
-    m_PersistentCalls:
-      m_Calls: []
-  dmg: 1
 --- !u!1 &798206865656204025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,10 +1940,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4833394176114025882}
-    - targetCorrespondingSourceObject: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8866840407029290342}
     - targetCorrespondingSourceObject: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       insertIndex: -1
@@ -2048,24 +1972,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828e81a650e7324292c595bba70e42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  moveDistanceThreshold: 3
+  jumpForce: 20
   projPrefab: {fileID: 5201522005593478507, guid: e0a6d62eec0af304189075d348cddb83,
     type: 3}
-  speed: 10
   projSpawnPos: {fileID: 4833394176114025882}
+  volleysPerAttack: 2
+  delayBetweenVolleys: 0.5
+  aimRotateSpeed: 2
+  maxAimTime: 1
+  knockbackForce: 50
   shellPrefab: {fileID: 626621948847218296, guid: 949020153b8b4c049b387b4dab21ecdf,
     type: 3}
   shellEjectPositions:
   - {fileID: 841822160155465431}
   - {fileID: 8844223905016227750}
   shellEjectForce: 20
-  shootSFX: {fileID: 8300000, guid: d9e42a8a196cef24ca03a6808b9349f0, type: 3}
   ejectShellsAnim: {fileID: 7400000, guid: 40a7f15d9066fde4ea4e83e3b90526f0, type: 2}
   shootAnim: {fileID: 7400000, guid: 77de8230e5f229d40a29ae5abe18e115, type: 2}
-  moveDistanceThreshold: 3
-  volleysPerAttack: 2
-  delayBetweenVolleys: 0.5
-  aimRotateSpeed: 2
-  knockbackForce: 50
 --- !u!95 &2792873772990784303
 Animator:
   serializedVersion: 5

@@ -8,39 +8,43 @@ using UnityEngine.Serialization;
 namespace Game.Scripts
 {
     public class ShotgunAttacks : MonoBehaviour, ICanAttack {
-        [SerializeField] GameObject projPrefab;
-        private GameObject player;
-
-        private Vector3 center = new Vector3(0, 0, 0);
-        [SerializeField] private float speed = 10;
-        List<GameObject> _itemsToCleanup = new();
-
-        private int curAttack = -1;
-
-        [SerializeField] private Transform projSpawnPos;
         
+        [Header("Movement")]
+        [SerializeField] private float speed = 10;
+        [SerializeField] private float moveDistanceThreshold = 3;
+        public float jumpForce = 50f;
+        private bool _lockXRotation = true;
+        [Header("Shooting")]
+        [SerializeField] GameObject projPrefab;
+        [SerializeField] private Transform projSpawnPos;
+        [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
+        [SerializeField] private float delayBetweenVolleys = .5f;
+        [SerializeField] private float aimRotateSpeed = 2;
+        [SerializeField] private float maxAimTime = 1;
+        [SerializeField] private float knockbackForce = 10;
+        private bool _fired = false;
+        [Header("Shells")]
         [SerializeField] private GameObject shellPrefab;
         [SerializeField] private List<Transform> shellEjectPositions;
         [SerializeField] private float shellEjectForce = 20;
-        
-        [SerializeField] private AudioClip shootSFX;
-        
+        [Header("Animation Clips")]
         [SerializeField] private AnimationClip ejectShellsAnim;
         [SerializeField] private AnimationClip shootAnim;
         
         private Animator _animator;
         private MovementComponent _movementComponent;
         private HealthComponent _healthComponent;
+        private GameObject _player;
         
-        [SerializeField] private float moveDistanceThreshold = 3;
-
+        private List<GameObject> _itemsToCleanup = new();
+        
         private void Awake() {
             _animator = GetComponent<Animator>();
             _movementComponent = GetComponent<MovementComponent>();
             _healthComponent = GetComponent<HealthComponent>();
         }
         private void Start() {
-            player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
+            _player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             StartCoroutine(ShotgunEnemyBehavior());
         }
 
@@ -98,15 +102,12 @@ namespace Game.Scripts
             }
         }
         
-        [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
-        [SerializeField] private float delayBetweenVolleys = .5f;
-        [SerializeField] private float aimRotateSpeed = 2;
-        [SerializeField] private float maxAimTime = 1;
+        
         
         private IEnumerator RotateToFacePlayer() {
             float timer=0;
-            while (Vector3.Angle(transform.forward, player.transform.position - transform.position) > 10f){
-                Vector3 targetDir = player.transform.position - transform.position;
+            while (Vector3.Angle(transform.forward, _player.transform.position - transform.position) > 10f){
+                Vector3 targetDir = _player.transform.position - transform.position;
                 float step = aimRotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDir);
@@ -131,12 +132,10 @@ namespace Game.Scripts
             _lockXRotation = true;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
-        private bool _lockXRotation = true;
+        
         public void UnlockXRotation() {
             _lockXRotation = false;
         }
-        
-        private bool _fired = false;
 
         private IEnumerator Attack_Shoot() {
             for(int i = 0; i < volleysPerAttack; i++) {
@@ -149,15 +148,12 @@ namespace Game.Scripts
             }
         }
         
-        [SerializeField] private float knockbackForce = 10;
-        
         public void ShootVolley() { // this is invoked by animation event
             GameObject proj = Instantiate(projPrefab, projSpawnPos.position, projSpawnPos.rotation);
             _itemsToCleanup.Add(proj);
             _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
         }
-
-        public float jumpForce = 50f;
+        
         public void Jump() { // this is invoked by animation event
             _movementComponent.AddVerticalVelocity(jumpForce);
         }
