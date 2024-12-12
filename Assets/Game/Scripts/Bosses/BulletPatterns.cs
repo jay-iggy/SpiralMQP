@@ -24,6 +24,7 @@ namespace Game.Scripts
                 return;
             }
             Vector3 v = target - bullet.transform.position;
+            v.y = 0;
             v.Normalize();
             v *= speed;
             bullet.GetComponent<Rigidbody>().velocity = v;
