@@ -6,6 +6,10 @@ using UnityEngine;
 namespace Game.Scripts
 {
     public class BasiliskAttacks : MonoBehaviour, ICanAttack {
+        private const int BITE_ATTACK = 0;
+        private const int TONGUE_ATTACK = 1;
+        private const int CHASE_PLAYER = 2;
+        
         [SerializeField] GameObject biteHitbox;
         [SerializeField] Timer timer;
         private GameObject player;
@@ -39,12 +43,12 @@ namespace Game.Scripts
 
         public float Attack(int index) {
             curAttack = index;
-            switch (index) {
-                case 0:
+            switch (curAttack) {
+                case BITE_ATTACK:
                     return Bite();
-                case 1:
+                case TONGUE_ATTACK:
                     return Tongue();
-                case 2:
+                case CHASE_PLAYER:
                     return RunTowardsPlayer();
             }
 
@@ -88,13 +92,13 @@ namespace Game.Scripts
 
         public void OnTimerEnd(int data) {
             switch (data) {
-                case 0:
+                case BITE_ATTACK:
                     Bite();
                     break;
-                case 1:
+                case TONGUE_ATTACK:
                     Tongue();
                     break;
-                case 2:
+                case CHASE_PLAYER:
                     RunTowardsPlayer();
                     break;
             }
@@ -102,11 +106,11 @@ namespace Game.Scripts
         
         private void FixedUpdate() {
             switch (curAttack) {
-                case 0:
+                case BITE_ATTACK:
                     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .05f);
 
                     break;
-                case 1:
+                case TONGUE_ATTACK:
                     if (completedTongueAttack)
                         break;
 
@@ -143,7 +147,7 @@ namespace Game.Scripts
                     }
 
                     break;
-                case 2:
+                case CHASE_PLAYER:
                     // transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .5f);
                     break;
             }

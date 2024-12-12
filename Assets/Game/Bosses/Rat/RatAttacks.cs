@@ -6,6 +6,11 @@ using UnityEngine;
 namespace Game.Scripts
 {
     public class RatAttacks : MonoBehaviour, ICanAttack {
+        private const int BIG_BULLET_ATTACK = 0;
+        private const int SIX_BULLET_ATTACK = 1;
+        private const int SHOOT_CIRCLE_BULLET_ATTACK = 2;
+        private const int UPDATE_CIRCLE_BULLET_ATTACK = 3;
+        
         [SerializeField] GameObject bullet;
         [SerializeField] Timer timer;
         private GameObject player;
@@ -23,6 +28,8 @@ namespace Game.Scripts
 
         private Vector3 gun;
 
+        
+
         //audio
         public AudioManager AudioCON;
 
@@ -36,15 +43,15 @@ namespace Game.Scripts
 
         public float Attack(int index) {
             curAttack = index;
-            switch (index) {
-                case 0:
+            switch (curAttack) {
+                case BIG_BULLET_ATTACK:
                     AudioCON.PlayShoot();
                     return ShootBigBullet();
-                case 1:
+                case SIX_BULLET_ATTACK:
                     AudioCON.PlayShoot();
                     shotsInChamber = 6;
                     return ShootSixBullets();
-                case 2:
+                case SHOOT_CIRCLE_BULLET_ATTACK:
                     AudioCON.PlayShoot();
                     return GoToCenter();
             }
@@ -84,7 +91,7 @@ namespace Game.Scripts
         }
 
         private void ShootCirclePattern() {
-            curAttack = 3;
+            curAttack = UPDATE_CIRCLE_BULLET_ATTACK;
             for(int i = 0; i < 12; i++) {
                 bullets[i] = Instantiate(bullet);
             }
@@ -94,20 +101,20 @@ namespace Game.Scripts
 
         public void OnTimerEnd(int data) {
             switch (data) {
-                case 0:
+                case BIG_BULLET_ATTACK:
                     if(bigBullet != null) {
                         bigBullet.GetComponent<Projectile>().TargetPlayer(5);
                         bigBullet = null;
                     }
                     curAttack = -1;
                     break;
-                case 1:
+                case SIX_BULLET_ATTACK:
                     ShootSixBullets();
                     break;
-                case 2:
+                case SHOOT_CIRCLE_BULLET_ATTACK:
                     ShootCirclePattern();
                     break;
-                case 3:
+                case UPDATE_CIRCLE_BULLET_ATTACK:
                     BulletPatterns.MoveTowards(bullets, transform.position, -8);
                     bullets = new GameObject[12];
                     break;
@@ -128,7 +135,7 @@ namespace Game.Scripts
         
         private void FixedUpdate() {
             switch (curAttack) {
-                case 0:
+                case BIG_BULLET_ATTACK:
                     float s = .04f;
                     if (bigBullet != null) {
                         bigBullet.transform.localScale += new Vector3(s, s, s);
@@ -139,12 +146,12 @@ namespace Game.Scripts
                         // this happens when the player walks into the bullet before it is fired
                         curAttack = -1;
                     }
-                    
                     break;
-                case 1:
+                case SIX_BULLET_ATTACK:
                     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .025f);
                     break;
-                case 2:
+                case SHOOT_CIRCLE_BULLET_ATTACK:
+                    // move to center before shooting
                     transform.position = Vector3.MoveTowards(transform.position, center, speed);
                     break;
             }

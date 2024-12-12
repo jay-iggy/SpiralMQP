@@ -6,6 +6,12 @@ using UnityEngine;
 namespace Game.Scripts
 {
     public class GoblinEngineerAttacks : MonoBehaviour, ICanAttack {
+        private const int BEAR_TRAP_ATTACK = 0;
+        private const int GRAPPLING_HOOK_ATTACK = 1;
+        private const int SNIPER_ATTACK = 2;
+        private const int BALL_BEARING_ATTACK = 3;
+        private const int ROCKET_BOOTS_ATTACK = 4;
+        
         [SerializeField] GameObject bearTrap;
         [SerializeField] Timer timer;
         private GameObject player;
@@ -39,20 +45,25 @@ namespace Game.Scripts
 
         public float Attack(int index) {
             curAttack = index;
-            switch (index) {
-                case 0:
+            
+            if (curAttack == ROCKET_BOOTS_ATTACK ) {
+                HealthComponent healthComponent = GetComponent<HealthComponent>();
+                if (healthComponent.health < healthComponent.maxHealth / 2) {
+                    curAttack = BEAR_TRAP_ATTACK;
+                }
+            }
+            
+            switch (curAttack) {
+                case BEAR_TRAP_ATTACK:
                     return BearTrap();
-                case 1:
+                case GRAPPLING_HOOK_ATTACK:
                     return GrapplingHook();
-                case 2:
+                case SNIPER_ATTACK:
                     return SniperMusket();
-                case 3:
+                case BALL_BEARING_ATTACK:
                     return BallBearing();
-                case 4:
-                    if (GetComponent<HealthComponent>().health < 50)
-                        return RocketBoots();
-                    else
-                        return BearTrap();
+                case ROCKET_BOOTS_ATTACK:
+                    return RocketBoots();
             }
 
             return 0;
@@ -105,13 +116,13 @@ namespace Game.Scripts
 
         public void OnTimerEnd(int data) {
             switch (data) {
-                case 0:
+                case BEAR_TRAP_ATTACK:
                     BearTrap();
                     break;
-                case 1:
+                case GRAPPLING_HOOK_ATTACK:
                     GrapplingHook();
                     break;
-                case 2:
+                case SNIPER_ATTACK:
                     SniperMusket();
                     break;
             }
@@ -119,11 +130,11 @@ namespace Game.Scripts
         
         private void FixedUpdate() {
             switch (curAttack) {
-                case 0:
+                case BEAR_TRAP_ATTACK:
                     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .025f);
 
                     break;
-                case 1:
+                case GRAPPLING_HOOK_ATTACK:
                     if (completedGHookAttack)
                         break;
 
@@ -160,13 +171,13 @@ namespace Game.Scripts
                     }
 
                     break;
-                case 2:
+                case SNIPER_ATTACK:
                     
                     break;
-                case 3:
+                case BALL_BEARING_ATTACK:
 
                     break;
-                case 4:
+                case ROCKET_BOOTS_ATTACK:
 
                     break;
             }

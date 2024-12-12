@@ -7,6 +7,10 @@ namespace Game.Scripts
 {
     public class MinotaurAttacks : MonoBehaviour, ICanAttack
     {
+        private const int CHARGE_ATTACK = 0;
+        private const int FLAIL_ATTACK = 1;
+        private const int SEEKING_CHARGE_ATTACK = 2;
+        
         [SerializeField] GameObject bullet;
         [SerializeField] Timer timer;
         [SerializeField] MinotaurFlail flail;
@@ -39,19 +43,19 @@ namespace Game.Scripts
         public float Attack(int index)
         {
 
-            if(curAttack == 2)
+            if(curAttack == SEEKING_CHARGE_ATTACK)
             {
                 flail.StopTrailing();
             }
 
             curAttack = index;
-            switch (index)
+            switch (curAttack)
             {
-                case 0:
+                case CHARGE_ATTACK:
                     return Charge();
-                case 1:
+                case FLAIL_ATTACK:
                     return FlailSmash();
-                case 2:
+                case SEEKING_CHARGE_ATTACK:
                     return SeekingCharge();
             }
             return 0;
@@ -104,14 +108,14 @@ namespace Game.Scripts
 
             switch (data)
             {
-                case 0:
+                case CHARGE_ATTACK:
                     charging = true;
                     break;
-                case 1:
+                case FLAIL_ATTACK:
                     //launch
                     flail.Launch();
                     break;
-                case 2:
+                case SEEKING_CHARGE_ATTACK:
                     flail.StopTrailing();
                     turnDelta = 2;
                     break;
@@ -123,7 +127,7 @@ namespace Game.Scripts
             if (!lockRotation)
             {
                 rotateTowardsPlayer();
-                if (curAttack == 0 && facingPlayer) //charge
+                if (curAttack == CHARGE_ATTACK && facingPlayer) //charge
                 {
                     //charge audio
                     chargeVelocity = player.transform.position - transform.position;
@@ -132,7 +136,7 @@ namespace Game.Scripts
                     lockRotation = true;
                     timer.Set(.25f, 0);
                 }
-                else if(curAttack == 2) //seeking charge
+                else if(curAttack == SEEKING_CHARGE_ATTACK) //seeking charge
                 {
                     moveForward();
                 }
@@ -148,7 +152,7 @@ namespace Game.Scripts
         {
             if(other.gameObject.tag == "Wall")
             {
-                if(curAttack == 0) //charge
+                if(curAttack == CHARGE_ATTACK) //charge
                 {
                     charging = false;
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
@@ -159,7 +163,7 @@ namespace Game.Scripts
                     ScreenShake.instance.StartShake(.2f, .5f);
                     Charge();
                 }
-                if(curAttack == 2) //seeking charge
+                if(curAttack == SEEKING_CHARGE_ATTACK) //seeking charge
                 {
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
                     Vector3 bounceVelocity = transform.position - collisionPoint;
@@ -179,7 +183,7 @@ namespace Game.Scripts
             else if(other.gameObject.tag == "Player")
             {
                 other.gameObject.GetComponent<HealthComponent>().GetHit(1);
-                if(curAttack == 2)
+                if(curAttack == SEEKING_CHARGE_ATTACK)
                 {
                     //bump into play
                     float xDif = Mathf.Abs(other.transform.position.x - transform.position.x);

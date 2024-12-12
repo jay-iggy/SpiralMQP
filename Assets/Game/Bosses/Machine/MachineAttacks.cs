@@ -7,6 +7,11 @@ namespace Game.Scripts
 {
     public class MachineAttacks : MonoBehaviour, ICanAttack
     {
+        private const int CIRCLE_ATTACK = 0;
+        private const int LASER_ATTACK = 1;
+        private const int DRONE_ATTACK = 2;
+        private const int SMOKE_ATTACK = 3;
+        
         [SerializeField] Timer timer;
         [SerializeField] GameObject bullet;
         [SerializeField] GameObject dronePrefab;
@@ -41,13 +46,13 @@ namespace Game.Scripts
 
             switch (index)
             {
-                case 0:
+                case CIRCLE_ATTACK:
                     return ShootBulletCircles();
-                case 1:
+                case LASER_ATTACK:
                     return ShootLaser();              
-                case 2:
+                case DRONE_ATTACK:
                     return LaunchDrone();
-                case 3:
+                case SMOKE_ATTACK:
                     return MakeSmoke();
             }
             return 0;
@@ -57,11 +62,11 @@ namespace Game.Scripts
         {
             switch (data)
             {
-                case 0:
+                case CIRCLE_ATTACK:
                     GameObject[] bullets = MakeBulletCircle();
                     BulletPatterns.MoveTowards(bullets, transform.position, -12);
                     break;
-                case 1:
+                case LASER_ATTACK:
                     foreach(GameObject drone in drones)
                     {
                         drone.GetComponent<Projectile>().AddTag("Enemy");
