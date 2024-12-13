@@ -46,7 +46,7 @@ namespace Game.Scripts
         public float Attack(int index) {
             curAttack = index;
             
-            if (curAttack == ROCKET_BOOTS_ATTACK ) {
+            if (curAttack == ROCKET_BOOTS_ATTACK) {
                 HealthComponent healthComponent = GetComponent<HealthComponent>();
                 if (healthComponent.health > healthComponent.maxHealth / 2) {
                     curAttack = BEAR_TRAP_ATTACK;
