@@ -95,7 +95,6 @@ namespace Game.Scripts {
                     GameObject shell = Instantiate(shellPrefab, ejectPos.position, shellPrefab.transform.rotation);
                     shell.GetComponent<Rigidbody>().AddForce(ejectPos.forward * shellEjectForce, ForceMode.Impulse);
                     _itemsToCleanup.Add(shell);
-                    // shell should explode or bounce or do damage, something more interesting
                 }
             }
         }
