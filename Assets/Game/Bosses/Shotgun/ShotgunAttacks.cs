@@ -5,14 +5,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Game.Scripts
-{
+namespace Game.Scripts {
     public class ShotgunAttacks : MonoBehaviour, ICanAttack {
-        
         [Header("Movement")]
         [SerializeField] private float speed = 10;
         [SerializeField] private float moveDistanceThreshold = 3;
-        public float jumpForce = 50f;
+        public float jumpForce = 10f;
         private bool _lockXRotation = true;
         [Header("Shooting")]
         [SerializeField] GameObject projPrefab;
@@ -20,8 +18,8 @@ namespace Game.Scripts
         [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
         [SerializeField] private float delayBetweenVolleys = .5f;
         [SerializeField] private float aimRotateSpeed = 2;
-        [SerializeField] private float maxAimTime = 1;
-        [SerializeField] private float knockbackForce = 10;
+        [SerializeField] private float maxAimTime = 1.5f;
+        [SerializeField] private float knockbackForce = 50;
         private bool _fired = false;
         [Header("Shells")]
         [SerializeField] private GameObject shellPrefab;
