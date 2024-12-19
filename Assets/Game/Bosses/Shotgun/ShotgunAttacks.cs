@@ -138,20 +138,15 @@ namespace Game.Scripts {
                     Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
                     transform.rotation = Quaternion.LookRotation(newDir);
                     Vector3 origRot = transform.eulerAngles;
-                    float x;
                     // Jump shot: x rotation
-                    if (_lockXRotation) {
-                        x = 0;
-                    } else {
-                        x = origRot.x;
-                    }
+                    float x;
+                    if (_lockXRotation) x = 0;
+                    else x = origRot.x;
                     // End Jump shot code
                     transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, origRot.z);
                     yield return null;
                     // Jump shot: if aiming for too long, jump and shoot
-                    if (timer > -1) {
-                        timer += Time.deltaTime;
-                    }
+                    if (timer > -1) timer += Time.deltaTime;
                     if (timer > maxAimTime) {
                         _animator.SetTrigger("JumpShot");
                         timer = -1;
