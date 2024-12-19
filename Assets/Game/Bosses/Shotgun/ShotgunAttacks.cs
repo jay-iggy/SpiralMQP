@@ -145,6 +145,7 @@ namespace Game.Scripts {
                     } else {
                         x = origRot.x;
                     }
+                    // End Jump shot code
                     transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, origRot.z);
                     yield return null;
                     // Jump shot: if aiming for too long, jump and shoot
@@ -156,6 +157,7 @@ namespace Game.Scripts {
                         timer = -1;
                         _fired = true;
                     }
+                    // End Jump shot code
                 }
                 _lockXRotation = true;
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
