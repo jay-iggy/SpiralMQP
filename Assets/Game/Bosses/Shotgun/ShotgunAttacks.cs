@@ -139,6 +139,7 @@ namespace Game.Scripts {
                     transform.rotation = Quaternion.LookRotation(newDir);
                     Vector3 origRot = transform.eulerAngles;
                     float x;
+                    // Jump shot: x rotation
                     if (_lockXRotation) {
                         x = 0;
                     } else {
@@ -146,6 +147,7 @@ namespace Game.Scripts {
                     }
                     transform.eulerAngles = new Vector3(x, transform.eulerAngles.y, origRot.z);
                     yield return null;
+                    // Jump shot: if aiming for too long, jump and shoot
                     if (timer > -1) {
                         timer += Time.deltaTime;
                     }
