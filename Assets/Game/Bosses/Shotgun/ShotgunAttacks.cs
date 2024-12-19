@@ -126,7 +126,7 @@ namespace Game.Scripts {
                 _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
             }
             
-            public void UnlockXRotation() => _lockXRotation = false;
+            public void UnlockXRotation() => _lockXRotation = false; // this is invoked by animation event
             public void Jump() { // this is invoked by animation event
                 _movementComponent.AddVerticalVelocity(jumpForce);
             }
