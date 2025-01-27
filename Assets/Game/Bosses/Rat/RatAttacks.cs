@@ -27,6 +27,7 @@ namespace Game.Scripts
         private int curAttack = -1;
 
         private Vector3 gun;
+        private Vector3 bulletCircleCenter;
 
         
 
@@ -95,7 +96,8 @@ namespace Game.Scripts
             for(int i = 0; i < 12; i++) {
                 bullets[i] = Instantiate(bullet);
             }
-            BulletPatterns.CreateCircle(bullets, transform.position, 1);
+            bulletCircleCenter = transform.position;
+            BulletPatterns.CreateCircle(bullets, bulletCircleCenter, 1);
             timer.Set(.25f, 3);
         }
 
@@ -115,7 +117,7 @@ namespace Game.Scripts
                     ShootCirclePattern();
                     break;
                 case UPDATE_CIRCLE_BULLET_ATTACK:
-                    BulletPatterns.MoveTowards(bullets, transform.position, -8);
+                    BulletPatterns.MoveTowards(bullets, bulletCircleCenter, -8);
                     bullets = new GameObject[12];
                     break;
             }

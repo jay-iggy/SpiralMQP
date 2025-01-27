@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
+  m_Name: Ninja
+  m_EditorClassIdentifier: 
+  enemyName: Rat Ninja
+  bossPrefab: {fileID: 466556231990597027, guid: 5a28f0d2fc14d3845beb78aec81b4682,
+    type: 3}
+  bossMusic: rat_OST
+  nextEnemies:
+  - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}
