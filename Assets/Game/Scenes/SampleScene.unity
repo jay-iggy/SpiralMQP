@@ -1230,7 +1230,7 @@ MonoBehaviour:
   healthBar: {fileID: 1254242918}
   slider: {fileID: 1913828769}
   hesitateDuration: 0.2
-  decreaseRate: 40
+  decreaseRate: 20
 --- !u!1 &401211477
 GameObject:
   m_ObjectHideFlags: 0
