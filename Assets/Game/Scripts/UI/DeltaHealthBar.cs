@@ -86,6 +86,12 @@ namespace Game.Scripts {
         }
 
         private void UpdateSlider() {
+            if(healthComponent == null) {
+                // prevents null reference exception
+                // but freezes the delta bar when health component is deleted during transition
+                return;
+            }
+            
             // update ui element
             slider.value = (_deltaAmount + healthComponent.health)/healthComponent.maxHealth;
             
