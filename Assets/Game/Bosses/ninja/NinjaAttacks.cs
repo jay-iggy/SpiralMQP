@@ -1,8 +1,9 @@
+using System;
 using Game.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts
 {
@@ -196,6 +197,14 @@ namespace Game.Scripts
                     LayerMask Walls = LayerMask.GetMask("Walls");
                     GetComponent<BoxCollider>().excludeLayers = Walls;
                     break;
+            }
+        }
+
+        private void OnDestroy() {
+            foreach (GameObject d in decoys) {
+                if(d != null) {
+                    Destroy(d);
+                }
             }
         }
     }
