@@ -11,9 +11,12 @@ namespace Game.Scripts {
         [Space]
         [SerializeField] private float hesitateDuration = 0.2f;
         [SerializeField] private float decreaseRate = 40f;
+        
 
         private bool _followerIsActive = false;
         private float _deltaAmount = 0f;
+        private float _previousHealth = 0f;
+        private float _previousMaxHealth = 0f;
         
         private float _hesitateTimer = 0f;
 
@@ -42,6 +45,8 @@ namespace Game.Scripts {
         private void SetHealthComponent(HealthComponent newHealthComponent) {
             healthComponent = newHealthComponent;
             healthComponent.onTakeDamageFloat.AddListener(OnTakeDamage);
+            slider.value = 0;
+            _previousMaxHealth = healthComponent.maxHealth;
         }
         
         private void OnTakeDamage(float damage) {
@@ -86,14 +91,18 @@ namespace Game.Scripts {
         }
 
         private void UpdateSlider() {
-            if(healthComponent == null) {
-                // prevents null reference exception
-                // but freezes the delta bar when health component is deleted during transition
-                return;
+            
+            if(healthComponent != null) {
+                slider.value = (_deltaAmount + healthComponent.health)/healthComponent.maxHealth;
+                _previousHealth = healthComponent.health;
+            }
+            else {
+                // if health component is null, use previous max health
+                slider.value = (_deltaAmount + _previousHealth)/_previousMaxHealth;
             }
             
             // update ui element
-            slider.value = (_deltaAmount + healthComponent.health)/healthComponent.maxHealth;
+            
             
             // if bar is fully drained, shut down
             if (_deltaAmount <= 0) {
