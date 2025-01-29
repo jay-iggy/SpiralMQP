@@ -11,6 +11,9 @@ namespace Game.Scripts {
         [SerializeField] private Slider healthBar;
         [SerializeField] private float refillLerpSpeed = 2;
         public UnityEvent<HealthComponent> onBindHealthComponent = new();
+        [SerializeField][GradientUsage(true)] private Gradient damagePulseGradient;
+        [SerializeField] private float damagePulseDuration = .5f;
+        private Coroutine _pulseDamageColorCoroutine;
 
         private void Start() {
             if (healthComponent != null) {
@@ -24,6 +27,7 @@ namespace Game.Scripts {
             healthComponent.onHealthChanged.AddListener(UpdateHealthBar);
             onBindHealthComponent.Invoke(healthComponent);
             StartCoroutine(LerpHealthBar(healthComponent.health, refillLerpSpeed));
+            healthComponent.onTakeDamage.AddListener(OnTakeDamage);
         }
 
         private void UpdateHealthBar(float health) {
@@ -38,6 +42,24 @@ namespace Game.Scripts {
                 UpdateHealthBar(Mathf.Lerp(startValue, targetValue, t));
                 yield return null;
             }
+        }
+
+        private void OnTakeDamage() {
+            if(_pulseDamageColorCoroutine != null) {
+                StopCoroutine(_pulseDamageColorCoroutine);
+            }
+            _pulseDamageColorCoroutine = StartCoroutine(PulseDamageColor());
+        }
+        private IEnumerator PulseDamageColor() {
+            Image fillImage = healthBar.fillRect.GetComponent<Image>();
+            
+            float t = 0;
+            while (t<damagePulseDuration) {
+                t += Time.deltaTime;
+                fillImage.color = damagePulseGradient.Evaluate(t);
+                yield return null;
+            }
+            fillImage.color = damagePulseGradient.Evaluate(0);
         }
     }
 }
