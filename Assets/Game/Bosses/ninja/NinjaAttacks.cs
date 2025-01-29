@@ -28,6 +28,7 @@ namespace Game.Scripts
         private GameObject[] decoys = new GameObject[4];
         private GameObject player;
 
+
         private Vector3 gun;
 
         public int GetAttackCount() { return 6; }

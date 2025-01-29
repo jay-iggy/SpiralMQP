@@ -18,9 +18,15 @@ public class NinjaDecoy : MonoBehaviour
 
     public void setRandomPosition(float[] bounds, float internalOffset, float yPos)
     {
+        GameObject player = GameObject.FindGameObjectWithTag(TagManager.Player);
         movement = GetComponent<MovementComponent>();
-        float xPos = Random.Range(bounds[1] - internalOffset, bounds[0] + internalOffset);
-        float zPos = Random.Range(bounds[3] - internalOffset, bounds[2] + internalOffset);
+        float xPos = player.transform.position.x;
+        float zPos = player.transform.position.z;
+        while (xPos > player.transform.position.x - internalOffset && xPos < player.transform.position.x + internalOffset && zPos > player.transform.position.z - internalOffset && zPos < player.transform.position.z + internalOffset)
+        {
+            xPos = Random.Range(bounds[1] + internalOffset, bounds[0] - internalOffset);
+            zPos = Random.Range(bounds[3] + internalOffset, bounds[2] - internalOffset);
+        }       
         transform.position = new Vector3(xPos, yPos, zPos);
         GameObject spawnSmoke = Instantiate(smoke, transform.position, Quaternion.identity);
         spawnSmoke.GetComponent<FadeAway>().setSeconds(.5f);
