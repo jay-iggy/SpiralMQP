@@ -56,10 +56,9 @@ namespace Game.Scripts {
             float t = 0;
             while (t<damagePulseDuration) {
                 t += Time.deltaTime;
-                fillImage.color = damagePulseGradient.Evaluate(t);
+                fillImage.color = damagePulseGradient.Evaluate(t/damagePulseDuration);
                 yield return null;
             }
-            fillImage.color = damagePulseGradient.Evaluate(0);
         }
     }
 }

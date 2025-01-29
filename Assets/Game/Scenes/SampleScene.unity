@@ -3369,7 +3369,7 @@ MonoBehaviour:
   damagePulseGradient:
     serializedVersion: 2
     key0: {r: 0.85882354, g: 0.22352941, b: 0.4, a: 1}
-    key1: {r: 1.0912569, g: 0, b: 0.022853332, a: 1}
+    key1: {r: 2.0131443, g: 0, b: 0.2769663, a: 1}
     key2: {r: 1.2512317, g: 0.37340423, b: 0.6681971, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3377,7 +3377,7 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 193
-    ctime1: 29105
+    ctime1: 11951
     ctime2: 65535
     ctime3: 0
     ctime4: 0
@@ -3396,7 +3396,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  damagePulseDuration: 0.25
+  damagePulseDuration: 0.5
 --- !u!4 &1256166770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7545994729108536853, guid: 62290085ae6758b4a85ee8671475231c,
