@@ -90,6 +90,7 @@ namespace Game.Scripts {
             if(AudioCON != null)
             AudioCON.PlaySFX("boss_transition");
 
+            currentBoss = null;
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
 
 
