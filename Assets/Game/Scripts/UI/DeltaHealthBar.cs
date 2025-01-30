@@ -15,8 +15,8 @@ namespace Game.Scripts {
 
         private bool _followerIsActive = false;
         private float _deltaAmount = 0f;
-        private float _previousHealth = 0f;
-        private float _previousMaxHealth = 0f;
+        private float _cachedHealth = 0f;
+        private float _cachedMaxHealth = 0f;
         
         private float _hesitateTimer = 0f;
 
@@ -46,7 +46,7 @@ namespace Game.Scripts {
             healthComponent = newHealthComponent;
             healthComponent.onTakeDamageFloat.AddListener(OnTakeDamage);
             slider.value = 0;
-            _previousMaxHealth = healthComponent.maxHealth;
+            _cachedMaxHealth = healthComponent.maxHealth;
         }
         
         private void OnTakeDamage(float damage) {
@@ -91,27 +91,25 @@ namespace Game.Scripts {
         }
 
         private void UpdateSlider() {
-            
-            if(healthComponent != null) {
-                slider.value = (_deltaAmount + healthComponent.health)/healthComponent.maxHealth;
-                _previousHealth = healthComponent.health;
-            }
-            else {
-                // if health component is null, use previous max health
-                slider.value = (_deltaAmount + _previousHealth)/_previousMaxHealth;
-            }
-            
             // update ui element
-            
-            
+            if (healthComponent != null) {
+                slider.value = (_deltaAmount + healthComponent.health)/healthComponent.maxHealth;
+                _cachedHealth = healthComponent.health;
+            }
+            else { // health component will be null when enemy dies
+                slider.value = (_deltaAmount + _cachedHealth)/_cachedMaxHealth;
+            }
+
             // if bar is fully drained, shut down
             if (_deltaAmount <= 0) {
-                _followerIsActive = false;
-                slider.gameObject.SetActive(false);
-                _deltaAmount = 0;
+                ShutDownDeltaBar();
             }
         }
 
-        
+        private void ShutDownDeltaBar() {
+            _followerIsActive = false;
+            slider.gameObject.SetActive(false);
+            _deltaAmount = 0;
+        }
     }
 }
