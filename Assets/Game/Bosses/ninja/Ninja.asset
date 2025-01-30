@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ninja
   m_EditorClassIdentifier: 
   enemyName: Rat Ninja
-  bossPrefab: {fileID: 466556231990597027, guid: 5a28f0d2fc14d3845beb78aec81b4682,
+  bossPrefab: {fileID: 466556231990597027, guid: 546b6cfca543b804b834c2546d8da533,
     type: 3}
   bossMusic: rat_OST
   nextEnemies: []
