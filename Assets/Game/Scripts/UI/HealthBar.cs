@@ -10,10 +10,17 @@ namespace Game.Scripts {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] private Slider healthBar;
         [SerializeField] private float refillLerpSpeed = 2;
+        [Header("Events")]
         public UnityEvent<HealthComponent> onBindHealthComponent = new();
+        [Header("Damage Color Pulse")]
         [SerializeField][GradientUsage(true)] private Gradient damagePulseGradient;
         [SerializeField] private float damagePulseDuration = .5f;
         private Coroutine _pulseDamageColorCoroutine;
+        [Header("Underlay")] 
+        [SerializeField] private Image underlayImage;
+        [SerializeField] private AnimationCurve underlayOpacityCurve;
+        private Coroutine _pulseUnderlayCoroutine;
+        [SerializeField] private AnimationCurve healthUnderlayMultiplierCurve;
 
         private void Start() {
             if (healthComponent != null) {
@@ -49,6 +56,11 @@ namespace Game.Scripts {
                 StopCoroutine(_pulseDamageColorCoroutine);
             }
             _pulseDamageColorCoroutine = StartCoroutine(PulseDamageColor());
+            
+            if(_pulseUnderlayCoroutine != null) {
+                StopCoroutine(_pulseUnderlayCoroutine);
+            }
+            _pulseUnderlayCoroutine = StartCoroutine(PulseUnderlay());
         }
         private IEnumerator PulseDamageColor() {
             Image fillImage = healthBar.fillRect.GetComponent<Image>();
@@ -57,6 +69,16 @@ namespace Game.Scripts {
             while (t<damagePulseDuration) {
                 t += Time.deltaTime;
                 fillImage.color = damagePulseGradient.Evaluate(t/damagePulseDuration);
+                yield return null;
+            }
+        }
+
+        private IEnumerator PulseUnderlay() {
+            float t = 0;
+            while (t < damagePulseDuration) {
+                t += Time.deltaTime;
+                underlayImage.color = new Color(underlayImage.color.r, underlayImage.color.g, underlayImage.color.b,
+                    underlayOpacityCurve.Evaluate(t / damagePulseDuration) * healthUnderlayMultiplierCurve.Evaluate(healthComponent.health/healthComponent.maxHealth));
                 yield return null;
             }
         }
