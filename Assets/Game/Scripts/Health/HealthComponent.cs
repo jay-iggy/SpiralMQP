@@ -18,6 +18,7 @@ namespace Game.Scripts {
         [SerializeField] bool affectsHitless = false;
         
         [SerializeField] Color hitTextColor = Color.white;
+        [SerializeField] bool doDeathJuice = true;
 
         //Damage Display Stuff
         public FloatingText floatingTextPrefab;
@@ -87,6 +88,7 @@ namespace Game.Scripts {
         }
 
         private void PlayDeathJuice() {
+            if (!doDeathJuice) return;
             ScreenShake.instance.StartShake(0.5f, 0.5f);
             HitPause.instance.Pause(0.35f);
         }

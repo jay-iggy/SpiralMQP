@@ -5292,6 +5292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4cf4206520d4f89bbed45b89fb8e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relevantCharacter: 
   type: 0
   relevantObj: 0
   rightOrLeft: left
@@ -5359,6 +5360,9 @@ MonoBehaviour:
   offhandAbility: {fileID: 0}
   secondaryAbility: {fileID: 2783241381669734513}
   punchAbilityPrefab: {fileID: 0}
+  weaponChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &272490637702824621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5415,7 +5419,19 @@ MonoBehaviour:
         m_CallState: 2
   onTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6293402505637341203}
+        m_TargetAssemblyTypeName: Game.Scripts.HitJiggle, Assembly-CSharp
+        m_MethodName: Jiggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTakeDamageFloat:
     m_PersistentCalls:
       m_Calls: []
@@ -5725,6 +5741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c412741a95794506a9fd57c25d1f09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: 
   rightLeg: {fileID: 4215293070338353833}
   leftLeg: {fileID: 2680805115282474946}
   rightArm: {fileID: 51807203576091499}
@@ -6922,6 +6939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3579073502746530195}
+  - component: {fileID: 6293402505637341203}
   m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
@@ -6947,6 +6965,60 @@ Transform:
   - {fileID: 6787544863500329759}
   m_Father: {fileID: 3964521920094771254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6293402505637341203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5137256271483071975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42d8fb4c3a04ce6ba19797dc856256b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jiggleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.0218897
+      inSlope: -5.900574
+      outSlope: -5.900574
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.054592945
+      value: 0.69975996
+      inSlope: -0.44514275
+      outSlope: -0.44514275
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.12999414
+      value: 1.0775417
+      inSlope: 2.2171738
+      outSlope: 2.2171738
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.22662215
+      value: 1.0218897
+      inSlope: -0.5759409
+      outSlope: -0.5759409
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5401884801049005943
 GameObject:
   m_ObjectHideFlags: 0
@@ -7141,6 +7213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4cf4206520d4f89bbed45b89fb8e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relevantCharacter: 
   type: 0
   relevantObj: 0
   rightOrLeft: right
@@ -7418,6 +7491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4cf4206520d4f89bbed45b89fb8e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relevantCharacter: 
   type: 0
   relevantObj: 1
   rightOrLeft: left
@@ -7867,6 +7941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4cf4206520d4f89bbed45b89fb8e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relevantCharacter: 
   type: 0
   relevantObj: 1
   rightOrLeft: right
