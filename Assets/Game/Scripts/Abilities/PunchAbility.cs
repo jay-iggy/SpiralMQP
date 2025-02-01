@@ -18,7 +18,6 @@ namespace Game.Scripts.Abilities
         [SerializeField] float punchCooldown = .25f;
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
-        private float initialPunchTimer;
         public float dmg = 3;
         public float knockback = 5;
         [SerializeField] private Collider magnetismTrigger;
@@ -35,8 +34,6 @@ namespace Game.Scripts.Abilities
 
             punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
-
-            initialPunchTimer = punchCooldown + punchDuration;
         }
 
         public override void ModifyDamage(float delta)
@@ -101,7 +98,7 @@ namespace Game.Scripts.Abilities
 
             while (_punchTimer > 0)
             {
-                float normalizedTime = 1 - (_punchTimer / initialPunchTimer);
+                float normalizedTime = 1 - (_punchTimer / punchCooldown + punchDuration);
                 target.position = Vector3.Lerp(target.position, outStretch.position, normalizedTime);
 
                 _punchTimer -= Time.deltaTime;
