@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7966748200239067475}
   - component: {fileID: 5013276891228295188}
   - component: {fileID: 8417757884618744850}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5393360825651873221}
   - component: {fileID: 8970950213892893661}
   - component: {fileID: 9088093131535402086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Accent Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8676930764822658858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940144178874097826}
   - component: {fileID: 2143752556300925828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4139152244060155053}
   - component: {fileID: 3351978393030120129}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 7011378181958481318}
   - component: {fileID: -8787697126334864022}
   - component: {fileID: 318886142702506433}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -440,6 +440,7 @@ MonoBehaviour:
   onMaxHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  invincible: 0
   invincibilityDuration: 0.2
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 5419573524614207644}
   - component: {fileID: 4119038333979706729}
   - component: {fileID: 8310293955251230620}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +542,7 @@ GameObject:
   - component: {fileID: 4538302293803767312}
   - component: {fileID: 6658038817126348800}
   - component: {fileID: 2865184363640069121}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,6 +694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1018664272722485354, guid: 14d9968cfef62384bb2e5a62343e58d0,
         type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: 14d9968cfef62384bb2e5a62343e58d0,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -701,10 +707,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3d projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14d9968cfef62384bb2e5a62343e58d0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4424396828587804706, guid: 14d9968cfef62384bb2e5a62343e58d0,
         type: 3}
       propertyPath: m_Name
       value: Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424396828587804706, guid: 14d9968cfef62384bb2e5a62343e58d0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4424396828587804706, guid: 14d9968cfef62384bb2e5a62343e58d0,
         type: 3}

@@ -12,7 +12,8 @@ namespace Game.Scripts {
         public UnityEvent onTakeDamage;
         public UnityEvent<float> onTakeDamageFloat;
         public UnityEvent<float> onMaxHealthChanged;
-        
+
+        public bool invincible = false;
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
         [SerializeField] bool affectsHitless = false;
@@ -94,7 +95,7 @@ namespace Game.Scripts {
         }
         
         public bool IsInvincible() {
-            return invincibleUntil > Time.time;
+            return invincible || invincibleUntil > Time.time;
         }
     }
 }

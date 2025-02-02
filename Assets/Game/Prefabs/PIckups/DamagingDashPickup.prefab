@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 915226059927050450}
   - component: {fileID: 8128887591403588042}
   m_Layer: 0
-  m_Name: DashPickup
+  m_Name: DamagingDashPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,13 +217,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: DASH
+  itemName: DAMAGING DASH
   itemType: 4
-  itemRarity: 0
-  itemDescription: DASH IN ANY DIRECTION
+  itemRarity: 2
+  itemDescription: INVINCIBLE & DEAL DAMAGE WHILE DASHING
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
-  ability: {fileID: 3418624986566554919, guid: 6936d78ef069a7b48b1448633b84530d, type: 3}
+  ability: {fileID: 3418624986566554919, guid: 7b6a34de73a6e6640a39473022cbabe1, type: 3}
   slot: 1
 --- !u!135 &8128887591403588042
 SphereCollider:

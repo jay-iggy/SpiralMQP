@@ -71,8 +71,8 @@ namespace Game.Scripts
                 decoys[i].GetComponent<NinjaDecoy>().setRandomPosition(wallPositions, minDistanceFromEdge, transform.position.y);
             }
             timer.Set(5, KILL_DECOYS);
-            LayerMask Decoy = LayerMask.GetMask("Decoy");
-            GetComponent<BoxCollider>().excludeLayers = Decoy;
+            LayerMask EnemyMask = LayerMask.GetMask("Enemy");
+            GetComponent<BoxCollider>().excludeLayers = EnemyMask;
             return 5;
         }
 

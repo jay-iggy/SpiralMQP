@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: EXTRA HEART
-  itemType: 1
+  itemType: 5
   itemRarity: 0
   itemDescription: +1 MAX HP
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,

@@ -3264,6 +3264,8 @@ MonoBehaviour:
   - {fileID: 915226059927050450, guid: 307e16ad06814bc41968905592e1213b, type: 3}
   - {fileID: 915226059927050450, guid: 9754f52de96d5264a954d79596108afd, type: 3}
   - {fileID: 915226059927050450, guid: 063cea3913dd24dcea77a7d9a6ba1a8b, type: 3}
+  - {fileID: 915226059927050450, guid: 5d99ce9935e5f1b4d9085408340e359b, type: 3}
+  - {fileID: 915226059927050450, guid: 8ad9f1a83f0f8194fa85e64fc900e193, type: 3}
   - {fileID: 4997622612546811508, guid: 7657a76a70c68410aa6d08e42f645783, type: 3}
   onItemCollected:
     m_PersistentCalls:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5382495109103360808}
   - component: {fileID: 581187740854685557}
   - component: {fileID: 7039712913171767703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 8833956374773416703}
   - component: {fileID: 5019928898184752208}
   - component: {fileID: 269637485060861129}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -194,9 +194,11 @@ MonoBehaviour:
   onMaxHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  invincible: 0
   invincibilityDuration: 0.2
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
+  doDeathJuice: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 30
@@ -293,7 +295,7 @@ GameObject:
   - component: {fileID: 5202144413777981360}
   - component: {fileID: 2798190320551786628}
   - component: {fileID: 2580256351979404253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,10 +430,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1765526831832536741}
     m_Modifications:
+    - target: {fileID: 833215404751890446, guid: a40e80ac633ea724a84e90bc18ed9a14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626258410622328896, guid: a40e80ac633ea724a84e90bc18ed9a14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164256106007971239, guid: a40e80ac633ea724a84e90bc18ed9a14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532870714584278558, guid: a40e80ac633ea724a84e90bc18ed9a14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8266474839613610443, guid: a40e80ac633ea724a84e90bc18ed9a14,
         type: 3}
       propertyPath: m_Name
       value: Grub Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266474839613610443, guid: a40e80ac633ea724a84e90bc18ed9a14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8787573719383917425, guid: a40e80ac633ea724a84e90bc18ed9a14,
         type: 3}

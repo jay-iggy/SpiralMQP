@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4033828169936869072
+--- !u!1 &5044461180170146248
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2782467672833779769}
-  - component: {fileID: 6457491614586419228}
-  m_Layer: 7
-  m_Name: DashAbility 1
+  - component: {fileID: 3917817672448828280}
+  - component: {fileID: 3418624986566554919}
+  m_Layer: 0
+  m_Name: InvincibleDashAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2782467672833779769
+--- !u!4 &3917817672448828280
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4033828169936869072}
+  m_GameObject: {fileID: 5044461180170146248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6457491614586419228
+--- !u!114 &3418624986566554919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4033828169936869072}
+  m_GameObject: {fileID: 5044461180170146248}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83d51b4ebc36462080b4eabd11c70550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SerAudioManager: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
-    type: 3}
-  SerAudioClip: {fileID: 8300000, guid: 6bf2cd7e489f19d41a3471d4d4178e85, type: 3}
+  invincibleDash: 1
+  damagingDash: 0
+  sfx: {fileID: 11400000, guid: e18e2576e252ab548b9f8fb03d10fb00, type: 2}
   dashForce: 5
-  dashCooldown: 0.2
+  dashCooldown: 0.5

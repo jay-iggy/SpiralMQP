@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1032
   player: {fileID: 3417639988323438932}
   sfx: {fileID: 11400000, guid: 9b57cadd51161b543a423d31ff6c26eb, type: 2}
 --- !u!120 &5120635613590227056
