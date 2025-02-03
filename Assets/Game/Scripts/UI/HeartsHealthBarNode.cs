@@ -27,8 +27,9 @@ namespace Game.Scripts {
         
         public void SetHeartEnabled(bool isEnabled) {
             this.isEnabled = isEnabled;
-            heartImage.gameObject.SetActive(isEnabled);
+            _animator.SetBool("isEmpty", !isEnabled);
             //TODO: animate appearing or disappearing
         }
+        
     }
 }
