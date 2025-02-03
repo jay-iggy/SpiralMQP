@@ -23,12 +23,10 @@ namespace Game.Scripts {
         public void UpdateLowHealthAnimation() {
             _animator.SetBool("isLowHealth", _healthComponent.health / _healthComponent.maxHealth < lowHealthPercent);
         }
-
         
         public void SetHeartEnabled(bool isEnabled) {
             this.isEnabled = isEnabled;
             _animator.SetBool("isEmpty", !isEnabled);
-            //TODO: animate appearing or disappearing
         }
         
     }
