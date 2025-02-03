@@ -41,6 +41,8 @@ namespace Game.Scripts
                 StickerManager.instance.ShowSticker(bossIndex);
             }
 
+            CombatManager.instance.BossWasDefeated();
+
             if(PickupManager.instance != null)
             {
                 PickupManager.instance.DropItems(minItemRarity);

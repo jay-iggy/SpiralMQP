@@ -64,10 +64,13 @@ namespace Game.Scripts {
             }
         }
 
-        public void TransitionToNextBoss() {
+        public void BossWasDefeated()
+        {
             onBossDefeated.Invoke();
-            
-            
+        }
+
+        public void TransitionToNextBoss() {
+                     
             if (currentEnemyData == null) {
                 Debug.LogError("No current enemy data to transition from");
             }

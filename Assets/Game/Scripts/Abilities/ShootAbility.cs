@@ -16,6 +16,11 @@ namespace Game.Scripts.Player.Abilities {
         //audio
         public Sound sfx;
 
+        private void Start()
+        {
+            PlayerController pc = transform.parent.parent.GetComponent<PlayerController>();
+            BindToPlayer(pc);
+        }
 
         public override void AbilityPressed() {
             Shoot();

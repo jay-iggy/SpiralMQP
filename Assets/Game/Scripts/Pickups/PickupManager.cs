@@ -9,6 +9,7 @@ namespace Game.Scripts
     public class PickupManager : MonoBehaviour
     {
         [SerializeField] HealthPickup healthPickup;
+        [SerializeField] ItemPickup testItem;
         [SerializeField] List<ItemPickup> pickups; 
         Vector3[] itemDropLocations = new Vector3[3];
 
@@ -48,7 +49,15 @@ namespace Game.Scripts
         public void DropItems(ItemRarity rarity)
         {
             Instantiate(healthPickup, itemDropLocations[0], Quaternion.identity);
-            ItemPickup item1 = MakeValidItem(ItemType.NONE, rarity, itemDropLocations[1]);
+            ItemPickup item1;
+            if(testItem != null)
+            {
+                item1 = Instantiate(testItem, itemDropLocations[1], Quaternion.identity);
+            }
+            else
+            {
+                item1 = MakeValidItem(ItemType.NONE, rarity, itemDropLocations[1]);
+            }         
             if (item1 == null) return;
             ItemPickup item2 = MakeValidItem(item1.itemType, rarity, itemDropLocations[2]);
         }
