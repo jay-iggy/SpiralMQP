@@ -14,6 +14,7 @@ namespace Game.Scripts {
         public UnityEvent<float> onMaxHealthChanged;
 
         public bool invincible = false;
+        public bool takeZeroDamage = false;
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
         [SerializeField] bool affectsHitless = false;
@@ -63,7 +64,9 @@ namespace Game.Scripts {
             if(IsInvincible() && !overrideInvincibility) {
                 return;
             }
-            
+
+            if (takeZeroDamage) damage = 0;
+
             SetHealth(health - damage);
             onTakeDamage.Invoke();
             onTakeDamageFloat.Invoke(damage);

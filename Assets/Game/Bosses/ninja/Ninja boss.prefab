@@ -191,6 +191,23 @@ PrefabInstance:
       propertyPath: attackDelay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 915226059927050450, guid: 5d99ce9935e5f1b4d9085408340e359b,
+        type: 3}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 623284393223504049, guid: 2b624ea701446a74ea511293aa4168a9,
+        type: 3}
     - target: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_LocalPosition.y

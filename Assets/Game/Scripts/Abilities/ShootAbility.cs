@@ -18,6 +18,7 @@ namespace Game.Scripts.Player.Abilities {
 
         private void Start()
         {
+            baseDamage = projectileDamage;
             PlayerController pc = transform.parent.parent.GetComponent<PlayerController>();
             BindToPlayer(pc);
         }
@@ -35,11 +36,6 @@ namespace Game.Scripts.Player.Abilities {
             isHolding = false;
         }
 
-        public override void ModifyDamage(float delta)
-        {
-            projectileDamage += delta;
-        }
-
         private void Update() {
             if (_cooldownTimer > 0) {
                 _cooldownTimer -= Time.deltaTime;
@@ -55,10 +51,11 @@ namespace Game.Scripts.Player.Abilities {
                 return;
             }
 
+            onAttack.Invoke();
             PlaySound();
 
             Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
-            projectile.dmg = projectileDamage;
+            projectile.dmg = CalculateDamage();
             if (ignoreInvincibility)
             {
                 projectile.IgnoreInvincibility();

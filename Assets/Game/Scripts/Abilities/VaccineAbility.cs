@@ -17,7 +17,6 @@ namespace Game.Scripts.Abilities
 
         private void HealRandom()
         {
-            Debug.Log("vaccine healing");
             int healing = Random.Range(1, 3);
             playerHP.Heal((float)healing, true);
         }

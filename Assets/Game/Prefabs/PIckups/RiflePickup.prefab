@@ -130,13 +130,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd103d7cab38406faf9fd90d5c40ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: RIFLE
+  itemName: HUNTING RIFLE
   itemType: 2
-  itemRarity: 1
-  itemDescription: HIGH DMG LONG COOLDOWN
+  itemRarity: 2
+  itemDescription: DEAL EXTRA DAMAGE TO LOW HEALTH ENEMIES
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
-  ability: {fileID: 677732930458458227, guid: 0b65d732d501cfd47b119680bcc48126, type: 3}
+  ability: {fileID: 677732930458458227, guid: af6e2abc0320348439937a78b310e37a, type: 3}
   slot: 0
 --- !u!135 &8128887591403588042
 SphereCollider:

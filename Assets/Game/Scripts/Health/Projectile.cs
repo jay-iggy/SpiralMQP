@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace Game.Scripts {
     public class Projectile : Hitbox {
         public float dmg = 1;
-        [SerializeField] bool persistent = false;
+        [SerializeField] protected bool persistent = false;
         public float speed = 0;
         
         //TODO: destroy on hit wall
@@ -23,7 +23,7 @@ namespace Game.Scripts {
             ignoresInvincibility = true;
         }
 
-        private void OnHitTarget(ICanGetHit target) {
+        virtual protected void OnHitTarget(ICanGetHit target) {
             target.GetHit(dmg, ignoresInvincibility);
             if(!persistent) DestroySelf();
         }

@@ -13,12 +13,21 @@ namespace Game.Scripts
         private int attackIndex = -1;
         private bool isAlive = true;
         private bool waitForAttack = false;
+        private bool hasBeenDefeated = false;
         [SerializeField] int bossIndex; //used to match bosses to stickers
+        [SerializeField] List<ItemPickup> unlockedItems;
         [SerializeField] ItemRarity minItemRarity = ItemRarity.COMMON;
+        string bossKey;
 
-        
 
         void Start() {
+            bossKey = "boss"+bossIndex+"defeated";
+            PlayerPrefs.SetInt(bossKey, 0); //remove this when item saving is fixed
+            if (PlayerPrefs.GetInt(bossKey, 0) == 1)
+            {
+                hasBeenDefeated = true;
+            }
+
             attackList = GetComponent<ICanAttack>();
             
             HealthComponent healthComponent = GetComponent<HealthComponent>();
@@ -36,6 +45,8 @@ namespace Game.Scripts
 
         public void Die() {
             isAlive = false;
+            PlayerPrefs.SetInt(bossKey, 1);
+
             if(StickerManager.instance != null)
             {
                 StickerManager.instance.ShowSticker(bossIndex);
@@ -46,6 +57,11 @@ namespace Game.Scripts
             if(PickupManager.instance != null)
             {
                 PickupManager.instance.DropItems(minItemRarity);
+
+                if (!hasBeenDefeated && unlockedItems.Count>0)
+                {
+                    ReleaseItems();
+                }
             }
             else //if pickup manager exists, it will handle boss transition
             {
@@ -55,6 +71,15 @@ namespace Game.Scripts
             CombatManager.instance.DestroyBullets();
             Destroy(gameObject);
             
+        }
+
+        private void ReleaseItems()
+        {
+            PickupManager.instance.pickups.AddRange(unlockedItems);
+            PickupManager.instance.permanentItemPool.AddRange(unlockedItems);
+            string allItems = PickupManager.instance.SerializeItemList();
+            Debug.Log(allItems);
+            PlayerPrefs.SetString("itemPool", allItems);
         }
 
         protected void CheckForAttack() {

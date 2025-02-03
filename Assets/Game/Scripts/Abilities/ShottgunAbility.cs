@@ -15,6 +15,11 @@ namespace Game.Scripts.Player.Abilities {
         //audio
         public Sound sfx;
 
+        private void Start()
+        {
+            baseDamage = projectileDamage;
+        }
+
         public override void AbilityPressed() {
             Shoot();
             
@@ -25,10 +30,6 @@ namespace Game.Scripts.Player.Abilities {
             isHolding = false;
         }
 
-        public override void ModifyDamage(float delta)
-        {
-            projectileDamage += delta;
-        }
 
         private void Update() {
             if(_cooldownTimer > 0) {
@@ -47,12 +48,13 @@ namespace Game.Scripts.Player.Abilities {
                 return;
             }
 
+            onAttack.Invoke();
             PlaySound();
 
             for (int i = 0; i < 6; i++)
             {
                 Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
-                projectile.dmg = projectileDamage;
+                projectile.dmg = CalculateDamage();
                 projectile.IgnoreInvincibility();
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
 

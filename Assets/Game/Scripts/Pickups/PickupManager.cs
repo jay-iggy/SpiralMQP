@@ -1,8 +1,10 @@
 using Game.Scripts.Pickups;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Game.Scripts
 {
@@ -10,7 +12,8 @@ namespace Game.Scripts
     {
         [SerializeField] HealthPickup healthPickup;
         [SerializeField] ItemPickup testItem;
-        [SerializeField] List<ItemPickup> pickups; 
+        public List<ItemPickup> permanentItemPool;
+        public List<ItemPickup> pickups;
         Vector3[] itemDropLocations = new Vector3[3];
 
         public static PickupManager instance;
@@ -21,6 +24,8 @@ namespace Game.Scripts
             if (instance == null)
             {
                 instance = this;
+                transform.parent = null;
+                DontDestroyOnLoad(this);
             }
             else
             {
@@ -29,11 +34,21 @@ namespace Game.Scripts
         }
 
         void Start()
-        {
+        {          
             for(int i = 0; i<itemDropLocations.Length; i++)
             {
                 itemDropLocations[i] = transform.GetChild(i).position;
             }
+            string loadedItemPool = PlayerPrefs.GetString("itemPool", "");
+            //DeserializeItemList(loadedItemPool);
+            pickups = permanentItemPool.ToList();
+
+            SceneManager.activeSceneChanged += populateItemPool;
+        }
+
+        public void populateItemPool(Scene current, Scene next)
+        {
+            pickups = permanentItemPool.ToList();
         }
 
         public void ItemCollected(int index)
@@ -113,6 +128,37 @@ namespace Game.Scripts
             item.SetIndex(i);
             return p;
         }
+
+        public string SerializeItemList()
+        {
+            string output = "";
+            foreach (ItemPickup i in permanentItemPool)
+            {
+                output += JsonUtility.ToJson(i);
+                output +=";";
+            }
+            return output;
+        }
+
+        public void DeserializeItemList(string input)
+        {
+            if (input == "") return;
+
+            Debug.Log(input);
+            string[] inputs = input.Split(';');
+            List<ItemPickup> tempItemList = new List<ItemPickup>();
+            foreach (string i in inputs)
+            {
+                ItemPickup pickup = JsonUtility.FromJson<ItemPickup>(i);
+                tempItemList.Add(pickup);
+            }
+            if (tempItemList.Count > 0)
+            {
+                permanentItemPool = tempItemList.ToList();
+            }
+        }
     }
+
+    
 
 }

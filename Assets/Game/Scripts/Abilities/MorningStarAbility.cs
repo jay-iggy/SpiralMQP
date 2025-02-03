@@ -20,7 +20,7 @@ namespace Game.Scripts.Abilities {
         public Sound sfx;
 
         private void Start() {
-
+            baseDamage = dmg;
             Quaternion startingRotation = prefabMStar.transform.rotation;
 
             mStar = Instantiate(prefabMStar, this.transform.position + mStarOffset, prefabMStar.transform.rotation, this.transform);
@@ -48,7 +48,7 @@ namespace Game.Scripts.Abilities {
             hitbox.onHitTarget.AddListener(ProcessAttack);
         }
         private void ProcessAttack(ICanGetHit hurtbox) {
-            hurtbox.GetHit(dmg);
+            hurtbox.GetHit(CalculateDamage());
             PlaySound();
             
             // knockback the target
@@ -63,15 +63,11 @@ namespace Game.Scripts.Abilities {
             }
         }
 
-        public override void ModifyDamage(float delta)
-        {
-            dmg += delta;
-        }
-
         public override void AbilityPressed() {
             if (_mStarTimer > 0) {
                 return;
             }
+            onAttack.Invoke();
             mStar.transform.position = this.transform.position;
             mStar.SetActive(true);
             _mStarTimer = mStarCooldown + mStarDuration;
