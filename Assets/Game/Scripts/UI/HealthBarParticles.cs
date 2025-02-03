@@ -25,7 +25,7 @@ public class HealthBarParticles : MonoBehaviour {
         if (damage > 0) {
             int burstCount = (int)healthCurve.Evaluate(_healthComponent.health / _healthComponent.maxHealth);
             burstCount = (int)(damageMultiplierCurve.Evaluate(damage/_healthComponent.maxHealth) * burstCount);
-            _particleSystem.emission.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0, (short)burstCount) });
+            _particleSystem.emission.SetBursts(new [] { new ParticleSystem.Burst(0, (short)burstCount) });
             _particleSystem.Play();
         }
     }
