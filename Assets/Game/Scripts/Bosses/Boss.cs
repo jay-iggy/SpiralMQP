@@ -22,7 +22,7 @@ namespace Game.Scripts
 
         void Start() {
             bossKey = "boss"+bossIndex+"defeated";
-            PlayerPrefs.SetInt(bossKey, 0); //remove this when item saving is fixed
+            //PlayerPrefs.SetInt(bossKey, 0);
             if (PlayerPrefs.GetInt(bossKey, 0) == 1)
             {
                 hasBeenDefeated = true;
@@ -60,7 +60,7 @@ namespace Game.Scripts
 
                 if (!hasBeenDefeated && unlockedItems.Count>0)
                 {
-                    ReleaseItems();
+                    PickupManager.instance.ReleaseItems(unlockedItems);
                 }
             }
             else //if pickup manager exists, it will handle boss transition
@@ -71,15 +71,6 @@ namespace Game.Scripts
             CombatManager.instance.DestroyBullets();
             Destroy(gameObject);
             
-        }
-
-        private void ReleaseItems()
-        {
-            PickupManager.instance.pickups.AddRange(unlockedItems);
-            PickupManager.instance.permanentItemPool.AddRange(unlockedItems);
-            string allItems = PickupManager.instance.SerializeItemList();
-            Debug.Log(allItems);
-            PlayerPrefs.SetString("itemPool", allItems);
         }
 
         protected void CheckForAttack() {

@@ -11,7 +11,9 @@ namespace Game.Scripts
     public class PickupManager : MonoBehaviour
     {
         [SerializeField] HealthPickup healthPickup;
+        [SerializeField] ItemPickup itemPickupTemplate;
         [SerializeField] ItemPickup testItem;
+        public List<ItemPickup> listOfAllItems;
         public List<ItemPickup> permanentItemPool;
         public List<ItemPickup> pickups;
         Vector3[] itemDropLocations = new Vector3[3];
@@ -40,7 +42,7 @@ namespace Game.Scripts
                 itemDropLocations[i] = transform.GetChild(i).position;
             }
             string loadedItemPool = PlayerPrefs.GetString("itemPool", "");
-            //DeserializeItemList(loadedItemPool);
+            DeserializeItemList(loadedItemPool);
             pickups = permanentItemPool.ToList();
 
             SceneManager.activeSceneChanged += populateItemPool;
@@ -49,6 +51,14 @@ namespace Game.Scripts
         public void populateItemPool(Scene current, Scene next)
         {
             pickups = permanentItemPool.ToList();
+        }
+
+        public void ReleaseItems(List<ItemPickup> items)
+        {
+            pickups.AddRange(items);
+            permanentItemPool.AddRange(items);
+            string allItems = SerializeItemList();
+            PlayerPrefs.SetString("itemPool", allItems);
         }
 
         public void ItemCollected(int index)
@@ -134,7 +144,8 @@ namespace Game.Scripts
             string output = "";
             foreach (ItemPickup i in permanentItemPool)
             {
-                output += JsonUtility.ToJson(i);
+                int index = listOfAllItems.IndexOf(i);
+                output += index;
                 output +=";";
             }
             return output;
@@ -144,13 +155,16 @@ namespace Game.Scripts
         {
             if (input == "") return;
 
-            Debug.Log(input);
+            Debug.Log("deserializing: " + input);
             string[] inputs = input.Split(';');
             List<ItemPickup> tempItemList = new List<ItemPickup>();
             foreach (string i in inputs)
             {
-                ItemPickup pickup = JsonUtility.FromJson<ItemPickup>(i);
-                tempItemList.Add(pickup);
+                if (i != "")
+                {
+                    int index = int.Parse(i);
+                    tempItemList.Add(listOfAllItems[index]);
+                }
             }
             if (tempItemList.Count > 0)
             {
