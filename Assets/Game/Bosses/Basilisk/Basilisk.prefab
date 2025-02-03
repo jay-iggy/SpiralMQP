@@ -97,6 +97,23 @@ PrefabInstance:
       propertyPath: bossIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 915226059927050450, guid: 6215c8af3e1844c4d8b6b7cdf4a1313c,
+        type: 3}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 623284393223504049, guid: 7148529b15b3c7a4c9d49b43d0718862,
+        type: 3}
     - target: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Name

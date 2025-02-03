@@ -13,12 +13,21 @@ namespace Game.Scripts
         private int attackIndex = -1;
         private bool isAlive = true;
         private bool waitForAttack = false;
+        private bool hasBeenDefeated = false;
         [SerializeField] int bossIndex; //used to match bosses to stickers
+        [SerializeField] List<ItemPickup> unlockedItems;
         [SerializeField] ItemRarity minItemRarity = ItemRarity.COMMON;
+        string bossKey;
 
-        
 
         void Start() {
+            bossKey = "boss"+bossIndex+"defeated";
+            //PlayerPrefs.SetInt(bossKey, 0);
+            if (PlayerPrefs.GetInt(bossKey, 0) == 1)
+            {
+                hasBeenDefeated = true;
+            }
+
             attackList = GetComponent<ICanAttack>();
             
             HealthComponent healthComponent = GetComponent<HealthComponent>();
@@ -36,14 +45,23 @@ namespace Game.Scripts
 
         public void Die() {
             isAlive = false;
+            PlayerPrefs.SetInt(bossKey, 1);
+
             if(StickerManager.instance != null)
             {
                 StickerManager.instance.ShowSticker(bossIndex);
             }
 
+            CombatManager.instance.BossWasDefeated();
+
             if(PickupManager.instance != null)
             {
                 PickupManager.instance.DropItems(minItemRarity);
+
+                if (!hasBeenDefeated && unlockedItems.Count>0)
+                {
+                    PickupManager.instance.ReleaseItems(unlockedItems);
+                }
             }
             else //if pickup manager exists, it will handle boss transition
             {

@@ -223,7 +223,7 @@ MonoBehaviour:
   itemDescription: DASH IN ANY DIRECTION
   pickupUIPrefab: {fileID: 7918083327518418759, guid: 6018d7911e2994583893ea14ad9b4067,
     type: 3}
-  ability: {fileID: 6457491614586419228, guid: ecf268e85627b6846989bd0974bdceaf, type: 3}
+  ability: {fileID: 3418624986566554919, guid: 6936d78ef069a7b48b1448633b84530d, type: 3}
   slot: 1
 --- !u!135 &8128887591403588042
 SphereCollider:

@@ -27,6 +27,8 @@ namespace Game.Scripts.Abilities
 
         private void Start()
         {
+            baseDamage = dmg;
+
             if (fist.TryGetComponent(out Hitbox hitbox))
             {
                 BindHitbox(hitbox);
@@ -36,18 +38,13 @@ namespace Game.Scripts.Abilities
             punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
         }
 
-        public override void ModifyDamage(float delta)
-        {
-            dmg += delta;
-        }
-
         void BindHitbox(Hitbox hitbox)
         {
             hitbox.onHitTarget.AddListener(ProcessAttack);
         }
         private void ProcessAttack(ICanGetHit hurtbox)
         {
-            hurtbox.GetHit(dmg);
+            hurtbox.GetHit(CalculateDamage());
 
             // knockback the target
             if (hurtbox is MonoBehaviour target)
@@ -70,6 +67,7 @@ namespace Game.Scripts.Abilities
             {
                 return;
             }
+            onAttack.Invoke();
             fist.SetActive(true);
             _punchTimer = punchCooldown + punchDuration;
             magnetismTrigger.enabled = true;

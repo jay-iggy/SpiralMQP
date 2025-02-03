@@ -181,6 +181,17 @@ PrefabInstance:
       propertyPath: bossIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: unlockedItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 915226059927050450, guid: 063cea3913dd24dcea77a7d9a6ba1a8b,
+        type: 3}
     - target: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_Name

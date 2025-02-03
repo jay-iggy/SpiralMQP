@@ -169,6 +169,20 @@ public class PlayerController : MonoBehaviour
         }
         ChangePrimaryAbility(ability);
     }
+    public void RemoveAbility(Ability ability)
+    {
+        if (primaryAbility == ability)
+        {
+            Destroy(primaryAbility.gameObject);
+            primaryAbility = null;
+        }
+        if (offhandAbility == ability)
+        {
+            Destroy(offhandAbility.gameObject);
+            offhandAbility = null;
+        }
+        VerifyAbilities();
+    }
     private void ChangePrimaryAbility(Ability ability) {
         ability.transform.parent = abilityParent;
         primaryAbility = ability;
