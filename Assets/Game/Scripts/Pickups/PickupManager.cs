@@ -10,6 +10,7 @@ namespace Game.Scripts
 {
     public class PickupManager : MonoBehaviour
     {
+        [SerializeField] bool deleteSave = false;
         [SerializeField] HealthPickup healthPickup;
         [SerializeField] ItemPickup itemPickupTemplate;
         [SerializeField] ItemPickup testItem;
@@ -36,7 +37,9 @@ namespace Game.Scripts
         }
 
         void Start()
-        {          
+        {
+            if (deleteSave) PlayerPrefs.DeleteAll();
+
             for(int i = 0; i<itemDropLocations.Length; i++)
             {
                 itemDropLocations[i] = transform.GetChild(i).position;
