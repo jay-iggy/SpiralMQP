@@ -11,12 +11,13 @@ namespace Game.Scripts
         [SerializeField] float attackDelay = 0.1f;
         private float attackTimer = 0;
         private int attackIndex = -1;
-        private bool isAlive = true;
+        public bool isAlive = true;
         private bool waitForAttack = false;
         [SerializeField] int bossIndex; //used to match bosses to stickers
         [SerializeField] ItemRarity minItemRarity = ItemRarity.COMMON;
+        [SerializeField] bool Isbosse = true;
 
-        
+
 
         void Start() {
             attackList = GetComponent<ICanAttack>();
@@ -34,8 +35,9 @@ namespace Game.Scripts
             }          
         }
 
-        public void Die() {
+        public virtual void Die() {
             isAlive = false;
+
             if(StickerManager.instance != null)
             {
                 StickerManager.instance.ShowSticker(bossIndex);

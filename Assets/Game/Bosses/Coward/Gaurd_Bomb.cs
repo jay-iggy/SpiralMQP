@@ -1,0 +1,88 @@
+using Game.Scripts.Interfaces;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEditor.FilePathAttribute;
+using static UnityEngine.UI.Image;
+
+namespace Game.Scripts
+{
+    public class Gaurd_Bomb : MonoBehaviour, ICanAttack
+    {
+       
+        [SerializeField] GameObject bullet;
+        [SerializeField] Timer timer;
+        private GameObject player;
+        private int shotsInChamber;
+        private GameObject bulletInChamber; // we can have this be type Projectile
+
+        private Vector3 gun;
+        private int curAtack;
+        private Vector3 Randomlocation;
+        public float waitDuration = 2f; // Set duration in seconds
+
+
+
+        //audio
+        public AudioManager AudioCON;
+
+        private void Start()
+        {
+            player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
+            timer.onTimerEnd.AddListener(OnTimerEnd);
+            gun = transform.position + Vector3.left;
+            Randomlocation = BossRoom.GetRandomPositionInRoom();
+            curAtack =1;
+
+        }
+
+        public int GetAttackCount() { return 3; }
+
+        public float Attack(int index)
+        {
+            if (waitDuration <= 0)
+            {
+                return ShootBullets();
+            }
+            return 0;
+        }
+
+        private float ShootBullets()
+        {
+            GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
+
+            Randomlocation = BossRoom.GetRandomPositionInRoom();
+            return 2.5f;
+        }
+
+        public void OnTimerEnd(int data)
+        {
+
+            ShootBullets();
+
+        }
+
+        private void setGunPoint()
+        {
+            if (player.transform.position.x > transform.position.x)
+            {
+                gun = transform.position + Vector3.right;
+            }
+            else
+            {
+                gun = transform.position + Vector3.left;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            waitDuration -= Time.deltaTime; // Subtract elapsed time
+            if (waitDuration <= 0)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .050f);
+            }
+           
+        }
+    }
+
+}

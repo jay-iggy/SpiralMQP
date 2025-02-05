@@ -2580,7 +2580,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
     - {fileID: 11400000, guid: 373c337434327a34780a2a0dc522e7ba, type: 2}
   bossDifficultyOrder: 000000000000000001000000010000000200000002000000
-  initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
+  initialBoss: {fileID: 11400000, guid: 1c412f513e3942148980ad672cca7d2c, type: 2}
   bossSpawnDelay: 2
   onGameStart:
     m_PersistentCalls:

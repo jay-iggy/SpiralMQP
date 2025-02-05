@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flame : MonoBehaviour
 {
-    private float countdown = 5f; // 5 seconds
+    public float countdown = 5f; // 5 seconds
     [SerializeField] GameObject bullet;
 
     private float timer = 0f;
