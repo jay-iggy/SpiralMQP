@@ -12,7 +12,9 @@ namespace Game.Scripts {
         public UnityEvent onTakeDamage;
         public UnityEvent<float> onTakeDamageFloat;
         public UnityEvent<float> onMaxHealthChanged;
-        
+
+        public bool invincible = false;
+        public bool takeZeroDamage = false;
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
         [SerializeField] bool affectsHitless = false;
@@ -26,6 +28,7 @@ namespace Game.Scripts {
         public float health { get; private set; }
         public float maxHealth = 100; // dont use this directly, use SetMaxHealth
         public bool isAlive { get; private set; } = true;
+        public bool canHeal = true;
         
         private void Awake() {
             health = maxHealth;
@@ -42,18 +45,28 @@ namespace Game.Scripts {
             maxHealth = newMaxHealth;
             onMaxHealthChanged.Invoke(newMaxHealth);
         }
-        public void SetHealth(float newHealth) {
-            health = Mathf.Clamp(newHealth, 0, maxHealth);
+        public void SetHealth(float newHealth, bool overrideHealBlock = false) {
+            if (canHeal || overrideHealBlock)
+            {
+                health = Mathf.Clamp(newHealth, 0, maxHealth);
+            }
+            else
+            {
+                health = Mathf.Clamp(newHealth, 0, health);
+            }
+            
             onHealthChanged.Invoke(health);
         }
-        public void Heal(float amount) {
-            SetHealth(health + amount);
+        public void Heal(float amount, bool overrideHealBlock = false) {
+            SetHealth(health + amount, overrideHealBlock);
         }
         public void TakeDamage(float damage, bool overrideInvincibility = false) {
             if(IsInvincible() && !overrideInvincibility) {
                 return;
             }
-            
+
+            if (takeZeroDamage) damage = 0;
+
             SetHealth(health - damage);
             onTakeDamage.Invoke();
             onTakeDamageFloat.Invoke(damage);
@@ -94,7 +107,7 @@ namespace Game.Scripts {
         }
         
         public bool IsInvincible() {
-            return invincibleUntil > Time.time;
+            return invincible || invincibleUntil > Time.time;
         }
     }
 }

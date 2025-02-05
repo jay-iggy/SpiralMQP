@@ -18,7 +18,6 @@ namespace Game.Scripts.Abilities
         [SerializeField] float punchCooldown = .25f;
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
-        private float initialPunchTimer;
         public float dmg = 3;
         public float knockback = 5;
         [SerializeField] private Collider magnetismTrigger;
@@ -28,6 +27,8 @@ namespace Game.Scripts.Abilities
 
         private void Start()
         {
+            baseDamage = dmg;
+
             if (fist.TryGetComponent(out Hitbox hitbox))
             {
                 BindHitbox(hitbox);
@@ -35,13 +36,6 @@ namespace Game.Scripts.Abilities
 
             punchCooldown /= CustomStatsManager.instance.customStats.playerAttackSpeed;
             punchDuration *= CustomStatsManager.instance.customStats.playerAttackSpeed;
-
-            initialPunchTimer = punchCooldown + punchDuration;
-        }
-
-        public override void ModifyDamage(float delta)
-        {
-            dmg += delta;
         }
 
         void BindHitbox(Hitbox hitbox)
@@ -50,7 +44,7 @@ namespace Game.Scripts.Abilities
         }
         private void ProcessAttack(ICanGetHit hurtbox)
         {
-            hurtbox.GetHit(dmg);
+            hurtbox.GetHit(CalculateDamage());
 
             // knockback the target
             if (hurtbox is MonoBehaviour target)
@@ -73,6 +67,7 @@ namespace Game.Scripts.Abilities
             {
                 return;
             }
+            onAttack.Invoke();
             fist.SetActive(true);
             _punchTimer = punchCooldown + punchDuration;
             magnetismTrigger.enabled = true;
@@ -101,7 +96,7 @@ namespace Game.Scripts.Abilities
 
             while (_punchTimer > 0)
             {
-                float normalizedTime = 1 - (_punchTimer / initialPunchTimer);
+                float normalizedTime = 1 - (_punchTimer / punchCooldown + punchDuration);
                 target.position = Vector3.Lerp(target.position, outStretch.position, normalizedTime);
 
                 _punchTimer -= Time.deltaTime;

@@ -6,8 +6,8 @@ namespace Game.Scripts {
     public class HeartsHealthBar : MonoBehaviour {
         [SerializeField] private HealthComponent healthComponent;
         [SerializeField] HorizontalLayoutGroup heartsLayoutGroup;
-        [SerializeField] GameObject heartPrefab;
-        private List<GameObject> hearts = new();
+        [SerializeField] HeartsHealthBarNode heartPrefab;
+        private List<HeartsHealthBarNode> hearts = new();
 
         private void Start() {
             CreateHearts();
@@ -27,7 +27,8 @@ namespace Game.Scripts {
             }
             hearts.Clear();
             for (int i = 0; i < healthComponent.maxHealth; i++) {
-                GameObject heart = Instantiate(heartPrefab, heartsLayoutGroup.transform);
+                HeartsHealthBarNode heart = Instantiate(heartPrefab, heartsLayoutGroup.transform);
+                heart.SetHealthComponent(healthComponent);
                 hearts.Add(heart);
             }
         }
@@ -37,7 +38,6 @@ namespace Game.Scripts {
             UpdateHealthBar(healthComponent.health);
         }
 
-        // TODO: for now we're just disabling the hearts, but this is just a placeholder and we should do something better
         private void UpdateHealthBar(float health) {
             // go backwards through the list of hearts
             for (int i = hearts.Count - 1; i >= 0; i--) {
@@ -46,9 +46,9 @@ namespace Game.Scripts {
         }
 
         private void SetHeartEnabled(int index, bool isEnabled) {
-            // NOTE: this relies on a certain hierarchy of the heart prefab, which is not ideal
-            // this assumes the first child is a full heart and the second child is an empty heart
-            hearts[index].transform.GetChild(0).gameObject.SetActive(isEnabled);
+            HeartsHealthBarNode heart = hearts[index];
+            heart.SetHeartEnabled(isEnabled);
+            heart.UpdateLowHealthAnimation();
         } 
     }
 }

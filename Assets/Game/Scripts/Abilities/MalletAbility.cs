@@ -26,6 +26,7 @@ namespace Game.Scripts.Abilities {
         public Sound sfx;
 
         private void Start() {
+            baseDamage = dmg;
             Quaternion startingRotation = prefabMallet.transform.rotation;
 
             mallet = Instantiate(prefabMallet, this.transform.position + malletOffset, prefabMallet.transform.rotation, this.transform);
@@ -49,7 +50,7 @@ namespace Game.Scripts.Abilities {
             hitbox.onHitTarget.AddListener(ProcessAttack);
         }
         private void ProcessAttack(ICanGetHit hurtbox) {
-            hurtbox.GetHit(dmg);
+            hurtbox.GetHit(CalculateDamage());
             PlaySound();
             
             // knockback the target
@@ -64,15 +65,13 @@ namespace Game.Scripts.Abilities {
             }
         }
 
-        public override void ModifyDamage(float delta)
-        {
-            dmg += delta;   
-        }
 
         public override void AbilityPressed() {
             if (_malletTimer > 0) {
                 return;
             }
+
+            onAttack.Invoke();
             mallet.transform.position = this.transform.position;
             mallet.SetActive(true);
             holding = true;

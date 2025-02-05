@@ -46,17 +46,17 @@ namespace Game.Scripts.Abilities {
 
         public void SetActive(float health)
         {
-            if (health < hp.maxHealth / 2) //active
+            if (health <= hp.maxHealth / 2) //active
             {
                 gfx.SetAllMaterialsToOneMat(berserkMaterial);
                 if(!primaryActive && primaryAbility != null)
                 {
-                    primaryAbility.ModifyDamage(damage);
+                    primaryAbility.ModifyDamage(damage, ModifyValue.ADD);
                     primaryActive = true;
                 }
                 if (!offhandActive && offhandAbility != null)
                 {
-                    offhandAbility.ModifyDamage(damage);
+                    offhandAbility.ModifyDamage(damage, ModifyValue.ADD);
                     offhandActive = true;
                 }
                 
@@ -67,13 +67,13 @@ namespace Game.Scripts.Abilities {
                 gfx.UpdateMaterialsToDefaults();
                 if(primaryActive && primaryAbility != null)
                 {
-                    primaryAbility.ModifyDamage(-damage);
+                    primaryAbility.ModifyDamage(-damage, ModifyValue.ADD);
                     primaryActive = false;
                     
                 }
                 if (offhandActive && offhandAbility != null)
                 {
-                    offhandAbility.ModifyDamage(damage);
+                    offhandAbility.ModifyDamage(damage, ModifyValue.ADD);
                     offhandActive = false;
                 }
 
