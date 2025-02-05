@@ -11,6 +11,7 @@ namespace Game.Scripts
     public class PickupManager : MonoBehaviour
     {
         [SerializeField] bool deleteSave = false;
+        [SerializeField] DisplayItemUnlock canvas;
         [SerializeField] HealthPickup healthPickup;
         [SerializeField] ItemPickup itemPickupTemplate;
         [SerializeField] ItemPickup testItem;
@@ -58,6 +59,9 @@ namespace Game.Scripts
 
         public void ReleaseItems(List<ItemPickup> items)
         {
+            if(items.Count == 0) return;
+
+            canvas.UnlockItems(items);
             pickups.AddRange(items);
             permanentItemPool.AddRange(items);
             string allItems = SerializeItemList();

@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class DisplayItemUnlock : MonoBehaviour
 {
-    [SerializeField] GameObject unlockUI;
+    [SerializeField] NewItemUnlocked unlockUI;
     private List<ItemPickup> itemsToDisplay = new List<ItemPickup>();
 
-    private void Start()
+
+    public void UnlockItems(List<ItemPickup> items)
     {
-        Instantiate(unlockUI, transform);
+        itemsToDisplay.AddRange(items);
+        DisplayNextUnlock();
     }
 
-    public void UnlockItem(List<ItemPickup> items)
+    public void DisplayNextUnlock()
     {
+        if (itemsToDisplay.Count == 0) return;
 
+        NewItemUnlocked currentUnlock = Instantiate(unlockUI, transform);
+        currentUnlock.onDoneDisplaying.AddListener(DisplayNextUnlock);
+        ItemPickup currentItem = itemsToDisplay[0];
+        itemsToDisplay.RemoveAt(0);
+        currentUnlock.SetItem(currentItem);
     }
 }

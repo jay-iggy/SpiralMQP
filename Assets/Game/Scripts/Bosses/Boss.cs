@@ -47,6 +47,7 @@ namespace Game.Scripts
 
         public virtual void Die() {
             isAlive = false;
+            PlayerPrefs.SetInt(bossKey, 1);
 
             if(StickerManager.instance != null)
             {

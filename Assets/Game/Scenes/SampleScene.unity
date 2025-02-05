@@ -1750,7 +1750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb23aa81ef36f748bb2475026a299f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockUI: {fileID: 649664382599223587, guid: d5a3e594c2f70604d8281244db8d4541, type: 3}
+  unlockUI: {fileID: -7484279228358423755, guid: d5a3e594c2f70604d8281244db8d4541,
+    type: 3}
 --- !u!1 &647885579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7686,10 +7687,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossTiers:
   - bosses:
-    - {fileID: 11400000, guid: ba67c2b5561f84ef0b49378381b1c918, type: 2}
-    - {fileID: 11400000, guid: 1c412f513e3942148980ad672cca7d2c, type: 2}
-    - {fileID: 11400000, guid: 8a17c9453a8afda44be25481dccb6883, type: 2}
-  - bosses:
     - {fileID: 11400000, guid: 96603fcbdb93f10458a0a3888a9662ef, type: 2}
     - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}
   - bosses:
@@ -7698,6 +7695,10 @@ MonoBehaviour:
   - bosses:
     - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
     - {fileID: 11400000, guid: 373c337434327a34780a2a0dc522e7ba, type: 2}
+  - bosses:
+    - {fileID: 11400000, guid: ba67c2b5561f84ef0b49378381b1c918, type: 2}
+    - {fileID: 11400000, guid: 1c412f513e3942148980ad672cca7d2c, type: 2}
+    - {fileID: 11400000, guid: 8a17c9453a8afda44be25481dccb6883, type: 2}
   bossDifficultyOrder: 000000000000000001000000010000000200000002000000
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
   bossSpawnDelay: 2
@@ -8370,6 +8371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deleteSave: 0
+  canvas: {fileID: 646508566}
   healthPickup: {fileID: 4997622612546811508, guid: 36dce8dd419e0b142aec8763cd5dfcb0,
     type: 3}
   itemPickupTemplate: {fileID: 0}
@@ -8403,6 +8405,7 @@ MonoBehaviour:
   - {fileID: 915226059927050450, guid: b64c436d4b2f5714ca9fd1a0b6f526e9, type: 3}
   - {fileID: 915226059927050450, guid: 7031cf9c40daa974f80d09954cc70c97, type: 3}
   - {fileID: 623284393223504049, guid: 83da05cfdc703044a844bcb21d654be3, type: 3}
+  - {fileID: 915226059927050450, guid: d21b9509e5e9c7d4384da8f1db71341d, type: 3}
   pickups: []
   onItemCollected:
     m_PersistentCalls:
