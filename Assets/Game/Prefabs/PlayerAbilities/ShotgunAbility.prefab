@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce064128978fc14299f2642e0fb02c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 5
+  baseDamage: 0
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  projectileSpeed: 10
   projectileDamage: 1
   cooldown: 0.6
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,

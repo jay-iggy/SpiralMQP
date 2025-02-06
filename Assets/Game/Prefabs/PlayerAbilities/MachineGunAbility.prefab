@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c3bff11004b6f899e723e595549eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseDamage: 0
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
   projectileSpeed: 10
   projectileDamage: 1
   cooldown: 0.2

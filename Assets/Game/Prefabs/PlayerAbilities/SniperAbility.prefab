@@ -128,13 +128,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c3bff11004b6f899e723e595549eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 15
+  baseDamage: 0
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  projectileSpeed: 40
   projectileDamage: 8
   cooldown: 2
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
   isAutomatic: 0
   spawnOffset: {x: 0, y: 0, z: 2}
+  ignoreInvincibility: 0
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}
 --- !u!1001 &1179884992594363570
 PrefabInstance:
