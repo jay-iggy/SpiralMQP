@@ -252,6 +252,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ce7d0400-15e9-4a38-aa14-636824d4184c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "35ed461c-9ff4-4f40-8398-0894448711c9",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
