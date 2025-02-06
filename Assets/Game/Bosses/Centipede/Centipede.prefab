@@ -130,7 +130,12 @@ PrefabInstance:
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -319,7 +324,7 @@ PrefabInstance:
     - target: {fileID: 2523028161789532205, guid: cc5aa10338ab64f99886f9221d46fca4,
         type: 3}
       propertyPath: numSegments
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4699292449132594590, guid: cc5aa10338ab64f99886f9221d46fca4,
         type: 3}

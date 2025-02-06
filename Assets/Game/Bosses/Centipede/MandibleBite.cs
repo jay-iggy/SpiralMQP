@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Scripts;
 
 public class MandibleBite : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class MandibleBite : MonoBehaviour
         if (other.gameObject.name.Contains("CentipedeSnack"))
         {
             Destroy(other.gameObject);
-            GetComponentInParent<CentipedeChain>().SpawnSegmentToEnd();
-            GetComponentInParent<Game.Scripts.CentipedeAttacks>().target = "player";
+            if (GetComponentInParent<CentipedeChain>().numSegments < GetComponentInParent<CentipedeAttacks>().maxSegments)
+                GetComponentInParent<CentipedeChain>().SpawnSegmentToEnd();
+
+            GetComponentInParent<CentipedeAttacks>().target = "player";
+            // GetComponentInParent<HealthComponent>().SetHealth(GetComponentInParent<HealthComponent>().health + 1);
         }
     }
 }

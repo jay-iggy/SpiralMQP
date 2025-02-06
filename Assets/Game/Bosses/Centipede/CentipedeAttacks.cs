@@ -25,6 +25,10 @@ namespace Game.Scripts
 
         private int curAttack = -1;
 
+        private float cumalativeDmgTaken = 0;
+
+        public int maxSegments = 10;
+
         private void Start() {
             player = GameObject.FindGameObjectWithTag(TagManager.Player).transform; // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
@@ -106,7 +110,7 @@ namespace Game.Scripts
                     else if (target == "snack" && snack != null)
                     {
                         centipedeHead.transform.rotation = Quaternion.RotateTowards(centipedeHead.transform.rotation, Quaternion.LookRotation(snack.transform.position - centipedeHead.transform.position), speed * 10000 * Time.deltaTime);
-                        centipedeHead.transform.position = Vector3.MoveTowards(centipedeHead.transform.position, snack.position, speed);
+                        centipedeHead.transform.position = Vector3.MoveTowards(centipedeHead.transform.position, snack.position, speed * 2.5f);
                     }
                     break;
                 case GROW_TURRET:
@@ -123,16 +127,20 @@ namespace Game.Scripts
             }
 
             HealthComponent healthComponent = GetComponent<HealthComponent>();
-            lastHealth = healthComponent.health;
 
-            if (Input.GetKeyDown("-"))
-            {
-                healthComponent.TakeDamage(100);
-            }
             if(healthComponent.health < lastHealth)
             {
                 // taken damage
-                GetComponentInChildren<CentipedeChain>().RemoveLastSegment();
+                cumalativeDmgTaken += lastHealth - healthComponent.health;
+
+                if(cumalativeDmgTaken > 15)
+                {
+                    this.transform.GetChild(0).GetChild(0).GetComponent<CentipedeChain>().RemoveLastSegment();
+                    cumalativeDmgTaken -= 15;
+                }
+
+                if (target == "player")
+                    target = "snack";
             }
 
             if(player.GetComponent<HealthComponent>().health < lastPlayerHealth)
@@ -141,6 +149,13 @@ namespace Game.Scripts
                 target = "snack";
                 lastPlayerHealth = player.GetComponent<HealthComponent>().health;
             }
+
+            lastHealth = healthComponent.health;
+        }
+
+        private void OnDestroy()
+        {
+            Destroy(snack.gameObject);
         }
     }
 }
