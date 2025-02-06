@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: SOL
   m_EditorClassIdentifier: 
-  enemyName: Sol_good
+  enemyName: Sol
   bossPrefab: {fileID: 8731541564539032699, guid: 84af3b17f1ab0d145acf5c7eccdea64f,
     type: 3}
   bossMusic: rat_OST
