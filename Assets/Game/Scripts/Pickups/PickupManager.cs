@@ -13,7 +13,6 @@ namespace Game.Scripts
         [SerializeField] bool deleteSave = false;
         [SerializeField] DisplayItemUnlock canvas;
         [SerializeField] HealthPickup healthPickup;
-        [SerializeField] ItemPickup itemPickupTemplate;
         [SerializeField] ItemPickup testItem;
         public List<ItemPickup> listOfAllItems;
         public List<ItemPickup> permanentItemPool;
@@ -160,7 +159,7 @@ namespace Game.Scripts
 
         public void DeserializeItemList(string input)
         {
-            if (input == "") return;
+            if (input == "" || input == "{}") return;
 
             Debug.Log("deserializing: " + input);
             string[] inputs = input.Split(';');
