@@ -7,7 +7,7 @@ public class SimpleFollow : MonoBehaviour
     public Transform following;
     private static float followSpeed = 5f;
     private static float smoothness = 0.1f;
-    [System.NonSerialized] public static float maxDistBtwn = 1;
+    [SerializeField] public float maxDistBtwn = 1;
     private static float rotSpeed = 5f;
 
     private Vector3 velocity = Vector3.zero;
