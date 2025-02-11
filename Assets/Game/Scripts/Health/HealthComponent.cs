@@ -21,7 +21,7 @@ namespace Game.Scripts {
         
         [SerializeField] Color hitTextColor = Color.white;
         [SerializeField] bool doDeathJuice = true;
-
+        
         //Damage Display Stuff
         public FloatingText floatingTextPrefab;
 
