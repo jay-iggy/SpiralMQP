@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6870548501691678772}
   - component: {fileID: 905802841903950659}
   - component: {fileID: 4768286069489049625}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 940971183210914818}
   - component: {fileID: 6997381527250061448}
   - component: {fileID: 3430614721839382701}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sol_GoodGuy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -120,7 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDelay: 0.3
+  isAlive: 1
   bossIndex: 4
+  unlockedItems: []
   minItemRarity: 0
 --- !u!114 &6810006028065278458
 MonoBehaviour:
@@ -188,6 +190,8 @@ MonoBehaviour:
   onMaxHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  invincible: 0
+  takeZeroDamage: 0
   invincibilityDuration: 0.2
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -195,6 +199,8 @@ MonoBehaviour:
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 70
+  isAlive: 1
+  canHeal: 1
 --- !u!65 &5924062514624166557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -328,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627872070142834292}
   - component: {fileID: 4742415043106975286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6208158864960075694}
   - component: {fileID: 5776354874914824630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +506,7 @@ GameObject:
   - component: {fileID: 1388975028732517101}
   - component: {fileID: 2522913397077995566}
   - component: {fileID: 3910862415315341076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +635,7 @@ GameObject:
   - component: {fileID: 4687147539692192240}
   - component: {fileID: 1383429595286878888}
   - component: {fileID: 4595163037495781094}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

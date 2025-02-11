@@ -8,6 +8,34 @@ public class TurnHandler : MonoBehaviour
     public float viewConeAngle;
     public bool facingTarget = false;
 
+    public void TurnTowardsInstant(Vector3 target)
+    {
+        float opposite = target.z - transform.position.z;
+        float adjacent = target.x - transform.position.x;
+        if (adjacent == 0) adjacent = .01f; //divide by 0 protection
+
+        float angle = Mathf.Atan(Mathf.Abs(opposite / adjacent));
+        if (opposite < 0 && adjacent > 0)
+        {
+            angle = -angle;
+        }
+        else if (opposite < 0 && adjacent < 0)
+        {
+            angle += Mathf.PI;
+        }
+        else if (opposite > 0 && adjacent < 0)
+        {
+            angle = -angle;
+            angle += Mathf.PI;
+        }
+        angle *= Mathf.Rad2Deg;
+        angle *= -1;
+        if (angle < 0) angle += 360;
+
+
+        transform.eulerAngles = new Vector3(0, angle, 0);
+    }
+
     public void TurnTowards(Vector3 target)
     {
         float opposite = target.z - transform.position.z;

@@ -868,6 +868,36 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 573981483023481587}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 48230255666616952}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Die
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnBlood, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Boss, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -954,6 +984,30 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 921927695588923755}
   m_SourcePrefab: {fileID: 100100000, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
+--- !u!114 &48230255666616952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146159739658352006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675422669628536650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c6822501001044db82acb4e9ad0ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &573981483023481587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 581187740854685557, guid: d36c15ef613bb7946bc5823073873d7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146159739658352006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6573aac1de55bfe448bd62791526c624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1675422669628536650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
@@ -1340,6 +1394,8 @@ MonoBehaviour:
   target: {fileID: 0}
   distToStep: 0.5
   moving: 0
+  masterLeg: 0
+  otherLeg: {fileID: 0}
 --- !u!4 &910955914873904951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6874584590210671055, guid: 1862b79f303574cb5b5be99f593171cb,
@@ -1530,6 +1586,8 @@ MonoBehaviour:
   target: {fileID: 0}
   distToStep: 0.5
   moving: 0
+  masterLeg: 0
+  otherLeg: {fileID: 0}
 --- !u!4 &8962555581330264638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3432401550182100168, guid: 1862b79f303574cb5b5be99f593171cb,

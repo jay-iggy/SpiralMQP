@@ -200,7 +200,7 @@ namespace Game.Scripts
             }
         }
 
-        private void OnDestroy() {
+        public void KillDecoys() {
             foreach (GameObject d in decoys) {
                 if(d != null) {
                     Destroy(d);

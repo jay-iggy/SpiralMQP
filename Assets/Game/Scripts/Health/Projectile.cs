@@ -39,8 +39,9 @@ namespace Game.Scripts {
                 Debug.Log("Projectile.TargetPlayer(): No player found");
                 return;
             }
-            Vector3 v = Vector3.MoveTowards(transform.position, player.transform.position, speed);
-            v -= transform.position;
+            Vector3 v = player.transform.position-transform.position;
+            v.Normalize();
+            v *= speed;
             GetComponent<Rigidbody>().velocity = v; // expensive, we can cache the rigidbody
         }
     }
