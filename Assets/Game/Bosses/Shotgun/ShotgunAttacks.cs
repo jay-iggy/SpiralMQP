@@ -125,6 +125,7 @@ namespace Game.Scripts {
                 _itemsToCleanup.Add(proj);
                 _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
                 onShoot.Invoke();
+                ScreenShake.instance.StartShake(0.5f, 0.5f);
             }
             
             public void UnlockXRotation() => _lockXRotation = false; // this is invoked by animation event
