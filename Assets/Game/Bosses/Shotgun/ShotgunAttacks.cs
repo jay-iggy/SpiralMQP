@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts {
     public class ShotgunAttacks : MonoBehaviour {
@@ -18,6 +19,7 @@ namespace Game.Scripts {
         [SerializeField] private float aimRotateSpeed = 2;
         [SerializeField] private float maxAimTime = 1.5f;
         [SerializeField] private float knockbackForce = 50;
+        [SerializeField] private UnityEvent onShoot;
         private bool _fired = false;
         [Header("Shells")]
         [SerializeField] private GameObject shellPrefab;
@@ -122,6 +124,7 @@ namespace Game.Scripts {
                 GameObject proj = Instantiate(projPrefab, projSpawnPos.position, projSpawnPos.rotation);
                 _itemsToCleanup.Add(proj);
                 _movementComponent.AddExternalVelocity(transform.forward * -knockbackForce);
+                onShoot.Invoke();
             }
             
             public void UnlockXRotation() => _lockXRotation = false; // this is invoked by animation event
