@@ -2444,7 +2444,7 @@ PrefabInstance:
     - target: {fileID: 2883620193154939874, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312,
         type: 3}
       propertyPath: cameraShake.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6900951462358853761, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312,
         type: 3}
