@@ -156,8 +156,32 @@ MonoBehaviour:
   ignoresInvincibility: 0
   onHitTarget:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7486099920456897573}
+        m_TargetAssemblyTypeName: SpawnObject, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dmg: 1
   persistent: 0
   speed: 0
   vulnerableHP: 30
+--- !u!114 &7486099920456897573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2233324262832823694, guid: 3dce6193e91adc044a284a173d8ab8a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8727312674871871915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929951037447524610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0c12ddb26de946821b45599e48396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
