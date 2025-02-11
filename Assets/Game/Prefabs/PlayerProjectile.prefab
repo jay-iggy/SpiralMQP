@@ -13,6 +13,41 @@ PrefabInstance:
       propertyPath: tagsToHit.Array.data[0]
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4251374349742655144}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5393360825651873221, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -126,5 +161,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 4251374349742655144}
   m_SourcePrefab: {fileID: 100100000, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
+--- !u!1 &1929951037447524610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8727312674871871915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4251374349742655144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929951037447524610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0c12ddb26de946821b45599e48396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
+    type: 3}

@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7495527144079192112}
   - component: {fileID: 3573837292537275807}
+  - component: {fileID: 2233324262832823694}
   - component: {fileID: 7011378181958481318}
   - component: {fileID: -8787697126334864022}
   m_Layer: 0
@@ -132,11 +133,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToHit:
   - Player
+  ignoresInvincibility: 0
   onHitTarget:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2233324262832823694}
+        m_TargetAssemblyTypeName: SpawnObject, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dmg: 1
   persistent: 0
+  speed: 0
+--- !u!114 &2233324262832823694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193713829538453673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0c12ddb26de946821b45599e48396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
+    type: 3}
 --- !u!135 &7011378181958481318
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Scripts.Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Abilities {
     public class MalletAbility : AttackAbility {
@@ -21,6 +22,8 @@ namespace Game.Scripts.Abilities {
         private float increment; // for pos and rot
         private float accumaltedRot = 0;
         private bool holding = false;
+
+        public UnityEvent onHit;
 
         //audio stuff
         public Sound sfx;
@@ -52,6 +55,7 @@ namespace Game.Scripts.Abilities {
         private void ProcessAttack(ICanGetHit hurtbox) {
             hurtbox.GetHit(CalculateDamage());
             PlaySound();
+            onHit.Invoke();
             
             // knockback the target
             if(hurtbox is MonoBehaviour target) {
