@@ -11,13 +11,24 @@ namespace Game.Scripts.Abilities
         [SerializeField] float vulnerableHP = 30;       
         protected override void OnHitTarget(ICanGetHit target)
         {
-            HealthComponent hc = target as HealthComponent;
-            int addDamage = 0;
-            if (hc.health < vulnerableHP)
-            {
-                addDamage = 4;
+            float projDmg = dmg;
+            bool isCrit = false;
+            
+            // Combo: Every 3 consecutive hits, the damage is doubled
+            if(projID != -1) {
+                hitIDs.Add(projID);
+                if(IsCombo()) {
+                    projDmg *= 2;
+                    hitIDs.Clear();
+                    isCrit = true;
+                }
             }
-            target.GetHit(dmg+addDamage, ignoresInvincibility);
+            
+            HealthComponent hc = target as HealthComponent;
+            if (hc != null && hc.health < vulnerableHP) {
+                projDmg *= 2;
+            }
+            target.GetHit(projDmg, ignoresInvincibility, isCrit);
             if (!persistent) DestroySelf();
         }
     }

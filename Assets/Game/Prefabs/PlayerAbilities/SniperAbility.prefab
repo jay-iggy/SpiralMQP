@@ -164,6 +164,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}
   isAutomatic: 0
+  canCrit: 1
   spawnOffset: {x: 0, y: 0, z: 2}
   ignoreInvincibility: 0
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}

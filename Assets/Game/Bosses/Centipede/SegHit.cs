@@ -17,9 +17,9 @@ public class SegHit : MonoBehaviour, ICanGetHit
             Debug.Log("NO HC FOUND");
     }
 
-    public void GetHit(float damage, bool overrideInvincibility = false)
+    public void GetHit(float damage, bool overrideInvincibility = false, bool isCrit = false)
     {
-        healthComponent.TakeDamage(damage);
+        healthComponent.GetHit(damage, overrideInvincibility, isCrit);
 
         Debug.Log("Got hit");
     }

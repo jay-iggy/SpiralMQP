@@ -11,7 +11,7 @@ namespace Game.Scripts {
         public float speed = 0;
         public int projID = -1;
         
-        private static List<int> hitIDs = new();
+        protected static List<int> hitIDs = new();
         
         //TODO: destroy on hit wall
         
@@ -30,16 +30,19 @@ namespace Game.Scripts {
         virtual protected void OnHitTarget(ICanGetHit target) {
             float projDmg = dmg;
             
+            bool isCrit = false;
+            
             // Combo: Every 3 consecutive hits, the damage is doubled
             if(projID != -1) {
                 hitIDs.Add(projID);
                 if(IsCombo()) {
                     projDmg *= 2;
                     hitIDs.Clear();
+                    isCrit = true;
                 }
             }
             
-            target.GetHit(projDmg, ignoresInvincibility);
+            target.GetHit(projDmg, ignoresInvincibility, isCrit);
             if(!persistent) DestroySelf();
         }
 
@@ -60,7 +63,7 @@ namespace Game.Scripts {
             GetComponent<Rigidbody>().velocity = v; // expensive, we can cache the rigidbody
         }
 
-        private bool IsCombo() {
+        protected bool IsCombo() {
             // Check if the last 3 hits are consecutive
             if(hitIDs.Count < 3) return false;
             for (int i = 0; i<hitIDs.Count; i++) {

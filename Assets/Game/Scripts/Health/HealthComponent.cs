@@ -20,6 +20,7 @@ namespace Game.Scripts {
         [SerializeField] bool affectsHitless = false;
         
         [SerializeField] Color hitTextColor = Color.white;
+        [SerializeField] Color critTextColor = Color.yellow;
         [SerializeField] bool doDeathJuice = true;
         
         //Damage Display Stuff
@@ -72,7 +73,7 @@ namespace Game.Scripts {
             onTakeDamageFloat.Invoke(damage);
             
             invincibleUntil = Time.time + invincibilityDuration;
-
+            
             
             if (health <= 0 && isAlive) {
                 isAlive = false;
@@ -80,12 +81,15 @@ namespace Game.Scripts {
             }
             
         }
+        
+        private bool wasHitByCritical = false;
 
-        public void GetHit(float damage, bool overrideInvincibility = false) {
+        public void GetHit(float damage, bool overrideInvincibility = false, bool isCrit = false) {
             if (affectsHitless) {
                 StickerManager.instance.hitless = false;
             }
-
+            wasHitByCritical = isCrit;
+            
             TakeDamage(damage, overrideInvincibility);
         }
 
@@ -98,6 +102,9 @@ namespace Game.Scripts {
             textObj.transform.position = transform.position;
             textObj.SetText($"{damage}");
             textObj.SetColor(hitTextColor);
+            if(wasHitByCritical) {
+                textObj.SetColor(critTextColor);
+            }
         }
 
         private void PlayDeathJuice() {
