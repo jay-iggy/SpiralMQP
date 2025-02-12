@@ -698,6 +698,11 @@ MonoBehaviour:
   dmg: 1
   persistent: 1
   speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
 --- !u!1 &9167202606724239223
 GameObject:
   m_ObjectHideFlags: 0
