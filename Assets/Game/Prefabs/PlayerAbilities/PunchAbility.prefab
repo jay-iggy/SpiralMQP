@@ -262,6 +262,7 @@ MonoBehaviour:
   comboDamage: 5
   maxCombo: 3
   comboDuration: 1
+  delayBetweenCombos: 0.5
   fist: {fileID: 1423375897190307023}
   target: {fileID: 53898893130353268}
   outStretch: {fileID: 2663932954719128643}
@@ -270,7 +271,7 @@ MonoBehaviour:
   critEffect: {fileID: 7177991128484655659, guid: 916fbe9df88e6fc45b4a7aa9e56186e3,
     type: 3}
   sfx: {fileID: 11400000, guid: 0ec8a7aa852bcd24e9fdd9ea7775f6dc, type: 2}
-  maxHeldTime: 0.5
+  maxHeldTime: 1
   heldTimeCurve:
     serializedVersion: 2
     m_Curve:
@@ -284,8 +285,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.2069889
     - serializedVersion: 3
-      time: 0.8990731
-      value: 2.5768106
+      time: 0.5115539
+      value: 1.5224715
       inSlope: 10.258994
       outSlope: 10.258994
       tangentMode: 0
@@ -295,8 +296,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 10
-      inSlope: 73.55017
-      outSlope: 73.55017
+      inSlope: 17.35612
+      outSlope: 17.35612
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
