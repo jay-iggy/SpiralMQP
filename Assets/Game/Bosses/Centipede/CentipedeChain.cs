@@ -14,6 +14,7 @@ public class CentipedeChain : MonoBehaviour
     void Awake()
     {
         lastNumSegments = numSegments;
+        
 
         for (int i = 0; i < numSegments; i++)
             SpawnSegmentToEnd();
@@ -31,9 +32,14 @@ public class CentipedeChain : MonoBehaviour
         }
     }
 
-    public void SpawnSegmentToEnd()
-    {
-        Vector3 newSegmentPos = lastSegment.transform.position - (lastSegment.transform.forward * lastSegment.GetComponent<SimpleFollow>().maxDistBtwn);
+    public void SpawnSegmentToEnd() {
+        float gap = 0;
+        if(lastSegment.GetComponent<SimpleFollow>() != null) {
+            gap = lastSegment.GetComponent<SimpleFollow>().maxDistBtwn;
+        }
+        
+        Vector3 newSegmentPos = lastSegment.transform.position - (lastSegment.transform.forward * gap);
+        newSegmentPos.y = .3f;
         GameObject newSegment = Instantiate(segmentPrefab, newSegmentPos, lastSegment.transform.rotation, this.transform);
 
         // Set the new segment to follow the previous last segment

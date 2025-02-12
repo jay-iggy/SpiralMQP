@@ -99,6 +99,7 @@ MonoBehaviour:
   dmg: 1
   persistent: 1
   speed: 0
+  projID: -1
 --- !u!1001 &663482112691976797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,6 +377,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1275996695822871800}
     m_Modifications:
+    - target: {fileID: 2523028161789532205, guid: cc5aa10338ab64f99886f9221d46fca4,
+        type: 3}
+      propertyPath: lastSegment
+      value: 
+      objectReference: {fileID: 7952869148739700228}
     - target: {fileID: 2523028161789532205, guid: cc5aa10338ab64f99886f9221d46fca4,
         type: 3}
       propertyPath: numSegments
