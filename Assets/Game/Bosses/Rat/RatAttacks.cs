@@ -72,7 +72,9 @@ namespace Game.Scripts
             if (shotsInChamber > 0) {
                 setGunPoint();
                 bulletInChamber = Instantiate(bullet, gun, Quaternion.identity);
-                bulletInChamber.GetComponent<Projectile>().TargetPlayer(8);
+                Projectile p = bulletInChamber.GetComponent<Projectile>();
+                p.TargetPlayer(8);
+                p.destroyedByWall = true;
             }
 
             if (shotsInChamber >= 0) {
@@ -118,6 +120,11 @@ namespace Game.Scripts
                     break;
                 case UPDATE_CIRCLE_BULLET_ATTACK:
                     BulletPatterns.MoveTowards(bullets, bulletCircleCenter, -8);
+                    foreach (GameObject b in bullets) {
+                        if (b != null) {
+                            b.GetComponent<Projectile>().destroyedByWall = true;
+                        }
+                    }
                     bullets = new GameObject[12];
                     break;
             }
