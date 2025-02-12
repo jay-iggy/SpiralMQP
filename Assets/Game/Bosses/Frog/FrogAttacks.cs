@@ -103,6 +103,15 @@ namespace Game.Scripts {
                 }
                 _isGrounded = true;
             }
+            else if (other.gameObject.CompareTag(TagManager.Player)) {
+                MovementComponent playerMovementComponent = other.gameObject.GetComponent<MovementComponent>();
+                if (playerMovementComponent != null) {
+                    //move the player to the side so the frog can land
+                    Vector3 direction = (other.transform.position - transform.position).normalized;
+                    direction.y = 0;
+                    playerMovementComponent.AddExternalVelocity(direction * 4);
+                }
+            }
         }
     }
 }
