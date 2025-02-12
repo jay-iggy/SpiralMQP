@@ -7694,12 +7694,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1c412f513e3942148980ad672cca7d2c, type: 2}
     - {fileID: 11400000, guid: 8a17c9453a8afda44be25481dccb6883, type: 2}
     - {fileID: 11400000, guid: 0163672a28f84ea4aabd34c40df36d60, type: 2}
+    - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
+    - {fileID: 11400000, guid: 228a5fb354b7510438a826091eafc7aa, type: 2}
   - bosses:
     - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
     - {fileID: 11400000, guid: 373c337434327a34780a2a0dc522e7ba, type: 2}
-    - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
-    - {fileID: 11400000, guid: 228a5fb354b7510438a826091eafc7aa, type: 2}
-  bossDifficultyOrder: 00000000010000000100000001000000020000000200000002000000
+  bossDifficultyOrder: 000000000100000001000000010000000200000002000000
   initialBoss: {fileID: 11400000, guid: 1e460ccb351797842a8fe1ee7969aad4, type: 2}
   bossSpawnDelay: 2
   onGameStart:
