@@ -24,7 +24,9 @@ public class ShotgunShellExplode : MonoBehaviour {
     private void CreateBulletCircle() {
         List<GameObject> bullets = new List<GameObject>();
         for (int i = 0; i < bulletCount; i++) {
-            bullets.Add(Instantiate(bulletPrefab).gameObject);
+            Projectile bullet = Instantiate(bulletPrefab);
+            bullet.destroyedByWall = true;
+            bullets.Add(bullet.gameObject);
             BulletPatterns.CreateCircle(bullets.ToArray(), transform.position, 1);
         }
         BulletPatterns.MoveTowards(bullets.ToArray(),transform.position, -bulletSpeed); // bullets move away from the center

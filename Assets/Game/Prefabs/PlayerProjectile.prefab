@@ -10,13 +10,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
+      propertyPath: destroyedByWall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
       propertyPath: tagsToHit.Array.data[0]
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
       propertyPath: onHitTarget.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}

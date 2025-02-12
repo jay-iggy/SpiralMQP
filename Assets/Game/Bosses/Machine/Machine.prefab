@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &183847798578198253
 Transform:
   m_ObjectHideFlags: 0
@@ -1046,6 +1046,10 @@ MonoBehaviour:
   persistent: 1
   speed: 0
   projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
 --- !u!65 &5533872415981819462
 BoxCollider:
   m_ObjectHideFlags: 0

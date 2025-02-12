@@ -136,6 +136,13 @@ MonoBehaviour:
   ignoresInvincibility: 0
   onHitTarget:
     m_PersistentCalls:
+      m_Calls: []
+  dmg: 1
+  persistent: 0
+  speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2233324262832823694}
         m_TargetAssemblyTypeName: SpawnObject, Assembly-CSharp
@@ -149,9 +156,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dmg: 1
-  persistent: 0
-  speed: 0
+  destroyedByWall: 0
 --- !u!114 &2233324262832823694
 MonoBehaviour:
   m_ObjectHideFlags: 0

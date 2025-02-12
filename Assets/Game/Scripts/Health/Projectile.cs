@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Game.Scripts.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace Game.Scripts {
@@ -10,6 +11,8 @@ namespace Game.Scripts {
         [SerializeField] protected bool persistent = false;
         public float speed = 0;
         public int projID = -1;
+        [SerializeField] protected UnityEvent onDestroyed;
+        public bool destroyedByWall = false; 
         
         protected static List<int> hitIDs = new();
         
@@ -46,8 +49,16 @@ namespace Game.Scripts {
             if(!persistent) DestroySelf();
         }
 
+        protected override void OnTriggerEnterNonHurtbox(Collider other) {
+            if (destroyedByWall && other.gameObject.CompareTag(TagManager.Wall)) {
+                DestroySelf();
+            }
+            
+        }
+
         public void DestroySelf()
         {
+            onDestroyed.Invoke();
             Destroy(gameObject);
         }
 

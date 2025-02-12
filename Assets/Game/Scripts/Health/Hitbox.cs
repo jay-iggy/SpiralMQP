@@ -27,6 +27,13 @@ namespace Game.Scripts {
                     }
                 }
             }
+            else {
+                OnTriggerEnterNonHurtbox(other);
+            }
+            
+        }
+        protected virtual void OnTriggerEnterNonHurtbox(Collider other) {
+            // override this method to handle non-hurtbox collisions
         }
 
         public void AddTag(string tag)
