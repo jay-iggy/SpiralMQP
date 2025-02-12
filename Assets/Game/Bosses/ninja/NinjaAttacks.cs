@@ -80,6 +80,7 @@ namespace Game.Scripts
         {
             setGunPoint();
             GameObject singleBullet = Instantiate(bullet, gun, Quaternion.identity);
+            singleBullet.GetComponent<Projectile>().destroyedByWall = false;
             BulletPatterns.MoveTowards(singleBullet, player.transform.position, 8);
         }
 
@@ -89,6 +90,7 @@ namespace Game.Scripts
             for(int i = 0; i<bulletSpread.Length; i++)
             {
                 bulletSpread[i] = Instantiate(bullet);
+                bulletSpread[i].GetComponent<Projectile>().destroyedByWall = false;
             }
             BulletPatterns.CreateCircle(bulletSpread, transform.position, .05f);
             BulletPatterns.MoveTowards(bulletSpread, transform.position, -7);

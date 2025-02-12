@@ -156,7 +156,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  destroyedByWall: 0
+  destroyedByWall: 1
 --- !u!114 &2233324262832823694
 MonoBehaviour:
   m_ObjectHideFlags: 0
