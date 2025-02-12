@@ -19,6 +19,7 @@ namespace Game.Scripts.Player.Abilities
             currentBeam = Instantiate(beam, target.transform.position, Quaternion.identity);
             health.TakeDamage(99, true);
             selfDestructTimer = 0.5f;
+            ScreenShake.instance.StartShake(1, 1f);
         }
 
         private void Update()
