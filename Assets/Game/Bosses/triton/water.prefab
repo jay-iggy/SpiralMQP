@@ -140,6 +140,11 @@ MonoBehaviour:
   dmg: 1
   persistent: 1
   speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
 --- !u!54 &-8787697126334864022
 Rigidbody:
   m_ObjectHideFlags: 0
