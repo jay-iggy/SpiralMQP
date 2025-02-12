@@ -256,7 +256,7 @@ MonoBehaviour:
       m_Calls: []
   punchCooldown: 0.25
   punchDuration: 0.5
-  dmg: 3
+  dmg: 2
   knockback: 5
   invinciblityDurationAfterHit: 0.1
   comboDamage: 5
