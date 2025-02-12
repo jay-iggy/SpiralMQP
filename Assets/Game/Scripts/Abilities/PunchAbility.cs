@@ -12,16 +12,39 @@ namespace Game.Scripts.Abilities
     {
 
         [Header("Melee")]
-        [SerializeField] GameObject fist;
-        [SerializeField] Transform target;
-        [SerializeField] Transform outStretch;
         [SerializeField] float punchCooldown = .25f;
         [SerializeField] float punchDuration = .5f;
         private float _punchTimer = 0;
         public float dmg = 3;
         public float knockback = 5;
-        [SerializeField] private Collider magnetismTrigger;
-
+        [SerializeField] private float invinciblityDurationAfterHit = 0.1f;
+        
+        
+        [Header("Combo")]
+        public float comboDamage = 5;
+        public int maxCombo = 3;
+        public float comboDuration = 1;
+        private int _comboCounter = 0;
+        private float _comboTimer = 0;
+        private Coroutine _comboCoroutine;
+        
+        // heavy attack combo:
+        // first attack: charge up to lunge
+        // second attack: horizontal swipe
+        // third attack: overhead slam
+        
+        // other mode: flurry of punches
+        // quicker, but takes more consecutive hits to crit
+        
+        [Header("GFX")]
+        [SerializeField] GameObject fist;
+        [SerializeField] Transform target;
+        [SerializeField] Transform outStretch;
+        
+        [Header("VFX")]
+        [SerializeField] GameObject hitEffect;
+        [SerializeField] GameObject critEffect;
+        
         //audio
         [SerializeField] Sound sfx;
 
@@ -42,9 +65,36 @@ namespace Game.Scripts.Abilities
         {
             hitbox.onHitTarget.AddListener(ProcessAttack);
         }
-        private void ProcessAttack(ICanGetHit hurtbox)
-        {
-            hurtbox.GetHit(CalculateDamage());
+        private void ProcessAttack(ICanGetHit hurtbox) {
+            float dmg = CalculateDamage();
+            bool isCrit = false;
+            
+            Math.Clamp(_comboCounter++, 0, maxCombo);
+            
+            if (_comboCounter == maxCombo) {
+                dmg *= 2;
+                isCrit = true;
+                _comboCounter = 0;
+                _comboTimer = 0;
+                if(_comboCoroutine != null) {
+                    StopCoroutine(_comboCoroutine);
+                }
+                Instantiate(critEffect, transform.position, Quaternion.identity);
+            }
+            else {
+                _comboTimer = comboDuration;
+                if (_comboCoroutine == null) {
+                    _comboCoroutine = StartCoroutine(UpdateCombo());
+                }
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
+            
+            hurtbox.GetHit(dmg, false, isCrit);
+            
+            
+            
+            
+            PlaySound();
 
             // knockback the target
             if (hurtbox is MonoBehaviour target)
@@ -60,31 +110,56 @@ namespace Game.Scripts.Abilities
             }
         }
 
-
+        bool isHeld = false;
+        float heldTimer = 0;
+        [SerializeField]private float maxHeldTime = 0.5f;
+        [SerializeField] private AnimationCurve heldTimeCurve;
         public override void AbilityPressed()
         {
-            if (_punchTimer > 0)
-            {
+            if (_punchTimer > 0) {
                 return;
             }
+            isHeld = true;
+            if (_comboCounter > 0) {
+                StartPunch();
+            }
+        }
+
+        private void StartPunch() {
             onAttack.Invoke();
             fist.SetActive(true);
             _punchTimer = punchCooldown + punchDuration;
-            magnetismTrigger.enabled = true;
-
-
             StartCoroutine(ResetPunchTimer());
         }
 
         public override void AbilityReleased()
         {
-            // nothing to do here
+            if (_comboCounter < 1) {
+                if (isHeld) {
+                    _player.movementComponent.AddPersonalVelocity(_player.transform.forward*heldTimeCurve.Evaluate(heldTimer/maxHeldTime));
+                    StartCoroutine(StartPunchAfterDelay());
+                }
+            }
+           
+            isHeld = false;
+            heldTimer = 0;
+        }
+
+        private IEnumerator StartPunchAfterDelay() {
+            yield return heldTimer;
+            StartPunch();
+        }
+
+
+        void Update() {
+            if (isHeld) {
+                heldTimer = Mathf.Clamp(heldTimer + Time.deltaTime, 0 ,maxHeldTime);
+            }
         }
 
         public override void OnAbilityUnequipped()
         {
             fist.SetActive(false);
-            magnetismTrigger.enabled = false;
             _punchTimer = 0;
         }
 
@@ -103,23 +178,26 @@ namespace Game.Scripts.Abilities
                 yield return null;
             }
             fist.SetActive(false);
-            magnetismTrigger.enabled = false;
         }
 
 
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag(TagManager.Enemy))
-            { // TODO: make this based off hitbox tagsToHit
-                Vector3 direction = other.transform.position - transform.position;
-                direction.y = 0;
-                _player.movementComponent.AddPersonalVelocity(direction * 1);
-            }
-            PlaySound();
-        }
         private void PlaySound()
         {
             if (sfx != null) sfx.PlaySound();
+        }
+
+
+        private IEnumerator UpdateCombo() {
+            while(_comboCounter>0) {
+                _comboTimer -= Time.deltaTime;
+                if(_comboTimer <= 0) {
+                    _comboCounter--;
+                    if(_comboCounter>0) {
+                        _comboTimer = comboDuration;
+                    }
+                }
+                yield return null;
+            }
         }
     }
 }

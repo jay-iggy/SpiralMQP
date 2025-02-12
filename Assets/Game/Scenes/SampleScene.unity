@@ -10978,7 +10978,7 @@ PrefabInstance:
         type: 3}
       propertyPath: punchAbilityPrefab
       value: 
-      objectReference: {fileID: 3226833857253917701, guid: 99adaebe89f6106448007ff3729586ed,
+      objectReference: {fileID: 3226833857253917701, guid: 32ca54e4e42426d47b7fb25d35ddb483,
         type: 3}
     - target: {fileID: 2680805115282474946, guid: acb0cb568d2314955b7f969dc574d0b8,
         type: 3}
@@ -11058,6 +11058,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 931038255266767024, guid: acb0cb568d2314955b7f969dc574d0b8, type: 3}
+    - {fileID: -2158132551228494125, guid: acb0cb568d2314955b7f969dc574d0b8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1498774847257164725, guid: acb0cb568d2314955b7f969dc574d0b8,

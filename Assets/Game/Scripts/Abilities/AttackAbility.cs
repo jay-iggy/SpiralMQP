@@ -32,8 +32,7 @@ namespace Game.Scripts
             }
         }
 
-        public float CalculateDamage()
-        {
+        public float CalculateDamage() {
             return baseDamage * damageMultiplier + damagePlus;
         }
 
