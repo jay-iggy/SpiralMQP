@@ -8,6 +8,7 @@ public class ShotgunShellExplode : MonoBehaviour {
     [SerializeField] Projectile bulletPrefab;
     [SerializeField] int bulletCount = 8;
     [SerializeField] float bulletSpeed = 8;
+    [SerializeField] GameObject explosionEffect;
     
     private void OnTriggerEnter(Collider other) {
         if(other.GetComponent<Projectile>() != null) {
@@ -17,6 +18,7 @@ public class ShotgunShellExplode : MonoBehaviour {
 
     private void Explode() {
         CreateBulletCircle();
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         // TODO: cleanup projectiles created by explosion
     }

@@ -51,6 +51,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
     type: 3}
   bulletCount: 8
+  bulletSpeed: 8
+  explosionEffect: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+    type: 3}
 --- !u!54 &3612056794469042284
 Rigidbody:
   m_ObjectHideFlags: 0
