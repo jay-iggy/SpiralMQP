@@ -77,9 +77,6 @@ namespace Game.Scripts {
         protected bool IsCombo() {
             // Check if the last 3 hits are consecutive
             if(hitIDs.Count < 3) return false;
-            for (int i = 0; i<hitIDs.Count; i++) {
-                print($"Hit ID {i}: {hitIDs[i]}");
-            }
             for(int i = hitIDs.Count-2; i >= hitIDs.Count - 3; i--) { // check the last 3 hits
                 if(hitIDs[i+1] != hitIDs[i] + 1) return false;
             }
