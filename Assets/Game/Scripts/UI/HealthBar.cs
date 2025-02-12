@@ -33,7 +33,7 @@ namespace Game.Scripts {
             this.healthComponent = healthComponent;
             healthComponent.onHealthChanged.AddListener(UpdateHealthBar);
             onBindHealthComponent.Invoke(healthComponent);
-            StartCoroutine(LerpHealthBar(healthComponent.health, refillLerpSpeed));
+            StartCoroutine(LerpHealthBar(refillLerpSpeed));
             healthComponent.onTakeDamage.AddListener(OnTakeDamage);
         }
 
@@ -41,12 +41,12 @@ namespace Game.Scripts {
             healthBar.value = health / healthComponent.maxHealth;
         }
         
-        private IEnumerator LerpHealthBar(float targetValue, float lerpSpeed) {
+        private IEnumerator LerpHealthBar(float lerpSpeed) {
             float startValue = healthBar.value;
             float t = 0;
             while (t<1) {
                 t += Time.deltaTime * lerpSpeed;
-                UpdateHealthBar(Mathf.Lerp(startValue, targetValue, t));
+                UpdateHealthBar(Mathf.Lerp(startValue, healthComponent.health, t));
                 yield return null;
             }
         }
