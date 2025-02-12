@@ -27,6 +27,8 @@ namespace Game.Scripts.Abilities
         private int _comboCounter = 0;
         private float _comboTimer = 0;
         private Coroutine _comboCoroutine;
+        [SerializeField] float delayBetweenCombos = 0.5f;
+        private float _comboDelayTimer = 0;
         
         // heavy attack combo:
         // first attack: charge up to lunge
@@ -80,6 +82,7 @@ namespace Game.Scripts.Abilities
                     StopCoroutine(_comboCoroutine);
                 }
                 Instantiate(critEffect, transform.position, Quaternion.identity);
+                _comboDelayTimer = Time.time + delayBetweenCombos;
             }
             else {
                 _comboTimer = comboDuration;
@@ -116,6 +119,10 @@ namespace Game.Scripts.Abilities
         [SerializeField] private AnimationCurve heldTimeCurve;
         public override void AbilityPressed()
         {
+            if (_comboDelayTimer > Time.time) {
+                return;
+            }
+            
             if (_punchTimer > 0) {
                 return;
             }
