@@ -116,5 +116,9 @@ namespace Game.Scripts {
         public bool IsInvincible() {
             return invincible || invincibleUntil > Time.time;
         }
+        
+        public void BecomeInvincible(float duration) {
+            invincibleUntil = Time.time + duration;
+        }
     }
 }

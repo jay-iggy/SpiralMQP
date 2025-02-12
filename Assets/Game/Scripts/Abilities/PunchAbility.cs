@@ -92,7 +92,7 @@ namespace Game.Scripts.Abilities
             hurtbox.GetHit(dmg, false, isCrit);
             
             
-            
+            _player.GetHealthComponent().BecomeInvincible(invinciblityDurationAfterHit);
             
             PlaySound();
 
