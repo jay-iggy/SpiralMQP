@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2030792683537549546}
   - component: {fileID: 9041781852675504876}
+  - component: {fileID: -548786612129868897}
   m_Layer: 0
   m_Name: ShotgunAbility
   m_TagString: Untagged
@@ -62,6 +63,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -548786612129868897}
+        m_TargetAssemblyTypeName: InvokeScreenShake, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   projectileSpeed: 10
   projectileDamage: 1
   cooldown: 0.6
@@ -70,6 +83,20 @@ MonoBehaviour:
   isAutomatic: 0
   spawnOffset: {x: 0, y: 0, z: 2}
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}
+--- !u!114 &-548786612129868897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653171394673493507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db213834ef4ae18438e73539fd5e3ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 0.2
+  power: 0.2
 --- !u!1001 &2622442958210429439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,17 +138,17 @@ PrefabInstance:
     - target: {fileID: 5880797563126852495, guid: 265d3a5ba69981a4698ceabcedf368b0,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.19683756
+      value: 0.40885296
       objectReference: {fileID: 0}
     - target: {fileID: 5880797563126852495, guid: 265d3a5ba69981a4698ceabcedf368b0,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.19683756
+      value: 0.40885296
       objectReference: {fileID: 0}
     - target: {fileID: 5880797563126852495, guid: 265d3a5ba69981a4698ceabcedf368b0,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.19683756
+      value: 0.40885296
       objectReference: {fileID: 0}
     - target: {fileID: 5880797563126852495, guid: 265d3a5ba69981a4698ceabcedf368b0,
         type: 3}
