@@ -11,6 +11,7 @@ namespace Game.Scripts.Player.Abilities {
         public Vector3 spawnOffset = new Vector3(0, 1, 0);
         private bool isHolding = false;
         private float _cooldownTimer = 0;
+        private int _nextProjID = 0;
 
         //audio
         public Sound sfx;
@@ -55,6 +56,7 @@ namespace Game.Scripts.Player.Abilities {
             {
                 Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
                 projectile.dmg = CalculateDamage();
+                projectile.projID = _nextProjID;
                 projectile.IgnoreInvincibility();
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
@@ -70,6 +72,8 @@ namespace Game.Scripts.Player.Abilities {
                 rb.velocity = randomDirection * projectileSpeed;
 
             }
+
+            _nextProjID++;
                 _cooldownTimer = cooldown;
 
         }
