@@ -23,6 +23,8 @@ namespace Game.Scripts {
         [SerializeField] Color critTextColor = Color.yellow;
         [SerializeField] bool doDeathJuice = true;
         
+        private bool wasHitByCritical = false;
+        
         //Damage Display Stuff
         public FloatingText floatingTextPrefab;
 
@@ -81,8 +83,6 @@ namespace Game.Scripts {
             }
             
         }
-        
-        private bool wasHitByCritical = false;
 
         public void GetHit(float damage, bool overrideInvincibility = false, bool isCrit = false) {
             if (affectsHitless) {
