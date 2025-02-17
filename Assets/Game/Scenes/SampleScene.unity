@@ -2518,6 +2518,59 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &853146095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853146096}
+  - component: {fileID: 853146097}
+  m_Layer: 0
+  m_Name: ceiling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &853146096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853146095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.5, y: 12.78, z: -10.2376}
+  m_LocalScale: {x: 24.69, y: -14.2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1256166770}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &853146097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853146095}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.660226, y: 4.941537, z: 1}
+  m_Center: {x: 0.0045617227, y: 0.016738059, z: 1.750707e-16}
 --- !u!1 &888223068
 GameObject:
   m_ObjectHideFlags: 0
@@ -11744,6 +11797,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829275712814586926, guid: 62290085ae6758b4a85ee8671475231c,
         type: 3}
+      propertyPath: m_Name
+      value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5829275712814586926, guid: 62290085ae6758b4a85ee8671475231c,
+        type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
@@ -11825,6 +11883,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7545994729108536853, guid: 62290085ae6758b4a85ee8671475231c,
+        type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 853146096}
     - targetCorrespondingSourceObject: {fileID: 7545994729108536853, guid: 62290085ae6758b4a85ee8671475231c,
         type: 3}
       insertIndex: -1
