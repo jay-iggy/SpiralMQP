@@ -1594,7 +1594,7 @@ MonoBehaviour:
     type: 3}
   projectileCount: 10
   projectileCircleRadius: 2
-  projectileSpeed: 15
+  projectileSpeed: 8
 --- !u!4 &5924924643619920547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,

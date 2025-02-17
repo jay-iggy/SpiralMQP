@@ -60,7 +60,9 @@ namespace Game.Scripts
         {
             if(items.Count == 0) return;
 
-            canvas.UnlockItems(items);
+            if(canvas!=null) {
+                canvas.UnlockItems(items);
+            }
             pickups.AddRange(items);
             permanentItemPool.AddRange(items);
             string allItems = SerializeItemList();
