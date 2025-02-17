@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Game.Scripts.Player.Abilities {
@@ -17,6 +18,10 @@ namespace Game.Scripts.Player.Abilities {
 
         //audio
         public Sound sfx;
+
+        public override void OnAbilityEquipped() {
+            _player.GetReticle().enabled = true;
+        }
 
         private void Start()
         {
@@ -39,6 +44,8 @@ namespace Game.Scripts.Player.Abilities {
         }
 
         private void Update() {
+            _player.GetReticle().color = CanShoot() ? Color.white : Color.gray;
+            
             if (_cooldownTimer > 0) {
                 _cooldownTimer -= Time.deltaTime;
             }

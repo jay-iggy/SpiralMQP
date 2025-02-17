@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Player.Abilities {
     public class ShottgunAbility : AttackAbility {
@@ -12,6 +14,10 @@ namespace Game.Scripts.Player.Abilities {
         private bool isHolding = false;
         private float _cooldownTimer = 0;
         private int _nextProjID = 0;
+
+        public override void OnAbilityEquipped() {
+            _player.GetReticle().enabled = true;
+        }
 
         //audio
         public Sound sfx;
@@ -33,6 +39,8 @@ namespace Game.Scripts.Player.Abilities {
 
 
         private void Update() {
+            _player.GetReticle().color = CanShoot() ? Color.white : Color.gray;
+            
             if(_cooldownTimer > 0) {
                 _cooldownTimer -= Time.deltaTime;
             }

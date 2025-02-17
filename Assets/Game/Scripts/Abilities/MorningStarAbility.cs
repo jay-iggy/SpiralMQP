@@ -19,6 +19,10 @@ namespace Game.Scripts.Abilities {
 
         public Sound sfx;
 
+        public override void OnAbilityEquipped() {
+            _player.GetReticle().enabled = false;;
+        }
+
         private void Start() {
             baseDamage = dmg;
             Quaternion startingRotation = prefabMStar.transform.rotation;

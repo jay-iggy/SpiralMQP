@@ -28,6 +28,10 @@ namespace Game.Scripts.Abilities {
         //audio stuff
         public Sound sfx;
 
+        public override void OnAbilityEquipped() {
+            _player.GetReticle().enabled = false;;
+        }
+
         private void Start() {
             baseDamage = dmg;
             Quaternion startingRotation = prefabMallet.transform.rotation;
