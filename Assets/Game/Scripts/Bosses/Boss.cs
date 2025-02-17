@@ -14,21 +14,16 @@ namespace Game.Scripts
         public bool isAlive = true;
         private bool waitForAttack = false;
         private bool hasBeenDefeated = false;
-        [SerializeField] int bossIndex; //used to match bosses to stickers
-        [SerializeField] List<ItemPickup> unlockedItems;
-        [SerializeField] ItemRarity minItemRarity = ItemRarity.COMMON;
+        [SerializeField] protected int bossIndex; //used to match bosses to stickers
+        [SerializeField] protected List<ItemPickup> unlockedItems;
+        [SerializeField] protected ItemRarity minItemRarity = ItemRarity.COMMON;
 
         string bossKey;
 
 
 
         void Start() {
-            bossKey = "boss"+bossIndex+"defeated";
-            //PlayerPrefs.SetInt(bossKey, 0);
-            if (PlayerPrefs.GetInt(bossKey, 0) == 1)
-            {
-                hasBeenDefeated = true;
-            }
+            SetBossDefeated();
 
             attackList = GetComponent<ICanAttack>();
             
@@ -37,6 +32,16 @@ namespace Game.Scripts
             healthComponent.SetHealth(healthComponent.maxHealth);
             
             attackDelay *= CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
+        }
+
+        protected virtual void SetBossDefeated()
+        {
+            bossKey = "boss" + bossIndex + "defeated";
+            //PlayerPrefs.SetInt(bossKey, 0);
+            if (PlayerPrefs.GetInt(bossKey, 0) == 1)
+            {
+                hasBeenDefeated = true;
+            }
         }
 
         void Update() {
