@@ -12,7 +12,7 @@ namespace Game.Scripts.Player.Abilities {
         public bool canCrit = true;
         public Vector3 spawnOffset = new Vector3(0, 1, 0);
         private bool isHolding = false;
-        private float _cooldownTimer = 0;
+        private float _cooldownEndTime = 0;
         [SerializeField] bool ignoreInvincibility = false;
         private static int _nextProjID = 0;
 
@@ -46,10 +46,6 @@ namespace Game.Scripts.Player.Abilities {
         private void Update() {
             _player.GetReticle().color = CanShoot() ? Color.white : Color.gray;
             
-            if (_cooldownTimer > 0) {
-                _cooldownTimer -= Time.deltaTime;
-            }
-            
             if (isHolding && isAutomatic) {
                 Shoot();
             }
@@ -75,11 +71,11 @@ namespace Game.Scripts.Player.Abilities {
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = _player.transform.forward * projectileSpeed;
             
-            _cooldownTimer = cooldown;
+            _cooldownEndTime = Time.time + cooldown;
         }
         
         private bool CanShoot() {
-            return _cooldownTimer <= 0;
+            return Time.time > _cooldownEndTime;
         }
         private void PlaySound() {
             if(sfx != null) sfx.PlaySound();
