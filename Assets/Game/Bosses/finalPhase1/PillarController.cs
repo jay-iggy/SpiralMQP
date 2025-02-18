@@ -7,6 +7,7 @@ namespace Game.Scripts
 {
     public class PillarController : Boss
     {
+        public FinalPhase1Attacks mainBoss;
 
         protected override void SetBossDefeated()
         {
@@ -15,6 +16,7 @@ namespace Game.Scripts
 
         public override void Die()
         {
+            mainBoss.KillPillar();
             Destroy(transform.parent.gameObject);
         }
 
