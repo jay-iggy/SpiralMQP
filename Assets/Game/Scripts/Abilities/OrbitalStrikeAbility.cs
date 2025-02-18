@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ namespace Game.Scripts.Player.Abilities
         [SerializeField] GameObject beam;
         private GameObject currentBeam;
         private float selfDestructTimer = -1;
+
+        public override void OnAbilityEquipped() {
+            _player.GetReticle().enabled = false;
+        }
 
         public override void AbilityPressed()
         {

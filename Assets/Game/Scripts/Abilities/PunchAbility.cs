@@ -50,6 +50,10 @@ namespace Game.Scripts.Abilities
         //audio
         [SerializeField] Sound sfx;
 
+        public override void OnAbilityEquipped() {
+            _player.GetReticle().enabled = false;
+        }
+
         private void Start()
         {
             baseDamage = dmg;
@@ -207,4 +211,5 @@ namespace Game.Scripts.Abilities
             }
         }
     }
+    
 }

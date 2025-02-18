@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput = new Vector2();
 
     [Header("Look Settings")]
-    [SerializeField] GameObject reticle;
+    [SerializeField] SpriteRenderer reticle;
     [SerializeField] private float maxReticleDistance = 300;
     public Vector2 _cumulativeLookInput = new Vector2(0, 0); // look inputs are in delta amounts, this is the sum of all inputs
 
@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviour
         primaryAbility = ability;
         primaryAbility.BindToPlayer(this);
         primaryAbility.gameObject.SetActive(true);
+        primaryAbility.OnAbilityEquipped();
         weaponChanged.Invoke();
     }
 
@@ -246,4 +247,6 @@ public class PlayerController : MonoBehaviour
             ChangeOffhandAbility(ability);
         }
     }
+    
+    public SpriteRenderer GetReticle() => reticle;
 }
