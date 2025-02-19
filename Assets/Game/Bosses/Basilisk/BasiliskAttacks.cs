@@ -170,7 +170,9 @@ namespace Game.Scripts
 
                         Quaternion targetRotation = Quaternion.Euler(357f, jawHinge.transform.rotation.eulerAngles.y, jawHinge.transform.rotation.eulerAngles.z);
                         jawHinge.transform.rotation = Quaternion.Slerp(jawHinge.transform.rotation, targetRotation, 0.1f);
-                        biteHitbox.SetActive(true);
+                        if(biteHitbox!=null) {
+                            biteHitbox.SetActive(true);
+                        }
 
                         float currentX = jawHinge.transform.eulerAngles.x;
                         if (currentX >= 345f || currentX < 10f) // Properly detects closing back to ~357
