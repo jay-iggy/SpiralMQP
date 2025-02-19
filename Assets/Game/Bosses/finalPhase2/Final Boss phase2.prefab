@@ -853,6 +853,8 @@ MonoBehaviour:
   timer: {fileID: 693146973214391237}
   bullet: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
   laser: {fileID: 3536369157724844389}
+  smokePrefab: {fileID: 7193713829538453673, guid: cce3093365a89de499dffa8551dda8f0,
+    type: 3}
   jumpForce: 20
   tridents:
   - {fileID: 4781847890023868282, guid: c02b0f5d2c97aab48b56208f3f9acd01, type: 3}
@@ -864,6 +866,9 @@ MonoBehaviour:
   startDistanceBehindWall: 0
   popOutSpeed: 0
   tonguePoint: {fileID: 5839898408384001992}
+  ExplosiveFlame: {fileID: 9166757181426913922, guid: 60d121f48a02a6544b11e2f5ccdf909f,
+    type: 3}
+  Flame: {fileID: 9166757181426913922, guid: 408481d6a739d314e988a1f52d5714f2, type: 3}
 --- !u!114 &693146973214391237
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,11 +16,13 @@ namespace Game.Scripts {
         private const int DONE_POPPING_OUT_SINGLE = -4;
         private const int DONE_POPPING_OUT_SPREAD = -5;
         private const int BASILISK_TONGUE = 5;
+        private const int SOL_FIRECONE = 6;
+        private const int MACHINE_SMOKE = 7;
 
         private bool tping;
         private int numTPs = 0;
 
-        private int numAttacks = 6;
+        private int numAttacks = 8;
         private int curAttack;
 
         [SerializeField] Timer timer;
@@ -28,9 +30,10 @@ namespace Game.Scripts {
         private GameObject player;
         [SerializeField] GameObject bullet;
 
-        // MACHINE_LASER
+        // MACHINE_LASER & SMOKE
         [SerializeField] GameObject laser;
         float laserTurnDelta = 0;
+        [SerializeField] GameObject smokePrefab;
 
         // RAT_CIRCLE
         GameObject[] bullets = new GameObject[12]; // why not just use a list?
@@ -65,6 +68,11 @@ namespace Game.Scripts {
         private bool tongueStuck = false;
         private bool retractingTongue = false;
         private bool completedTongueAttack = false;
+
+        // SOL_FIRECONE
+        [SerializeField] GameObject ExplosiveFlame;
+        [SerializeField] GameObject Flame;
+
 
         public int GetAttackCount() { return numAttacks; }
 
@@ -121,6 +129,12 @@ namespace Game.Scripts {
                     break;
                 case BASILISK_TONGUE:
                     Tongue();
+                    break;
+                case SOL_FIRECONE:
+                    GunFlame();
+                    break;
+                case MACHINE_SMOKE:
+                    MakeSmoke();
                     break;
             }
 
@@ -423,6 +437,83 @@ namespace Game.Scripts {
         public void UnrenderTongue()
         {
             tongue.positionCount = 0;
+        }
+
+        // SOL_FIRECONE
+        private float GunFlame()
+        {
+            int bulletCount = 5;
+            float coneAngle = 30f;
+            float bulletSpeed = 5f;
+
+
+            GameObject[] bullets = new GameObject[bulletCount];
+            Vector3 origin = transform.position;
+            Vector3 baseDirection = (player.transform.position - origin).normalized;
+
+
+            for (int i = 0; i < bulletCount; i++)
+            {
+                // Instantiate bullet at the current position
+                if (Random.Range(0,1) > 0.5f)
+                {
+
+                    bullets[i] = Instantiate(ExplosiveFlame, origin, Quaternion.identity);
+                }
+                else
+                {
+                    bullets[i] = Instantiate(Flame, origin, Quaternion.identity);
+                }
+
+
+                // Calculate spread angle for each bullet
+                float angleOffset = ((i / (float)(bulletCount - 1)) - 0.5f) * coneAngle;
+
+                // Rotate the base direction by the computed angle
+                Vector3 spreadDirection = Quaternion.Euler(0, angleOffset, 0) * baseDirection;
+
+                // Apply velocity or movement logic
+                Rigidbody rb = bullets[i].GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.velocity = spreadDirection * bulletSpeed;
+                }
+            }
+
+            return 1;
+        }
+
+        // MACHINE_SMOKE
+        private float MakeSmoke()
+        {
+            GameObject smoke = Instantiate(smokePrefab);
+            MachineSmoke ms = smoke.GetComponent<MachineSmoke>();
+
+            switch (Random.Range(0, 5))
+            {
+                case 0:
+                    smoke.transform.position = this.transform.position;
+                    ms.GoTo(this.transform.position, new Vector3(12.4f, 1, 6.2f));
+                    break;
+                case 1:
+                    smoke.transform.position = new Vector3(-1.88f, .4f, 0);
+                    ms.GoTo(new Vector3(-6, 0, 0), new Vector3(8, 1, 11.1f));
+                    break;
+                case 2:
+                    smoke.transform.position = new Vector3(1.88f, .4f, 0);
+                    ms.GoTo(new Vector3(6, 0, 0), new Vector3(8, 1, 11.1f));
+                    break;
+                case 3:
+                    smoke.transform.position = new Vector3(0, .4f, -1.3f);
+                    ms.GoTo(new Vector3(0, 0, -3.4f), new Vector3(20.7f, 1, 3.7f));
+                    break;
+                case 4:
+                    smoke.transform.position = new Vector3(0, .4f, 1.3f);
+                    ms.GoTo(new Vector3(0, 0, 3.4f), new Vector3(20.7f, 1, 3.7f));
+                    break;
+            }
+
+            return 1;
         }
     }
 }
