@@ -178,7 +178,9 @@ namespace Game.Scripts
                         if (currentX >= 345f || currentX < 10f) // Properly detects closing back to ~357
                         {
                             mouthOpen = false;
-                            biteHitbox.SetActive(false);
+                            if(biteHitbox!=null) {
+                                biteHitbox.SetActive(false);
+                            }
                             biteComplete = true;
                             jawHinge.transform.rotation = Quaternion.Euler(357f, jawHinge.transform.rotation.eulerAngles.y, jawHinge.transform.rotation.eulerAngles.z); // Explicit reset
                             this.GetComponent<Boss>().DoneWithAttack();
