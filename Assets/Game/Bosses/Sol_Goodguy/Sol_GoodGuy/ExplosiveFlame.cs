@@ -42,7 +42,9 @@ public class ExplosiveFlame : MonoBehaviour
             BulletPatterns.CreateCircle(bullets, transform.position, 1);
             BulletPatterns.MoveTowards(bullets, transform.position, -3);
             
-            Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+            if(explosionEffectPrefab != null) {
+                Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+            }
             Destroy(gameObject);
     }
     void OnCollisionEnter(Collision collision)
