@@ -8,7 +8,7 @@ namespace Game.Scripts
     [RequireComponent(typeof(HealthComponent))]
     public class Boss : MonoBehaviour {
         protected ICanAttack attackList; 
-        [SerializeField] float attackDelay = 0.1f;
+        [SerializeField] public float attackDelay = 0.1f;
         private float attackTimer = 0;
         private int attackIndex = -1;
         public bool isAlive = true;
