@@ -155,7 +155,8 @@ namespace Game.Scripts
 
         private void OnDestroy()
         {
-            Destroy(snack.gameObject);
+            if(snack != null)
+                Destroy(snack.gameObject);
         }
     }
 }

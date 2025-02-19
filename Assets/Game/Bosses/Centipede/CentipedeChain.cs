@@ -2,61 +2,80 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CentipedeChain : MonoBehaviour
+namespace Game.Scripts
 {
-    public int numSegments;
-    private int lastNumSegments;
-
-    [SerializeField] private GameObject segmentPrefab;
-    [SerializeField] private GameObject lastSegment;
-    private GameObject prevSegment;
-
-    void Awake()
+    public class CentipedeChain : MonoBehaviour
     {
-        lastNumSegments = numSegments;
-        
+        public int numSegments;
+        private int lastNumSegments;
 
-        for (int i = 0; i < numSegments; i++)
-            SpawnSegmentToEnd();
-    }
+        [SerializeField] public GameObject segmentPrefab;
+        [SerializeField] public GameObject turretSegPrefab;
+        [SerializeField] private GameObject lastSegment;
+        private GameObject prevSegment;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(numSegments > lastNumSegments)
+        private GameObject lastSpawned;
+
+        void Awake()
         {
-            for(int i = 0; i < numSegments - lastNumSegments; i++)
-                SpawnSegmentToEnd();
-
             lastNumSegments = numSegments;
+            lastSpawned = segmentPrefab;
+
+            for (int i = 0; i < numSegments; i++)
+                SpawnSegmentToEnd(segmentPrefab);
         }
-    }
 
-    public void SpawnSegmentToEnd() {
-        float gap = 0;
-        if(lastSegment.GetComponent<SimpleFollow>() != null) {
-            gap = lastSegment.GetComponent<SimpleFollow>().maxDistBtwn;
+        // Update is called once per frame
+        void Update()
+        {
+            if (numSegments > lastNumSegments && numSegments < GetComponentInParent<CentipedeAttacks>().maxSegments)
+            {
+                for (int i = 0; i < numSegments - lastNumSegments; i++)
+                {
+                    if (lastSpawned.Equals(segmentPrefab))
+                    {
+                        SpawnSegmentToEnd(turretSegPrefab);
+                        lastSpawned = turretSegPrefab;
+                    }
+                    else if (lastSpawned.Equals(turretSegPrefab))
+                    {
+                        SpawnSegmentToEnd(segmentPrefab);
+                        lastSpawned = segmentPrefab;
+                    }
+                }
+
+                lastNumSegments = numSegments;
+            }
         }
-        
-        Vector3 newSegmentPos = lastSegment.transform.position - (lastSegment.transform.forward * gap);
-        newSegmentPos.y = .3f;
-        GameObject newSegment = Instantiate(segmentPrefab, newSegmentPos, lastSegment.transform.rotation, this.transform);
 
-        // Set the new segment to follow the previous last segment
-        newSegment.GetComponentInChildren<SimpleFollow>().following = lastSegment.transform.GetChild(0).transform;
+        public void SpawnSegmentToEnd(GameObject seg)
+        {
+            float gap = 0;
+            if (lastSegment.GetComponent<SimpleFollow>() != null)
+            {
+                gap = lastSegment.GetComponent<SimpleFollow>().maxDistBtwn;
+            }
 
-        // Update lastSegment reference to this newly created segment
-        prevSegment = lastSegment;
-        lastSegment = newSegment;
-    }
+            Vector3 newSegmentPos = lastSegment.transform.position - (lastSegment.transform.forward * gap);
+            newSegmentPos.y = .3f;
+            GameObject newSegment = Instantiate(seg, newSegmentPos, lastSegment.transform.rotation, this.transform);
 
-    public void RemoveLastSegment()
-    {
-        Destroy(lastSegment);
+            // Set the new segment to follow the previous last segment
+            newSegment.GetComponentInChildren<SimpleFollow>().following = lastSegment.transform.GetChild(0).transform;
 
-        numSegments--;
-        lastNumSegments--;
+            // Update lastSegment reference to this newly created segment
+            prevSegment = lastSegment;
+            lastSegment = newSegment;
+        }
 
-        lastSegment = prevSegment;
+        public void RemoveLastSegment()
+        {
+            Destroy(lastSegment);
+
+            numSegments--;
+            lastNumSegments--;
+
+            lastSegment = prevSegment;
+        }
     }
 }

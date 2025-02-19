@@ -1551,6 +1551,8 @@ MonoBehaviour:
   numSegments: 14
   segmentPrefab: {fileID: 7972286792162668817, guid: 54b66922721f24efb9a21ee468db0bc0,
     type: 3}
+  turretSegPrefab: {fileID: 7972286792162668817, guid: f82763bd623854af09a2ec1dc5823a73,
+    type: 3}
   lastSegment: {fileID: 2731096265115789570}
 --- !u!1 &7302258735643702334
 GameObject:
