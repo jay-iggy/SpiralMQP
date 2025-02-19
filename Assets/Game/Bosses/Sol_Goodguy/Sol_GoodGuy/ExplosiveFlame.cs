@@ -10,6 +10,7 @@ public class ExplosiveFlame : MonoBehaviour
     [SerializeField] GameObject Flame;
     private GameObject player;
     GameObject[] bullets = new GameObject[12];
+    [SerializeField] private GameObject explosionEffectPrefab;
 
     private float timer = 0f;
 
@@ -41,6 +42,7 @@ public class ExplosiveFlame : MonoBehaviour
             BulletPatterns.CreateCircle(bullets, transform.position, 1);
             BulletPatterns.MoveTowards(bullets, transform.position, -3);
             
+            Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
     }
     void OnCollisionEnter(Collision collision)
