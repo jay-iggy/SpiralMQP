@@ -12,8 +12,9 @@ namespace Game.Scripts {
         public float speed = 0;
         public int projID = -1;
         [SerializeField] protected UnityEvent onDestroyed;
-        public bool destroyedByWall = false; 
-        
+        public bool destroyedByWall = false;
+
+
         protected static List<int> hitIDs = new();
         
         //TODO: destroy on hit wall
@@ -56,7 +57,7 @@ namespace Game.Scripts {
             
         }
 
-        public void DestroySelf()
+        public virtual void DestroySelf()
         {
             onDestroyed.Invoke();
             Destroy(gameObject);
