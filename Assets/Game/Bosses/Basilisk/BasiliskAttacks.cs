@@ -9,7 +9,12 @@ namespace Game.Scripts
         private const int BITE_ATTACK = 0;
         private const int TONGUE_ATTACK = 1;
         private const int CHASE_PLAYER = 2;
-        
+        private const int BACK_AWAY = 3;
+
+        [SerializeField] Transform basiliskBody;
+        [SerializeField] Transform tonguePoint;
+        [SerializeField] Transform jawHinge;
+
         [SerializeField] GameObject biteHitbox;
         [SerializeField] Timer timer;
         private GameObject player;
@@ -21,15 +26,17 @@ namespace Game.Scripts
         private Vector3 tongueTarget;
         private float percentToTarget = 0; // [0,1]
         private float percentIncrement = 0.05f;
-        private Vector3 mouthOffset = new Vector3(2, 1, 0);
         private bool tongueStuck = false;
         private bool retractingTongue = false;
         private bool completedTongueAttack = false;
 
+        private bool biteComplete = false;
+        private bool mouthOpen = false;
+
         private Vector3 playerPetrifyPos;
 
         private Vector3 center = new Vector3(0, 2, 0);
-        private float speed;
+        public float speed;
 
         private int curAttack = -1;
 
@@ -39,27 +46,39 @@ namespace Game.Scripts
             tongue = this.GetComponent<LineRenderer>();
         }
 
-        public int GetAttackCount() { return 3; }
+        public int GetAttackCount() { return 4; }
 
         public float Attack(int index) {
             curAttack = index;
+
             switch (curAttack) {
                 case BITE_ATTACK:
+                    if (Vector3.Distance(basiliskBody.position, player.transform.position) > 10)
+                        return Tongue();
+
                     return Bite();
+
                 case TONGUE_ATTACK:
+                    if (Vector3.Distance(basiliskBody.position, player.transform.position) < 2)
+                        return Bite();
+
                     return Tongue();
+
                 case CHASE_PLAYER:
-                    return RunTowardsPlayer();
+                    return MoveTowardsTarget(player.transform.position);
+
+                case BACK_AWAY:
+                    return MoveAwayFromTarget(player.transform.position);
             }
 
             return 0;
         }
 
         private float Bite() {
-            curBite = Instantiate(biteHitbox);
-            curBite.transform.position = this.transform.position + mouthOffset;
-            timer.Set(2, 0);
-            return 1;
+            jawHinge.transform.rotation = Quaternion.Slerp(jawHinge.transform.rotation, Quaternion.Euler(-90f, jawHinge.transform.rotation.eulerAngles.y, jawHinge.transform.rotation.eulerAngles.z), 0.03f);
+            MoveTowardsTarget(player.transform.position, 0.2f);
+            biteComplete = false;
+            return -1;
         }
 
         private float Tongue() {
@@ -78,18 +97,6 @@ namespace Game.Scripts
             tongue.positionCount = 0;
         }
 
-        private float RunTowardsPlayer()
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
-            return 1;
-        }
-
-        private float GoToCenter() {
-            speed = Vector3.Distance(center, transform.position) / 50;
-            timer.Set(1, 2);
-            return 2.25f;
-        }
-
         public void OnTimerEnd(int data) {
             switch (data) {
                 case BITE_ATTACK:
@@ -99,15 +106,87 @@ namespace Game.Scripts
                     Tongue();
                     break;
                 case CHASE_PLAYER:
-                    RunTowardsPlayer();
+                    MoveTowardsTarget(player.transform.position);
+                    break;
+                case BACK_AWAY:
+                    MoveAwayFromTarget(player.transform.position);
                     break;
             }
         }
-        
+
+        private float MoveTowardsTarget(Vector3 target)
+        {
+            Vector3 flatTarget = new Vector3(target.x, basiliskBody.position.y, target.z);
+            basiliskBody.position = Vector3.MoveTowards(basiliskBody.position, flatTarget, speed);
+            return 1;
+        }
+        private float MoveAwayFromTarget(Vector3 target)
+        {
+            Vector3 flatTarget = new Vector3(target.x, basiliskBody.position.y, target.z);
+            Vector3 directionAway = basiliskBody.position - flatTarget; // Calculate direction away from the target
+            basiliskBody.position = Vector3.MoveTowards(basiliskBody.position, basiliskBody.position + directionAway, speed);
+            return 1;
+        }
+
+        private void MoveTowardsTarget(Vector3 target, float rate)
+        {
+            Vector3 flatTarget = new Vector3(target.x, basiliskBody.position.y, target.z);
+            basiliskBody.position = Vector3.MoveTowards(basiliskBody.position, flatTarget, rate);
+        }
+
+        private void RotTowardsTarget(Vector3 target)
+        {
+            Vector3 flatTarget = new Vector3(target.x, basiliskBody.position.y, target.z);
+            Vector3 directionToTarget = (flatTarget - basiliskBody.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+            basiliskBody.rotation = Quaternion.Slerp(basiliskBody.rotation, lookRotation, Time.deltaTime * 10); // Smooth rotation
+        }
+
+        private void Update()
+        {
+            RotTowardsTarget(player.transform.position);
+        }
+
         private void FixedUpdate() {
             switch (curAttack) {
                 case BITE_ATTACK:
-                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .05f);
+                    if (biteComplete)
+                        break;
+
+                    if (!mouthOpen)
+                    {
+                        MoveTowardsTarget(player.transform.position, 0.09f);
+
+                        Quaternion targetRotation = Quaternion.Euler(-90f, jawHinge.transform.rotation.eulerAngles.y, jawHinge.transform.rotation.eulerAngles.z);
+                        jawHinge.transform.rotation = Quaternion.Slerp(jawHinge.transform.rotation, targetRotation, 0.05f);
+
+                        float currentX = jawHinge.transform.eulerAngles.x;
+                        if (currentX >= 260f && currentX <= 280f) // Recognizing 270° as fully open
+                            mouthOpen = true;
+                    }
+                    else
+                    {
+                        MoveTowardsTarget(player.transform.position, 0.05f);
+
+                        Quaternion targetRotation = Quaternion.Euler(357f, jawHinge.transform.rotation.eulerAngles.y, jawHinge.transform.rotation.eulerAngles.z);
+                        jawHinge.transform.rotation = Quaternion.Slerp(jawHinge.transform.rotation, targetRotation, 0.1f);
+                        if(biteHitbox!=null) {
+                            biteHitbox.SetActive(true);
+                        }
+
+                        float currentX = jawHinge.transform.eulerAngles.x;
+                        if (currentX >= 345f || currentX < 10f) // Properly detects closing back to ~357
+                        {
+                            mouthOpen = false;
+                            if(biteHitbox!=null) {
+                                biteHitbox.SetActive(false);
+                            }
+                            biteComplete = true;
+                            jawHinge.transform.rotation = Quaternion.Euler(357f, jawHinge.transform.rotation.eulerAngles.y, jawHinge.transform.rotation.eulerAngles.z); // Explicit reset
+                            this.GetComponent<Boss>().DoneWithAttack();
+                            return;
+                        }
+                    }
 
                     break;
                 case TONGUE_ATTACK:
@@ -133,28 +212,27 @@ namespace Game.Scripts
                         }
 
                         percentToTarget -= percentIncrement;
-                        tongueEnd = Vector3.Lerp(this.transform.position + mouthOffset, tongueTarget, percentToTarget);
-                        RenderTongue(this.transform.position + mouthOffset, tongueEnd);
+                        tongueEnd = Vector3.Lerp(tonguePoint.position, tongueTarget, percentToTarget);
+                        RenderTongue(tonguePoint.position, tongueEnd);
 
                         if (tongueStuck)
                             player.transform.position = tongueEnd;
                     }
                     else // extend
                     {
-                        tongueEnd = Vector3.Lerp(this.transform.position + mouthOffset, tongueTarget, percentToTarget);
+                        tongueEnd = Vector3.Lerp(tonguePoint.position, tongueTarget, percentToTarget);
                         percentToTarget += percentIncrement;
-                        RenderTongue(this.transform.position + mouthOffset, tongueEnd);
+                        RenderTongue(tonguePoint.position, tongueEnd);
                     }
 
                     break;
                 case CHASE_PLAYER:
-                    // transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .5f);
+                    MoveTowardsTarget(player.transform.position);
+                    break;
+                case BACK_AWAY:
+                    MoveAwayFromTarget(player.transform.position);
                     break;
             }
-
-            //respond to punch
-
         }
     }
-
 }

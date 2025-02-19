@@ -3,7 +3,12 @@ guid: d5137474d8fed4f24a48d672e25d247d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mallet
+    second: {fileID: 2100000, guid: 1767c4f6faccd5b44a3163e7021f1744, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

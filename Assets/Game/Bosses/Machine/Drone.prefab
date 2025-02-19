@@ -62,6 +62,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8ccd7f866d7ac4ce78bb43f625c7b2f9, type: 2}
+  - {fileID: 2100000, guid: 52e0fd91ac8d9d344bb21bff95e582e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,6 +297,67 @@ MonoBehaviour:
   tag: Player
   look: {fileID: 0}
   flip: -1
+--- !u!1 &6270559639414383724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098651364813271154}
+  - component: {fileID: 7560929648046479681}
+  - component: {fileID: 8158375134715323968}
+  m_Layer: 10
+  m_Name: SpawnBlood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098651364813271154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270559639414383724}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7495527144079192112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7560929648046479681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270559639414383724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6573aac1de55bfe448bd62791526c624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodPrefab: {fileID: 1708016033316324045, guid: 1ec03ea131b90234fb196bb0d7d461f5,
+    type: 3}
+--- !u!114 &8158375134715323968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270559639414383724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940a2e3faf81e744d9957fe6045bc4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: If blood spawned in the direction the attack came from, that would be
+    sick
 --- !u!1 &7193713829538453673
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +392,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1457767793152749535}
+  - {fileID: 2098651364813271154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3573837292537275807
@@ -353,6 +416,11 @@ MonoBehaviour:
   dmg: 1
   persistent: 0
   speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
 --- !u!135 &7011378181958481318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -419,6 +487,18 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7560929648046479681}
+        m_TargetAssemblyTypeName: SpawnBlood, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 3573837292537275807}
         m_TargetAssemblyTypeName: Game.Scripts.Projectile, Assembly-CSharp
         m_MethodName: DestroySelf
@@ -441,13 +521,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   invincible: 0
+  takeZeroDamage: 0
   invincibilityDuration: 0.2
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
+  critTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   doDeathJuice: 0
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 7
+  isAlive: 1
+  canHeal: 1
 --- !u!1 &7915230986333381453
 GameObject:
   m_ObjectHideFlags: 0

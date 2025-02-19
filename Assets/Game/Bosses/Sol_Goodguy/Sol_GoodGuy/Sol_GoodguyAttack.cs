@@ -97,6 +97,8 @@ namespace Game.Scripts
                 case DRAGON_INSTALL:
                     return TransformAttack();
             }
+
+            Debug.Log(curAttack);
             return 0;
         }
 

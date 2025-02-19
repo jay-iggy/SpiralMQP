@@ -86,7 +86,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3309394800285066431, guid: d5137474d8fed4f24a48d672e25d247d, type: 3}
+  - {fileID: 2100000, guid: 1767c4f6faccd5b44a3163e7021f1744, type: 2}
+  - {fileID: 2100000, guid: 52e0fd91ac8d9d344bb21bff95e582e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -312,8 +313,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7208137280149421341, guid: 09cadb6755cf0462d89a4eb94dbc7366,
         type: 3}
+      propertyPath: rightOrLeft
+      value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208137280149421341, guid: 09cadb6755cf0462d89a4eb94dbc7366,
+        type: 3}
       propertyPath: relevantCharacter
-      value: Player
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8829026804997614140, guid: 09cadb6755cf0462d89a4eb94dbc7366,
         type: 3}
@@ -397,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 7208137280149421341, guid: 09cadb6755cf0462d89a4eb94dbc7366,
         type: 3}
       propertyPath: relevantCharacter
-      value: Player
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8829026804997614140, guid: 09cadb6755cf0462d89a4eb94dbc7366,
         type: 3}

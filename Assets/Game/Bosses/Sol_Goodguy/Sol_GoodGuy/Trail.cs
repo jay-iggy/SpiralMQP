@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trail : MonoBehaviour
 {
-    private float countdown = 5f; // 5 seconds
+    [SerializeField] float countdown = 5f; // 5 seconds
     private float timer = 0f;
 
     void Update()
