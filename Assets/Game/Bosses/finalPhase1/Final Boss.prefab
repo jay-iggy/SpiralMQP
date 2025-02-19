@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: unlockedItems.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
