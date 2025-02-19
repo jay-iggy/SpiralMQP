@@ -281,6 +281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1222036773989736871, guid: 106ac6c0fafac42fb8973673d344b769,
         type: 3}
+      propertyPath: rightOrLeft
+      value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222036773989736871, guid: 106ac6c0fafac42fb8973673d344b769,
+        type: 3}
       propertyPath: relevantCharacter
       value: 
       objectReference: {fileID: 0}
