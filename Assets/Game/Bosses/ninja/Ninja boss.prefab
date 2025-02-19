@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDistanceBehindWall: 0.5
   popOutSpeed: 4
-  bullet: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
+  bullet: {fileID: 5908131083300134374, guid: 56d6153c5af85a3418ada07fb5fb00a8, type: 3}
   smoke: {fileID: 4172307192383063805, guid: a81f209cfc1ddaf43b443d3b47bd4eec, type: 3}
   decoy: {fileID: 4446171844138052569, guid: e1b5d190f94a9cc4ab6875888283492b, type: 3}
 --- !u!114 &-24218015262884559
