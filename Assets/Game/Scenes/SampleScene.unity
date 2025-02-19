@@ -11558,6 +11558,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 272490637702824621, guid: acb0cb568d2314955b7f969dc574d0b8,
         type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 272490637702824621, guid: acb0cb568d2314955b7f969dc574d0b8,
+        type: 3}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
