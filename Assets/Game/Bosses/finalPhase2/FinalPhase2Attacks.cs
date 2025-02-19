@@ -19,9 +19,6 @@ namespace Game.Scripts {
         private const int SOL_FIRECONE = 6;
         private const int MACHINE_SMOKE = 7;
 
-        private bool tping;
-        private int numTPs = 0;
-
         private int numAttacks = 8;
         private int curAttack;
 
@@ -29,6 +26,10 @@ namespace Game.Scripts {
 
         private GameObject player;
         [SerializeField] GameObject bullet;
+
+        private int numMovesSinceMovement = 0;
+        private bool tping;
+        private int numTPs = 0;
 
         // MACHINE_LASER & SMOKE
         [SerializeField] GameObject laser;
@@ -99,21 +100,51 @@ namespace Game.Scripts {
 
                 return 0;
             }
+            if (numMovesSinceMovement > 3)
+            {
+                float rand = Random.Range(0, 1);
+
+                if (rand < 0.5)
+                {
+                    Vector3 targetPosition = BossRoom.GetRandomPositionInRoom(5);
+                    StartCoroutine(JumpTo(targetPosition));
+                }
+                else
+                {
+                    tping = true;
+                    numTPs++;
+                    if (numTPs >= 3)
+                        tping = false;
+
+                    float rand2 = Random.Range(0, 1);
+                    if (rand2 > 0.5)
+                        PopOut(DONE_POPPING_OUT_SINGLE);
+                    else
+                        PopOut(DONE_POPPING_OUT_SPREAD);
+                }
+
+                numMovesSinceMovement = 0;
+                return 0;
+            }
 
             switch (index)
             {
                 case RAT_CIRCLE:
                     ShootCirclePattern();
+                    numMovesSinceMovement++;
                     break;
                 case MACHINE_LASER:
                     GoToCenter();
+                    numMovesSinceMovement++;
                     break;
                 case FROG_JUMP:
                     Vector3 targetPosition = BossRoom.GetRandomPositionInRoom(5);
                     StartCoroutine(JumpTo(targetPosition));
+                    numMovesSinceMovement = 0;
                     break;
                 case TRITON_THROW:
                     ThrowTrident();
+                    numMovesSinceMovement++;
                     break;
                 case NINJA_TP:
                     tping = true;
@@ -126,15 +157,20 @@ namespace Game.Scripts {
                         PopOut(DONE_POPPING_OUT_SINGLE);
                     else
                         PopOut(DONE_POPPING_OUT_SPREAD);
+
+                    numMovesSinceMovement = 0;
                     break;
                 case BASILISK_TONGUE:
                     Tongue();
+                    numMovesSinceMovement++;
                     break;
                 case SOL_FIRECONE:
                     GunFlame();
+                    numMovesSinceMovement++;
                     break;
                 case MACHINE_SMOKE:
                     MakeSmoke();
+                    numMovesSinceMovement++;
                     break;
             }
 
