@@ -216,6 +216,7 @@ MonoBehaviour:
   bossIndex: 0
   unlockedItems: []
   minItemRarity: 0
+  mainBoss: {fileID: 0}
 --- !u!114 &9153190801136829178
 MonoBehaviour:
   m_ObjectHideFlags: 0
