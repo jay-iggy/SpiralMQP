@@ -66,6 +66,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 82721055367509288}
@@ -73,7 +83,17 @@ PrefabInstance:
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 3041700921627391495}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 466556231990597027}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -82,6 +102,11 @@ PrefabInstance:
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: Die
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
@@ -92,7 +117,17 @@ PrefabInstance:
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SpawnObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: Game.Scripts.Boss, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -221,6 +256,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -24218015262884559}
+    - targetCorrespondingSourceObject: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3041700921627391495}
   m_SourcePrefab: {fileID: 100100000, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
 --- !u!114 &82721055367509288 stripped
 MonoBehaviour:
@@ -283,6 +322,21 @@ MonoBehaviour:
   onTimerEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3041700921627391495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266249577841588369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0c12ddb26de946821b45599e48396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 5190260032388371072, guid: 5e2c0cda0a23b4d4ab1622129e575bc0,
+    type: 3}
+  preserveRotation: 1
 --- !u!4 &1275996695822871800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
