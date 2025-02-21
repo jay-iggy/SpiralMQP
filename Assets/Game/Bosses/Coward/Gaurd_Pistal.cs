@@ -78,6 +78,14 @@ namespace Game.Scripts
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .050f);
             }
         }
+        
+        private void Update() {
+            Vector3 targetDir = player.transform.position - transform.position;
+            float step = 3 * Time.deltaTime;
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDir);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
     }
 
 }
