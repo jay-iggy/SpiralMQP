@@ -13,7 +13,7 @@ namespace Game.Scripts {
         public float speed = 0;
         public int projID = -1;
         [SerializeField] protected UnityEvent onDestroyed;
-        private bool destroyedByWall = false; 
+        public bool destroyedByWall = false; 
         [SerializeField] float ignoreWallDelay = 0.1f; // set to -1 for permanent ignore
         
         protected static List<int> hitIDs = new();
