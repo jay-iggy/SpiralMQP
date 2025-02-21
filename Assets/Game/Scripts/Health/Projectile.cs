@@ -13,7 +13,7 @@ namespace Game.Scripts {
         public float speed = 0;
         public int projID = -1;
         [SerializeField] protected UnityEvent onDestroyed;
-        public bool destroyedByWall = false; 
+        private bool destroyedByWall = false; 
         [SerializeField] float ignoreWallDelay = 0.1f; // set to -1 for permanent ignore
         
         protected static List<int> hitIDs = new();
@@ -28,7 +28,7 @@ namespace Game.Scripts {
         }
 
         private void Start() {
-            if (!destroyedByWall && ignoreWallDelay > 0) {
+            if (!destroyedByWall && !persistent && ignoreWallDelay > 0) {
                 StartCoroutine(IgnoreWallForDuration());
             }
         }
