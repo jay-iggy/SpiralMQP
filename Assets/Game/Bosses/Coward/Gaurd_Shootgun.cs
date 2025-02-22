@@ -17,6 +17,9 @@ namespace Game.Scripts
 
         private Vector3 gun;
         public float waitDuration = 1f;
+        
+        [SerializeField] ParticleSystem muzzleFlash;
+        [SerializeField] Transform projectileSpawnPoint;
 
 
 
@@ -51,10 +54,11 @@ namespace Game.Scripts
 
 
                 GameObject[] bullets = new GameObject[bulletCount];
-                Vector3 origin = transform.position;
+                Vector3 origin = projectileSpawnPoint.position;
                 Vector3 baseDirection = (player.transform.position - origin).normalized;
 
 
+                muzzleFlash.Play();
                 for (int i = 0; i < bulletCount; i++)
                 {
                     // Instantiate bullet at the current position
@@ -89,14 +93,15 @@ namespace Game.Scripts
 
         private void setGunPoint()
         {
-            if (player.transform.position.x > transform.position.x)
+            /*if (player.transform.position.x > transform.position.x)
             {
-                gun = transform.position + Vector3.right;
+                gun = transform.position + Vector3.right * gunLength;
             }
             else
             {
-                gun = transform.position + Vector3.left;
-            }
+                gun = transform.position + Vector3.left * gunLength;
+            }*/
+            gun = muzzleFlash.transform.position;
         }
 
         private void FixedUpdate()

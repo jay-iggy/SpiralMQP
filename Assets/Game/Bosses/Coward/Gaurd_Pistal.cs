@@ -17,6 +17,8 @@ namespace Game.Scripts
         public float waitDuration = 2f;
 
         private Vector3 gun;
+        [SerializeField] ParticleSystem muzzleFlash;
+        [SerializeField] Transform projectileSpawnPoint;
 
 
 
@@ -46,8 +48,9 @@ namespace Game.Scripts
         {
             
                 setGunPoint();
-                bulletInChamber = Instantiate(bullet, gun, Quaternion.identity);
-            bulletInChamber.GetComponent<Projectile>().TargetPlayer(8);
+                bulletInChamber = Instantiate(bullet, projectileSpawnPoint.position, Quaternion.identity);
+                muzzleFlash.Play();
+                bulletInChamber.GetComponent<Projectile>().TargetPlayer(8);
                 return 1;
         }
 
