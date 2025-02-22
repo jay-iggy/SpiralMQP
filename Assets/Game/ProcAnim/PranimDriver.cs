@@ -80,10 +80,6 @@ public class PranimDriver : MonoBehaviour
     #endregion
 
     #region materials
-    [SerializeField] private Material skin;
-    [SerializeField] private Material shirt;
-    [SerializeField] private Material pants;
-    [SerializeField] private Material hair;
     private Material[] _defaultMaterials;
     
     
