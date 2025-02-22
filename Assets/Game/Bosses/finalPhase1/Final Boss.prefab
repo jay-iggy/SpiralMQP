@@ -148,6 +148,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5393ae7a11133f542b1935d1607b0d0e, type: 2}
+  - {fileID: 2100000, guid: aee828eb48734254aaf13298bf09e8c4, type: 2}
+  - {fileID: 2100000, guid: 52e0fd91ac8d9d344bb21bff95e582e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -270,6 +272,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyedByWall: 0
+  ignoreWallDelay: 0.1
 --- !u!1 &8026498021495067774
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +399,11 @@ PrefabInstance:
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: invincible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: isInvincible
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
