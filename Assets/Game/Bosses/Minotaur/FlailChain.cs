@@ -13,10 +13,11 @@ public class FlailChain : MonoBehaviour {
 
     private void Awake() {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 2;
     }
 
     private void Update() {
-        lineRenderer.SetPosition(0, handle.position);
-        lineRenderer.SetPosition(1, head.position);
+        lineRenderer.SetPosition(1, handle.position);
+        lineRenderer.SetPosition(0, head.position);
     }
 }

@@ -134,8 +134,7 @@ namespace Game.Scripts
             if(launchStage == 4)
             {
                 flailTip.transform.localPosition -= new Vector3(0, .1f, 0);
-                if(flailTip.transform.localPosition.y <= flailPosition + .1f)
-                {
+                if(flailTip.transform.localPosition.y <= flailPosition + .1f) {
                     flailTip.transform.localPosition = new Vector3(flailTip.transform.localPosition.x, flailPosition, flailTip.transform.localPosition.z);
                     launchStage = 0;
                     minotaur.FinishSmash();
@@ -200,7 +199,7 @@ namespace Game.Scripts
                    /* if (trailing) //trail sound
                 else // spin sound */
                     GameObject curBullet = Instantiate(bullet);
-                    curBullet.transform.position = new Vector3(flailTip.transform.position.x, transform.position.y, flailTip.transform.position.z);
+                    curBullet.transform.position = new Vector3(flailTip.transform.position.x, curBullet.transform.position.y, flailTip.transform.position.z);
                     BulletPatterns.MoveTowards(curBullet, transform.position, -8);
                     shootTimer = 0;
                 }
