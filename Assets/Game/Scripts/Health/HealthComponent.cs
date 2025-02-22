@@ -13,7 +13,7 @@ namespace Game.Scripts {
         public UnityEvent<float> onTakeDamageFloat;
         public UnityEvent<float> onMaxHealthChanged;
 
-        public bool invincible = false;
+        [FormerlySerializedAs("invincible")] public bool isInvincible = false;
         public bool takeZeroDamage = false;
         public float invincibilityDuration = 0f;
         private float invincibleUntil = 0f;
@@ -64,7 +64,7 @@ namespace Game.Scripts {
             SetHealth(health + amount, overrideHealBlock);
         }
         public void TakeDamage(float damage, bool overrideInvincibility = false) {
-            if(IsInvincible() && !overrideInvincibility) {
+            if((IsInvincible() && !overrideInvincibility) || isInvincible) {
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace Game.Scripts {
         }
         
         public bool IsInvincible() {
-            return invincible || invincibleUntil > Time.time;
+            return isInvincible || invincibleUntil > Time.time;
         }
         
         public void BecomeInvincible(float duration) {

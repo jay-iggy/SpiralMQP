@@ -76,7 +76,7 @@ namespace Game.Scripts {
             {
                 isAttacking = false;
                 shield.SetActive(false);
-                GetComponent<HealthComponent>().invincible = false;
+                GetComponent<HealthComponent>().isInvincible = false;
             }
             else if (deadPillars >= 3)
             {
