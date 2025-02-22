@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(LineRenderer))]
 public class FlailChain : MonoBehaviour {
     [SerializeField] private Transform handle;
