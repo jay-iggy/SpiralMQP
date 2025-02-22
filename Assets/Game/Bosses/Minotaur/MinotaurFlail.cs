@@ -199,7 +199,7 @@ namespace Game.Scripts
                 {
                    /* if (trailing) //trail sound
                 else // spin sound */
-                                GameObject curBullet = Instantiate(bullet);
+                    GameObject curBullet = Instantiate(bullet);
                     curBullet.transform.position = new Vector3(flailTip.transform.position.x, transform.position.y, flailTip.transform.position.z);
                     BulletPatterns.MoveTowards(curBullet, transform.position, -8);
                     shootTimer = 0;
