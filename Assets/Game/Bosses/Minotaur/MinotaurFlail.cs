@@ -136,7 +136,7 @@ namespace Game.Scripts
                 flailTip.transform.localPosition -= new Vector3(0, .1f, 0);
                 if(flailTip.transform.localPosition.y <= flailPosition + .1f)
                 {
-                    flailTip.transform.localPosition = new Vector3(0, flailPosition, 0);
+                    flailTip.transform.localPosition = new Vector3(flailTip.transform.localPosition.x, flailPosition, flailTip.transform.localPosition.z);
                     launchStage = 0;
                     minotaur.FinishSmash();
                 }
