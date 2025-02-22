@@ -49,6 +49,7 @@ namespace Game.Scripts.Abilities {
             if (health <= hp.maxHealth / 2) //active
             {
                 gfx.SetAllMaterialsToOneMat(berserkMaterial);
+                
                 if(!primaryActive && primaryAbility != null)
                 {
                     primaryAbility.ModifyDamage(damage, ModifyValue.ADD);
