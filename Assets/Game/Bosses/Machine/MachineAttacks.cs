@@ -69,7 +69,9 @@ namespace Game.Scripts
                 case LASER_ATTACK:
                     foreach(GameObject drone in drones)
                     {
-                        drone.GetComponent<Projectile>().AddTag("Enemy");
+                        if(drone != null) {
+                            drone.GetComponent<Projectile>().AddTag("Enemy");
+                        }
                     }
                     break;
             }
