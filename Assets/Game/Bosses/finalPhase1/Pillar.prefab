@@ -132,6 +132,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5b5adcc873c04a146a331746f9430e7d, type: 2}
+  - {fileID: 2100000, guid: 52e0fd91ac8d9d344bb21bff95e582e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -287,7 +288,7 @@ MonoBehaviour:
   onMaxHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  invincible: 0
+  isInvincible: 0
   takeZeroDamage: 0
   invincibilityDuration: 0
   affectsHitless: 0
