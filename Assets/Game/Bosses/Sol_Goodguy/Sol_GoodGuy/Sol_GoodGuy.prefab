@@ -195,6 +195,7 @@ MonoBehaviour:
   invincibilityDuration: 0.2
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
+  critTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   doDeathJuice: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
@@ -220,8 +221,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.0594153}
-  m_Center: {x: 0, y: 0, z: 0.12796327}
+  m_Size: {x: 1, y: 2, z: 1.0594153}
+  m_Center: {x: 0, y: 1, z: 0.12796327}
 --- !u!65 &8841785154871626466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -241,8 +242,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1503718, y: 1, z: 1.214822}
-  m_Center: {x: -0.0012714863, y: 0, z: 0.13783684}
+  m_Size: {x: 1.1503718, y: 2, z: 1.214822}
+  m_Center: {x: -0.0012714863, y: 1, z: 0.13783684}
 --- !u!54 &5286783044327523087
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -623,6 +624,12 @@ MonoBehaviour:
   dmg: 1
   persistent: 1
   speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
+  ignoreWallDelay: 0.1
 --- !u!1 &5330300075491209578
 GameObject:
   m_ObjectHideFlags: 0

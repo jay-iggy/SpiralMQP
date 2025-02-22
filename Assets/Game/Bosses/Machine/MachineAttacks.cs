@@ -98,7 +98,7 @@ namespace Game.Scripts
 
         private float LaunchDrone()
         {
-            GameObject newDrone = Instantiate(dronePrefab, transform.position, Quaternion.identity);
+            GameObject newDrone = Instantiate(dronePrefab, new Vector3(transform.position.x, dronePrefab.transform.position.y, transform.position.z), Quaternion.identity);
             newDrone.transform.localScale = new Vector3(1, 1, 1);
             drones.Add(newDrone);
             timer.Set(.25f, 1);
