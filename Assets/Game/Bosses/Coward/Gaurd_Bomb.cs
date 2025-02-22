@@ -48,7 +48,7 @@ namespace Game.Scripts
 
         private float ShootBullets()
         {
-            GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject Newbullet = Instantiate(bullet, new Vector3(transform.position.x, bullet.transform.position.y, transform.position.z), Quaternion.identity);
 
             Randomlocation = BossRoom.GetRandomPositionInRoom();
             return 2.5f;

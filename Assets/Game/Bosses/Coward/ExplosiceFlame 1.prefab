@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 7088269410944197929}
   serializedVersion: 2
   m_LocalRotation: {x: 0.118565574, y: -0, z: -0, w: 0.9929462}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -485,6 +485,11 @@ PrefabInstance:
       propertyPath: onDestroyed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7011378181958481318, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
       propertyPath: m_Name
@@ -498,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 7495527144079192112, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7495527144079192112, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
@@ -542,6 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2233324262832823694, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
+    - {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2265548901806224741, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
     m_AddedGameObjects:
@@ -554,6 +560,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -477000822715267628}
+    - targetCorrespondingSourceObject: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1800521789857111338}
+    - targetCorrespondingSourceObject: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 564138431132995655}
   m_SourcePrefab: {fileID: 100100000, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
 --- !u!4 &8423595742301616667 stripped
 Transform:
@@ -583,3 +597,37 @@ MonoBehaviour:
   Flame: {fileID: 9166757181426913922, guid: cbbc8167fa7a95f42936376da537a5a1, type: 3}
   explosionEffectPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312,
     type: 3}
+--- !u!65 &1800521789857111338
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166757181426913922}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &564138431132995655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166757181426913922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086f55eec9eacc244a74f34a40772e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tag: Enemy
