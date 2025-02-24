@@ -70,7 +70,7 @@ namespace Game.Scripts {
             
         }
 
-        public void DestroySelf()
+        public virtual void DestroySelf()
         {
             onDestroyed.Invoke();
             Destroy(gameObject);
