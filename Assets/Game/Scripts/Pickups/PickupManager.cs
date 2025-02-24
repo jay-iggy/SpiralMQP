@@ -63,7 +63,6 @@ namespace Game.Scripts {
                 item.transform.position = pos;
                 yield return null;
             }
-            item.transform.position = endPos;
             
             item.StartUp();
         }
