@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts {
     public class FatRatAttacks : MonoBehaviour {
@@ -18,6 +19,9 @@ namespace Game.Scripts {
         [SerializeField] private int projectileCount = 8;
         [SerializeField] private float projectileCircleRadius = 2;
         [SerializeField] private float projectileSpeed = 10;
+
+        [SerializeField] private float screenShakeLength = 0.5f;
+        [SerializeField] private float screenShakePower = 0.5f;
         
         private bool _isGrounded = false;
         
@@ -101,6 +105,7 @@ namespace Game.Scripts {
                 foreach (GameObject projectile in projectiles) {
                     projectile.GetComponent<Rigidbody>().velocity = (projectile.transform.position - transform.position).normalized * projectileSpeed;
                 }
+                ScreenShake.instance.StartShake(screenShakeLength, screenShakePower);
                 _isGrounded = true;
             }
             else if (other.gameObject.CompareTag(TagManager.Player)) {
