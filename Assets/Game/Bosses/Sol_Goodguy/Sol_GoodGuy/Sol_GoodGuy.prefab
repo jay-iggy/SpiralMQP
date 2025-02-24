@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDelay: 0.3
   isAlive: 1
-  bossIndex: 7
+  bossIndex: 4
   unlockedItems: []
   minItemRarity: 0
 --- !u!114 &6810006028065278458
@@ -221,8 +221,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.0594153}
-  m_Center: {x: 0, y: 0, z: 0.12796327}
+  m_Size: {x: 1, y: 2, z: 1.0594153}
+  m_Center: {x: 0, y: 1, z: 0.12796327}
 --- !u!65 &8841785154871626466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,8 +242,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1503718, y: 1, z: 1.214822}
-  m_Center: {x: -0.0012714863, y: 0, z: 0.13783684}
+  m_Size: {x: 1.1503718, y: 2, z: 1.214822}
+  m_Center: {x: -0.0012714863, y: 1, z: 0.13783684}
 --- !u!54 &5286783044327523087
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -629,6 +629,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyedByWall: 0
+  ignoreWallDelay: 0.1
 --- !u!1 &5330300075491209578
 GameObject:
   m_ObjectHideFlags: 0

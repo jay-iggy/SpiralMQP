@@ -48,7 +48,7 @@ namespace Game.Scripts
 
         private float ShootBullets()
         {
-            GameObject Newbullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject Newbullet = Instantiate(bullet, new Vector3(transform.position.x, bullet.transform.position.y, transform.position.z), Quaternion.identity);
 
             Randomlocation = BossRoom.GetRandomPositionInRoom();
             return 2.5f;
@@ -81,6 +81,13 @@ namespace Game.Scripts
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .050f);
             }
            
+        }
+        private void Update() {
+            Vector3 targetDir = player.transform.position - transform.position;
+            float step = 3 * Time.deltaTime;
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDir);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
     }
 

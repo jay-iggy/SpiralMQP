@@ -157,6 +157,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   destroyedByWall: 1
+  ignoreWallDelay: 0.2
 --- !u!114 &2233324262832823694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
     type: 3}
+  preserveRotation: 0
 --- !u!135 &7011378181958481318
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -41,13 +41,13 @@ namespace Game.Scripts.Player.Abilities {
             }
             HealthComponent hc = _player.GetComponent<HealthComponent>();
             Physics.IgnoreLayerCollision(7, 10, true); //7=player, 10=enemy
-            hc.invincible = true;
+            hc.isInvincible = true;
             yield return new WaitForSeconds(dashDuration);
             if (damagingDash)
             {
                 bc.enabled = false;
             }
-            hc.invincible = false;
+            hc.isInvincible = false;
             Physics.IgnoreLayerCollision(7, 10, false); //7=player, 10=enemy
         }
         IEnumerator WaitForDashCooldown() {

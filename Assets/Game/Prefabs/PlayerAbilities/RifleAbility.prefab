@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6936475221622944844}
   - {fileID: 1628678786292378660}
   - {fileID: 1829968033573452821}
   m_Father: {fileID: 0}
@@ -82,8 +83,8 @@ MonoBehaviour:
     type: 3}
   isAutomatic: 0
   canCrit: 1
-  spawnOffset: {x: 0, y: 0, z: 2}
   ignoreInvincibility: 0
+  projectileSpawnPoint: {fileID: 6936475221622944844}
   sfx: {fileID: 11400000, guid: 4aff18577ac9d044889626b95ac2091a, type: 2}
 --- !u!114 &7621290403778805499
 MonoBehaviour:
@@ -131,6 +132,37 @@ Transform:
   - {fileID: 8567987178016483670}
   - {fileID: 1070904080697078068}
   m_Father: {fileID: 1628678786292378660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6871425525354705589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6936475221622944844}
+  m_Layer: 0
+  m_Name: ProjSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6936475221622944844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871425525354705589}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.766, z: 2.317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2030792683537549546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &672765786490296031
 PrefabInstance:

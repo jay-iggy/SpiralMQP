@@ -10,10 +10,10 @@ namespace Game.Scripts.Player.Abilities {
         public float cooldown = 0.33f;
         public Projectile projectilePrefab;
         public bool isAutomatic = false;
-        public Vector3 spawnOffset = new Vector3(0, 1, 0);
         private bool isHolding = false;
         private float _cooldownOverTimer = 0;
         private int _nextProjID = 0;
+        [SerializeField] private Transform projectileSpawnPoint;
 
         public override void OnAbilityEquipped() {
             _player.GetReticle().enabled = true;
@@ -58,7 +58,7 @@ namespace Game.Scripts.Player.Abilities {
 
             for (int i = 0; i < 6; i++)
             {
-                Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
+                Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
                 projectile.dmg = CalculateDamage();
                 projectile.projID = _nextProjID;
                 projectile.IgnoreInvincibility();
