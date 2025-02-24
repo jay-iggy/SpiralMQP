@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDelay: 0.3
   isAlive: 1
-  bossIndex: 4
+  bossIndex: 7
   unlockedItems: []
   minItemRarity: 0
 --- !u!114 &6810006028065278458
@@ -190,7 +190,7 @@ MonoBehaviour:
   onMaxHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  invincible: 0
+  isInvincible: 0
   takeZeroDamage: 0
   invincibilityDuration: 0.2
   affectsHitless: 0
