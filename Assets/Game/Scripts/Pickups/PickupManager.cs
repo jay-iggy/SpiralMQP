@@ -6,10 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-namespace Game.Scripts
-{
-    public class PickupManager : MonoBehaviour
-    {
+namespace Game.Scripts {
+    public class PickupManager : MonoBehaviour {
         [SerializeField] bool deleteSave = false;
         [SerializeField] DisplayItemUnlock canvas;
         [SerializeField] HealthPickup healthPickup;
@@ -22,42 +20,59 @@ namespace Game.Scripts
         public static PickupManager instance;
         public UnityEvent onItemCollected;
 
-        private void Awake()
-        {
-            if (instance == null)
-            {
+        [SerializeField] private AnimationCurve itemAnimationCurve;
+        [SerializeField] Transform itemSpawnLocation;
+        [SerializeField] float itemThrowDuration = 1f;
+
+        private void Awake() {
+            if (instance == null) {
                 instance = this;
                 transform.parent = null;
                 DontDestroyOnLoad(this);
             }
-            else
-            {
+            else {
                 Destroy(gameObject);
             }
         }
 
-        void Start()
-        {
+        void Start() {
             if (deleteSave) PlayerPrefs.DeleteAll();
 
-            for(int i = 0; i<itemDropLocations.Length; i++)
-            {
+            for(int i = 0; i<itemDropLocations.Length; i++) { // create spawn locations
                 itemDropLocations[i] = transform.GetChild(i).position;
             }
             string loadedItemPool = PlayerPrefs.GetString("itemPool", "");
             DeserializeItemList(loadedItemPool);
             pickups = permanentItemPool.ToList();
 
-            SceneManager.activeSceneChanged += populateItemPool;
+            SceneManager.activeSceneChanged += PopulateItemPool;
+        }
+        
+        IEnumerator ThrowItemFromDoor(ItemPickup item, Vector3 startPos, Vector3 endPos, float duration) {
+            yield return new WaitForSeconds(.5f);
+            
+            item.gameObject.SetActive(true);
+            
+            
+            float time = 0;
+            
+            while (time < duration) {
+                time += Time.deltaTime;
+                Vector3 pos = Vector3.Lerp(startPos, endPos, time / duration);
+                pos.y = itemAnimationCurve.Evaluate(time / duration);
+                item.transform.position = pos;
+                yield return null;
+            }
+            item.transform.position = endPos;
+            
+            item.StartUp();
         }
 
-        public void populateItemPool(Scene current, Scene next)
-        {
+        public void PopulateItemPool(Scene current, Scene next) {
             pickups = permanentItemPool.ToList();
         }
 
-        public void ReleaseItems(List<ItemPickup> items)
-        {
+        public void UnlockItems(List<ItemPickup> items) {
             if(items.Count == 0) return;
 
             if(canvas!=null) {
@@ -69,53 +84,43 @@ namespace Game.Scripts
             PlayerPrefs.SetString("itemPool", allItems);
         }
 
-        public void ItemCollected(int index)
-        {
+        public void OnItemCollected(int index) {
             CombatManager.instance.TransitionToNextBoss();
-            if (index != -1)
-            {
+            if (index != -1) {
                 pickups.RemoveAt(index);
             }
-            onItemCollected.Invoke();
+            onItemCollected.Invoke(); // destroy unselected items
         }
 
-        public void DropItems(ItemRarity rarity)
-        {
-            Instantiate(healthPickup, itemDropLocations[0], Quaternion.identity);
+        public void DropItems(ItemRarity rarity) {
+            //Instantiate(healthPickup, itemDropLocations[0], Quaternion.identity);
+            SpawnItem(healthPickup, itemDropLocations[0]);
             ItemPickup item1;
-            if(testItem != null)
-            {
-                item1 = Instantiate(testItem, itemDropLocations[1], Quaternion.identity);
+            if(testItem != null) {
+                item1 = SpawnItem(testItem, itemDropLocations[1]);
             }
-            else
-            {
+            else {
                 item1 = MakeValidItem(ItemType.NONE, rarity, itemDropLocations[1]);
             }         
             if (item1 == null) return;
             ItemPickup item2 = MakeValidItem(item1.itemType, rarity, itemDropLocations[2]);
         }
 
-        private ItemPickup MakeValidItem(ItemType excludeType, ItemRarity minRarity, Vector3 location)
-        {
+        private ItemPickup MakeValidItem(ItemType excludeType, ItemRarity minRarity, Vector3 location) {
             if (pickups.Count == 0) return null;
 
             int startingIndex = Random.Range(0, pickups.Count);
             int i = startingIndex;
             ItemPickup p = null;
             ItemPickup skippedRarerItem = null;
-            while(p == null)
-            {
-                if (pickups[i].itemType != excludeType && pickups[i].itemRarity >= minRarity)
-                {
-                    if(pickups[i].itemRarity == minRarity)
-                    {
+            while(p == null) {
+                if (pickups[i].itemType != excludeType && pickups[i].itemRarity >= minRarity) {
+                    if(pickups[i].itemRarity == minRarity) {
                         p = pickups[i];
                     }
-                    else
-                    {
+                    else {
                         int pickupChance = 0;
-                        switch (pickups[i].itemRarity)
-                        {
+                        switch (pickups[i].itemRarity) {
                             case ItemRarity.UNCOMMON:
                                 pickupChance = 2; //one in two chance
                                 break;
@@ -125,62 +130,60 @@ namespace Game.Scripts
                         }
 
                         int doSpawn = Random.Range(0, pickupChance);
-                        if (doSpawn == 0)
-                        {
+                        if (doSpawn == 0) {
                             p = pickups[i];
                         }
-                        else
-                        {
+                        else {
                             skippedRarerItem = pickups[i];
                         }
                     }
                 }
-                if(p == null)
-                {
+                if(p == null) {
                     i++;
                     if (i >= pickups.Count) i = 0;
                     if (i == startingIndex) return skippedRarerItem;
                 }
             }
-            ItemPickup item = Instantiate(p, location, Quaternion.identity);
+            ItemPickup item = SpawnItem(p, location);
             item.SetIndex(i);
             return p;
         }
-
-        public string SerializeItemList()
-        {
-            string output = "";
-            foreach (ItemPickup i in permanentItemPool)
-            {
-                int index = listOfAllItems.IndexOf(i);
-                output += index;
-                output +=";";
-            }
-            return output;
+        
+        private ItemPickup SpawnItem(ItemPickup item, Vector3 location) {
+            ItemPickup newItem = Instantiate(item, location, Quaternion.identity);
+            newItem.gameObject.SetActive(false);
+            StartCoroutine(ThrowItemFromDoor(newItem, itemSpawnLocation.position, location, itemThrowDuration));
+            return newItem;
         }
 
-        public void DeserializeItemList(string input)
-        {
-            if (input == "" || input == "{}") return;
+        #region Serialization
+            public string SerializeItemList() {
+                string output = "";
+                foreach (ItemPickup i in permanentItemPool) {
+                    int index = listOfAllItems.IndexOf(i);
+                    output += index;
+                    output +=";";
+                }
+                return output;
+            }
 
-            Debug.Log("deserializing: " + input);
-            string[] inputs = input.Split(';');
-            List<ItemPickup> tempItemList = new List<ItemPickup>();
-            foreach (string i in inputs)
-            {
-                if (i != "")
-                {
-                    int index = int.Parse(i);
-                    tempItemList.Add(listOfAllItems[index]);
+            public void DeserializeItemList(string input) {
+                if (input == "" || input == "{}") return;
+
+                Debug.Log("deserializing: " + input);
+                string[] inputs = input.Split(';');
+                List<ItemPickup> tempItemList = new List<ItemPickup>();
+                foreach (string i in inputs) {
+                    if (i != "") {
+                        int index = int.Parse(i);
+                        tempItemList.Add(listOfAllItems[index]);
+                    }
+                }
+                if (tempItemList.Count > 0) {
+                    permanentItemPool = tempItemList.ToList();
                 }
             }
-            if (tempItemList.Count > 0)
-            {
-                permanentItemPool = tempItemList.ToList();
-            }
-        }
+        #endregion
     }
-
     
-
 }

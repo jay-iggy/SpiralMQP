@@ -67,7 +67,7 @@ namespace Game.Scripts
 
                 if (!hasBeenDefeated && unlockedItems.Count>0)
                 {
-                    PickupManager.instance.ReleaseItems(unlockedItems);
+                    PickupManager.instance.UnlockItems(unlockedItems);
                 }
             }
             else //if pickup manager exists, it will handle boss transition
