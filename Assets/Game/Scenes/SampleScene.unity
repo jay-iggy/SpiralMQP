@@ -8899,6 +8899,41 @@ MonoBehaviour:
   onItemCollected:
     m_PersistentCalls:
       m_Calls: []
+  itemAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.21442775
+      outSlope: 0.21442775
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.20878272
+      value: 1.0447688
+      inSlope: 0.07892278
+      outSlope: 0.07892278
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.056582198
+      outSlope: -0.056582198
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  itemSpawnLocation: {fileID: 1472718636}
+  itemThrowDuration: 1
 --- !u!1 &1164133234
 GameObject:
   m_ObjectHideFlags: 0
@@ -9869,6 +9904,12 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1472718636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5991201864814081792, guid: 2b31183e1e6001f489d2a32128686402,
+    type: 3}
+  m_PrefabInstance: {fileID: 7664949600535866100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475483439
 GameObject:
   m_ObjectHideFlags: 0

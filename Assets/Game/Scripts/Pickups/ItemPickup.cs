@@ -35,8 +35,12 @@ public abstract class ItemPickup : MonoBehaviour {
     protected void Start()
     {
         PickupManager.instance.onItemCollected.AddListener(NotSelected);
-        GameObject pickupUI = Instantiate(pickupUIPrefab, this.transform);
-        pickupUI.GetComponent<PickupUI>().updateValues(itemName, itemType, itemRarity, itemDescription);
+        
+        // turn off colliders
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (Collider col in colliders) {
+            col.enabled = false;
+        }
     }
 
     private void Update()
@@ -65,8 +69,19 @@ public abstract class ItemPickup : MonoBehaviour {
 
         if (other.CompareTag(TagManager.Player)) {
             ApplyEffect(other.gameObject.GetComponent<PlayerController>());
-            PickupManager.instance.ItemCollected(itemIndex);
+            PickupManager.instance.OnItemCollected(itemIndex);
             Destroy(gameObject);
+        }
+    }
+
+    public void StartUp() {
+        GameObject pickupUI = Instantiate(pickupUIPrefab, this.transform);
+        pickupUI.GetComponent<PickupUI>().updateValues(itemName, itemType, itemRarity, itemDescription);
+        
+        // enable colliders
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (Collider col in colliders) {
+            col.enabled = true;
         }
     }
 
