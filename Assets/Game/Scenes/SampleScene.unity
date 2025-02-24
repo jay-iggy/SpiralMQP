@@ -8212,10 +8212,6 @@ MonoBehaviour:
   - bosses:
     - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
     - {fileID: 11400000, guid: 373c337434327a34780a2a0dc522e7ba, type: 2}
-  - bosses:
-    - {fileID: 11400000, guid: 9ba79c428299f1b4397f4afa1c5f98ef, type: 2}
-  - bosses:
-    - {fileID: 11400000, guid: 86f1b294e698947d89827174e178c465, type: 2}
   bossDifficultyOrder: 000000000100000001000000010000000200000002000000
   finalBossPhases:
   - {fileID: 11400000, guid: 9ba79c428299f1b4397f4afa1c5f98ef, type: 2}
@@ -9131,32 +9127,32 @@ MonoBehaviour:
   onItemCollected:
     m_PersistentCalls:
       m_Calls: []
-  itemAnimationCurve:
+  throwHeightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0.21442775
-      outSlope: 0.21442775
+      value: 0
+      inSlope: 3.6572764
+      outSlope: 3.6572764
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.20878272
-      value: 1.0447688
-      inSlope: 0.07892278
-      outSlope: 0.07892278
+      time: 0.41740113
+      value: 1.5265514
+      inSlope: 0.51851606
+      outSlope: 0.51851606
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: -0.056582198
-      outSlope: -0.056582198
+      value: 0
+      inSlope: -2.6202443
+      outSlope: -2.6202443
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -9165,7 +9161,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   itemSpawnLocation: {fileID: 1472718636}
-  itemThrowDuration: 1
+  itemThrowDuration: 0.8
 --- !u!1 &1164133234
 GameObject:
   m_ObjectHideFlags: 0

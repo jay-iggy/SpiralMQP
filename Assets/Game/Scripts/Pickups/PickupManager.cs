@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts {
     public class PickupManager : MonoBehaviour {
@@ -20,7 +21,7 @@ namespace Game.Scripts {
         public static PickupManager instance;
         public UnityEvent onItemCollected;
 
-        [SerializeField] private AnimationCurve itemAnimationCurve;
+        [SerializeField] private AnimationCurve throwHeightCurve;
         [SerializeField] Transform itemSpawnLocation;
         [SerializeField] float itemThrowDuration = 1f;
 
@@ -65,7 +66,7 @@ namespace Game.Scripts {
             while (time < duration) {
                 time += Time.deltaTime;
                 Vector3 pos = Vector3.Lerp(startPos, endPos, time / duration);
-                pos.y = itemAnimationCurve.Evaluate(time / duration);
+                pos.y = throwHeightCurve.Evaluate(time / duration);
                 item.transform.position = pos;
                 yield return null;
             }
