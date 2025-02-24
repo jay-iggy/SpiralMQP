@@ -46,6 +46,12 @@ namespace Game.Scripts {
             pickups = permanentItemPool.ToList();
 
             SceneManager.activeSceneChanged += PopulateItemPool;
+            
+            // disable test item in build
+            #if UNITY_EDITOR
+            #else
+                testItem=null;
+            #endif
         }
         
         IEnumerator ThrowItemFromDoor(ItemPickup item, Vector3 startPos, Vector3 endPos, float duration) {
