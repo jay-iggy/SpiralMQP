@@ -13,15 +13,20 @@ namespace Game.Scripts {
             {
                 if (i < transform.childCount)
                 {
-                    if(states[i] == StickerState.Enabled)
+                    GameObject sticker = transform.GetChild(i).gameObject;
+                    Sticker stickerScript = sticker.GetComponent<Sticker>();
+
+                    switch (states[i])
                     {
-                        transform.GetChild(i).gameObject.SetActive(true);
-                    }
-                    else if(states[i] == StickerState.Hitless)
-                    {
-                        GameObject sticker = transform.GetChild(i).gameObject;
-                        sticker.SetActive(true);
-                        sticker.GetComponent<Sticker>().beatBossHitless();
+                        case StickerState.Disabled:
+                            stickerScript.Hide();
+                            break;
+                        case StickerState.Enabled:
+                            stickerScript.Show(); 
+                            break;
+                        case StickerState.Hitless:
+                            stickerScript.BeatBossHitless();
+                            break;
                     }
                 }
             }

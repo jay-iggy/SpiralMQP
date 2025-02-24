@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDelay: 0.3
   isAlive: 1
-  bossIndex: 4
+  bossIndex: 7
   unlockedItems: []
   minItemRarity: 0
 --- !u!114 &6810006028065278458
@@ -195,6 +195,7 @@ MonoBehaviour:
   invincibilityDuration: 0.2
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
+  critTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   doDeathJuice: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
@@ -623,6 +624,11 @@ MonoBehaviour:
   dmg: 1
   persistent: 1
   speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
 --- !u!1 &5330300075491209578
 GameObject:
   m_ObjectHideFlags: 0

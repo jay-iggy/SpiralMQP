@@ -17,7 +17,7 @@ namespace Game.Scripts
         public static StickerManager instance { get; private set; }
         public List<StickerState> stickerStates { get; private set; } = new List<StickerState>();
 
-        public bool hitless = true;
+        [HideInInspector] public bool hitless = true;
 
         private void Awake()
         {

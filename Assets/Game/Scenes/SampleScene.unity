@@ -8030,11 +8030,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 038bdd3760193bf4bb1a096c0551ce76, type: 2}
     - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}
   - bosses:
+    - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
+    - {fileID: 11400000, guid: 228a5fb354b7510438a826091eafc7aa, type: 2}
     - {fileID: 11400000, guid: 1c412f513e3942148980ad672cca7d2c, type: 2}
     - {fileID: 11400000, guid: 8a17c9453a8afda44be25481dccb6883, type: 2}
     - {fileID: 11400000, guid: 0163672a28f84ea4aabd34c40df36d60, type: 2}
-    - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
-    - {fileID: 11400000, guid: 228a5fb354b7510438a826091eafc7aa, type: 2}
     - {fileID: 11400000, guid: ba67c2b5561f84ef0b49378381b1c918, type: 2}
   - bosses:
     - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
@@ -11559,7 +11559,7 @@ PrefabInstance:
     - target: {fileID: 272490637702824621, guid: acb0cb568d2314955b7f969dc574d0b8,
         type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 272490637702824621, guid: acb0cb568d2314955b7f969dc574d0b8,
         type: 3}
