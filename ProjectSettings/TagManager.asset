@@ -9,6 +9,7 @@ TagManager:
   - Goon
   - FxTemporaire
   - Ground
+  - Hole
   layers:
   - Default
   - TransparentFX

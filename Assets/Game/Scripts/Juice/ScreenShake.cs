@@ -12,6 +12,12 @@ public class ScreenShake : MonoBehaviour
     private float shakeRot;
     private float rotMultiplier = 15;
 
+    public Transform origin;
+
+    private void Start()
+    {
+        origin = new GameObject("Origin").transform;
+    }
 
     void Awake()
     {
@@ -21,7 +27,7 @@ public class ScreenShake : MonoBehaviour
     // since we don't have camera controller, this can go here
     void Update()
     {
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = origin.position;
     }
 
     public void StartShake(float length, float power)
@@ -51,5 +57,9 @@ public class ScreenShake : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, shakeRot * Random.Range(-1f, 1f));
+    }
+    public void ChangeOrigin(float z)
+    {
+        origin.position = new Vector3(0, 0, z);
     }
 }
