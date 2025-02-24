@@ -48,6 +48,8 @@ namespace Game.Scripts {
 
             SceneManager.activeSceneChanged += PopulateItemPool;
             
+            itemSpawnLocation = FindObjectOfType<DoorAnimation>().transform;
+            
             // disable test item in build
             #if UNITY_EDITOR
             #else
