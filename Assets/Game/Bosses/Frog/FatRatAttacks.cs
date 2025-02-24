@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Game.Scripts {
-    public class FrogAttacks : MonoBehaviour {
+    public class FatRatAttacks : MonoBehaviour {
         [Header("Movement")]
         [SerializeField] private float speed = 10;
         [SerializeField] private float moveDistanceThreshold = 3;
