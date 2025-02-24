@@ -11,7 +11,7 @@ namespace Game.Scripts {
         // the list of tags and the event can exists on one hub, but ontriggerenter of all colliders needs to link back to that hub
         // comment: a hub could subscribe its function to all events of hitboxes
         
-        [SerializeField] private List<string> tagsToHit = new List<string>();
+        public List<string> tagsToHit = new List<string>();
         [SerializeField] protected bool ignoresInvincibility = false;
         
         public UnityEvent<ICanGetHit> onHitTarget; // the parent of the hitbox should subscribe to this event to handle the hit (call the hit method on the hurtbox)

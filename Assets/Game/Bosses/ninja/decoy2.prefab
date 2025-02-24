@@ -218,12 +218,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   invincible: 0
+  takeZeroDamage: 0
   invincibilityDuration: 0
   affectsHitless: 0
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
+  critTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   doDeathJuice: 0
   floatingTextPrefab: {fileID: 0}
   maxHealth: 1
+  isAlive: 1
+  canHeal: 1
 --- !u!65 &7392793633261707949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -243,8 +247,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -2.28, y: 1.22, z: 2.24}
-  m_Center: {x: -0.2, y: 0.18, z: 0.1078724}
+  m_Size: {x: -2.28, y: 2, z: 2.24}
+  m_Center: {x: -0.2, y: 1, z: 0.1078724}
 --- !u!114 &687911990371112581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +282,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23, y: 0.68, z: 0.32}
-  m_Center: {x: -0.17537642, y: 0.09, z: 0.3}
+  m_Size: {x: 0.23, y: 2, z: 0.32}
+  m_Center: {x: -0.17537642, y: 1, z: 0.3}
 --- !u!1 &6622781099052485271
 GameObject:
   m_ObjectHideFlags: 0

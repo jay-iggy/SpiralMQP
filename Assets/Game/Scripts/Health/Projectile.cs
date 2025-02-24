@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Interfaces;
 using UnityEngine;
@@ -12,9 +13,9 @@ namespace Game.Scripts {
         public float speed = 0;
         public int projID = -1;
         [SerializeField] protected UnityEvent onDestroyed;
-        public bool destroyedByWall = false;
-
-
+        public bool destroyedByWall = false; 
+        [SerializeField] float ignoreWallDelay = 0.1f; // set to -1 for permanent ignore
+        
         protected static List<int> hitIDs = new();
         
         //TODO: destroy on hit wall
@@ -25,6 +26,18 @@ namespace Game.Scripts {
                 GetComponent<Rigidbody>().velocity = transform.forward * speed;
             }
         }
+
+        private void Start() {
+            if (!destroyedByWall && !persistent && ignoreWallDelay > 0) {
+                StartCoroutine(IgnoreWallForDuration());
+            }
+        }
+
+        private IEnumerator IgnoreWallForDuration() {
+            yield return new WaitForSeconds(ignoreWallDelay);
+            destroyedByWall = true;
+        }
+        
 
         public void IgnoreInvincibility()
         {

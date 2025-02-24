@@ -216,9 +216,8 @@ namespace Game.Scripts
         private void WallHitBullets(Vector3 center)
         {
             GameObject[] bullets = new GameObject[16];
-            for (int i = 0; i < 16; i++)
-            {
-                bullets[i] = Instantiate(bullet);
+            for (int i = 0; i < 16; i++) {
+                bullets[i] = Instantiate(bullet, transform.position, Quaternion.identity);
             }
             BulletPatterns.CreateCircle(bullets, center, .1f);
             BulletPatterns.MoveTowards(bullets, center, -8);

@@ -10,11 +10,11 @@ namespace Game.Scripts.Player.Abilities {
         public Projectile projectilePrefab;
         public bool isAutomatic = false;
         public bool canCrit = true;
-        public Vector3 spawnOffset = new Vector3(0, 1, 0);
         private bool isHolding = false;
         private float _cooldownEndTime = 0;
         [SerializeField] bool ignoreInvincibility = false;
         private static int _nextProjID = 0;
+        [SerializeField] private Transform projectileSpawnPoint;
 
         //audio
         public Sound sfx;
@@ -59,7 +59,7 @@ namespace Game.Scripts.Player.Abilities {
             onAttack.Invoke();
             PlaySound();
 
-            Projectile projectile = Instantiate(projectilePrefab, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
+            Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
             projectile.dmg = CalculateDamage();
             if (canCrit) {
                 projectile.projID = _nextProjID++;

@@ -10,11 +10,13 @@ public class MandibleBite : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CentipedeChain cc = GetComponentInParent<CentipedeChain>();
+
         if (other.gameObject.name.Contains("CentipedeSnack"))
         {
             Destroy(other.gameObject);
-            if (GetComponentInParent<CentipedeChain>().numSegments < GetComponentInParent<CentipedeAttacks>().maxSegments)
-                GetComponentInParent<CentipedeChain>().SpawnSegmentToEnd();
+            if (cc.numSegments + 1 < GetComponentInParent<CentipedeAttacks>().maxSegments)
+                cc.numSegments++;
 
             GetComponentInParent<CentipedeAttacks>().target = "player";
             // GetComponentInParent<HealthComponent>().SetHealth(GetComponentInParent<HealthComponent>().health + 1);
