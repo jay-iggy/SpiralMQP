@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Game/Scenes/StickersScreen.unity.meta
+guid: c53c09325ac5cc948801300fc49e2c7f
+========
 guid: 3e207cb97a9f5214fb710f1d215acdb6
+>>>>>>>> fast:Assets/Game/Scenes/Final.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

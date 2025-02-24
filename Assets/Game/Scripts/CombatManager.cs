@@ -14,6 +14,7 @@ namespace Game.Scripts {
 
         public List<BossTier> bossTiers;
         [SerializeField] List<int> bossDifficultyOrder = new List<int>{ 0, 0, 1, 2, 2 };
+        [SerializeField] List< EnemyData> finalBossPhases = new List<EnemyData>();
         private int bossNumber = 0;
 
         private void Awake() {
