@@ -1051,6 +1051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyedByWall: 0
+  ignoreWallDelay: 0.1
 --- !u!65 &5533872415981819462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1070,7 +1071,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.0000001, z: 0.20000005}
+  m_Size: {x: 1, y: 1.0000001, z: 3}
   m_Center: {x: 0, y: 0.000000029802322, z: 0}
 --- !u!1 &8302935340996541136
 GameObject:
