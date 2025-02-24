@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/EditValuesMenu.unity
     guid: 21a7feb9e2a076344ad7c9224c1e99f5
+  - enabled: 1
+    path: Assets/Game/Scenes/StickersScreen.unity
+    guid: 31cb4a46395526743b6f0acabf5be026
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2dc982d47c5037e48ae513a9c8098197,
       type: 2}

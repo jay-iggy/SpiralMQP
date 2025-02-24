@@ -55,6 +55,8 @@ namespace Game.Scripts {
 
         public AudioManager AudioCON;
 
+        public bool TestWin = false;
+
         public void DestroyBullets()
         {
             //destroy all enemy bullets
@@ -75,7 +77,7 @@ namespace Game.Scripts {
             if (currentEnemyData == null) {
                 Debug.LogError("No current enemy data to transition from");
             }
-            if (bossNumber >= bossDifficultyOrder.Count) {
+            if (bossNumber >= bossDifficultyOrder.Count || TestWin) {
                 OnPlayerWin();
                 onFinalBossDefeated.Invoke();
                 return;

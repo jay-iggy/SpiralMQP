@@ -10,13 +10,25 @@ namespace Game.Scripts
 
         private Image img;
         private Color hitlessColor = new Color(.85f, .65f, .2f);
+        private Color hiddenColor = Color.black;
+        private Color normalColor = Color.white;
 
         private void Awake()
         {
             img = GetComponent<Image>();
         }
 
-        public void beatBossHitless()
+        public void Hide()
+        {
+            img.color = hiddenColor;
+        }
+
+        public void Show()
+        {
+            img.color = normalColor;
+        }
+
+        public void BeatBossHitless()
         {
             img.color = hitlessColor;
         }
