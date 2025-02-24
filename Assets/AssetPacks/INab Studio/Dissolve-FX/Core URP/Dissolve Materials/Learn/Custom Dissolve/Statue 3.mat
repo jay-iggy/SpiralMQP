@@ -7,8 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Statue 2
-  m_Shader: {fileID: -6465566751694194690, guid: be6e2dd8328a35b4e90bc1b64832bbf6, type: 3}
+  m_Name: Statue 3
+  m_Shader: {fileID: -6465566751694194690, guid: be6e2dd8328a35b4e90bc1b64832bbf6,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -17,6 +18,7 @@ Material:
   - _AXIS_Y
   - _TRIPLANAR_SPACE_WORLD
   - _USE_DISSOLVE
+  - _USE_VERTEX_DISPLACEMENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -58,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GuideTexture:
-        m_Texture: {fileID: 2800000, guid: 0de93f8107571274fac0465711a240d2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60c34c90cd8942a46ae806284b400646, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Lerp_Texture:
@@ -70,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Edge_Pattern:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0c92ef24086bd2e46bf3c2ac4bfb818e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -124,9 +126,9 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _BumpScale: 1
-    - _Burn_Hardness: 0.367
-    - _Burn_Offset: 2
-    - _Burn_Width: 0.383
+    - _Burn_Hardness: 0
+    - _Burn_Offset: 0
+    - _Burn_Width: 0.259
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -137,29 +139,29 @@ Material:
     - _DissolveAmount: 0
     - _DstBlend: 0
     - _EdgeWidth: 0.0051
-    - _Ember_Hardness: 0.339
+    - _Ember_Hardness: 0.679
     - _Ember_Offset: 1
-    - _Ember_Width: 3
+    - _Ember_Width: 0.86
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GuideAdjuster: 12
-    - _GuideStrength: 4.54
-    - _GuideTilling: 7.4
+    - _GuideAdjuster: 9.43
+    - _GuideStrength: 3.06
+    - _GuideTilling: 3
     - _Guide_Affects_Edges: 1
     - _Guide_Affects_Edges_VD: 0
     - _Hardness: 0
     - _Hardness_VD: 0.5
     - _Lerp_Scroll_Speed: 0
     - _Lerp_Tiling: 0
-    - _Main_Edge: 2.56
-    - _Main_Edge_Pattern_Tiling: 1
+    - _Main_Edge: 5
+    - _Main_Edge_Pattern_Tiling: 3
     - _Main_Edge_Strength: 0
-    - _MaxValue: 16.98
+    - _MaxValue: 19.9
     - _Max_Value: 18.2
     - _Metallic: 0
-    - _MinValue: -2
+    - _MinValue: -0.9
     - _Min_Value: -0.4
     - _Noise_Offset_Speed: 0
     - _Noise_Scroll_Speed: 0
@@ -172,23 +174,23 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Rotation: 114
-    - _Rotation_Impact: 0.871
-    - _Scroll_Speed: -0.03
+    - _Rotation_Impact: 0.686
+    - _Scroll_Speed: -0.3
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
-    - _Smoothness_1: 6.12
+    - _Smoothness_1: 4.84
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Strength: 5.58
+    - _Strength: 8.82
     - _Surface: 0
     - _TRIPLANAR_SPACE: 0
     - _USE_BACK_COLOR: 1
     - _USE_DISSOLVE: 1
     - _USE_TRIPLANAR_UVS: 0
-    - _USE_VERTEX_DISPLACEMENT: 0
+    - _USE_VERTEX_DISPLACEMENT: 1
     - _UV_CHANNEL: 0
     - _Use_Metallic_Texture: 1
-    - _Width: 3.12
+    - _Width: 2.43
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
@@ -198,16 +200,16 @@ Material:
     m_Colors:
     - _Additional_Edge_Color_1: {r: 0, g: 2.133333, b: 4, a: 0}
     - _Additional_Edge_Color_2: {r: 0.01943774, g: 0, b: 0.7490196, a: 0}
-    - _Back_Color: {r: 118.035385, g: 29.045357, b: 0, a: 0}
+    - _Back_Color: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Burn_Color: {r: 13.76636, g: 2.018105, b: 0, a: 0}
+    - _Burn_Color: {r: 7.063368, g: 0, b: 27.53272, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 9.858462, g: 2.2862422, b: 0.5161497, a: 1}
-    - _Ember_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Ember_Color: {r: 0.02, g: 0, b: 0.02, a: 0}
     - _EmissionColor: {r: 9.849155, g: 9.849155, b: 9.849155, a: 1}
     - _Emission_Back_Color: {r: 0, g: 0, b: 0, a: 0}
-    - _Main_Edge_Color_1: {r: 0, g: 2.133333, b: 4, a: 0}
-    - _Main_Edge_Color_2: {r: 0, g: 0.03053473, b: 0.6698113, a: 0}
+    - _Main_Edge_Color_1: {r: 0, g: 2.1112127, b: 3.9533494, a: 0}
+    - _Main_Edge_Color_2: {r: 0, g: 0.55516434, b: 1, a: 0}
     - _Rotation_Vector: {r: 0, g: 1, b: 0, a: 0}
     - _Rotation_Vector_1: {r: 0, g: 1, b: 0, a: 0}
     - _Rotation_Vector_Lerp: {r: 0, g: 0, b: 0, a: 0}
