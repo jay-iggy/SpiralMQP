@@ -9092,7 +9092,7 @@ MonoBehaviour:
   canvas: {fileID: 646508566}
   healthPickup: {fileID: 4997622612546811508, guid: 36dce8dd419e0b142aec8763cd5dfcb0,
     type: 3}
-  testItem: {fileID: 0}
+  testItem: {fileID: 623284393223504049, guid: 83da05cfdc703044a844bcb21d654be3, type: 3}
   listOfAllItems:
   - {fileID: 4997622612546811508, guid: 7657a76a70c68410aa6d08e42f645783, type: 3}
   - {fileID: 623284393223504049, guid: e5f6d455d1718e84f903868b7afd67c7, type: 3}

@@ -19,7 +19,8 @@ namespace Game.Scripts.Player.Abilities
         private Vector3 lrOffset = Vector3.up * 0.8f;
 
         private float percentToTarget = 0; // [0,1]
-        private float percentIncrement = 0.05f;
+        private float extendIncrement = 0.1f;
+        private float retractIncrement = 0.01f;
 
         private LineRenderer lr;
 
@@ -78,7 +79,7 @@ namespace Game.Scripts.Player.Abilities
             if (shooting) // extend
             {
                 grappleEnd = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
-                percentToTarget += percentIncrement;
+                percentToTarget += extendIncrement;
                 lr.positionCount = 2;
                 lr.SetPosition(0, this.transform.position + lrOffset);
                 lr.SetPosition(1, grappleEnd);
@@ -93,7 +94,7 @@ namespace Game.Scripts.Player.Abilities
 
             if (attatched) // retract
             {
-                percentToTarget += percentIncrement;
+                percentToTarget += retractIncrement;
                 player.transform.position = Vector3.Lerp(this.transform.position, grapplePoint, percentToTarget);
                 lr.positionCount = 2;
                 lr.SetPosition(0, this.transform.position + lrOffset);
