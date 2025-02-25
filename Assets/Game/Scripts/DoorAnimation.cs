@@ -12,6 +12,10 @@ public class DoorAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Start() {
+        PickupManager.instance.itemSpawnLocation = transform;
+    }
+
     private void OnEnable() {
         CombatManager.instance.onBossDefeated.AddListener(OpenDoor);
     }

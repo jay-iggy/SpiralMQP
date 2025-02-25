@@ -22,7 +22,7 @@ namespace Game.Scripts {
         public UnityEvent onItemCollected;
 
         [SerializeField] private AnimationCurve throwHeightCurve;
-        [SerializeField] Transform itemSpawnLocation;
+        public Transform itemSpawnLocation;
         [SerializeField] float itemThrowDuration = 1f;
 
         private void Awake() {
@@ -47,8 +47,6 @@ namespace Game.Scripts {
             pickups = permanentItemPool.ToList();
 
             SceneManager.activeSceneChanged += PopulateItemPool;
-            
-            itemSpawnLocation = FindObjectOfType<DoorAnimation>().transform;
             
             // disable test item in build
             #if UNITY_EDITOR
