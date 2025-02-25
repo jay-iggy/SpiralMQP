@@ -3,7 +3,12 @@ guid: 812f4f19b40876f4f82971fb409c9678
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Object_Sweater_03C.jpgMat
+    second: {fileID: 2100000, guid: 1a2c7126342e6214f95c515f0776ec42, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
