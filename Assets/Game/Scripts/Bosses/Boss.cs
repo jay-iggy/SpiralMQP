@@ -38,6 +38,11 @@ namespace Game.Scripts
             PlayerPrefs.SetInt("boss" + bossIndex + "defeated", 1); // mark as defeated
 
             if(StickerManager.instance != null) {
+                if (StickerManager.instance.hitless)
+                {
+                    PlayerPrefs.SetInt("boss" + bossIndex + "defeated", 2); //mark as defeated hitless
+                }
+
                 StickerManager.instance.ShowSticker(bossIndex);
             }
 
