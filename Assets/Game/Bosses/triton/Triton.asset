@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: Triton
   m_EditorClassIdentifier: 
-  enemyName: Triton
+  enemyName: Bill Brineygill
   bossPrefab: {fileID: 466556231990597027, guid: 954dc7f567964654a95fca3ea72fd9d4,
     type: 3}
   bossMusic: rat_OST
