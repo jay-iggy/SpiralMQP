@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Rat Ninja
   bossPrefab: {fileID: 466556231990597027, guid: 546b6cfca543b804b834c2546d8da533,
     type: 3}
-  bossMusic: rat_OST
+  bossMusic: ninja_OST
   bossIndex: 5
   minItemRarity: 0
   unlockedItems:
