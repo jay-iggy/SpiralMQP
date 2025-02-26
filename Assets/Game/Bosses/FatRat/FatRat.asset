@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: FatRat
   m_EditorClassIdentifier: 
-  enemyName: Ratitude
+  enemyName: Big Jeremy
   bossPrefab: {fileID: 5041012059207050232, guid: 0d8fa4793bbbd304aaeb9b5fd8eb23ba,
     type: 3}
   bossMusic: rat_OST
