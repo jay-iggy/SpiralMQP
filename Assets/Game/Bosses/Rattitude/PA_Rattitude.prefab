@@ -562,7 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3356587081762775914}
   m_Layer: 0
-  m_Name: PA_Ratitude
+  m_Name: PA_Rattitude
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

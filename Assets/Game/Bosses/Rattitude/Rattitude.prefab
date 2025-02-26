@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6997381527250061448}
   - component: {fileID: 3430614721839382701}
   m_Layer: 10
-  m_Name: Ratitude
+  m_Name: Rattitude
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
