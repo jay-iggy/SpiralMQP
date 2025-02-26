@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: Basilisk
   m_EditorClassIdentifier: 
-  enemyName: Basilisk
+  enemyName: Blingo's Basilisk
   bossPrefab: {fileID: 466556231990597027, guid: 0039a549dec4d4d89852eecdb6f54503,
     type: 3}
   bossMusic: baslisk_OST

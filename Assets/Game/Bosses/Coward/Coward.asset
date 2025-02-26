@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: Coward
   m_EditorClassIdentifier: 
-  enemyName: Coward
+  enemyName: Prince Skitterwhisker
   bossPrefab: {fileID: 466556231990597027, guid: f903011a43c4bda438d4ed121b455356,
     type: 3}
   bossMusic: rat_OST
   bossIndex: 6
   minItemRarity: 0
   unlockedItems:
-  - {fileID: 623284393223504049, guid: 83da05cfdc703044a844bcb21d654be3, type: 3}
+  - {fileID: 623284393223504049, guid: e70463a113512e642b9b6a29fafdf5b6, type: 3}
   nextEnemies:
   - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}
