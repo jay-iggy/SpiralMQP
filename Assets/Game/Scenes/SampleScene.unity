@@ -2103,6 +2103,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8344086956363846767, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2008776404}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1031330375}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Die
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnBlood, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633655080627545905, guid: c78915a91fa667f4c909772395ee20dc,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Boss, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8382,6 +8422,18 @@ MonoBehaviour:
         m_CallState: 2
   playerHealth: {fileID: 0}
   AudioCON: {fileID: 0}
+--- !u!114 &1031330375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3466503021368802474, guid: c78915a91fa667f4c909772395ee20dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 698940581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c6822501001044db82acb4e9ad0ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1035155116
 GameObject:
   m_ObjectHideFlags: 0
@@ -12004,6 +12056,18 @@ Transform:
   - {fileID: 1122139547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2008776404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3983176683114601505, guid: c78915a91fa667f4c909772395ee20dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 698940581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6573aac1de55bfe448bd62791526c624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2091083588
 GameObject:
   m_ObjectHideFlags: 0
