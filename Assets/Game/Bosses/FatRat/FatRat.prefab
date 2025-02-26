@@ -1571,6 +1571,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.135
       objectReference: {fileID: 0}
+    - target: {fileID: 1126450072590383714, guid: 741d71dbef041934f894b5d15915e413,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145103255780004909, guid: 741d71dbef041934f894b5d15915e413,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1371831129887262399, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
       propertyPath: m_Name
@@ -1579,17 +1589,17 @@ PrefabInstance:
     - target: {fileID: 1622076352280341495, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.184
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 1622076352280341495, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.107
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1622076352280341495, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.144
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 1622076352280341495, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
@@ -1661,6 +1671,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2909987073950275649, guid: 741d71dbef041934f894b5d15915e413,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3282977354222611940, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1725,6 +1740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365259666439281694, guid: 741d71dbef041934f894b5d15915e413,
+        type: 3}
+      propertyPath: target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4488701284941147860, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
@@ -1805,6 +1825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.082223
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676812828312846415, guid: 741d71dbef041934f894b5d15915e413,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752539698215595613, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
@@ -2106,12 +2131,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8764000730344011795, guid: 741d71dbef041934f894b5d15915e413,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2851939044635340910, guid: 741d71dbef041934f894b5d15915e413, type: 3}
+    - {fileID: 7317775956999506956, guid: 741d71dbef041934f894b5d15915e413, type: 3}
+    - {fileID: 2677820470008229733, guid: 741d71dbef041934f894b5d15915e413, type: 3}
+    - {fileID: 754021820989611452, guid: 741d71dbef041934f894b5d15915e413, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6204579820235437696, guid: 741d71dbef041934f894b5d15915e413, type: 3}
     - {fileID: 4839918054905473444, guid: 741d71dbef041934f894b5d15915e413, type: 3}
     - {fileID: 3117424902499366208, guid: 741d71dbef041934f894b5d15915e413, type: 3}
     - {fileID: 1366755381507680941, guid: 741d71dbef041934f894b5d15915e413, type: 3}
+    - {fileID: 7773769367393377267, guid: 741d71dbef041934f894b5d15915e413, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1622076352280341495, guid: 741d71dbef041934f894b5d15915e413,
         type: 3}
@@ -2409,6 +2444,8 @@ MonoBehaviour:
   projectileCount: 10
   projectileCircleRadius: 2
   projectileSpeed: 8
+  screenShakeLength: 0.5
+  screenShakePower: 0.5
 --- !u!4 &5924924643619920547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1765526831832536741, guid: d36c15ef613bb7946bc5823073873d7e,
