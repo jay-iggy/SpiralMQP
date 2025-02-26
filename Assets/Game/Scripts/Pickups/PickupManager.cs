@@ -31,8 +31,8 @@ namespace Game.Scripts {
         private void Awake() {
             if (instance == null) {
                 instance = this;
-                transform.parent = null;
-                DontDestroyOnLoad(this);
+                /*transform.parent = null;
+                DontDestroyOnLoad(this);*/
             }
             else {
                 Destroy(gameObject);
@@ -77,8 +77,13 @@ namespace Game.Scripts {
             if(canvas!=null) {
                 canvas.UnlockItems(items);
             }
-            pickups.AddRange(items);
-            permanentItemPool.AddRange(items);
+            foreach (ItemPickup item in items) {
+                if (!permanentItemPool.Contains(item)) {
+                    permanentItemPool.Add(item);
+                    pickups.Add(item);
+                }
+            }
+            
             string allItems = SerializeItemList();
             PlayerPrefs.SetString("itemPool", allItems);
         }
