@@ -16,7 +16,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 466556231990597027, guid: 954dc7f567964654a95fca3ea72fd9d4,
     type: 3}
   bossMusic: rat_OST
-  bossIndex: 7
+  bossIndex: 8
   minItemRarity: 0
   unlockedItems: []
   nextEnemies:

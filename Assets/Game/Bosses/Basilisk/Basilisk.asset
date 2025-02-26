@@ -16,7 +16,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 466556231990597027, guid: 0039a549dec4d4d89852eecdb6f54503,
     type: 3}
   bossMusic: baslisk_OST
-  bossIndex: 1
+  bossIndex: 2
   minItemRarity: 0
   unlockedItems:
   - {fileID: 915226059927050450, guid: 6215c8af3e1844c4d8b6b7cdf4a1313c, type: 3}

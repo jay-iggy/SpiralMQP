@@ -35,6 +35,9 @@ namespace Game.Scripts
 
         public void ShowSticker(int bossIndex)
         {
+            if (bossIndex < 0) {
+                Debug.LogError("StickerManager::ShowSticker(): Boss index is less than 0");
+            }
             for(int i = stickerStates.Count; i<bossIndex; i++) //add to list until count = bossIndex
             {
                 stickerStates.Add(StickerState.Disabled);

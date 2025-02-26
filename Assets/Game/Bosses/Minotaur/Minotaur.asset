@@ -16,7 +16,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 48230255666616952, guid: 8c72af0341628794cad1307261725637,
     type: 3}
   bossMusic: minotaur
-  bossIndex: 8
+  bossIndex: 10
   minItemRarity: 0
   unlockedItems:
   - {fileID: 915226059927050450, guid: 72838bafeedaa46f882908ce9b4bec8d, type: 3}

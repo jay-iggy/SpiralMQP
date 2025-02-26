@@ -16,7 +16,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 466556231990597027, guid: 581d2d45ef0c44624af59015282113df,
     type: 3}
   bossMusic: 
-  bossIndex: 0
+  bossIndex: 9
   minItemRarity: 0
   unlockedItems:
   - {fileID: 915226059927050450, guid: b64c436d4b2f5714ca9fd1a0b6f526e9, type: 3}
