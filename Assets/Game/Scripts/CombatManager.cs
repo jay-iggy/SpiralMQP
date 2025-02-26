@@ -12,11 +12,35 @@ namespace Game.Scripts {
     public class CombatManager : MonoBehaviour {
         public static CombatManager instance;
 
+        [SerializeField] private EnemyData initialBoss;
         public List<BossTier> bossTiers;
-        [SerializeField] List<int> bossDifficultyOrder = new List<int>{ 0, 0, 1, 2, 2 };
         [SerializeField] List< EnemyData> finalBossPhases = new List<EnemyData>();
+        [SerializeField] List<int> bossDifficultyOrder = new List<int>{ 0, 0, 1, 2, 2 };
+        
         private int bossNumber = 0;
+        
+        private EnemyData nextBoss = null;
+        [SerializeField] private float bossSpawnDelay = 2f;
+        public Boss currentBoss { get; private set; }
+        public EnemyData currentEnemyData { get; private set; }
 
+        public UnityEvent onGameStart = new();
+        public UnityEvent onBossSpawned = new ();
+        public UnityEvent onBossDefeated = new();
+        public UnityEvent onTransitionToFinalBoss = new();
+        public UnityEvent onFinalBossPhaseChange = new();
+        public UnityEvent onFinalBossDefeated = new();
+        
+        public UnityEvent onPlayerWin = new();
+        public UnityEvent onPlayerLose = new();
+        
+        public HealthComponent playerHealth;
+
+        public AudioManager AudioCON;
+        
+        private BossType bossType = BossType.NORMAL;
+        private EnemyData nextEnemyData = null;
+        
         private void Awake() {
             if(instance == null) {
                 instance = this;
@@ -25,72 +49,70 @@ namespace Game.Scripts {
             }
 
             onGameStart = new();
+            
         }
 
         private void Start() {
             StartCoroutine(SpawnBoss(initialBoss,0));
             StartCoroutine(LateStart());
+            playerHealth = FindObjectOfType<PlayerController>().GetComponent<HealthComponent>();
         }
 
         private IEnumerator LateStart() {
             yield return null;
             onGameStart.Invoke();
         }
-
-
-        [SerializeField] private EnemyData initialBoss;
-        [SerializeField] private float bossSpawnDelay = 2f;
-        public Boss currentBoss { get; private set; }
-        public EnemyData currentEnemyData { get; private set; }
-
-        public UnityEvent onGameStart = new();
-        public UnityEvent onBossDefeated = new();
-        public UnityEvent onFinalBossDefeated = new();
-        public UnityEvent onBossSpawned = new ();
         
-        public UnityEvent onPlayerWin = new();
-        public UnityEvent onPlayerLose = new();
-        
-        public HealthComponent playerHealth;
-
-        public AudioManager AudioCON;
-
-        public bool TestWin = false;
-
-        public void DestroyBullets()
-        {
+        public void DestroyBullets() {
             //destroy all enemy bullets
             // this is temporary until we have a better way to handle this
-            foreach (Projectile p in FindObjectsOfType<Projectile>())
-            {
+            foreach (Projectile p in FindObjectsOfType<Projectile>()) {
                 Destroy(p.gameObject);
             }
         }
 
-        public void BossWasDefeated()
-        {
-            onBossDefeated.Invoke();
+        public void BossWasDefeated() {
+            nextEnemyData = null;
+            if (bossType == BossType.NORMAL) {
+                if(bossNumber >= bossDifficultyOrder.Count) {
+                    bossType = BossType.FINAL;
+                    onTransitionToFinalBoss.Invoke();
+                }
+                else {
+                    int tierNum = bossDifficultyOrder[bossNumber];
+                    BossTier tier = bossTiers[tierNum];
+                    nextEnemyData = GetRandomBoss(tier.bosses);
+                    onBossDefeated.Invoke();
+                }
+            }
+            if(bossType == BossType.FINAL) {
+                int finalBossPhase = bossNumber - bossDifficultyOrder.Count;
+                if (finalBossPhase >= finalBossPhases.Count) {
+                    OnPlayerWin();
+                    onFinalBossDefeated.Invoke();
+                    return;
+                }
+                
+                nextEnemyData = finalBossPhases[finalBossPhase];
+
+                if (finalBossPhase > 0) { // skip items
+                    onFinalBossPhaseChange.Invoke();
+                    TransitionToNextBoss();
+                    if(playerHealth != null) {
+                        playerHealth.SetHealth(playerHealth.maxHealth);
+                    }
+                }
+            }
+            
+            bossNumber++;
         }
+        
 
         public void TransitionToNextBoss() {
-                     
             if (currentEnemyData == null) {
                 Debug.LogError("No current enemy data to transition from");
             }
-            if (bossNumber >= bossDifficultyOrder.Count || TestWin) {
-                OnPlayerWin();
-                onFinalBossDefeated.Invoke();
-                return;
-            }
-            int tierNum = bossDifficultyOrder[bossNumber];
-            BossTier tier = bossTiers[tierNum];
-            EnemyData nextEnemyData = GetRandomBoss(tier.bosses);
-
-            bossNumber++;
-
-            //EnemyData nextEnemyData = currentEnemyData.nextEnemies[Random.Range(0, currentEnemyData.nextEnemies.Count)];
-
-
+            
             StickerManager.instance.hitless = true; //reset hitless tracker for each boss
 
             if(AudioCON != null)
@@ -98,12 +120,8 @@ namespace Game.Scripts {
 
             currentBoss = null;
             StartCoroutine(SpawnBoss(nextEnemyData, bossSpawnDelay));
-
-
-
-            // TODO: Add transition effects
-
             
+            // TODO: Add transition effects
         }
 
         private EnemyData GetRandomBoss(List<EnemyData> enemyData)
@@ -145,4 +163,9 @@ namespace Game.Scripts {
 public class BossTier
 {
     public List<EnemyData> bosses;
+}
+
+public enum BossType {
+    NORMAL,
+    FINAL
 }

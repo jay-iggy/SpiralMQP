@@ -9,11 +9,6 @@ namespace Game.Scripts
     {
         public FinalPhase1Attacks mainBoss;
 
-        protected override void SetBossDefeated()
-        {
-            //don't
-        }
-
         public override void Die()
         {
             mainBoss.KillPillar();

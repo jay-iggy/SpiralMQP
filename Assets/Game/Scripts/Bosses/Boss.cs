@@ -13,18 +13,10 @@ namespace Game.Scripts
         private int attackIndex = -1;
         public bool isAlive = true;
         private bool waitForAttack = false;
-        private bool hasBeenDefeated = false;
-        [SerializeField] protected int bossIndex; //used to match bosses to stickers
         [SerializeField] protected List<ItemPickup> unlockedItems;
-        [SerializeField] protected ItemRarity minItemRarity = ItemRarity.COMMON;
-
-        string bossKey;
-
 
 
         void Start() {
-            SetBossDefeated();
-
             attackList = GetComponent<ICanAttack>();
             
             HealthComponent healthComponent = GetComponent<HealthComponent>();
@@ -32,16 +24,6 @@ namespace Game.Scripts
             healthComponent.SetHealth(healthComponent.maxHealth);
             
             attackDelay *= CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
-        }
-
-        protected virtual void SetBossDefeated()
-        {
-            bossKey = "boss" + bossIndex + "defeated";
-            //PlayerPrefs.SetInt(bossKey, 0);
-            if (PlayerPrefs.GetInt(bossKey, 0) == 1)
-            {
-                hasBeenDefeated = true;
-            }
         }
 
         void Update() {
@@ -52,29 +34,14 @@ namespace Game.Scripts
 
         public virtual void Die() {
             isAlive = false;
-            PlayerPrefs.SetInt(bossKey, 1);
+            int bossIndex = CombatManager.instance.currentEnemyData.bossIndex;
+            PlayerPrefs.SetInt("boss" + bossIndex + "defeated", 1); // mark as defeated
 
-            if(StickerManager.instance != null)
-            {
+            if(StickerManager.instance != null) {
                 StickerManager.instance.ShowSticker(bossIndex);
             }
 
             CombatManager.instance.BossWasDefeated();
-
-            if(PickupManager.instance != null)
-            {
-                PickupManager.instance.DropItems(minItemRarity);
-
-                if (!hasBeenDefeated && unlockedItems.Count>0)
-                {
-                    PickupManager.instance.UnlockItems(unlockedItems);
-                }
-            }
-            else //if pickup manager exists, it will handle boss transition
-            {
-                CombatManager.instance.TransitionToNextBoss();
-            }
-
             CombatManager.instance.DestroyBullets();
             Destroy(gameObject);
             
@@ -93,9 +60,7 @@ namespace Game.Scripts
         protected float ChooseAttack() {
             if (attackList == null) return 0;
 
-            if(attackList.GetAttackCount() <= 1)
-            {
-                
+            if(attackList.GetAttackCount() <= 1) {
                 return attackList.Attack(0);
             }
 
@@ -105,19 +70,16 @@ namespace Game.Scripts
             }
             attackIndex = attackToDo;
             float attackLength = attackList.Attack(attackIndex);
-            if(attackLength == -1)
-            {
+            if(attackLength == -1) {
                 waitForAttack = true;
                 return 0;
             }
-            else
-            {
+            else {
                 return attackLength;
             }          
         }
 
-        public void DoneWithAttack()
-        {
+        public void DoneWithAttack() {
             waitForAttack = false;
         }
     }

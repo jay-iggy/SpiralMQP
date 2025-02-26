@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Pickups;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts {
     public class PickupManager : MonoBehaviour {
@@ -16,6 +18,7 @@ namespace Game.Scripts {
         public List<ItemPickup> listOfAllItems;
         public List<ItemPickup> permanentItemPool;
         public List<ItemPickup> pickups;
+        public ItemPickup the20DollarBill;
         Vector3[] itemDropLocations = new Vector3[3];
 
         public static PickupManager instance;
@@ -24,7 +27,7 @@ namespace Game.Scripts {
         [SerializeField] private AnimationCurve throwHeightCurve;
         public Transform itemSpawnLocation;
         [SerializeField] float itemThrowDuration = 1f;
-
+        
         private void Awake() {
             if (instance == null) {
                 instance = this;
@@ -34,6 +37,15 @@ namespace Game.Scripts {
             else {
                 Destroy(gameObject);
             }
+        }
+        
+        private void OnEnable() {
+            CombatManager.instance.onBossDefeated.AddListener(OnBossDefeated);
+            CombatManager.instance.onTransitionToFinalBoss.AddListener(OnFinalBossTransition);
+        }
+        private void OnDisable() {
+            CombatManager.instance.onBossDefeated.RemoveListener(OnBossDefeated);
+            CombatManager.instance.onTransitionToFinalBoss.RemoveListener(OnFinalBossTransition);
         }
 
         void Start() {
@@ -54,25 +66,6 @@ namespace Game.Scripts {
                 testItem=null;
             #endif
         }
-        
-        IEnumerator ThrowItemFromDoor(ItemPickup item, Vector3 startPos, Vector3 endPos, float duration) {
-            yield return new WaitForSeconds(.5f);
-            
-            item.gameObject.SetActive(true);
-            
-            
-            float time = 0;
-            
-            while (time < duration) {
-                time += Time.deltaTime;
-                Vector3 pos = Vector3.Lerp(startPos, endPos, time / duration);
-                pos.y = throwHeightCurve.Evaluate(time / duration);
-                item.transform.position = pos;
-                yield return null;
-            }
-            
-            item.StartUp();
-        }
 
         public void PopulateItemPool(Scene current, Scene next) {
             pickups = permanentItemPool.ToList();
@@ -89,13 +82,23 @@ namespace Game.Scripts {
             string allItems = SerializeItemList();
             PlayerPrefs.SetString("itemPool", allItems);
         }
+        
+        private void OnBossDefeated() {
+            EnemyData defeatedEnemy = CombatManager.instance.currentEnemyData;
 
-        public void OnItemCollected(int index) {
-            CombatManager.instance.TransitionToNextBoss();
-            if (index != -1) {
-                pickups.RemoveAt(index);
+            string bossKey = "boss" + defeatedEnemy.bossIndex + "defeated";
+            bool hasBeenDefeated = PlayerPrefs.GetInt(bossKey, 0) == 1;
+            
+            if (!hasBeenDefeated && defeatedEnemy.unlockedItems.Count>0) {
+                PickupManager.instance.UnlockItems(defeatedEnemy.unlockedItems);
             }
-            onItemCollected.Invoke(); // destroy unselected items
+            
+            PickupManager.instance.DropItems(defeatedEnemy.minItemRarity);
+        }
+        private void OnFinalBossTransition() {
+            if (the20DollarBill != null) {
+                SpawnItem(the20DollarBill, itemDropLocations[1]);
+            }
         }
 
         public void DropItems(ItemRarity rarity) {
@@ -111,7 +114,20 @@ namespace Game.Scripts {
             if (item1 == null) return;
             ItemPickup item2 = MakeValidItem(item1.itemType, rarity, itemDropLocations[2]);
         }
+        public void OnItemCollected(int index) {
+            CombatManager.instance.TransitionToNextBoss();
+            if (index != -1) {
+                pickups.RemoveAt(index);
+            }
+            onItemCollected.Invoke(); // destroy unselected items
+        }
 
+        private ItemPickup SpawnItem(ItemPickup item, Vector3 location) {
+            ItemPickup newItem = Instantiate(item, location, Quaternion.identity);
+            newItem.gameObject.SetActive(false);
+            StartCoroutine(ThrowItemFromDoor(newItem, itemSpawnLocation.position, location, itemThrowDuration));
+            return newItem;
+        }
         private ItemPickup MakeValidItem(ItemType excludeType, ItemRarity minRarity, Vector3 location) {
             if (pickups.Count == 0) return null;
 
@@ -155,11 +171,24 @@ namespace Game.Scripts {
             return p;
         }
         
-        private ItemPickup SpawnItem(ItemPickup item, Vector3 location) {
-            ItemPickup newItem = Instantiate(item, location, Quaternion.identity);
-            newItem.gameObject.SetActive(false);
-            StartCoroutine(ThrowItemFromDoor(newItem, itemSpawnLocation.position, location, itemThrowDuration));
-            return newItem;
+        
+        IEnumerator ThrowItemFromDoor(ItemPickup item, Vector3 startPos, Vector3 endPos, float duration) {
+            yield return new WaitForSeconds(.5f);
+            
+            item.gameObject.SetActive(true);
+            
+            
+            float time = 0;
+            
+            while (time < duration) {
+                time += Time.deltaTime;
+                Vector3 pos = Vector3.Lerp(startPos, endPos, time / duration);
+                pos.y = throwHeightCurve.Evaluate(time / duration);
+                item.transform.position = pos;
+                yield return null;
+            }
+            
+            item.StartUp();
         }
 
         #region Serialization

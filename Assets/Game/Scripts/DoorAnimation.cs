@@ -18,10 +18,12 @@ public class DoorAnimation : MonoBehaviour
 
     private void OnEnable() {
         CombatManager.instance.onBossDefeated.AddListener(OpenDoor);
+        CombatManager.instance.onTransitionToFinalBoss.AddListener(OpenDoor);
     }
 
     private void OnDisable() {
         CombatManager.instance.onBossDefeated.RemoveListener(OpenDoor);
+        CombatManager.instance.onTransitionToFinalBoss.RemoveListener(OpenDoor);
     }
 
     public void OpenDoor() {

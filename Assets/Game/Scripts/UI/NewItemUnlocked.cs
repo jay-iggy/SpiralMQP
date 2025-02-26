@@ -17,12 +17,13 @@ public class NewItemUnlocked : MonoBehaviour
     public void SetItem(ItemPickup item)
     {
         itemName.text = item.itemName;
-        GameObject itemModel = Instantiate(item.gameObject, transform);
+        GameObject itemModel = Instantiate(item, transform).gameObject;
         itemModel.layer = 5; //UI
-        foreach (Transform child in itemModel.transform)
-        {
-            child.gameObject.layer = 5;//UI
+        foreach (MeshRenderer child in itemModel.GetComponentsInChildren<MeshRenderer>(true)) {
+            child.gameObject.layer = 5;
         }
+        // go through all children until there are no more children and set the layer to UI
+        
         itemModel.transform.position = iconPos.transform.position;
         itemModel.transform.localScale = new Vector3(100, 100, 100);
         itemModel.transform.eulerAngles = new Vector3(-90, 0, 0);
