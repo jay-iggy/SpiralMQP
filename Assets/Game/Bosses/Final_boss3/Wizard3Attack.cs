@@ -2,6 +2,7 @@ using Game.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using static UnityEngine.UI.Image;
 
@@ -42,12 +43,19 @@ namespace Game.Scripts
 
         private bool moveUp;
 
+        private bool vaulerible;
+
+        private int Phaces =0;
+
+        public UnityEvent Die = new();
 
         //audio
         //public AudioManager AudioCON;
 
         private void Start()
         {
+
+            targetGameObject = GameObject.Find("BackMovingWall");
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
 
@@ -304,11 +312,26 @@ namespace Game.Scripts
             float newX = Mathf.MoveTowards(transform.position.x, targetPosition.x - 2, speedX * Time.deltaTime);
 
             // Apply the new position
+
+            
             transform.position = new Vector3(newX, transform.position.y, newZ);
         }
         bool HasReachedTarget()
         {
             return Mathf.Abs(transform.position.z - targetZ) < 0.1f;
+        }
+
+        private void makeVaunible()
+        {
+
+        }
+
+        private void makeSheild()
+        {
+            if(Phaces >= 3)
+            {
+                Die.Invoke();
+            }
         }
     }
      
