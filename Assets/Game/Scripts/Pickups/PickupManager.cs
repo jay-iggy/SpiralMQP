@@ -92,7 +92,7 @@ namespace Game.Scripts {
             EnemyData defeatedEnemy = CombatManager.instance.currentEnemyData;
 
             string bossKey = "boss" + defeatedEnemy.bossIndex + "defeated";
-            bool hasBeenDefeated = PlayerPrefs.GetInt(bossKey, 0) == 1;
+            bool hasBeenDefeated = PlayerPrefs.GetInt(bossKey, 0) > 0;
             
             if (!hasBeenDefeated && defeatedEnemy.unlockedItems.Count>0) {
                 UnlockItems(defeatedEnemy.unlockedItems);

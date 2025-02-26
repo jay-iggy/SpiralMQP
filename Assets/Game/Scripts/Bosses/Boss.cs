@@ -38,6 +38,11 @@ namespace Game.Scripts
             int bossIndex = CombatManager.instance.currentEnemyData.bossIndex;
 
             if(StickerManager.instance != null) {
+                if (StickerManager.instance.hitless)
+                {
+                    PlayerPrefs.SetInt("boss" + bossIndex + "defeated", 2); //mark as defeated hitless
+                }
+
                 StickerManager.instance.ShowSticker(bossIndex);
             }
 
