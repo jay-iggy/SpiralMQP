@@ -96,6 +96,7 @@ namespace Game.Scripts {
             
             if (!hasBeenDefeated && defeatedEnemy.unlockedItems.Count>0) {
                 UnlockItems(defeatedEnemy.unlockedItems);
+                PlayerPrefs.SetInt("boss" + defeatedEnemy.bossIndex + "defeated", 1); // mark as defeated
             }
             
             DropItems(defeatedEnemy.minItemRarity);

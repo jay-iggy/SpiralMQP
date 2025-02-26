@@ -34,8 +34,8 @@ namespace Game.Scripts
 
         public virtual void Die() {
             isAlive = false;
+            
             int bossIndex = CombatManager.instance.currentEnemyData.bossIndex;
-            PlayerPrefs.SetInt("boss" + bossIndex + "defeated", 1); // mark as defeated
 
             if(StickerManager.instance != null) {
                 StickerManager.instance.ShowSticker(bossIndex);
