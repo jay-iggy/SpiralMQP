@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881287371266714c8c7626fbb2a9bb0, type: 3}
   m_Name: Centipede
   m_EditorClassIdentifier: 
-  enemyName: Centipede
+  enemyName: Sentrypede
   bossPrefab: {fileID: 466556231990597027, guid: 581d2d45ef0c44624af59015282113df,
     type: 3}
   bossMusic: 
