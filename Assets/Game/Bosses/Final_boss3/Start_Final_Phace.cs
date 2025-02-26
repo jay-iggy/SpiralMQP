@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Start_Final_Phace : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public UnityEvent StartFinalFight = new();
+    public void StartFinal()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartFinalFight.Invoke();
     }
 }

@@ -27,7 +27,7 @@ namespace Game.Scripts
         private int shotsInChamber;
         private GameObject bulletInChamber; // we can have this be type Projectile
 
-        private Vector3 center = new Vector3(0, 2, 0);
+        private Vector3 center = new Vector3(0, 0, 0);
         GameObject[] bullets = new GameObject[12]; // why not just use a list?
 
         public int curAttack = -1;
