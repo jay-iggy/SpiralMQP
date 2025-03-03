@@ -212,9 +212,10 @@ GameObject:
   - component: {fileID: 634971035366060983}
   - component: {fileID: 7361733162292412350}
   - component: {fileID: 671937026870479609}
+  - component: {fileID: 6256436301011332998}
   - component: {fileID: 445081330666109189}
   m_Layer: 10
-  m_Name: Trident
+  m_Name: ThrowableTrident
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,12 +279,33 @@ MonoBehaviour:
   dmg: 1
   persistent: 1
   speed: 0
-  projID: -1
-  onDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
-  destroyedByWall: 0
-  ignoreWallDelay: 0.1
+--- !u!54 &6256436301011332998
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781847890023868282}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!114 &445081330666109189
 MonoBehaviour:
   m_ObjectHideFlags: 0

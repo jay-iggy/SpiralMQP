@@ -117,6 +117,7 @@ namespace Game.Scripts
 
         void FixedUpdate()
         {
+
             if (water != null)
             {
                 water.transform.position += Vector3.right * waterVel;

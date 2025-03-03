@@ -7,6 +7,8 @@ namespace Game.Scripts.Player.Abilities
 {
     public class OrbitalStrikeAbility : Ability
     {
+
+
         [SerializeField] GameObject beam;
         private GameObject currentBeam;
         private float selfDestructTimer = -1;
