@@ -24,6 +24,7 @@ namespace Game.Scripts {
         [SerializeField] bool doDeathJuice = true;
         
         private bool wasHitByCritical = false;
+        [SerializeField] bool multiplyDamage = true;
         
         //Damage Display Stuff
         public FloatingText floatingTextPrefab;
@@ -72,7 +73,15 @@ namespace Game.Scripts {
 
             SetHealth(health - damage);
             onTakeDamage.Invoke();
-            onTakeDamageFloat.Invoke(damage);
+            if (multiplyDamage)
+            {
+                onTakeDamageFloat.Invoke(damage*2);
+            }
+            else
+            {
+                onTakeDamageFloat.Invoke(damage);
+            }
+            
             
             invincibleUntil = Time.time + invincibilityDuration;
             
