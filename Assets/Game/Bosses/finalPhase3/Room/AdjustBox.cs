@@ -6,7 +6,7 @@ public class AdjustBox : MonoBehaviour
 {
     public List<GameObject> Boxes = new List<GameObject>(); // Create an empty list
     public GameObject Backwall;
-    public float pading =21f;
+    public float pading = 21f;
 
     // Start is called before the first frame update
 
@@ -22,7 +22,7 @@ public class AdjustBox : MonoBehaviour
 
     void MoveFirstToLast()
     {
-        Boxes[0].transform.position = new Vector3(Boxes[2].transform.position.x+pading, Boxes[0].transform.position.y, Boxes[0].transform.position.z);
+        Boxes[0].transform.position = new Vector3(Boxes[2].transform.position.x + pading, Boxes[0].transform.position.y, Boxes[0].transform.position.z);
 
         if (Boxes.Count > 1) // Ensure there's more than one object
         {

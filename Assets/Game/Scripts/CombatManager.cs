@@ -41,6 +41,8 @@ namespace Game.Scripts {
         
         private BossType bossType = BossType.NORMAL;
         public EnemyData nextEnemyData = null;
+
+        public bool testWin = false;
         
         private void Awake() {
             if(instance == null) {
@@ -73,6 +75,13 @@ namespace Game.Scripts {
         }
 
         public void BossWasDefeated() {
+            if (testWin)
+            {
+                OnPlayerWin();
+                onFinalBossDefeated.Invoke();
+                return;
+            }
+
             nextEnemyData = null;
             if (bossType == BossType.NORMAL) {
                 if(bossNumber >= bossDifficultyOrder.Count) {

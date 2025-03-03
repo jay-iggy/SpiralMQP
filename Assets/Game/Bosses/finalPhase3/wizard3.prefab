@@ -318,7 +318,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Health: {fileID: 4733867907900444216}
 --- !u!114 &4733867907900444216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
@@ -368,7 +367,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 26c9489161da3314ab72b7f1eb723902,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26c9489161da3314ab72b7f1eb723902,
         type: 3}

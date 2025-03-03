@@ -39,9 +39,9 @@ namespace Game.Scripts
         public float targetZ = 0;
         public float speedX = 2f;
         public float speedZ = 3f;
-        public float TopZ;
-        public float CenterZ = 0;
-        public float BottomZ;
+        public float TopZ =105f;
+        public float CenterZ = 100f;
+        public float BottomZ=95f;
 
         private int LinePhase = 0;
 
@@ -58,12 +58,14 @@ namespace Game.Scripts
 
         private void Start() {
             Vector3 pos = GameObject.Find("Origin").transform.position;
-            pos.y = 0;
+            pos.y = 1f;
+            pos.x = 5f;
             transform.position = pos;
             targetGameObject = GameObject.Find("BackMovingWall");
             projectailWall1 = GameObject.Find("ProjectailWall_1");
             projectailWall2 = GameObject.Find("ProjectailWall_2");
             projectailWall3 = GameObject.Find("ProjectailWall_3");
+
 
             FinalPhaseController.instance.StartFinal();
             
@@ -71,6 +73,12 @@ namespace Game.Scripts
             timer.onTimerEnd.AddListener(OnTimerEnd);
 
             curAttack = 0;
+
+        TopZ = 104f;
+        CenterZ = 99.5f;
+        BottomZ = 95f;
+
+        targetZ = CenterZ;
 
         }
 
@@ -201,7 +209,7 @@ namespace Game.Scripts
         private float Gap()
         {
             int randomValue = Random.Range(0, 3);
-            Health.TakeDamage(999999999f);
+            //Health.TakeDamage(999999999f);
             switch (randomValue) {
                 case 0:
                     sendBulletStraight(5);
@@ -293,6 +301,7 @@ namespace Game.Scripts
 
         private void sendBulletStraight(float zPosition)
         {
+            zPosition = zPosition +CenterZ;
             // Set the spawn position with the given Z position while keeping X and Y the same
             Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, zPosition);
 
@@ -341,7 +350,7 @@ namespace Game.Scripts
         {
             if(Phaces >= 3)
             {
-                Health.TakeDamage(99);
+                //Health.TakeDamage(99);
             }
         }
     }
