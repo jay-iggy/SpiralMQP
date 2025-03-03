@@ -201,7 +201,7 @@ namespace Game.Scripts
         private float Gap()
         {
             int randomValue = Random.Range(0, 3);
-            Health.TakeDamage(999999999f);
+            //Health.TakeDamage(999999999f);
             switch (randomValue) {
                 case 0:
                     sendBulletStraight(5);
@@ -341,7 +341,7 @@ namespace Game.Scripts
         {
             if(Phaces >= 3)
             {
-                Health.TakeDamage(99);
+                //Health.TakeDamage(99);
             }
         }
     }
