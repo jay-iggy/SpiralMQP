@@ -80,8 +80,9 @@ namespace Game.Scripts {
                     onTransitionToFinalBoss.Invoke();
                 }
                 else {
-                    if(bossNumber<1 && tutorialBoss != null && PlayerPrefs.GetInt("boss" + 1 + "defeated", 0) > 0) {
+                    if(bossNumber<1 && tutorialBoss != null && PlayerPrefs.GetInt("boss" + 1 + "defeated", 0) == 0) {
                         nextEnemyData = tutorialBoss;
+                        bossTiers[0].bosses.Remove(tutorialBoss);
                     }
                     else {
                         int tierNum = bossDifficultyOrder[bossNumber];

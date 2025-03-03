@@ -36,11 +36,17 @@ namespace Game.Scripts
             isAlive = false;
             
             int bossIndex = CombatManager.instance.currentEnemyData.bossIndex;
+            string bossKey = "boss" + bossIndex + "defeated";
+            if (PlayerPrefs.GetInt(bossKey, 0) == 0)
+            {
+                PlayerPrefs.SetInt(bossKey, 1);
+            }
+            
 
-            if(StickerManager.instance != null) {
+            if (StickerManager.instance != null) {
                 if (StickerManager.instance.hitless)
                 {
-                    PlayerPrefs.SetInt("boss" + bossIndex + "defeated", 2); //mark as defeated hitless
+                    PlayerPrefs.SetInt(bossKey, 2); //mark as defeated hitless
                 }
 
                 StickerManager.instance.ShowSticker(bossIndex);
