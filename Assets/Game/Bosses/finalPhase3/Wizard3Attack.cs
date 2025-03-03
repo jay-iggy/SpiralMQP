@@ -61,6 +61,9 @@ namespace Game.Scripts
             pos.y = 0;
             transform.position = pos;
             targetGameObject = GameObject.Find("BackMovingWall");
+            projectailWall1 = GameObject.Find("ProjectailWall_1");
+            projectailWall2 = GameObject.Find("ProjectailWall_2");
+            projectailWall3 = GameObject.Find("ProjectailWall_3");
 
             FinalPhaseController.instance.StartFinal();
             
