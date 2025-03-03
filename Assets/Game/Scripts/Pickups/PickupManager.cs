@@ -92,13 +92,14 @@ namespace Game.Scripts {
             EnemyData defeatedEnemy = CombatManager.instance.currentEnemyData;
 
             string bossKey = "boss" + defeatedEnemy.bossIndex + "defeated";
-            bool hasBeenDefeated = PlayerPrefs.GetInt(bossKey, 0) == 1;
+            bool hasBeenDefeated = PlayerPrefs.GetInt(bossKey, 0) > 0;
             
             if (!hasBeenDefeated && defeatedEnemy.unlockedItems.Count>0) {
-                PickupManager.instance.UnlockItems(defeatedEnemy.unlockedItems);
+                UnlockItems(defeatedEnemy.unlockedItems);
+                PlayerPrefs.SetInt("boss" + defeatedEnemy.bossIndex + "defeated", 1); // mark as defeated
             }
             
-            PickupManager.instance.DropItems(defeatedEnemy.minItemRarity);
+            DropItems(defeatedEnemy.minItemRarity);
         }
         private void OnFinalBossTransition() {
             if (the20DollarBill != null) {

@@ -13,8 +13,9 @@ namespace Game.Scripts {
         public static CombatManager instance;
 
         [SerializeField] private EnemyData initialBoss;
+        [SerializeField] private EnemyData tutorialBoss;
         public List<BossTier> bossTiers;
-        [SerializeField] List< EnemyData> finalBossPhases = new List<EnemyData>();
+        public List< EnemyData> finalBossPhases = new List<EnemyData>();
         [SerializeField] List<int> bossDifficultyOrder = new List<int>{ 0, 0, 1, 2, 2 };
         
         private int bossNumber = 0;
@@ -39,7 +40,7 @@ namespace Game.Scripts {
         public AudioManager AudioCON;
         
         private BossType bossType = BossType.NORMAL;
-        private EnemyData nextEnemyData = null;
+        public EnemyData nextEnemyData = null;
         
         private void Awake() {
             if(instance == null) {
@@ -79,9 +80,15 @@ namespace Game.Scripts {
                     onTransitionToFinalBoss.Invoke();
                 }
                 else {
-                    int tierNum = bossDifficultyOrder[bossNumber];
-                    BossTier tier = bossTiers[tierNum];
-                    nextEnemyData = GetRandomBoss(tier.bosses);
+                    if(bossNumber<1 && tutorialBoss != null && PlayerPrefs.GetInt("boss" + 1 + "defeated", 0) == 0) {
+                        nextEnemyData = tutorialBoss;
+                        bossTiers[0].bosses.Remove(tutorialBoss);
+                    }
+                    else {
+                        int tierNum = bossDifficultyOrder[bossNumber];
+                        BossTier tier = bossTiers[tierNum];
+                        nextEnemyData = GetRandomBoss(tier.bosses);
+                    }
                     onBossDefeated.Invoke();
                 }
             }

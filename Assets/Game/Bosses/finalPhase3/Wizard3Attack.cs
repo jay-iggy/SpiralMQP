@@ -56,15 +56,14 @@ namespace Game.Scripts
         //audio
         //public AudioManager AudioCON;
 
-        public HealthComponent Health;
-
-        private void Start()
-        {
-
+        private void Start() {
+            Vector3 pos = GameObject.Find("Origin").transform.position;
+            pos.y = 0;
+            transform.position = pos;
             targetGameObject = GameObject.Find("BackMovingWall");
-            projectailWall1 = GameObject.Find("ProjectailWall_1");
-            projectailWall2 = GameObject.Find("ProjectailWall_2");
-            projectailWall3 = GameObject.Find("ProjectailWall_3");
+
+            FinalPhaseController.instance.StartFinal();
+            
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
 
