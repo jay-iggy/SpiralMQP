@@ -82,7 +82,7 @@ MonoBehaviour:
   flailTip: {fileID: 7625630910084642329}
   minotaur: {fileID: 0}
   bullet: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
-  fireSpeed: 0.08
+  fireSpeed: 0.3
 --- !u!114 &4502902394575912133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +604,9 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: -0.019812346, y: 0.648, z: 0.31113505}
+  - {x: -0.43073702, y: 0.5679219, z: 0.44429564}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1126,7 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa2a376cfdc6964191ee12641242e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
+  bullet: {fileID: 7193713829538453673, guid: 7879936125f548643941732c87373fe1, type: 3}
   timer: {fileID: 973573141209213855}
   flail: {fileID: 8151742033388755090}
   triangle: {fileID: 2873410290403001100}

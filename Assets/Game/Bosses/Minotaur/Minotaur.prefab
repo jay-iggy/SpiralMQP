@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 5286783044327523087}
   - component: {fileID: 8514131573240955041}
   - component: {fileID: 940971183210914818}
+  - component: {fileID: 6997381527250061448}
   m_Layer: 0
   m_Name: Minotaur
   m_TagString: Enemy
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDelay: 0.3
-  bossIndex: 4
-  minItemRarity: 0
+  isAlive: 1
+  unlockedItems: []
 --- !u!114 &6810006028065278458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,11 +185,21 @@ MonoBehaviour:
   onTakeDamageFloat:
     m_PersistentCalls:
       m_Calls: []
+  onMaxHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  isInvincible: 0
+  takeZeroDamage: 0
   invincibilityDuration: 0.2
   affectsHitless: 0
+  hitTextColor: {r: 1, g: 1, b: 1, a: 1}
+  critTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  doDeathJuice: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 10
+  isAlive: 1
+  canHeal: 1
 --- !u!65 &5924062514624166557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -270,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa2a376cfdc6964191ee12641242e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9, type: 3}
+  bullet: {fileID: 7193713829538453673, guid: 7879936125f548643941732c87373fe1, type: 3}
   timer: {fileID: 940971183210914818}
   flail: {fileID: 905802841903950659}
   triangle: {fileID: 3614517133176022969}
@@ -290,6 +301,18 @@ MonoBehaviour:
   onTimerEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!75 &6997381527250061448
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496709748411362247}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &3614517133176022969
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,12 +605,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToHit:
   - Player
+  ignoresInvincibility: 0
   onHitTarget:
     m_PersistentCalls:
       m_Calls: []
   dmg: 1
   persistent: 1
   speed: 0
+  projID: -1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyedByWall: 0
+  ignoreWallDelay: 0.1
 --- !u!1 &5330300075491209578
 GameObject:
   m_ObjectHideFlags: 0

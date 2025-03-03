@@ -156,7 +156,7 @@ namespace Game.Scripts
                 {
                     charging = false;
                     Vector3 collisionPoint = other.ClosestPoint(transform.position);
-                    WallHitBullets(collisionPoint);
+                    WallHitBullets(collisionPoint+Vector3.up);
                     Vector3 bounceVelocity = transform.position - collisionPoint;
                     bounceVelocity.Normalize();
                     GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity*10);
@@ -215,8 +215,8 @@ namespace Game.Scripts
 
         private void WallHitBullets(Vector3 center)
         {
-            GameObject[] bullets = new GameObject[16];
-            for (int i = 0; i < 16; i++) {
+            GameObject[] bullets = new GameObject[8];
+            for (int i = 0; i < 8; i++) {
                 bullets[i] = Instantiate(bullet, transform.position, Quaternion.identity);
             }
             BulletPatterns.CreateCircle(bullets, center, .1f);

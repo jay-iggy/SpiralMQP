@@ -22,7 +22,7 @@ namespace Game.Scripts
 
         [SerializeField] GameObject bullet;
         private float shootTimer = 0;
-        [SerializeField] float fireSpeed = .08f;
+        [SerializeField] float fireSpeed = .3f;
 
         private void Start()
         {
@@ -104,7 +104,7 @@ namespace Game.Scripts
                     launchStage = 4;
                     return;
             }
-            timer.Set(.3f, data + 1);
+            timer.Set(.4f, data + 1);
         }
 
         private void FixedUpdate()
@@ -127,7 +127,7 @@ namespace Game.Scripts
                     ScreenShake.instance.StartShake(.5f, 1);
                     //hits ground
                     flailSmashBullets(0);
-                    timer.Set(.3f, 0);
+                    timer.Set(.4f, 0);
                 }
             }
 
@@ -208,8 +208,8 @@ namespace Game.Scripts
 
         private void flailSmashBullets(int angle)
         {
-            GameObject[] bullets = new GameObject[12];
-            for(int i = 0; i<12; i++)
+            GameObject[] bullets = new GameObject[8];
+            for(int i = 0; i<8; i++)
             {
                 bullets[i] = Instantiate(bullet);
             }
