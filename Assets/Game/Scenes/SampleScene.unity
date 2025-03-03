@@ -3263,6 +3263,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.660226, y: 4.941537, z: 1}
   m_Center: {x: 0.0045617227, y: 0.016738059, z: 1.750707e-16}
+--- !u!1 &859414722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859414723}
+  - component: {fileID: 859414724}
+  m_Layer: 0
+  m_Name: LargerArenaSize
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &859414723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859414722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &859414724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859414722}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 65, y: 1, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &888223068
 GameObject:
   m_ObjectHideFlags: 0
@@ -8655,7 +8708,7 @@ MonoBehaviour:
   finalBossPhases:
   - {fileID: 11400000, guid: 9ba79c428299f1b4397f4afa1c5f98ef, type: 2}
   - {fileID: 11400000, guid: 86f1b294e698947d89827174e178c465, type: 2}
-  bossDifficultyOrder: 030000000100000001000000010000000200000002000000
+  bossDifficultyOrder: 000000000100000001000000010000000200000002000000
   bossSpawnDelay: 2
   onGameStart:
     m_PersistentCalls:
@@ -8708,7 +8761,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   AudioCON: {fileID: 0}
   nextEnemyData: {fileID: 0}
-  testWin: 1
+  testWin: 0
 --- !u!1 &1035155116
 GameObject:
   m_ObjectHideFlags: 0
@@ -9564,8 +9617,7 @@ MonoBehaviour:
   canvas: {fileID: 1850006709}
   healthPickup: {fileID: 4997622612546811508, guid: 36dce8dd419e0b142aec8763cd5dfcb0,
     type: 3}
-  testItem: {fileID: 4923088266207143212, guid: da35fb187e031458d9080c9914720203,
-    type: 3}
+  testItem: {fileID: 0}
   listOfAllItems:
   - {fileID: 4997622612546811508, guid: 7657a76a70c68410aa6d08e42f645783, type: 3}
   - {fileID: 623284393223504049, guid: e5f6d455d1718e84f903868b7afd67c7, type: 3}
@@ -13958,3 +14010,4 @@ SceneRoots:
   - {fileID: 790282554}
   - {fileID: 7664949600535866100}
   - {fileID: 2002260892}
+  - {fileID: 859414723}

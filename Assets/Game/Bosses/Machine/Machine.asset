@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   bossMusic: rat_OST
   bossIndex: 4
-  minItemRarity: 0
+  minItemRarity: 1
   unlockedItems:
   - {fileID: 915226059927050450, guid: 307e16ad06814bc41968905592e1213b, type: 3}
   - {fileID: 623284393223504049, guid: ff65bc8f29418d84ca9562e236089150, type: 3}

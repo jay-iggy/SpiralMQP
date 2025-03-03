@@ -8,6 +8,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1733573065655219075, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1733573065655219075, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3768783711433296132, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: isAlive
@@ -16,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 17.4
       objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
@@ -26,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -19.1
       objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
@@ -63,6 +73,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5771001452826427555, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771001452826427555, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6272599669249049925, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_Enabled
@@ -76,7 +96,12 @@ PrefabInstance:
     - target: {fileID: 9153190801136829178, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: moveTime
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153190801136829178, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
