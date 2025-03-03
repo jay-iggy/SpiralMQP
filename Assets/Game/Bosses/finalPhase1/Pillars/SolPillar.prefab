@@ -145,4 +145,4 @@ MonoBehaviour:
   - {fileID: 1407531940275348450}
   - {fileID: 3227029015859700870}
   moveSpeed: 0.2
-  moveTime: 1
+  moveTime: 2
