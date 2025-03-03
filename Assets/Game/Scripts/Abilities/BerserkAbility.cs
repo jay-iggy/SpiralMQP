@@ -12,7 +12,7 @@ namespace Game.Scripts.Abilities {
         private PlayerController pc;
         private PranimDriver gfx;
         [SerializeField] Material berserkMaterial;
-        [SerializeField] int damage;
+        [SerializeField] float damage;
         private AttackAbility primaryAbility;
         private AttackAbility offhandAbility;
 
