@@ -29,7 +29,7 @@ public abstract class ItemPickup : MonoBehaviour {
     public ItemRarity itemRarity;
     public string itemDescription;
     private int itemIndex = -1; //-1 for health pickup, ability pickups >= 0
-    private float gracePeriod = .1f;
+    private float gracePeriod = .5f;
     public GameObject pickupUIPrefab;
 
     protected void Start()

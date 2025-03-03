@@ -21,6 +21,5 @@ MonoBehaviour:
   unlockedItems:
   - {fileID: 915226059927050450, guid: 72838bafeedaa46f882908ce9b4bec8d, type: 3}
   - {fileID: 915226059927050450, guid: 8ad9f1a83f0f8194fa85e64fc900e193, type: 3}
-  - {fileID: 623284393223504049, guid: e5f6d455d1718e84f903868b7afd67c7, type: 3}
   nextEnemies:
   - {fileID: 11400000, guid: f9a50c2986e4eb348b1ce27af2e1f6d6, type: 2}
