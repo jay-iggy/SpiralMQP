@@ -19,6 +19,5 @@ MonoBehaviour:
   bossIndex: 9
   minItemRarity: 0
   unlockedItems:
-  - {fileID: 915226059927050450, guid: b64c436d4b2f5714ca9fd1a0b6f526e9, type: 3}
   - {fileID: 915226059927050450, guid: 7031cf9c40daa974f80d09954cc70c97, type: 3}
   nextEnemies: []

@@ -64,7 +64,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   projectileSpeed: 10
-  projectileDamage: 1
+  projectileDamage: 0.5
   cooldown: 0.2
   projectilePrefab: {fileID: 5225713468152933428, guid: ba6b1084b716f2341afcbf5d12f425de,
     type: 3}

@@ -18,6 +18,8 @@ MonoBehaviour:
   bossMusic: rat_OST
   bossIndex: 7
   minItemRarity: 0
-  unlockedItems: []
+  unlockedItems:
+  - {fileID: 623284393223504049, guid: 2b624ea701446a74ea511293aa4168a9, type: 3}
+  - {fileID: 623284393223504049, guid: 7148529b15b3c7a4c9d49b43d0718862, type: 3}
   nextEnemies:
   - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}

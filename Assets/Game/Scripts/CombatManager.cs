@@ -89,10 +89,19 @@ namespace Game.Scripts {
                     onTransitionToFinalBoss.Invoke();
                 }
                 else {
-                    if(bossNumber<1 && tutorialBoss != null && PlayerPrefs.GetInt("boss" + 1 + "defeated", 0) == 0) {
-                        nextEnemyData = tutorialBoss;
-                        bossTiers[0].bosses.Remove(tutorialBoss);
-                    }
+                    if(bossNumber<1 && tutorialBoss != null)
+                    {
+                        if(PlayerPrefs.GetInt("boss" + 1 + "defeated", 0) == 0)
+                        {
+                            nextEnemyData = tutorialBoss;
+                        }
+                        else
+                        {
+                            bossTiers[0].bosses.Add(tutorialBoss);
+                            BossTier tier = bossTiers[0];
+                            nextEnemyData = GetRandomBoss(tier.bosses);
+                        }
+                    } 
                     else {
                         int tierNum = bossDifficultyOrder[bossNumber];
                         BossTier tier = bossTiers[tierNum];

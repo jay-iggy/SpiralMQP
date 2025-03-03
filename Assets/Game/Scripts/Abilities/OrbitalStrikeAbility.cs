@@ -22,7 +22,7 @@ namespace Game.Scripts.Player.Abilities
             GameObject target = CombatManager.instance.currentBoss.gameObject;
             HealthComponent health = target.GetComponent<HealthComponent>();
             currentBeam = Instantiate(beam, target.transform.position, Quaternion.identity);
-            health.TakeDamage(99, true);
+            health.TakeDamage(99.5f, true);
             selfDestructTimer = 0.5f;
             ScreenShake.instance.StartShake(1, 1f);
         }
