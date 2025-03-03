@@ -37,6 +37,10 @@ namespace Game.Scripts
             
             int bossIndex = CombatManager.instance.currentEnemyData.bossIndex;
             string bossKey = "boss" + bossIndex + "defeated";
+
+            CombatManager.instance.BossWasDefeated();
+            CombatManager.instance.DestroyBullets();
+
             if (PlayerPrefs.GetInt(bossKey, 0) == 0)
             {
                 PlayerPrefs.SetInt(bossKey, 1);
@@ -52,8 +56,7 @@ namespace Game.Scripts
                 StickerManager.instance.ShowSticker(bossIndex);
             }
 
-            CombatManager.instance.BossWasDefeated();
-            CombatManager.instance.DestroyBullets();
+            
             Destroy(gameObject);
             
         }

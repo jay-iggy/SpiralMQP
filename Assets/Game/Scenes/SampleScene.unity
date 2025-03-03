@@ -8618,9 +8618,6 @@ MonoBehaviour:
   tutorialBoss: {fileID: 11400000, guid: 96603fcbdb93f10458a0a3888a9662ef, type: 2}
   bossTiers:
   - bosses:
-    - {fileID: 11400000, guid: 63b33145226ffed4a85927d515fc3d8e, type: 2}
-  - bosses:
-    - {fileID: 11400000, guid: 96603fcbdb93f10458a0a3888a9662ef, type: 2}
     - {fileID: 11400000, guid: 3c5bbc213f40e4191b2be8b8678760f2, type: 2}
     - {fileID: 11400000, guid: 038bdd3760193bf4bb1a096c0551ce76, type: 2}
   - bosses:
@@ -9544,6 +9541,7 @@ MonoBehaviour:
   permanentItemPool:
   - {fileID: 4997622612546811508, guid: 7657a76a70c68410aa6d08e42f645783, type: 3}
   - {fileID: 915226059927050450, guid: 67a725cfb6efc1347a26fc8fcf7f9dcc, type: 3}
+  - {fileID: 915226059927050450, guid: d21b9509e5e9c7d4384da8f1db71341d, type: 3}
   pickups: []
   the20DollarBill: {fileID: 4997622612546811508, guid: 1946baecbe1d17c4b965313d6d5ad5a9,
     type: 3}

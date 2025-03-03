@@ -49,7 +49,11 @@ namespace Game.Scripts {
         }
 
         void Start() {
-            if (deleteSave) PlayerPrefs.DeleteAll();
+            if (deleteSave)
+            {
+                Debug.Log("deleting save");
+                PlayerPrefs.DeleteAll();
+            }
 
             for(int i = 0; i<itemDropLocations.Length; i++) { // create spawn locations
                 itemDropLocations[i] = transform.GetChild(i).position;
@@ -92,11 +96,14 @@ namespace Game.Scripts {
             EnemyData defeatedEnemy = CombatManager.instance.currentEnemyData;
 
             string bossKey = "boss" + defeatedEnemy.bossIndex + "defeated";
-            bool hasBeenDefeated = PlayerPrefs.GetInt(bossKey, 0) > 0;
+            bool hasBeenDefeated = (PlayerPrefs.GetInt(bossKey, 0) > 0);
+
+            Debug.Log(hasBeenDefeated);
+            Debug.Log(defeatedEnemy.unlockedItems.Count);
             
             if (!hasBeenDefeated && defeatedEnemy.unlockedItems.Count>0) {
                 UnlockItems(defeatedEnemy.unlockedItems);
-                PlayerPrefs.SetInt("boss" + defeatedEnemy.bossIndex + "defeated", 1); // mark as defeated
+                Debug.Log("unlocking items");
             }
             
             DropItems(defeatedEnemy.minItemRarity);
