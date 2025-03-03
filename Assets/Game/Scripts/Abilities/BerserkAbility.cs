@@ -46,7 +46,7 @@ namespace Game.Scripts.Abilities {
 
         public void SetActive(float health)
         {
-            if (health <= hp.maxHealth / 2) //active
+            if (health < hp.maxHealth / 2) //active
             {
                 gfx.SetAllMaterialsToOneMat(berserkMaterial);
                 
