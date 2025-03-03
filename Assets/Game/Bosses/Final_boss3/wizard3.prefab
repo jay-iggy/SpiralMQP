@@ -30,8 +30,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: isInvincible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: affectsHitless
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: takeZeroDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -308,6 +318,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Health: {fileID: 4733867907900444216}
 --- !u!114 &4733867907900444216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,

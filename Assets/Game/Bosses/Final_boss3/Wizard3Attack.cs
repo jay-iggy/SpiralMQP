@@ -31,6 +31,10 @@ namespace Game.Scripts
         private Vector3 bulletCircleCenter;
 
         public GameObject targetGameObject;
+        private GameObject projectailWall1;
+        private GameObject projectailWall2;
+        private GameObject projectailWall3;
+
         public float End;
         public float targetZ = 0;
         public float speedX = 2f;
@@ -52,10 +56,15 @@ namespace Game.Scripts
         //audio
         //public AudioManager AudioCON;
 
+        public HealthComponent Health;
+
         private void Start()
         {
 
             targetGameObject = GameObject.Find("BackMovingWall");
+            projectailWall1 = GameObject.Find("ProjectailWall_1");
+            projectailWall2 = GameObject.Find("ProjectailWall_2");
+            projectailWall3 = GameObject.Find("ProjectailWall_3");
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
 
@@ -190,7 +199,7 @@ namespace Game.Scripts
         private float Gap()
         {
             int randomValue = Random.Range(0, 3);
-
+            Health.TakeDamage(999999999f);
             switch (randomValue) {
                 case 0:
                     sendBulletStraight(5);
@@ -330,7 +339,7 @@ namespace Game.Scripts
         {
             if(Phaces >= 3)
             {
-                Die.Invoke();
+                Health.TakeDamage(99);
             }
         }
     }
