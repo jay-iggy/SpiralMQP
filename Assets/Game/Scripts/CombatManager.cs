@@ -89,7 +89,7 @@ namespace Game.Scripts {
                         else
                         {
                             bossTiers[0].bosses.Add(tutorialBoss);
-                            BossTier tier = bossTiers[0];
+                            BossTier tier = bossTiers[bossDifficultyOrder[0]];
                             nextEnemyData = GetRandomBoss(tier.bosses);
                         }
                     } 

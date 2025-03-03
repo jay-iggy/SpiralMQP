@@ -389,7 +389,7 @@ MonoBehaviour:
   waterPrefab: {fileID: 7193713829538453673, guid: 3e5cb01b9dc43a84abee3ddbc9b76f18,
     type: 3}
   tridents:
-  - {fileID: 4781847890023868282, guid: c02b0f5d2c97aab48b56208f3f9acd01, type: 3}
+  - {fileID: 4781847890023868282, guid: f14e838c3305a344fa7eb7b86925c937, type: 3}
   - {fileID: 6186726117739735010}
   - {fileID: 3766147781180987426}
   - {fileID: 455778411202441789}
@@ -543,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 634971035366060983, guid: c02b0f5d2c97aab48b56208f3f9acd01,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 634971035366060983, guid: c02b0f5d2c97aab48b56208f3f9acd01,
         type: 3}
@@ -718,12 +718,12 @@ PrefabInstance:
     - target: {fileID: 634971035366060983, guid: c02b0f5d2c97aab48b56208f3f9acd01,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 634971035366060983, guid: c02b0f5d2c97aab48b56208f3f9acd01,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 634971035366060983, guid: c02b0f5d2c97aab48b56208f3f9acd01,
         type: 3}
