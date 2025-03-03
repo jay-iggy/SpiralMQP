@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   bossMusic: ninja_OST
   bossIndex: 5
-  minItemRarity: 0
+  minItemRarity: 1
   unlockedItems:
   - {fileID: 915226059927050450, guid: 5d99ce9935e5f1b4d9085408340e359b, type: 3}
   - {fileID: 915226059927050450, guid: b64c436d4b2f5714ca9fd1a0b6f526e9, type: 3}

@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   bossMusic: minotaur
   bossIndex: 10
-  minItemRarity: 0
+  minItemRarity: 2
   unlockedItems:
   - {fileID: 915226059927050450, guid: 72838bafeedaa46f882908ce9b4bec8d, type: 3}
   - {fileID: 915226059927050450, guid: 8ad9f1a83f0f8194fa85e64fc900e193, type: 3}
