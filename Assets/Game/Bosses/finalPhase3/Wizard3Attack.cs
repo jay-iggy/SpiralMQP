@@ -1,9 +1,12 @@
 using Game.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.UI.Image;
 
 namespace Game.Scripts
@@ -17,11 +20,10 @@ namespace Game.Scripts
         [SerializeField] GameObject bullet;
         [SerializeField] Timer timer;
         private GameObject player;
-        /*
-        [SerializeField] GameObject Goon1;
-        [SerializeField] GameObject Goon2;
-        [SerializeField] GameObject Goon3;
-        */
+
+        [SerializeField] GameObject shield;
+        [SerializeField] GameObject[] pillarPrefabs;
+        
         private int shotsInChamber;
         private GameObject bulletInChamber; // we can have this be type Projectile
 
@@ -74,7 +76,9 @@ namespace Game.Scripts
 
             curAttack = 0;
 
-        TopZ = 104f;
+            //shield.SetActive(true);
+
+            TopZ = 104f;
         CenterZ = 99.5f;
         BottomZ = 95f;
 
@@ -107,39 +111,13 @@ namespace Game.Scripts
             return 0;
         }
 
-        /*
-        private float MakeGoon()
+        
+        private float MakePillar()
         {
-            float maxhealth = GetComponent<HealthComponent>().maxHealth;
-            float curhealth = GetComponent<HealthComponent>().health;
             
-            for (int i = 0; i < x; i++)
-            {
-                GameObject newGoon = null;
-                switch (goonTracker)
-                {
-                    case 1:
-                        newGoon = Instantiate(Goon1, GetRandomPointOnCircle(2), Quaternion.identity);
-                        goonTracker = 2;
-                        break;
-                    case 2:
-
-                        newGoon = Instantiate(Goon2, GetRandomPointOnCircle(2), Quaternion.identity);
-                        goonTracker = 3;
-                        break;
-                    case 3:
-                        newGoon = Instantiate(Goon3, GetRandomPointOnCircle(2), Quaternion.identity);
-                        goonTracker = 1;
-                        break;
-                }
-
-            }
-
-            timer.Set(0, 1);
+           
             return 1f;
         }
-
-        */
 
         
         private float Line()
@@ -284,6 +262,11 @@ namespace Game.Scripts
         void FixedUpdate()
         {
 
+            if (true)
+            {
+
+            }
+
             MoveTowards();
         }
 
@@ -343,16 +326,30 @@ namespace Game.Scripts
 
         private void makeVaunible()
         {
-
+            shield.SetActive(false);
         }
 
         private void makeSheild()
         {
+            Spawnpillars();
             if(Phaces >= 3)
             {
                 //Health.TakeDamage(99);
             }
+            shield.SetActive(true);
         }
+        private void Spawnpillars()
+        {
+            for (int i = 0; i < 2; i++) {
+                int listsize = pillarPrefabs.Length;
+
+                int ranPil = Random.Range(0, listsize);
+                
+                Instantiate(pillarPrefabs[ranPil]);
+                
+                }
+        }
+
     }
      
 }

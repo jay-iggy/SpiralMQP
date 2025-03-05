@@ -8761,7 +8761,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   AudioCON: {fileID: 0}
   nextEnemyData: {fileID: 0}
-  testWin: 0
+  testWin: 1
 --- !u!1 &1035155116
 GameObject:
   m_ObjectHideFlags: 0
