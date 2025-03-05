@@ -16,22 +16,27 @@ PrefabInstance:
     - target: {fileID: 3768783711433296132, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: isAlive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768783711433296132, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: attackDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.8
+      value: 5.5967646
       objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
@@ -86,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 9153190801136829178, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: moveTime
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9153190801136829178, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
