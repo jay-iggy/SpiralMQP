@@ -235,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -244,9 +244,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1232873959393381711}
+      objectReference: {fileID: 3356553354418974802}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -259,13 +264,34 @@ PrefabInstance:
       objectReference: {fileID: 466556231990597027}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 8923334970082190586, guid: 88a598ac6e0e7b24f97c5442d4f5a3cd,
+        type: 3}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: temp
+      value: triggerwin
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -279,8 +305,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: Win
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Scripts.ShittyWinScript, Assembly-CSharp
+      value: Game.Scripts.Wizard3, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
@@ -294,7 +325,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: Game.Scripts.ShittyWinScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226210422890411109, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e,
@@ -428,10 +469,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3356553354418974802}
-    - targetCorrespondingSourceObject: {fileID: 1776588961429897932, guid: d36c15ef613bb7946bc5823073873d7e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1232873959393381711}
   m_SourcePrefab: {fileID: 100100000, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
 --- !u!114 &82721055367509288 stripped
 MonoBehaviour:
@@ -506,34 +543,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4733867907900444216}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1232873959393381711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266249577841588369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f2101d9a6d4fe59369b9e7f0df54e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 1.5
-  onWin:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 25f2101d9a6d4fe59369b9e7f0df54e5, type: 3}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 0

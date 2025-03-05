@@ -350,6 +350,31 @@ namespace Game.Scripts
                 }
         }
 
+        public void triggerwin()
+        {
+
+            GameObject winObject = GameObject.Find("ShittyWinScript");
+
+            if (winObject != null)
+            {
+                ShittyWinScript winScript = winObject.GetComponent<ShittyWinScript>();
+
+                if (winScript != null)
+                {
+                    winScript.Win(); // Call the UnityEvent
+                }
+                else
+                {
+                    Debug.LogError("ShittyWinScript component not found on the GameObject!");
+                }
+            }
+            else
+            {
+                Debug.LogError("GameObject 'ShittyWinScript' not found in the scene!");
+            }
+        }
     }
-     
+
 }
+     
+
