@@ -74,6 +74,8 @@ namespace Game.Scripts {
         [SerializeField] GameObject ExplosiveFlame;
         [SerializeField] GameObject Flame;
 
+        
+        
 
         public int GetAttackCount() { return numAttacks; }
 
