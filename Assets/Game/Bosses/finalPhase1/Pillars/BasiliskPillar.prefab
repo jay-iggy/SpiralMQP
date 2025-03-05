@@ -23,6 +23,11 @@ PrefabInstance:
       propertyPath: isAlive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3768783711433296132, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: attackDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.x
