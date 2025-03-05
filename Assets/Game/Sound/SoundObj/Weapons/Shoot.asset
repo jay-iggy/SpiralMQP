@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293df1d292a70484d81b7eef50c2a884, type: 3}
+  m_Name: Shoot
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 9d606cd927ac5aa4794551704e2b2a0c, type: 3}
+  - {fileID: 8300000, guid: c7b19f546a8db1b41932aec8c59049a2, type: 3}
+  - {fileID: 8300000, guid: 734a238f6d0a2c74da3d5a3ce5720b6b, type: 3}
+  - {fileID: 8300000, guid: 3b9404c8b9a991e4d93264edb7cd321c, type: 3}
+  - {fileID: 8300000, guid: 7cf5f85482572ab428f1f380270b05f0, type: 3}
+  - {fileID: 8300000, guid: 0bb46296855c7b044866aa1bf0b84976, type: 3}
+  baseVolume: 11.62
+  mixerGroup: {fileID: 24300002, guid: fa1b42bc6dfebdd4e8a124d77fadd16b, type: 2}

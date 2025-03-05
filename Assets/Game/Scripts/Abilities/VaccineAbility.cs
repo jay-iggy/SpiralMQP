@@ -7,6 +7,7 @@ namespace Game.Scripts.Abilities
     public class VaccineAbility : MonoBehaviour
     {
         private HealthComponent playerHP;
+        [SerializeField] private Sound sfx;
 
         void Start()
         {
@@ -19,6 +20,7 @@ namespace Game.Scripts.Abilities
         {
             int healing = Random.Range(1, 3);
             playerHP.Heal((float)healing, true);
+            sfx.PlaySound();
         }
     }
 }

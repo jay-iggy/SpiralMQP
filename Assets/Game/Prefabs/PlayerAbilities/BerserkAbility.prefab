@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   berserkMaterial: {fileID: 2100000, guid: afe7de76615be4c8a97a32240c4a0adf, type: 2}
   damage: 2.5
-  sfx: {fileID: 0}
+  sfx: {fileID: 11400000, guid: 14b49568dede80f4b877957d4e2cd25c, type: 2}

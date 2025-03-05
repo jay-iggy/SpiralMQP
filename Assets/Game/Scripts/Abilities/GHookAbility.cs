@@ -24,7 +24,8 @@ namespace Game.Scripts.Player.Abilities
 
         private LineRenderer lr;
 
-        public Sound sfx;
+        public Sound shootSfx;
+        public Sound reelSfx;
 
         private void Start()
         {
@@ -44,6 +45,7 @@ namespace Game.Scripts.Player.Abilities
             {
                 shooting = true;
                 grapplePoint = hit.point;
+                shootSfx.PlaySound();
             }
         }
 
@@ -89,6 +91,7 @@ namespace Game.Scripts.Player.Abilities
                     shooting = false;
                     attatched = true;
                     percentToTarget = 0;
+                    reelSfx.PlaySound();
                 }
             }
 
@@ -107,10 +110,6 @@ namespace Game.Scripts.Player.Abilities
                     attatched = false;
                 }
             }
-        }
-
-        private void PlaySound() {
-            if(sfx != null) sfx.PlaySound();
         }
     }
 }

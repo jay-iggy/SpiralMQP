@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beam: {fileID: 6385944044954060190, guid: 90debefa8b55d514ca4dacaee378ba72, type: 3}
+  sfx: {fileID: 11400000, guid: f50fd8f2eb0547649aaf4250f65833b3, type: 2}
 --- !u!1 &6427374133297245378
 GameObject:
   m_ObjectHideFlags: 0

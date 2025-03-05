@@ -10,7 +10,7 @@ namespace Game.Scripts.Abilities
         private HealthComponent bossHP;
         private HealthComponent playerHP;
         [SerializeField] int damageThreshold;
-
+        
         public Sound sfx;
 
         private void Start()
@@ -33,16 +33,13 @@ namespace Game.Scripts.Abilities
             {
                 playerHP.SetHealth(playerHP.health + 1);
                 damageDone = 0;
-                PlaySound();
+                sfx.PlaySound();
             }
         }
 
         public void resetDamageDone()
         {
             damageDone = 0;
-        }
-        private void PlaySound() {
-            if(sfx != null) sfx.PlaySound();
         }
     }
 }

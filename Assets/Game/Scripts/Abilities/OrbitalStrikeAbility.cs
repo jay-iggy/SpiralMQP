@@ -12,6 +12,7 @@ namespace Game.Scripts.Player.Abilities
         [SerializeField] GameObject beam;
         private GameObject currentBeam;
         private float selfDestructTimer = -1;
+        [SerializeField] Sound sfx;
 
         public override void OnAbilityEquipped() {
             _player.GetReticle().enabled = false;
@@ -27,6 +28,7 @@ namespace Game.Scripts.Player.Abilities
             health.TakeDamage(99.5f, true);
             selfDestructTimer = 0.5f;
             ScreenShake.instance.StartShake(1, 1f);
+            sfx.PlaySound();
         }
 
         private void Update()

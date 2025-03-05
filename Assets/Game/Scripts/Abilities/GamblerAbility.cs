@@ -9,6 +9,7 @@ namespace Game.Scripts.Abilities
         private GameObject player;
         private PlayerController pc;
         private AttackAbility primaryAbility;
+        [SerializeField] Sound failSfx;
 
 
         void Start()
@@ -35,6 +36,7 @@ namespace Game.Scripts.Abilities
             if(Random.Range(0, 7) == 0)
             {
                 primaryAbility.ModifyDamage(0, ModifyValue.MULT);
+                failSfx.PlaySound();
             }
             else
             {

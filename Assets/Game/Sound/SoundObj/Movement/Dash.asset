@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293df1d292a70484d81b7eef50c2a884, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 6999654b5e7caa345a79e3945c4c6e26, type: 3}
+  - {fileID: 8300000, guid: 3014de4807e31d340a2ffed94f459ae7, type: 3}
+  - {fileID: 8300000, guid: 83c899294cc5a9841a54fba3d354f1de, type: 3}
+  - {fileID: 8300000, guid: 98a9fe51350c48e49b8100ff9e5c0c32, type: 3}
+  - {fileID: 8300000, guid: ddabf2cd1626482499b3a6817bf87d14, type: 3}
+  - {fileID: 8300000, guid: aa9e0e4fdfb44f441858d6a78598a979, type: 3}
+  - {fileID: 8300000, guid: a38479a3b932f8140820c5e2b4d6ed71, type: 3}
+  - {fileID: 8300000, guid: f0318ced310617e458948080ec69d13c, type: 3}
+  - {fileID: 8300000, guid: 748b746cee2864f4b8090272670f0d70, type: 3}
+  - {fileID: 8300000, guid: 6a9587532823a3348aea8c5ee6566db2, type: 3}
+  baseVolume: 1
+  mixerGroup: {fileID: 24300002, guid: fa1b42bc6dfebdd4e8a124d77fadd16b, type: 2}

@@ -49,7 +49,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1032
   player: {fileID: 3417639988323438932}
-  sfx: {fileID: 11400000, guid: 9b57cadd51161b543a423d31ff6c26eb, type: 2}
+  shootSfx: {fileID: 11400000, guid: 9b57cadd51161b543a423d31ff6c26eb, type: 2}
+  reelSfx: {fileID: 11400000, guid: cd23a216830aa4f43a58a3937603452f, type: 2}
 --- !u!120 &5120635613590227056
 LineRenderer:
   serializedVersion: 2

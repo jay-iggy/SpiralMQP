@@ -153,6 +153,7 @@ Transform:
   m_Children:
   - {fileID: 839372108}
   - {fileID: 792510883}
+  - {fileID: 1140456448}
   m_Father: {fileID: 1207691414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &19641063
@@ -9877,6 +9878,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22310389b642f874583a2affc71061d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1140456448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1785472743156592396, guid: db2430a7fbb648645ba79364edea2164,
+    type: 3}
+  m_PrefabInstance: {fileID: 1236101613362029391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1158096597
 GameObject:
   m_ObjectHideFlags: 0
@@ -13872,7 +13879,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 16901593}
     m_Modifications:
     - target: {fileID: 1785472743156592396, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
@@ -13897,17 +13904,17 @@ PrefabInstance:
     - target: {fileID: 1785472743156592396, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1785472743156592396, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1785472743156592396, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1785472743156592396, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
@@ -13928,6 +13935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394877148925991447, guid: db2430a7fbb648645ba79364edea2164,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4904906574964655037, guid: db2430a7fbb648645ba79364edea2164,
         type: 3}
@@ -14932,7 +14944,6 @@ SceneRoots:
   - {fileID: 3951785556178038141}
   - {fileID: 19641066}
   - {fileID: 149467469}
-  - {fileID: 1236101613362029391}
   - {fileID: 51066368}
   - {fileID: 790282554}
   - {fileID: 2002260892}
