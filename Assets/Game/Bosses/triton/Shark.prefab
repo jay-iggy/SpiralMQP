@@ -812,6 +812,9 @@ MonoBehaviour:
   - -1.45
   - 0
   state: 0
+  warningSfx: {fileID: 11400000, guid: 0ede345d2f8c912498dd6ff5b74915a3, type: 2}
+  leapSfx: {fileID: 11400000, guid: 968a5840411b527449b78731c8172d9e, type: 2}
+  biteSfx: {fileID: 11400000, guid: c64d8803f39e016498fe38091f1a5b13, type: 2}
 --- !u!114 &9029711249183541384
 MonoBehaviour:
   m_ObjectHideFlags: 0

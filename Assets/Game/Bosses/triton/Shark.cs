@@ -24,6 +24,9 @@ namespace Game.Scripts
         private float forwardSpeed = .075f;
         private float verticalSpeed = 0;
         private float leapCooldown = 0;
+        [SerializeField] private Sound warningSfx;
+        [SerializeField] private Sound leapSfx;
+        [SerializeField] private Sound biteSfx;
 
         void Start()
         {
@@ -73,6 +76,7 @@ namespace Game.Scripts
                     }
                     break;
                 case SharkState.CHASING:
+                    warningSfx.PlaySound();
                     if (transform.position.y < yLevels[1])
                     {
                         transform.position += Vector3.up * .02f;
@@ -88,6 +92,7 @@ namespace Game.Scripts
                         leapCooldown = 50;
                         state = SharkState.LEAPING;
                         //leap sound
+                        leapSfx.PlaySound();
                         verticalSpeed = .2f;
                         forwardSpeed = .15f;
                         coll.enabled = true;
@@ -111,9 +116,9 @@ namespace Game.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
-            {
+            if (other.gameObject.CompareTag(TagManager.Player)) {
                 other.gameObject.GetComponent<HealthComponent>().GetHit(1);
+                biteSfx.PlaySound();
             }
 
         }
