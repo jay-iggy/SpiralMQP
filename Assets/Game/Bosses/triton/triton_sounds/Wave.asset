@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293df1d292a70484d81b7eef50c2a884, type: 3}
   m_Name: Wave
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 50eab03e33d691a43bf3cbb81b9a5a4e, type: 3}
   baseVolume: 1
   mixerGroup: {fileID: 24300002, guid: fa1b42bc6dfebdd4e8a124d77fadd16b, type: 2}
