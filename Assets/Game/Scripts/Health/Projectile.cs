@@ -15,6 +15,9 @@ namespace Game.Scripts {
         [SerializeField] protected UnityEvent onDestroyed;
         public bool destroyedByWall = false; 
         [SerializeField] float ignoreWallDelay = 0.1f; // set to -1 for permanent ignore
+        [Header("Sound")]
+        [SerializeField] protected Sound onHitSfx;
+        [SerializeField] protected Sound onHitWallSfx;
         
         protected static List<int> hitIDs = new();
         
@@ -60,12 +63,14 @@ namespace Game.Scripts {
             }
             
             target.GetHit(projDmg, ignoresInvincibility, isCrit);
+            if(onHitSfx != null) onHitSfx.PlaySound();
             if(!persistent) DestroySelf();
         }
 
         protected override void OnTriggerEnterNonHurtbox(Collider other) {
             if (destroyedByWall && other.gameObject.CompareTag(TagManager.Wall)) {
                 DestroySelf();
+                if(onHitWallSfx != null) onHitWallSfx.PlaySound();
             }
             
         }
