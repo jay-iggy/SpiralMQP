@@ -70,6 +70,11 @@ PrefabInstance:
       propertyPath: isAlive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3768783711433296132, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: attackDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4367060475065151149, guid: 23a8496d664891e42a49242a543ff85d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,6 +151,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5201522005593478507, guid: e0a6d62eec0af304189075d348cddb83,
         type: 3}
+    - target: {fileID: 9153190801136829178, guid: 23a8496d664891e42a49242a543ff85d,
+        type: 3}
+      propertyPath: moveTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
