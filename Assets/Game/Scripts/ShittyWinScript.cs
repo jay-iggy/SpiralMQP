@@ -28,5 +28,10 @@ namespace Game.Scripts {
             //Application.Quit();
             SceneManager.LoadScene("MainMenu");
         }
+
+        public void temp()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

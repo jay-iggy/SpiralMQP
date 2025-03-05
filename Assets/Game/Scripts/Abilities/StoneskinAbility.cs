@@ -15,7 +15,7 @@ namespace Game.Scripts.Abilities
             hp = player.GetComponent<HealthComponent>();
             hp.onTakeDamage.AddListener(SetStoneskin);
             pc = player.GetComponent<PlayerController>();
-            pc.movementSpeed = 4.5f;
+            pc.movementSpeed = 5.5f;
         }
 
         public void SetStoneskin()

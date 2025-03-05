@@ -87,6 +87,7 @@ namespace Game.Scripts
                     {
                         leapCooldown = 50;
                         state = SharkState.LEAPING;
+                        //leap sound
                         verticalSpeed = .2f;
                         forwardSpeed = .15f;
                         coll.enabled = true;
