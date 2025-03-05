@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Sentrypede
   bossPrefab: {fileID: 466556231990597027, guid: 581d2d45ef0c44624af59015282113df,
     type: 3}
-  bossMusic: 
+  bossMusic: dungeon_composition
   bossIndex: 9
   minItemRarity: 0
   unlockedItems:

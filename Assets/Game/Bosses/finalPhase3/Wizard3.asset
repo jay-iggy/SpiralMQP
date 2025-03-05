@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: wizzard
   bossPrefab: {fileID: 466556231990597027, guid: 459ba2e016f4f8142b1597a69d61eb60,
     type: 3}
-  bossMusic: rat_OST
+  bossMusic: minotaur_boss_OST
   bossIndex: 14
   minItemRarity: 0
   unlockedItems:

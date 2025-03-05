@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Prince Skitterwhisker
   bossPrefab: {fileID: 466556231990597027, guid: f903011a43c4bda438d4ed121b455356,
     type: 3}
-  bossMusic: rat_OST
+  bossMusic: rat_king
   bossIndex: 6
   minItemRarity: 0
   unlockedItems:
