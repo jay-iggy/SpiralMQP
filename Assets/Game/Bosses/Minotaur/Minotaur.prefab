@@ -122,6 +122,7 @@ MonoBehaviour:
   attackDelay: 0.3
   isAlive: 1
   unlockedItems: []
+  onHitSfx: {fileID: 11400000, guid: 1cb2ae04fffbee54a828e2bbd0f1d31c, type: 2}
 --- !u!114 &6810006028065278458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
   hitTextColor: {r: 1, g: 1, b: 1, a: 1}
   critTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   doDeathJuice: 1
+  multiplyDamage: 1
   floatingTextPrefab: {fileID: 2668588759694593069, guid: 9bcf0550e0d46ab478862aa16af41e2b,
     type: 3}
   maxHealth: 10
@@ -286,6 +288,8 @@ MonoBehaviour:
   flail: {fileID: 905802841903950659}
   triangle: {fileID: 3614517133176022969}
   maxCharges: 5
+  chargeSfx: {fileID: 11400000, guid: 0a7fe108e15bc6044871853e1d5c956f, type: 2}
+  wallCrashSfx: {fileID: 11400000, guid: 51413d65bfcbd1a43b3de05ec808433b, type: 2}
 --- !u!114 &940971183210914818
 MonoBehaviour:
   m_ObjectHideFlags: 0

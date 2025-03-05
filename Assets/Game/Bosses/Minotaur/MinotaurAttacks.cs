@@ -29,6 +29,10 @@ namespace Game.Scripts
         bool charging = false;
         float chargeSpeed = .2f;
         Vector3 chargeVelocity;
+        
+        [Header("Sound")]
+        [SerializeField] private Sound chargeSfx;
+        [SerializeField] private Sound wallCrashSfx;
 
         private void Start()
         {
@@ -78,6 +82,7 @@ namespace Game.Scripts
                 return 0;
             }
             chargesToDo--;
+            chargeSfx.PlaySound();
 
             return -1;
         }
@@ -150,7 +155,7 @@ namespace Game.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "Wall")
+            if(other.gameObject.CompareTag(TagManager.Wall))
             {
                 if(curAttack == CHARGE_ATTACK) //charge
                 {
@@ -162,6 +167,7 @@ namespace Game.Scripts
                     GetComponent<MovementComponent>().AddExternalVelocity(bounceVelocity*10);
                     ScreenShake.instance.StartShake(.2f, .5f);
                     Charge();
+                    wallCrashSfx.PlaySound();
                 }
                 if(curAttack == SEEKING_CHARGE_ATTACK) //seeking charge
                 {
@@ -177,10 +183,11 @@ namespace Game.Scripts
                     else if(other.gameObject.name == "V")
                     {
                         Bounce(true);
-                    }                  
+                    }
+                    wallCrashSfx.PlaySound();
                 }
             }
-            else if(other.gameObject.tag == "Player")
+            else if(other.gameObject.CompareTag(TagManager.Player))
             {
                 other.gameObject.GetComponent<HealthComponent>().GetHit(1);
                 if(curAttack == SEEKING_CHARGE_ATTACK)

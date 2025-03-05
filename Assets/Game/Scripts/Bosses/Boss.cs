@@ -14,6 +14,7 @@ namespace Game.Scripts
         public bool isAlive = true;
         private bool waitForAttack = false;
         [SerializeField] protected List<ItemPickup> unlockedItems;
+        [SerializeField] protected Sound onHitSfx;
 
 
         void Start() {
@@ -22,6 +23,8 @@ namespace Game.Scripts
             HealthComponent healthComponent = GetComponent<HealthComponent>();
             healthComponent.maxHealth *= CustomStatsManager.instance.customStats.enemyHealthMult;
             healthComponent.SetHealth(healthComponent.maxHealth);
+            
+            healthComponent.onTakeDamage.AddListener(OnHit);
             
             attackDelay *= CustomStatsManager.instance.customStats.enemyAttackSpeedMult;
         }
@@ -59,6 +62,12 @@ namespace Game.Scripts
             
             Destroy(gameObject);
             
+        }
+
+        void OnHit() {
+            if(onHitSfx != null) {
+                onHitSfx.PlaySound();
+            }
         }
 
         protected void CheckForAttack() {

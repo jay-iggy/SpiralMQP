@@ -910,6 +910,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onHitSfx
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cb2ae04fffbee54a828e2bbd0f1d31c,
+        type: 2}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: bossIndex
       value: 10
       objectReference: {fileID: 0}
@@ -1133,6 +1139,8 @@ MonoBehaviour:
   flail: {fileID: 8151742033388755090}
   triangle: {fileID: 2873410290403001100}
   maxCharges: 5
+  chargeSfx: {fileID: 11400000, guid: 0a7fe108e15bc6044871853e1d5c956f, type: 2}
+  wallCrashSfx: {fileID: 11400000, guid: 51413d65bfcbd1a43b3de05ec808433b, type: 2}
 --- !u!114 &973573141209213855
 MonoBehaviour:
   m_ObjectHideFlags: 0
