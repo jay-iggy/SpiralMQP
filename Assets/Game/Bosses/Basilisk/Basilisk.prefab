@@ -94,6 +94,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
+      propertyPath: onHitSfx
+      value: 
+      objectReference: {fileID: 11400000, guid: eb33b08a36ea00848a4ed4fe09f35b15,
+        type: 2}
+    - target: {fileID: 1102435351909101566, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
       propertyPath: bossIndex
       value: 2
       objectReference: {fileID: 0}
@@ -348,6 +354,8 @@ MonoBehaviour:
   biteHitbox: {fileID: 7528912520158812716}
   timer: {fileID: -24218015262884559}
   speed: 0.05
+  tongueSfx: {fileID: 11400000, guid: 568f369c3c76d0c458b9e2f094849735, type: 2}
+  screechSfx: {fileID: 11400000, guid: 646ed1381f2a9d84c9749e60058b4bee, type: 2}
 --- !u!114 &-24218015262884559
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,11 +39,17 @@ namespace Game.Scripts
         public float speed;
 
         private int curAttack = -1;
+        
+        
+        [Header("Sound")]
+        [SerializeField] private Sound tongueSfx;
+        [SerializeField] private Sound screechSfx;
 
         private void Start() {
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
             tongue = this.GetComponent<LineRenderer>();
+            screechSfx.PlaySound();
         }
 
         public int GetAttackCount() { return 4; }
@@ -62,6 +68,7 @@ namespace Game.Scripts
                     if (Vector3.Distance(basiliskBody.position, player.transform.position) < 2)
                         return Bite();
 
+                    tongueSfx.PlaySound();
                     return Tongue();
 
                 case CHASE_PLAYER:
