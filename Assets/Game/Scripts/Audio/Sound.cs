@@ -10,6 +10,10 @@ public class Sound : ScriptableObject{
     public float baseVolume = 1;
     public AudioMixerGroup mixerGroup;
 
+    private void Reset() {
+        mixerGroup = Resources.Load<AudioMixer>("SFX").FindMatchingGroups("Master")[0];
+    }
+
     public void PlaySound(Vector3 position, float volumeScale = 1) {
         PlayClipAtPoint(GetAudioClip(), position, baseVolume * volumeScale, mixerGroup);
     }
