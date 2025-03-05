@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(BoxCollider))]
 public class BossRoom : MonoBehaviour {
@@ -12,13 +14,19 @@ public class BossRoom : MonoBehaviour {
     private void Awake() {
         if(instance == null) {
             instance = this;
-        } else {
-            Destroy(gameObject);
         }
         
         roomBounds = GetComponent<BoxCollider>();
     }
-    
+
+    public void OnDisable() {
+        if(instance==this)instance = null;
+    }
+
+    public void OnEnable() {
+        instance = this;
+    }
+
     public static Vector3 GetRandomPositionInRoom() {
         Bounds bounds = instance.roomBounds.bounds;
         Vector3 randomPosition = new Vector3(

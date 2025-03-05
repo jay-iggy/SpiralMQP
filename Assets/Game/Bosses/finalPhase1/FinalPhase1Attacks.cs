@@ -48,6 +48,8 @@ namespace Game.Scripts {
                     controllers[i].mainBoss = this;
                 }
             }
+            
+            ArenaSwap.instance.SwapArena();
         }
 
         private void InitiateCharge()
