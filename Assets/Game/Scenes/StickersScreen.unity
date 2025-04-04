@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011ed0400248fd14a909ef3a0a3e6f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showAll: 0
 --- !u!1 &505947474
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,12 +556,12 @@ PrefabInstance:
     - target: {fileID: 3669778304605930386, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3669778304605930386, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 3669778304605930386, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}
@@ -641,7 +642,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224,
+      objectReference: {fileID: 21300000, guid: 23401d2640f90ed4db4ad96d65b1ebe7,
         type: 3}
     - target: {fileID: 7418731707725810225, guid: 90fd5652b31cc6744bdba18078df6cd1,
         type: 3}

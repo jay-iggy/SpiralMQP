@@ -5,6 +5,8 @@ using UnityEngine;
 namespace Game.Scripts {
     public class StickerHolder : MonoBehaviour
     {
+        [SerializeField] bool showAll = false;
+
         void Start()
         {
             List<StickerState> states = StickerManager.instance.stickerStates;
@@ -16,18 +18,27 @@ namespace Game.Scripts {
                     GameObject sticker = transform.GetChild(i).gameObject;
                     Sticker stickerScript = sticker.GetComponent<Sticker>();
 
-                    switch (states[i])
+
+                    if (showAll)
                     {
-                        case StickerState.Disabled:
-                            stickerScript.Hide();
-                            break;
-                        case StickerState.Enabled:
-                            stickerScript.Show(); 
-                            break;
-                        case StickerState.Hitless:
-                            stickerScript.BeatBossHitless();
-                            break;
+                        stickerScript.Show();
                     }
+                    else
+                    {
+                        switch (states[i])
+                        {
+                            case StickerState.Disabled:
+                                stickerScript.Hide();
+                                break;
+                            case StickerState.Enabled:
+                                stickerScript.Show();
+                                break;
+                            case StickerState.Hitless:
+                                stickerScript.BeatBossHitless();
+                                break;
+                        }
+                    }
+                   
                 }
             }
         }
