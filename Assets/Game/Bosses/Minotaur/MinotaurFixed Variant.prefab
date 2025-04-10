@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 1258211540309170995}
   - component: {fileID: 6807238080306771865}
   - component: {fileID: 5508609760160260452}
-  - component: {fileID: 6068687715839785228}
   m_Layer: 0
   m_Name: Sphere (6)
   m_TagString: Untagged
@@ -203,27 +202,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6068687715839785228
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493253505744900343}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &633639650763800421
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +406,6 @@ GameObject:
   - component: {fileID: 335481650014253479}
   - component: {fileID: 1320479400065258820}
   - component: {fileID: 2051265183769041713}
-  - component: {fileID: 161399552854702975}
   m_Layer: 0
   m_Name: knee bone (2)
   m_TagString: Untagged
@@ -502,27 +479,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &161399552854702975
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725961559055310319}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &796717067846569262
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +521,6 @@ GameObject:
   - component: {fileID: 5852145398348084167}
   - component: {fileID: 86337029128026896}
   - component: {fileID: 8541799108543525717}
-  - component: {fileID: 8323494901949067288}
   m_Layer: 0
   m_Name: knee bone
   m_TagString: Untagged
@@ -639,27 +594,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8323494901949067288
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813475161956413556}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &902500230593909567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1092,6 @@ GameObject:
   - component: {fileID: 4850967904727427954}
   - component: {fileID: 8471166302133791272}
   - component: {fileID: 1655022174585514351}
-  - component: {fileID: 8780474431737484510}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -1231,27 +1164,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8780474431737484510
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536879222206761858}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2395709222673747358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2054,6 @@ GameObject:
   - component: {fileID: 4266220714692683688}
   - component: {fileID: 1941568454051774691}
   - component: {fileID: 4953853089440134907}
-  - component: {fileID: 8455698399092224500}
   m_Layer: 0
   m_Name: knee bone (2)
   m_TagString: Untagged
@@ -2216,27 +2127,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8455698399092224500
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3515708579995357437}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3536668602614098859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2471,6 @@ GameObject:
   - component: {fileID: 6621665834641340148}
   - component: {fileID: 5303091213229955073}
   - component: {fileID: 8360637954185297678}
-  - component: {fileID: 3577326726079115409}
   m_Layer: 0
   m_Name: knee bone (1)
   m_TagString: Untagged
@@ -2655,27 +2544,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3577326726079115409
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3892521886343447802}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3964452120514376114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,7 +3320,6 @@ GameObject:
   - component: {fileID: 3426717251281384050}
   - component: {fileID: 834595781400170242}
   - component: {fileID: 2854273208167979839}
-  - component: {fileID: 1968634626928373556}
   m_Layer: 0
   m_Name: knee bone (1)
   m_TagString: Untagged
@@ -3526,27 +3393,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1968634626928373556
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4940008023440906392}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5225917093901325306
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,7 +3523,6 @@ GameObject:
   - component: {fileID: 5480834105469251632}
   - component: {fileID: 2715392177460344504}
   - component: {fileID: 1326026915960837958}
-  - component: {fileID: 6234626375466771975}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -3750,27 +3595,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6234626375466771975
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5505209026194243591}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5619065638072816919
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,7 +4737,6 @@ GameObject:
   - component: {fileID: 3550156491517231353}
   - component: {fileID: 791872183032323310}
   - component: {fileID: 6224289831035533340}
-  - component: {fileID: 1594738632457962862}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -4987,27 +4810,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1594738632457962862
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7469344960766034706}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7625630910084642329
 GameObject:
   m_ObjectHideFlags: 0
@@ -5155,7 +4957,6 @@ GameObject:
   - component: {fileID: 7817694866270793537}
   - component: {fileID: 3269539727239265400}
   - component: {fileID: 4124724018413820901}
-  - component: {fileID: 5401129240715338551}
   m_Layer: 0
   m_Name: knee bone
   m_TagString: Untagged
@@ -5229,27 +5030,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5401129240715338551
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7812459606946929664}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7817657032072542190
 GameObject:
   m_ObjectHideFlags: 0
