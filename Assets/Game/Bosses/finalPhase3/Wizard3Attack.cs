@@ -16,15 +16,17 @@ namespace Game.Scripts
         private const int LINE = 0;
         private const int GAPS = 1;
         private const int TargetShot = 2;
+        private const int WEAK = 3;
 
         [SerializeField] GameObject bullet;
+        [SerializeField] GameObject Explode_bullet;
         [SerializeField] Timer timer;
         private GameObject player;
 
         [SerializeField] GameObject shield;
         [SerializeField] GameObject[] pillarPrefabs;
         
-        private int shotsInChamber;
+        public int shotsInChamber;
         private GameObject bulletInChamber; // we can have this be type Projectile
 
         private int curAttack = -1;
@@ -52,6 +54,8 @@ namespace Game.Scripts
         private bool vaulerible;
 
         private int Phaces =0;
+
+        private int timesHit = 0;
 
         public UnityEvent Die = new();
 
@@ -84,6 +88,9 @@ namespace Game.Scripts
 
         targetZ = CenterZ;
 
+            vaulerible = false;
+            timesHit = 0;
+            GetComponent<HealthComponent>().takeZeroDamage = true;
         }
 
 
@@ -106,6 +113,9 @@ namespace Game.Scripts
                 case TargetShot:
                     Debug.Log("case3");
                     return ShootBullets();
+                case WEAK:
+                    Debug.Log("case3");
+                    return 0;
             }
 
             return 0;
@@ -176,7 +186,7 @@ namespace Game.Scripts
                     targetZ = CenterZ;
                     LinePhase = 0;
                     curAttack = 1;
-                    shotsInChamber = 3;
+                    shotsInChamber = 5;
                     break;
 
             }
@@ -220,12 +230,13 @@ namespace Game.Scripts
                     sendBulletStraight(-5);
                     break;
             }
-            if((shotsInChamber > 0))
+            if((shotsInChamber <= 0))
             {
-                shotsInChamber = 5;
+                shotsInChamber = 30;
                 curAttack = 2;
             }
-            return 4;
+            shotsInChamber = shotsInChamber - 1;
+            return 1;
         }
         private float ShootBullets()
         {
@@ -233,12 +244,14 @@ namespace Game.Scripts
 
             GameObject bulletInChamber = Instantiate(bullet, transform.position, Quaternion.identity);
             bulletInChamber.GetComponent<Projectile>().TargetPlayer(8);
-            if ((shotsInChamber > 0))
+            if ((shotsInChamber <= 0))
             {
-
-                curAttack = 0;
+                vaulerible = true;
+                curAttack = 3;
             }
-            return 2;
+
+            shotsInChamber = shotsInChamber - 1;
+            return 0.25f;
         }
 
         public void OnTimerEnd(int data)
@@ -262,10 +275,19 @@ namespace Game.Scripts
         void FixedUpdate()
         {
 
-            if (true)
+            if (vaulerible)
             {
+                GetComponent<HealthComponent>().takeZeroDamage = false;
+                if (GetComponent<HealthComponent>().health != GetComponent<HealthComponent>().maxHealth)
+                {
+                    shield.SetActive(false);
+                    triggerwin();
+                    GetComponent<HealthComponent>().TakeDamage(99);
 
+                }
+                shield.SetActive(false);
             }
+
 
             MoveTowards();
         }

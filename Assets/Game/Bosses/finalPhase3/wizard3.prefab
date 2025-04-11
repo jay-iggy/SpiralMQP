@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5873624415365294143
 Transform:
   m_ObjectHideFlags: 0
@@ -189,6 +189,8 @@ MonoBehaviour:
       m_Calls: []
   destroyedByWall: 0
   ignoreWallDelay: 0.1
+  onHitSfx: {fileID: 0}
+  onHitWallSfx: {fileID: 0}
 --- !u!1001 &663482112691976797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -528,6 +530,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7193713829538453673, guid: 7879936125f548643941732c87373fe1, type: 3}
+  Explode_bullet: {fileID: 9166757181426913922, guid: 60d121f48a02a6544b11e2f5ccdf909f,
+    type: 3}
   timer: {fileID: -24218015262884559}
   shield: {fileID: 1575589443556404108}
   pillarPrefabs: []

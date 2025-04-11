@@ -8,6 +8,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: destroyedByWall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573837292537275807, guid: 3dce6193e91adc044a284a173d8ab8a9,
+        type: 3}
+      propertyPath: ignoreWallDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7193713829538453673, guid: 3dce6193e91adc044a284a173d8ab8a9,
         type: 3}
       propertyPath: m_Name
@@ -92,3 +102,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 9166757181426913922, guid: 85f3a9a4b15b6544fba312a279e95702, type: 3}
   Flame: {fileID: 9166757181426913922, guid: 408481d6a739d314e988a1f52d5714f2, type: 3}
+  explosionEffectPrefab: {fileID: 0}
