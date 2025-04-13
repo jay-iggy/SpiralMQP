@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
@@ -115,5 +116,9 @@ namespace Game.Scripts {
             }
         }
 
+
+        private void OnDestroy() {
+            ArenaSwap.instance.SwapArena();
+        }
     }
 }
