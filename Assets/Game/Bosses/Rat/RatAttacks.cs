@@ -2,6 +2,8 @@ using Game.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts
 {
@@ -26,9 +28,11 @@ namespace Game.Scripts
 
         private int curAttack = -1;
 
-        private Vector3 gun;
+        [FormerlySerializedAs("gunPosition")] [SerializeField] private Transform gunPoint;
         private Vector3 bulletCircleCenter;
 
+        [SerializeField] private UnityEvent onShootFX;
+        [SerializeField] private Sound shootSfx;
         
 
         //audio
@@ -37,7 +41,8 @@ namespace Game.Scripts
         private void Start() {
             player = GameObject.FindGameObjectWithTag(TagManager.Player); // expensive, we can just make the player a singleton
             timer.onTimerEnd.AddListener(OnTimerEnd);
-            gun = transform.position + Vector3.left;
+            //gun = transform.position + Vector3.left;
+            onShootFX.AddListener(PlaySound);
         }
 
         public int GetAttackCount() { return 3; }
@@ -62,7 +67,7 @@ namespace Game.Scripts
 
         private float ShootBigBullet() {
             setGunPoint();
-            bigBullet = Instantiate(bullet, gun, Quaternion.identity);
+            bigBullet = Instantiate(bullet, gunPoint.position, Quaternion.identity);
             bigBullet.transform.localScale = new Vector3(.5f, .5f, .5f);
             timer.Set(1, 0);
             return 1;
@@ -71,10 +76,11 @@ namespace Game.Scripts
         private float ShootSixBullets() {
             if (shotsInChamber > 0) {
                 setGunPoint();
-                bulletInChamber = Instantiate(bullet, gun, Quaternion.identity);
+                bulletInChamber = Instantiate(bullet, gunPoint.position, Quaternion.identity);
                 Projectile p = bulletInChamber.GetComponent<Projectile>();
                 p.TargetPlayer(8);
                 p.destroyedByWall = true;
+                onShootFX.Invoke();
             }
 
             if (shotsInChamber >= 0) {
@@ -100,6 +106,9 @@ namespace Game.Scripts
             }
             bulletCircleCenter = transform.position;
             BulletPatterns.CreateCircle(bullets, bulletCircleCenter, 1);
+            foreach (GameObject b in bullets) {
+                b.transform.position = new Vector3(b.transform.position.x, gunPoint.position.y, b.transform.position.z);
+            }
             timer.Set(.25f, 3);
         }
 
@@ -109,6 +118,8 @@ namespace Game.Scripts
                     if(bigBullet != null) {
                         bigBullet.GetComponent<Projectile>().TargetPlayer(5);
                         bigBullet = null;
+                        ScreenShake.instance.StartShake(.2f, .3f);
+                        onShootFX.Invoke();
                     }
                     curAttack = -1;
                     break;
@@ -132,14 +143,14 @@ namespace Game.Scripts
 
         private void setGunPoint()
         {
-            if (player.transform.position.x > transform.position.x)
+            /*if (player.transform.position.x > transform.position.x)
             {
                 gun = transform.position + Vector3.right;
             }
             else
             {
                 gun = transform.position + Vector3.left;
-            }
+            }*/
         }
 
         private void Update() {
@@ -157,7 +168,7 @@ namespace Game.Scripts
                     if (bigBullet != null) {
                         bigBullet.transform.localScale += new Vector3(s, s, s);
                         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -.02f);
-                        bigBullet.transform.position = gun;
+                        bigBullet.transform.position = gunPoint.position;
                     }
                     else {
                         // this happens when the player walks into the bullet before it is fired
@@ -173,6 +184,10 @@ namespace Game.Scripts
                     break;
             }
 
+        }
+
+        private void PlaySound() {
+            shootSfx.PlaySound();
         }
     }
 

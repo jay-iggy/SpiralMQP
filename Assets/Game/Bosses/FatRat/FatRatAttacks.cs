@@ -99,11 +99,16 @@ namespace Game.Scripts {
                 _movementComponent.moveVelocity = Vector3.zero;
                 GameObject[] projectiles = new GameObject[projectileCount];
                 for(int i = 0; i < projectileCount; i++) {
-                    projectiles[i] = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                    
+                    projectiles[i] = Instantiate(projectilePrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
                 }
-                BulletPatterns.CreateCircle(projectiles, transform.position, projectileCircleRadius);
+                BulletPatterns.CreateCircle(projectiles, transform.position + new Vector3(0, 2, 0), projectileCircleRadius);
                 foreach (GameObject projectile in projectiles) {
-                    projectile.GetComponent<Rigidbody>().velocity = (projectile.transform.position - transform.position).normalized * projectileSpeed;
+                    Rigidbody rb = projectile.GetComponent<Rigidbody>();
+                    Vector3 velocity = (projectile.transform.position - transform.position).normalized * projectileSpeed;
+                    velocity.y = 0;
+                    rb.velocity = velocity;
+                    
                 }
                 ScreenShake.instance.StartShake(screenShakeLength, screenShakePower);
                 _isGrounded = true;
