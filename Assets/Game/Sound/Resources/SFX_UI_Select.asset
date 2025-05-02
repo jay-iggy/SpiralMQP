@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 293df1d292a70484d81b7eef50c2a884, type: 3}
-  m_Name: Heal
+  m_Name: SFX_UI_Select
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: c3946a934d5312b48ab5fd7c0090e9ad, type: 3}
-  baseVolume: 1
+  - {fileID: 8300000, guid: 96304be4eb1be0c4daac93b2839b9c04, type: 3}
+  baseVolume: 0.5
   mixerGroup: {fileID: 24300002, guid: fa1b42bc6dfebdd4e8a124d77fadd16b, type: 2}
