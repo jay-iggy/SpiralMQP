@@ -11,6 +11,7 @@ public class MovementComponent : MonoBehaviour {
     private Vector3 personalVelocity;
     [SerializeField] private float externalVelocityDamping = 5;
     [SerializeField] private float personalVelocityDamping = 5;
+    [SerializeField] private bool lockExternalVelocity = false;
     
     private Rigidbody _rb;
     private ConstantForce _gravity;
@@ -33,6 +34,9 @@ public class MovementComponent : MonoBehaviour {
     }
     
     public void AddExternalVelocity(Vector3 velocity) {
+        if(lockExternalVelocity) {
+            return;
+        }
         externalVelocity += velocity;
     }
     public void AddPersonalVelocity(Vector3 velocity) {

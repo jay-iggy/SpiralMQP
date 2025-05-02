@@ -34,6 +34,7 @@ public class Sound : ScriptableObject{
     private static void PlayClipAtPoint(AudioClip clip, Vector3 position, [UnityEngine.Internal.DefaultValue("1.0F")] float volume, AudioMixerGroup audioMixerGroup = null)
     {
         GameObject gameObject = new GameObject("One shot audio");
+        DontDestroyOnLoad(gameObject);
         gameObject.transform.position = position;
         AudioSource audioSource = (AudioSource) gameObject.AddComponent(typeof (AudioSource));
         audioSource.clip = clip;

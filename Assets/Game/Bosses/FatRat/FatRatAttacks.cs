@@ -31,6 +31,10 @@ namespace Game.Scripts {
         
         private List<GameObject> _itemsToCleanup = new();
         
+        private bool canSpawnShockwave = true;
+        [SerializeField] float shockwaveCooldown = 1f;
+        private bool phase2 = false;
+        
         private void Awake() {
             _movementComponent = GetComponent<MovementComponent>();
             _healthComponent = GetComponent<HealthComponent>();
@@ -65,7 +69,9 @@ namespace Game.Scripts {
                 }
             }
             private void OnHealthChanged(float newHealth) {
-                
+                if (!phase2 && newHealth <= _healthComponent.maxHealth / 2) {
+                    phase2 = true;
+                }
             }
         #endregion
         
@@ -78,6 +84,11 @@ namespace Game.Scripts {
             while (!_isGrounded) {
                 yield return null;
             }
+            if(phase2) {
+                // spawn shockwave
+                SpawnShockwave();
+            }
+            
         }
         
             
@@ -97,20 +108,7 @@ namespace Game.Scripts {
         private void OnCollisionEnter(Collision other) {
             if (other.gameObject.CompareTag(TagManager.Ground)) {
                 _movementComponent.moveVelocity = Vector3.zero;
-                GameObject[] projectiles = new GameObject[projectileCount];
-                for(int i = 0; i < projectileCount; i++) {
-                    
-                    projectiles[i] = Instantiate(projectilePrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-                }
-                BulletPatterns.CreateCircle(projectiles, transform.position + new Vector3(0, 2, 0), projectileCircleRadius);
-                foreach (GameObject projectile in projectiles) {
-                    Rigidbody rb = projectile.GetComponent<Rigidbody>();
-                    Vector3 velocity = (projectile.transform.position - transform.position).normalized * projectileSpeed;
-                    velocity.y = 0;
-                    rb.velocity = velocity;
-                    
-                }
-                ScreenShake.instance.StartShake(screenShakeLength, screenShakePower);
+                SpawnShockwave();
                 _isGrounded = true;
             }
             else if (other.gameObject.CompareTag(TagManager.Player)) {
@@ -122,6 +120,31 @@ namespace Game.Scripts {
                     playerMovementComponent.AddExternalVelocity(direction * 4);
                 }
             }
+        }
+        IEnumerator HandleShockwaveCooldown() {
+            canSpawnShockwave = false;
+            yield return new WaitForSeconds(shockwaveCooldown);
+            canSpawnShockwave = true;
+        }
+
+
+        void SpawnShockwave() {
+            if (canSpawnShockwave) {
+                GameObject[] projectiles = new GameObject[projectileCount];
+                for(int i = 0; i < projectileCount; i++) {
+                    projectiles[i] = Instantiate(projectilePrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+                }
+                BulletPatterns.CreateCircle(projectiles, transform.position + new Vector3(0, 2, 0), projectileCircleRadius);
+                foreach (GameObject projectile in projectiles) {
+                    Rigidbody rb = projectile.GetComponent<Rigidbody>();
+                    Vector3 velocity = (projectile.transform.position - transform.position).normalized * projectileSpeed;
+                    velocity.y = 0;
+                    rb.velocity = velocity;
+                    
+                }
+                ScreenShake.instance.StartShake(screenShakeLength, screenShakePower);
+            }
+            StartCoroutine(HandleShockwaveCooldown());
         }
     }
 }
