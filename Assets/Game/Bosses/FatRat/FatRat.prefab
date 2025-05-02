@@ -2293,6 +2293,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7256185496358109389, guid: d36c15ef613bb7946bc5823073873d7e,
+        type: 3}
+      propertyPath: lockExternalVelocity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7682434749222559238, guid: d36c15ef613bb7946bc5823073873d7e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2451,6 +2456,7 @@ MonoBehaviour:
   projectileSpeed: 8
   screenShakeLength: 0.5
   screenShakePower: 0.5
+  shockwaveCooldown: 1
 --- !u!135 &1087776398347556946
 SphereCollider:
   m_ObjectHideFlags: 0
