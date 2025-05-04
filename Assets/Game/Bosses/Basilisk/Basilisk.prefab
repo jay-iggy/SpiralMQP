@@ -280,7 +280,9 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.10787236
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6391814892263382719, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
+    - {fileID: 8833956374773416703, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3853866498302859641, guid: d36c15ef613bb7946bc5823073873d7e, type: 3}
     m_AddedGameObjects:
@@ -487,6 +489,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1275996695822871800}
     m_Modifications:
+    - target: {fileID: 2562891851245633644, guid: 35fc4a2fdce8845a7931aa9f1c2d8c64,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.45
+      objectReference: {fileID: 0}
     - target: {fileID: 2599066186554275619, guid: 35fc4a2fdce8845a7931aa9f1c2d8c64,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -614,7 +621,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.9
+  m_Radius: 1.23
   m_Center: {x: 0, y: 1.03, z: 1.88}
 --- !u!4 &4575186522143762053 stripped
 Transform:
