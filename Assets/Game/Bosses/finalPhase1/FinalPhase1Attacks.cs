@@ -119,6 +119,7 @@ namespace Game.Scripts {
 
         private void OnDestroy() {
             ArenaSwap.instance.SwapArena();
+            player.transform.position = new Vector3(0, 0, 0);
         }
     }
 }
