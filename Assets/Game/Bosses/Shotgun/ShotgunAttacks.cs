@@ -14,7 +14,8 @@ namespace Game.Scripts {
         [Header("Shooting")]
         [SerializeField] GameObject projPrefab;
         [SerializeField] private Transform projSpawnPos;
-        [SerializeField] private int volleysPerAttack = 2; // increases during phase 2
+        [SerializeField] private int volleysPerAttack = 2; 
+        [SerializeField] private int shellsEjectedPerVolley = 1;// increases during phase 2
         [SerializeField] private float delayBetweenVolleys = .5f;
         [SerializeField] private float aimRotateSpeed = 2;
         [SerializeField] private float maxAimTime = 1.5f;
@@ -73,8 +74,10 @@ namespace Game.Scripts {
             private void OnHealthChanged(float newHealth) {
                 // enter phase 2 if less than half health
                 if (newHealth/_healthComponent.maxHealth < .5f) {
-                    volleysPerAttack = 6;
                     _healthComponent.onHealthChanged.RemoveListener(OnHealthChanged); // prevent phase changing again
+                    shellsEjectedPerVolley *= 3;
+                    aimRotateSpeed*= 2;
+                    speed *= 1.5f;
                 }
             }
         #endregion
@@ -99,7 +102,7 @@ namespace Game.Scripts {
                 yield return new WaitForSeconds(ejectShellsAnim.length);
             }
             public void EjectShells() { // this is invoked by animation event
-                for (int i = 0; i < volleysPerAttack; i+=2) {
+                for (int i = 0; i < volleysPerAttack * shellsEjectedPerVolley; i+=2) {
                     foreach (Transform ejectPos in shellEjectPositions) {
                         GameObject shell = Instantiate(shellPrefab, ejectPos.position, shellPrefab.transform.rotation);
                         shell.GetComponent<Rigidbody>().AddForce(ejectPos.forward * shellEjectForce, ForceMode.Impulse);
