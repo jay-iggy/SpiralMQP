@@ -6864,7 +6864,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 1799733239}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &1801317551
 GameObject:
   m_ObjectHideFlags: 0
@@ -6906,15 +6905,11 @@ RectTransform:
 =======
 --- !u!114 &1799733244
 >>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
-=======
---- !u!114 &1799733244
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1801317551}
   m_Enabled: 1
@@ -7019,17 +7014,12 @@ CanvasRenderer:
   m_GameObject: {fileID: 1801317551}
   m_CullTransparentMesh: 1
 =======
-=======
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
   m_GameObject: {fileID: 1799733239}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d31d89c9aa243c84f94b24459c839bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
-=======
 >>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
 --- !u!1 &1808663580
 GameObject:
