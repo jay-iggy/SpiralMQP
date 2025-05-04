@@ -8,6 +8,7 @@ namespace Game.Scripts
     {
         public static CutsceneManager instance;
         public bool playCutscene = true;
+        public bool alwaysPlayCutscene = false;
         private bool cutsceneStarted = false;
         [SerializeField] Timer timer;
         private void Awake()
@@ -56,6 +57,7 @@ namespace Game.Scripts
             cutsceneStarted = false;
             timer.StopTimer();
             UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+            playCutscene = alwaysPlayCutscene;
         }
         
     }

@@ -5212,6 +5212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playCutscene: 1
+  alwaysPlayCutscene: 1
   timer: {fileID: 1514698665}
 --- !u!4 &1514698667
 Transform:
