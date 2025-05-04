@@ -15,24 +15,36 @@ public class ButtonSounds : MonoBehaviour, ISelectHandler, ISubmitHandler, IPoin
     public void OnSelect(BaseEventData eventData) {
         // Play the button sound when hovered over
         Debug.Log("button_hover");
+        if(selectSound == null) {
+            return;
+        }
         selectSound.PlaySound();
     }
 
     public void OnSubmit(BaseEventData eventData) {
         // Play the button sound when clicked
         Debug.Log("button_click");
+        if(confirmSound == null) {
+            return;
+        }
         confirmSound.PlaySound();
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
         // Play the button sound when hovered over
         Debug.Log("button_hover");
+        if(selectSound == null) {
+            return;
+        }
         selectSound.PlaySound();
     }
 
     public void OnPointerClick(PointerEventData eventData) {
         // Play the button sound when clicked
         Debug.Log("button_click");
+        if(confirmSound == null) {
+            return;
+        }
         confirmSound.PlaySound();
     }
 }
