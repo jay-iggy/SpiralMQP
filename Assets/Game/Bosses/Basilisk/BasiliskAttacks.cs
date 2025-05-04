@@ -157,8 +157,10 @@ namespace Game.Scripts
         private void FixedUpdate() {
             switch (curAttack) {
                 case BITE_ATTACK:
-                    if (biteComplete)
+                    if (biteComplete) {
+                        this.GetComponent<Boss>().DoneWithAttack();
                         break;
+                    }
 
                     if (!mouthOpen)
                     {
