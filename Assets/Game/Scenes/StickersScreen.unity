@@ -1989,6 +1989,7 @@ GameObject:
   - component: {fileID: 1377102601}
   - component: {fileID: 1377102600}
   - component: {fileID: 1377102599}
+  - component: {fileID: 1377102603}
   m_Layer: 5
   m_Name: Confirm button
   m_TagString: Untagged
@@ -2122,6 +2123,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377102597}
   m_CullTransparentMesh: 1
+--- !u!114 &1377102603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377102597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31d89c9aa243c84f94b24459c839bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1393946866
 PrefabInstance:
   m_ObjectHideFlags: 0

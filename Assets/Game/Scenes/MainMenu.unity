@@ -543,7 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179835339}
   m_Layer: 0
-  m_Name: Version 0.7.0
+  m_Name: Assets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,7 +567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749, y: 9852.961}
+  m_AnchoredPosition: {x: 749, y: 10072.654}
   m_SizeDelta: {x: 1364, y: 368.8913}
   m_Pivot: {x: 0.5, y: 29.7}
 --- !u!1 &198070367
@@ -1050,7 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355547915}
   m_Layer: 0
-  m_Name: Version 0.8.0
+  m_Name: Developers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,8 +1074,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749, y: 21072.092}
-  m_SizeDelta: {x: 1364, y: 734.2192}
+  m_AnchoredPosition: {x: 749, y: 14766.896}
+  m_SizeDelta: {x: 1364, y: 514.526}
   m_Pivot: {x: 0.5, y: 29.7}
 --- !u!1 &373573636
 GameObject:
@@ -3277,7 +3277,7 @@ GameObject:
   - component: {fileID: 850302723}
   - component: {fileID: 850302722}
   m_Layer: 5
-  m_Name: Version name
+  m_Name: Developers (Text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3299,7 +3299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202, y: 266}
+  m_AnchoredPosition: {x: -202, y: 130}
   m_SizeDelta: {x: 200, y: 23.4325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850302722
@@ -6863,8 +6863,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799733239}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
+--- !u!114 &1799733244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799733239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31d89c9aa243c84f94b24459c839bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1801317551
 GameObject:
   m_ObjectHideFlags: 0
@@ -6877,7 +6887,7 @@ GameObject:
   - component: {fileID: 1801317554}
   - component: {fileID: 1801317553}
   m_Layer: 5
-  m_Name: Version notes
+  m_Name: Names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6899,23 +6909,15 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 117.02234, y: -67.53125}
-  m_SizeDelta: {x: 269.8929, y: 130.1141}
+  m_AnchoredPosition: {x: 117.02234, y: -64.1875}
+  m_SizeDelta: {x: 269.893, y: 66.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801317553
-=======
---- !u!114 &1799733244
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
-=======
---- !u!114 &1799733244
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
   m_GameObject: {fileID: 1801317551}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7018,19 +7020,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801317551}
   m_CullTransparentMesh: 1
-=======
-=======
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
-  m_GameObject: {fileID: 1799733239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31d89c9aa243c84f94b24459c839bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
-=======
->>>>>>> 49344367e2e14444149d1696eb8fe557ab06123d
 --- !u!1 &1808663580
 GameObject:
   m_ObjectHideFlags: 0
@@ -7531,7 +7520,7 @@ GameObject:
   - component: {fileID: 1894443616}
   - component: {fileID: 1894443615}
   m_Layer: 5
-  m_Name: Version name
+  m_Name: Assets (text)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
